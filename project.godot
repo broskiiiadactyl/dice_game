@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Brackeys Game Jam 2026.2 Trust No One"
+config/tags=PackedStringArray("game_jam")
 run/main_scene="uid://cp0jsy2mmjan0"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"

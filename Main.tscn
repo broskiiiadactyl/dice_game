@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cp0jsy2mmjan0"]
 
+[ext_resource type="Script" uid="uid://dgw05y00xvrlt" path="res://Scripts/main.gd" id="1_fos0i"]
 [ext_resource type="PackedScene" uid="uid://bctwy71vgkkax" path="res://Assets/Dice/Scenes/player_die.tscn" id="1_glv2v"]
 [ext_resource type="Texture2D" uid="uid://bqd3s078vd0vq" path="res://Assets/Sky/sky_112_2k.png" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://djnip1t4pe2dw" path="res://Utility/spawner.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://dt5ueltsfwo3f" path="res://Assets/Cups/Scenes/player_cup.tscn" id="4_cm0pq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cm0pq"]
 panorama = ExtResource("1_uu6xs")
@@ -15,6 +17,7 @@ background_mode = 2
 sky = SubResource("Sky_uu6xs")
 
 [node name="Main" type="Node3D" unique_id=362393473]
+script = ExtResource("1_fos0i")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1222708292]
 environment = SubResource("Environment_r0du0")
@@ -25,15 +28,20 @@ shadow_enabled = true
 sky_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=291328698]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.398405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3867393, 6.91787)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1891417904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39956, 0)
 use_collision = true
+size = Vector3(14.392578, 1, 15.845703)
 
 [node name="Spawner" parent="." unique_id=1254509806 instance=ExtResource("2_r0du0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.594198, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.506668, 0)
 spawn_scene = ExtResource("1_glv2v")
 use_random_rotation = true
 rotation_range = Vector3(5, 5, 5)
-spawn_timer = 0.1
+spawn_timer = 0.25
+
+[node name="Player Cup" parent="." unique_id=2144877282 instance=ExtResource("4_cm0pq")]
+unique_name_in_owner = true
+transform = Transform3D(0.37032, 0, 0.92890424, 0, 1, 0, -0.92890424, 0, 0.37032, 3.9273553, -0.52456, -1.4887528)
