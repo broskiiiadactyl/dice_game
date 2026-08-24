@@ -1,6 +1,39 @@
 [gd_scene format=3 uid="uid://flx3ui8q2vt8"]
 
 [ext_resource type="PackedScene" uid="uid://ds27b6o46t7ht" path="res://Assets/Environment/Raw/BarVer1_Merged.glb" id="1_g25wd"]
+[ext_resource type="Shader" uid="uid://bfu25qvucy7vb" path="res://shaders/sky.gdshader" id="2_eq28t"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eq28t"]
+flip_faces = true
+top_radius = 50.0
+bottom_radius = 50.0
+height = 100.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Gradient" id="Gradient_eq28t"]
+offsets = PackedFloat32Array(0.21091811, 0.25558314)
+colors = PackedColorArray(0, 0, 0.20392157, 1, 0.2507324, 0.00076248735, 0.46463138, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eq28t"]
+gradient = SubResource("Gradient_eq28t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dxm6"]
+render_priority = 10
+shader = ExtResource("2_eq28t")
+shader_parameter/background_color = Color(0.02, 0.04, 0.12, 1)
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_eq28t")
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/density = 0.949999975965
+shader_parameter/layer_parascale = 4
+shader_parameter/star_speed = Vector2(0.01, 0.01)
+shader_parameter/star_wave = Vector2(0, 0)
+shader_parameter/star_size = 2.49999994412
+shader_parameter/star_rotate_speed = 1.424999998000942e-07
+shader_parameter/twinkle_effect = 0.0999999977648
+shader_parameter/twinkle_speed = 0.3
+shader_parameter/pixelate_enabled = false
+shader_parameter/pixelate_count = 1000.0
 
 [sub_resource type="Animation" id="Animation_w3bhx"]
 length = 0.001
@@ -10,7 +43,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("SkyBox")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0.033333335, 1, 0, 0.8757077, 0, -0.48284164)
 
 [sub_resource type="Animation" id="Animation_eq28t"]
 resource_name = "rotation"
@@ -66,9 +99,14 @@ size = Vector3(25.582031, 1, 19.281006)
 
 [node name="BarVer1_Merged" unique_id=1332937823 instance=ExtResource("1_g25wd")]
 
+[node name="SkyBox" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(367575592) index="0" unique_id=300900669]
+transform = Transform3D(-0.5337279, 0, -0.8456563, 0, 1, 0, 0.8456563, 0, -0.5337279, 22.26911, -0.15584183, 3.3895268)
+mesh = SubResource("CylinderMesh_eq28t")
+surface_material_override/0 = SubResource("ShaderMaterial_3dxm6")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(367575592) index="1" unique_id=727296915]
 libraries/ = SubResource("AnimationLibrary_vgq7j")
-autoplay = &"rotation"
+speed_scale = 0.025
 
 [node name="Table" type="StaticBody3D" parent="MainTable" parent_id_path=PackedInt32Array(2117170879) index="0" unique_id=281453822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.602451, -4.7683716e-07, -1.1573138)
@@ -81,7 +119,7 @@ shape = SubResource("BoxShape3D_p1f1a")
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="LargeStationDecoration" parent="SpaceStation/Skeleton3D" index="0" unique_id=1121049502]
-transform = Transform3D(0.9970033, 0.002106, -0.077330165, 0, 0.9996289, 0.027223768, 0.07735887, -0.027142188, 0.99663335, -20.344397, 0, -2.6564517)
+transform = Transform3D(1, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999995, 0, 0, 0)
 
 [node name="Wheel" type="AnimationPlayer" parent="SpaceStation/Skeleton3D" index="1" unique_id=2042859301]
 unique_name_in_owner = true

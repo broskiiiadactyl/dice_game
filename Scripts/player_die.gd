@@ -10,6 +10,8 @@ var deece : Dictionary
 #models parent
 @onready var model_container : Node3D = %Models
 
+var start_basis : Basis = global_transform.basis
+
 func _ready() -> void:
 	deece = Globals.dice_dict
 	
@@ -32,6 +34,13 @@ func _ready() -> void:
 		model_instance.scale *= 0.1
 	
 	set_dice("normal")
+#
+#func _process(delta: float) -> void:
+	#%Label3D.global_position = global_position + Vector3.UP * 0.1
+	#%Label3D.global_rotation = Vector3.UP
+	#
+	#if linear_velocity.is_zero_approx():
+		#%Label3D.text = str(check_value())
 
 #function to set active dice model
 func set_dice(model: String) -> void:
@@ -41,3 +50,30 @@ func set_dice(model: String) -> void:
 			child.visible = true
 		else:
 			child.visible = false
+
+#this function checks which face is pointing up by checking the die's rotation in global space
+#VERY IMPORTANT: for this to work, the orientation of the dice MUST match the attached Normal Die model
+func check_value() -> int:
+	var check_basis: Basis = global_transform.basis
+
+	var x_up: float = check_basis.x.y
+	var y_up: float = check_basis.y.y
+	var z_up: float = check_basis.z.y
+
+	if abs(y_up) >= abs(x_up) and abs(y_up) >= abs(z_up):
+		if y_up > 0.0:
+			return 6
+		else:
+			return 1
+	
+	elif abs(x_up) >= abs(z_up):
+		if x_up > 0.0:
+			return 2
+		else:
+			return 5
+	
+	else:
+		if z_up > 0.0:
+			return 3
+		else:
+			return 4
