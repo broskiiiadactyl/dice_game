@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bdrlaltpy1pgw"]
+
+[ext_resource type="PackedScene" uid="uid://coobbe55wihom" path="res://Assets/Dice/Raw/D6_A.fbx" id="1_3ck3y"]
+
+[node name="Normal Die" unique_id=1272245559 instance=ExtResource("1_3ck3y")]

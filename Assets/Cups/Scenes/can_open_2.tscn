@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dqxv28yrbu0fo"]
+
+[ext_resource type="PackedScene" uid="uid://cuw6vkbl32ftv" path="res://Assets/Cups/Raw/can-open.glb" id="1_4hyqn"]
+
+[node name="can-open2" unique_id=1977177218 instance=ExtResource("1_4hyqn")]

@@ -1,3 +1,32 @@
 [gd_scene format=3 uid="uid://cp0jsy2mmjan0"]
 
+[ext_resource type="PackedScene" uid="uid://bctwy71vgkkax" path="res://Assets/Dice/Scenes/player_die.tscn" id="1_glv2v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_glv2v"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_uu6xs"]
+sky_material = SubResource("ProceduralSkyMaterial_glv2v")
+
+[sub_resource type="Environment" id="Environment_r0du0"]
+background_mode = 2
+sky = SubResource("Sky_uu6xs")
+
 [node name="Main" type="Node3D" unique_id=362393473]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1222708292]
+environment = SubResource("Environment_r0du0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1495834867]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=291328698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3699918)
+
+[node name="Player Die" parent="." unique_id=1637512958 instance=ExtResource("1_glv2v")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1891417904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39956, 0)
+use_collision = true
