@@ -23,3 +23,10 @@ unique_name_in_owner = true
 
 [node name="Normal Die" parent="Models" unique_id=1272245559 instance=ExtResource("2_drees")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1216629248]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09874171, 0)
+billboard = 1
+text = "0"
+font_size = 12
