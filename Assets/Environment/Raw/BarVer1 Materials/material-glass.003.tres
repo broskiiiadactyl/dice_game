@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://h2njyqpkvpjs"]
+
+[resource]
+resource_name = "material-glass.003"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9507073, 0.96494335, 1, 1)
