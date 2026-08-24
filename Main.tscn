@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bqd3s078vd0vq" path="res://Assets/Sky/sky_112_2k.png" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://djnip1t4pe2dw" path="res://Utility/spawner.tscn" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://dt5ueltsfwo3f" path="res://Assets/Cups/Scenes/player_cup.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://flx3ui8q2vt8" path="res://Assets/Environment/Scenes/space_station.tscn" id="6_3dxm6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cm0pq"]
 panorama = ExtResource("1_uu6xs")
@@ -28,20 +29,27 @@ shadow_enabled = true
 sky_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=291328698]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3867393, 6.91787)
+transform = Transform3D(0.97763914, 0.0328068, -0.20771483, 0, 0.98775595, 0.15600769, 0.21028967, -0.15251923, 0.96566886, -1.2046471, 1.9092319, 8.738665)
+fov = 40.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1891417904]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39956, 0)
-use_collision = true
-size = Vector3(14.392578, 1, 15.845703)
+[node name="Environment" type="Node3D" parent="." unique_id=1828386109]
+unique_name_in_owner = true
 
-[node name="Spawner" parent="." unique_id=1254509806 instance=ExtResource("2_r0du0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.506668, 0)
+[node name="Player" type="Node3D" parent="." unique_id=1576922688]
+unique_name_in_owner = true
+
+[node name="Player Cup" parent="Player" unique_id=2144877282 instance=ExtResource("4_cm0pq")]
+unique_name_in_owner = true
+transform = Transform3D(0.37032, 0, 0.92890424, 0, 1, 0, -0.92890424, 0, 0.37032, -0.58681214, 0.79552513, 6.081184)
+
+[node name="Dice Spawner" parent="Player" unique_id=1254509806 instance=ExtResource("2_r0du0")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4055035, 2.8396602, 6.1394296)
 spawn_scene = ExtResource("1_glv2v")
+spawn_count = 50
 use_random_rotation = true
 rotation_range = Vector3(5, 5, 5)
-spawn_timer = 0.25
+spawn_timer = 0.1
 
-[node name="Player Cup" parent="." unique_id=2144877282 instance=ExtResource("4_cm0pq")]
-unique_name_in_owner = true
-transform = Transform3D(0.37032, 0, 0.92890424, 0, 1, 0, -0.92890424, 0, 0.37032, 3.9273553, -0.52456, -1.4887528)
+[node name="BarVer1_Merged" parent="." unique_id=1332937823 instance=ExtResource("6_3dxm6")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)

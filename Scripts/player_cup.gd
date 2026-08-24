@@ -14,7 +14,7 @@ var cupses : Dictionary
 @onready var shaker_sound : AudioStreamPlayer3D = %"Shaker Sound"
 @onready var shaker_timer : Timer = %"Shake Sound Timer"
 var last_pos : Vector3
-@export var shake_distance : float = 1.0
+@export var shake_distance : float = 0.1
 var is_shaking : bool = false
 
 func _ready() -> void:
@@ -36,7 +36,6 @@ func _ready() -> void:
 		model_instance.name = cup
 		model_container.add_child(model_instance)
 		model_instance.visible = false
-		model_instance.scale *= 10.0
 	
 	set_cup("can")
 

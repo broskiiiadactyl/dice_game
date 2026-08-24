@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://flx3ui8q2vt8"]
+
+[ext_resource type="PackedScene" uid="uid://ds27b6o46t7ht" path="res://Assets/Environment/Raw/BarVer1_Merged.glb" id="1_g25wd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1f1a"]
+size = Vector3(3.2509766, 0.2186966, 3.2304688)
+
+[sub_resource type="Animation" id="Animation_1qkd3"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_1wi45"]
+resource_name = "rotation"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 7.4666667, 1, 0.70710677, 0, 0, 0.70710677, 14.966666, 1, 1, 0, 0, -4.371139e-08, 22.466667, 1, -0.70710665, 0, 0, 0.7071069, 29.966667, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghm3o"]
+_data = {
+&"RESET": SubResource("Animation_1qkd3"),
+&"rotation": SubResource("Animation_1wi45")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqb7u"]
+size = Vector3(25.582031, 1, 19.281006)
+
+[node name="BarVer1_Merged" unique_id=1332937823 instance=ExtResource("1_g25wd")]
+
+[node name="Table" type="StaticBody3D" parent="MainTable" parent_id_path=PackedInt32Array(306565265) index="0" unique_id=281453822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.602451, -4.7683716e-07, -1.1573138)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainTable/Table" index="0" unique_id=133437280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6915703, 0)
+shape = SubResource("BoxShape3D_p1f1a")
+
+[node name="Skeleton3D" parent="SpaceStation" parent_id_path=PackedInt32Array(960998380) index="0" unique_id=634221982]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="LargeStationDecoration" parent="SpaceStation/Skeleton3D" index="0" unique_id=1919847126]
+transform = Transform3D(0.9970033, 0.0021060018, -0.07733024, 0, 0.9996289, 0.027223766, 0.07735887, -0.027142186, 0.99663335, -20.344397, 0, -2.6564517)
+
+[node name="Wheel" type="AnimationPlayer" parent="SpaceStation/Skeleton3D" index="1" unique_id=2042859301]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ghm3o")
+autoplay = &"rotation"
+speed_scale = 0.1
+
+[node name="Ground" type="StaticBody3D" parent="StationGroundWalls" parent_id_path=PackedInt32Array(1236453660) index="0" unique_id=1274589587]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StationGroundWalls/Ground" index="0" unique_id=223050192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48657894, 0)
+shape = SubResource("BoxShape3D_lqb7u")

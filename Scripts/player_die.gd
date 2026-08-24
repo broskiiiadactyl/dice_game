@@ -29,12 +29,9 @@ func _ready() -> void:
 		model_instance.name = die
 		model_container.add_child(model_instance)
 		model_instance.visible = false
+		model_instance.scale *= 0.1
 	
 	set_dice("normal")
-	
-	await get_tree().create_timer(1.0).timeout
-	
-	set_dice("inset")
 
 #function to set active dice model
 func set_dice(model: String) -> void:
