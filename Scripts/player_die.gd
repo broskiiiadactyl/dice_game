@@ -1,30 +1,46 @@
 extends RigidBody3D
 
-@export var models : Dictionary[String,PackedScene]
+#You can add whatever dice models you want under the %Models node
+#The code will clear it and use the globals to ensure the player only has access to unlocked dice
+#This way we can see and test while building -z
+
+#dict for active dice models
 var deece : Dictionary
 
+#models parent
 @onready var model_container : Node3D = %Models
 
 func _ready() -> void:
 	deece = Globals.dice_dict
 	
-	#Pull all the dice from the player dictionary
-	for die in deece:
-		if die is not String:
-			continue
-		models[die] = load(deece[die])
+	#remove all existing models under %Models
+	var dump_children : Array = model_container.get_children()
+	for child in dump_children:
+		child.queue_free()
 	
-	#Load in all the available dice models
+	#Pull all the dice from the player dictionary
 	#Parent them under the %Models node
 	#set visibility to false
-	for model in models:
-		var model_instance = models[model].instantiate()
-		model_instance.name = model
+	for die in deece:
+		if deece[die] is not String:
+			continue
+		var new_dice = load(deece[die])
+		var model_instance = new_dice.instantiate()
+		model_instance.name = die
 		model_container.add_child(model_instance)
 		model_instance.visible = false
-		
+	
 	set_dice("normal")
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	set_dice("inset")
 
+#function to set active dice model
 func set_dice(model: String) -> void:
-	if model_container.has_node(model):
-		model_container.get_node(model).visible = true
+	
+	for child in model_container.get_children():
+		if child.name == model:
+			child.visible = true
+		else:
+			child.visible = false

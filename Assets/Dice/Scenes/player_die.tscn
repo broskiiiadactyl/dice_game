@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bctwy71vgkkax"]
 
 [ext_resource type="Script" uid="uid://vpgq6acikfpm" path="res://Scripts/player_die.gd" id="1_tb0vg"]
+[ext_resource type="PackedScene" uid="uid://bdrlaltpy1pgw" path="res://Assets/Dice/Scenes/models/normal_die.tscn" id="2_drees"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uctkx"]
 size = Vector3(0.74, 0.74, 0.74)
@@ -13,3 +14,5 @@ shape = SubResource("BoxShape3D_uctkx")
 
 [node name="Models" type="Node3D" parent="." unique_id=164749130]
 unique_name_in_owner = true
+
+[node name="Normal Die" parent="Models" unique_id=1272245559 instance=ExtResource("2_drees")]
