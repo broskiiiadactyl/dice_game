@@ -26,6 +26,9 @@ fog_enabled = true
 fog_light_color = Color(0.43057704, 0.5681656, 0.70668876, 1)
 fog_light_energy = 0.1
 
+[sub_resource type="QuadMesh" id="QuadMesh_lgr22"]
+size = Vector2(1.505, 0.835)
+
 [node name="Main" type="Node3D" unique_id=362393473]
 script = ExtResource("1_fos0i")
 
@@ -48,7 +51,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, -1.2046471, 1.9092319, 8.255807)
 fov = 50.0
 script = ExtResource("3_lgr22")
-max_pitch = 75.0
+max_pitch = 50.0
 
 [node name="Player Cup" parent="Player" unique_id=2144877282 instance=ExtResource("4_cm0pq")]
 unique_name_in_owner = true
@@ -56,12 +59,18 @@ transform = Transform3D(0.37032, 0, 0.92890424, 0, 1, 0, -0.92890424, 0, 0.37032
 
 [node name="Dice Spawner" parent="Player" unique_id=1254509806 instance=ExtResource("2_r0du0")]
 unique_name_in_owner = true
-transform = Transform3D(1.0000007, 0, -2.0861626e-07, 0, 1, 0, 2.0861626e-07, 0, 1.0000007, -1.3277878, 0.8955653, 6.1128945)
+transform = Transform3D(1.0000007, 0, -2.0861626e-07, 0, 1, 0, 2.0861626e-07, 0, 1.0000007, -0.5829878, 0.8955653, 6.0914836)
 spawn_scene = ExtResource("1_glv2v")
 spawn_count = 6
 use_random_rotation = true
 rotation_range = Vector3(5, 5, 5)
 spawn_timer = 0.1
+
+[node name="Cup Bounds" type="MeshInstance3D" parent="Player" unique_id=403640780]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2046471, 1.4367213, 7.0975337)
+visible = false
+mesh = SubResource("QuadMesh_lgr22")
 
 [node name="BarVer1_Merged" parent="." unique_id=1332937823 instance=ExtResource("6_3dxm6")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -123,8 +132,8 @@ shadow_enabled = true
 omni_range = 0.75
 omni_attenuation = 0.0
 
-[node name="Poster 1" type="AreaLight3D" parent="." unique_id=731202654]
-transform = Transform3D(0.7587198, 0.19061644, 0.62290424, 0.018703766, 0.94946057, -0.3133286, -0.6511486, 0.24937925, 0.7168092, -6.5201206, 4.844169, -8.264079)
+[node name="Poster 1" type="AreaLight3D" parent="BarVer1_Merged" unique_id=731202654]
+transform = Transform3D(0.65114856, -0.24937928, -0.7168092, 0.018703766, 0.94946057, -0.3133286, 0.7587198, 0.19061641, 0.6229042, 8.264079, 4.844169, -6.52012)
 light_color = Color(0, 1, 1, 1)
 light_energy = 1.5
 light_specular = 0.0
@@ -132,8 +141,8 @@ area_range = 0.5
 area_attenuation = 1.579
 area_size = Vector2(0.46879864, 1.3230572)
 
-[node name="Poster 2" type="AreaLight3D" parent="." unique_id=913679057]
-transform = Transform3D(0.97780114, 0, 0.209535, 0, 1, 0, -0.209535, 0, 0.97780114, -5.9499345, 3.236538, -8.696962)
+[node name="Poster 2" type="AreaLight3D" parent="BarVer1_Merged" unique_id=913679057]
+transform = Transform3D(0.20953496, 0, -0.97780114, 0, 1, 0, 0.97780114, 0, 0.20953496, 8.696962, 3.236538, -5.949934)
 light_color = Color(0, 1, 1, 1)
 light_energy = 0.5
 light_specular = 0.0
@@ -141,16 +150,16 @@ area_range = 0.5
 area_attenuation = 1.579
 area_size = Vector2(0.46879864, 0.88121414)
 
-[node name="Poster 3" type="AreaLight3D" parent="." unique_id=851435616]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.872654, 2.395789, -8.623376)
+[node name="Poster 3" type="AreaLight3D" parent="BarVer1_Merged" unique_id=851435616]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.623376, 2.395789, -4.8726535)
 light_color = Color(0, 1, 1, 1)
 light_specular = 0.0
 area_range = 0.5
 area_attenuation = 1.579
 area_size = Vector2(1.0921373, 1.618865)
 
-[node name="Poster 4" type="AreaLight3D" parent="." unique_id=434153733]
-transform = Transform3D(-0.3488085, 0, 0.93719405, 0, 1, 0, -0.93719405, 0, -0.3488085, -6.98029, 3.1984525, -4.0993834)
+[node name="Poster 4" type="AreaLight3D" parent="BarVer1_Merged" unique_id=434153733]
+transform = Transform3D(0.93719405, 0, 0.34880847, 0, 1, 0, -0.34880847, 0, 0.93719405, 4.099384, 3.1984525, -6.98029)
 light_color = Color(0, 1, 1, 1)
 light_specular = 0.0
 area_range = 0.25
