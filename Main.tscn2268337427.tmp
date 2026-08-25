@@ -194,7 +194,6 @@ spot_attenuation = -0.1
 spot_angle = 17.065355
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

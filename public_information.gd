@@ -7,10 +7,21 @@ var results_dict = {
 	"npc3" : []
 }
 
+var handsize_dict = {
+	"player" : 5,
+	"npc1" : 5,
+	"npc2" : 5,
+	"npc3" : 5
+}
+
+var last_quantity := 0
+var last_face := 0
+var last_bid := [0,0]
+
 func _ready():
 	pass
 
-func set_dice( dice_value, target: = "player"):
+func set_dice_value( dice_value, target: = "player"):
 	if !dice_value:
 		push_error("Error: set_dice was called in player_die but no value was passed through.")
 	
@@ -18,3 +29,18 @@ func set_dice( dice_value, target: = "player"):
 	
 	# dict[key].clear() to remove values from an array
 	print( str(dice_value)+" adds to "+target+"'s result dictionary")
+
+func set_last_quantity(current):
+	last_quantity = current
+
+func set_last_face(current):
+	last_face = current
+
+func set_last_bid():
+	last_bid = [last_quantity,last_face]
+
+func declare_game_state():
+	for property_info in self.get_script().get_script_property_list():
+		var var_name = property_info.name
+		var var_value = self.get(var_name)
+		print(var_name, " = ", var_value)
