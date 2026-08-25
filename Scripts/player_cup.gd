@@ -14,7 +14,7 @@ var cupses : Dictionary
 @onready var shaker_sound : AudioStreamPlayer3D = %"Shaker Sound"
 @onready var shaker_timer : Timer = %"Shake Sound Timer"
 var last_pos : Vector3
-@export var shake_distance : float = 0.1
+@export var shake_distance : float = 0.05
 var is_shaking : bool = false
 
 func _ready() -> void:
@@ -45,7 +45,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if last_pos.distance_to(global_position) >= shake_distance:
 		play_shaker_sound()
-		print("try play")
 	else:
 		is_shaking = false
 	
@@ -67,4 +66,3 @@ func play_shaker_sound() -> void:
 	if shaker_timer.is_stopped():
 		shaker_sound.play()
 		shaker_timer.start()
-		print("play")

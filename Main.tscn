@@ -56,9 +56,9 @@ transform = Transform3D(0.37032, 0, 0.92890424, 0, 1, 0, -0.92890424, 0, 0.37032
 
 [node name="Dice Spawner" parent="Player" unique_id=1254509806 instance=ExtResource("2_r0du0")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4055035, 2.8396602, 6.1394296)
+transform = Transform3D(1.0000007, 0, -2.0861626e-07, 0, 1, 0, 2.0861626e-07, 0, 1.0000007, -1.3277878, 0.8955653, 6.1128945)
 spawn_scene = ExtResource("1_glv2v")
-spawn_count = 50
+spawn_count = 6
 use_random_rotation = true
 rotation_range = Vector3(5, 5, 5)
 spawn_timer = 0.1
