@@ -24,7 +24,8 @@ func spawn_objects() -> void:
 		push_warning("No scene to spawn. Assign a scene.")
 		return
 	
-	for i in range(spawn_count):
+	for i in range(1, spawn_count):
+		print(i)
 		#var x := spawn_range.x
 		#var y := spawn_range.y
 		#var z := spawn_range.z
@@ -36,10 +37,7 @@ func spawn_objects() -> void:
 				#randf_range(-y, y),
 				#randf_range(-z, z)
 			#)
-		#var pos = global_position
-		#if i == 1:
-			#
-		var pos = place_dice(global_position, i)
+		var pos = place_dice(global_position, i - 1)
 		
 		var rot_x := rotation_range.x
 		var rot_y := rotation_range.y
@@ -64,7 +62,7 @@ func spawn_objects() -> void:
 
 func place_dice(center: Vector3, dice: int) -> Vector3:
 	
-	var angle : float = ((2 * PI) / (spawn_count - 1)) * (dice - 1)
+	var angle : float = ((2 * PI) / (spawn_count - 1)) * dice
 	var point = Vector2(center.x, center.z) + Vector2(cos(angle), sin(angle)) * radius
 	return Vector3(point.x, center.y, point.y)
 
