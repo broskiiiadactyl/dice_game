@@ -51,6 +51,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, -1.2046471, 1.9092319, 8.255807)
 fov = 50.0
 script = ExtResource("3_lgr22")
+max_yaw = 75.0
 max_pitch = 50.0
 
 [node name="Player Cup" parent="Player" unique_id=2144877282 instance=ExtResource("4_cm0pq")]
@@ -59,12 +60,9 @@ transform = Transform3D(0.37032, 0, 0.92890424, 0, 1, 0, -0.92890424, 0, 0.37032
 
 [node name="Dice Spawner" parent="Player" unique_id=1254509806 instance=ExtResource("2_r0du0")]
 unique_name_in_owner = true
-transform = Transform3D(1.0000007, 0, -2.0861626e-07, 0, 1, 0, 2.0861626e-07, 0, 1.0000007, -0.5829878, 0.8955653, 6.0914836)
+transform = Transform3D(1.0000007, 0, -2.0861626e-07, 0, 1, 0, 2.0861626e-07, 0, 1.0000007, -1.273215, 0.8699107, 6.0914836)
 spawn_scene = ExtResource("1_glv2v")
-spawn_count = 6
 use_random_rotation = true
-rotation_range = Vector3(5, 5, 5)
-spawn_timer = 0.1
 
 [node name="Cup Bounds" type="MeshInstance3D" parent="Player" unique_id=403640780]
 unique_name_in_owner = true
