@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bctwy71vgkkax" path="res://Assets/Dice/Scenes/player_die.tscn" id="1_glv2v"]
 [ext_resource type="Texture2D" uid="uid://skjren1fvo7e" path="res://Assets/Sky/sky_86_2k.png" id="2_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://djnip1t4pe2dw" path="res://Utility/spawner.tscn" id="2_r0du0"]
+[ext_resource type="Script" uid="uid://b550rphcv2e8s" path="res://Scripts/player_camera.gd" id="3_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dt5ueltsfwo3f" path="res://Assets/Cups/Scenes/player_cup.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://flx3ui8q2vt8" path="res://Assets/Environment/Scenes/space_station.tscn" id="6_3dxm6"]
 
@@ -15,8 +16,15 @@ sky_material = SubResource("PanoramaSkyMaterial_lgr22")
 
 [sub_resource type="Environment" id="Environment_r0du0"]
 background_mode = 2
+background_energy_multiplier = 0.75
 sky = SubResource("Sky_uu6xs")
 sky_rotation = Vector3(-1.0210177, 3.132866, 0.2268928)
+tonemap_exposure = 0.75
+glow_enabled = true
+glow_intensity = 1.0
+fog_enabled = true
+fog_light_color = Color(0.43057704, 0.5681656, 0.70668876, 1)
+fog_light_energy = 0.1
 
 [node name="Main" type="Node3D" unique_id=362393473]
 script = ExtResource("1_fos0i")
@@ -29,15 +37,18 @@ transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.70710
 shadow_enabled = true
 sky_mode = 2
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=291328698]
-transform = Transform3D(0.97763914, 0.0328068, -0.20771483, 0, 0.98775595, 0.15600769, 0.21028967, -0.15251923, 0.96566886, -1.2046471, 1.9092319, 8.738665)
-fov = 40.0
-
 [node name="Environment" type="Node3D" parent="." unique_id=1828386109]
 unique_name_in_owner = true
 
 [node name="Player" type="Node3D" parent="." unique_id=1576922688]
 unique_name_in_owner = true
+
+[node name="Player Camera" type="Camera3D" parent="Player" unique_id=291328698]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, -1.2046471, 1.9092319, 8.255807)
+fov = 50.0
+script = ExtResource("3_lgr22")
+max_pitch = 75.0
 
 [node name="Player Cup" parent="Player" unique_id=2144877282 instance=ExtResource("4_cm0pq")]
 unique_name_in_owner = true
@@ -54,3 +65,122 @@ spawn_timer = 0.1
 
 [node name="BarVer1_Merged" parent="." unique_id=1332937823 instance=ExtResource("6_3dxm6")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Long Sign B1" type="OmniLight3D" parent="BarVer1_Merged" unique_id=913281892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8394547, 3.8288116, -6.538738)
+light_color = Color(0.17254902, 1, 1, 1)
+light_energy = 0.25
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 1.0
+omni_attenuation = 0.0
+
+[node name="Long Sign P1" type="OmniLight3D" parent="BarVer1_Merged" unique_id=1400546434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6348834, 3.3487682, -6.3107557)
+light_color = Color(0.6, 0.41568628, 0.89411765, 1)
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 1.0
+omni_attenuation = 0.0
+
+[node name="Long Sign B2" type="OmniLight3D" parent="BarVer1_Merged" unique_id=209723189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.065334, 3.8671956, -6.475875)
+light_color = Color(0.17254902, 1, 1, 1)
+light_energy = 0.25
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 1.0
+omni_attenuation = 0.0
+
+[node name="Long Sign P2" type="OmniLight3D" parent="BarVer1_Merged" unique_id=2008625441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.584047, 3.3487682, -6.3168325)
+light_color = Color(0.6, 0.41568628, 0.89411765, 1)
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 1.0
+omni_attenuation = 0.0
+
+[node name="Long Sign B3" type="OmniLight3D" parent="BarVer1_Merged" unique_id=472218891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.142952, 3.8637114, -6.6158237)
+light_color = Color(0.17254902, 1, 1, 1)
+light_energy = 0.25
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 0.75
+omni_attenuation = 0.0
+
+[node name="Long Sign P3" type="OmniLight3D" parent="BarVer1_Merged" unique_id=40390068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0450134, 3.357211, -6.762466)
+light_color = Color(0.6, 0.41568628, 0.89411765, 1)
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 0.75
+omni_attenuation = 0.0
+
+[node name="Poster 1" type="AreaLight3D" parent="." unique_id=731202654]
+transform = Transform3D(0.7587198, 0.19061644, 0.62290424, 0.018703766, 0.94946057, -0.3133286, -0.6511486, 0.24937925, 0.7168092, -6.5201206, 4.844169, -8.264079)
+light_color = Color(0, 1, 1, 1)
+light_energy = 1.5
+light_specular = 0.0
+area_range = 0.5
+area_attenuation = 1.579
+area_size = Vector2(0.46879864, 1.3230572)
+
+[node name="Poster 2" type="AreaLight3D" parent="." unique_id=913679057]
+transform = Transform3D(0.97780114, 0, 0.209535, 0, 1, 0, -0.209535, 0, 0.97780114, -5.9499345, 3.236538, -8.696962)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+light_specular = 0.0
+area_range = 0.5
+area_attenuation = 1.579
+area_size = Vector2(0.46879864, 0.88121414)
+
+[node name="Poster 3" type="AreaLight3D" parent="." unique_id=851435616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.872654, 2.395789, -8.623376)
+light_color = Color(0, 1, 1, 1)
+light_specular = 0.0
+area_range = 0.5
+area_attenuation = 1.579
+area_size = Vector2(1.0921373, 1.618865)
+
+[node name="Poster 4" type="AreaLight3D" parent="." unique_id=434153733]
+transform = Transform3D(-0.3488085, 0, 0.93719405, 0, 1, 0, -0.93719405, 0, -0.3488085, -6.98029, 3.1984525, -4.0993834)
+light_color = Color(0, 1, 1, 1)
+light_specular = 0.0
+area_range = 0.25
+area_attenuation = 1.579
+area_size = Vector2(0.55768967, 0.96605396)
+
+[node name="Room 1" type="OmniLight3D" parent="." unique_id=30110040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81985235, 1.9600976, -3.6625438)
+omni_range = 8.09
+
+[node name="Room 2" type="OmniLight3D" parent="." unique_id=1693908935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81985235, 1.9600976, 1.526176)
+omni_range = 8.09
+
+[node name="Table Omni" type="OmniLight3D" parent="." unique_id=1602012366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81985235, 2.7462761, 6.309512)
+light_energy = 0.5
+omni_attenuation = 0.0
+
+[node name="Table Spot" type="SpotLight3D" parent="." unique_id=180421256]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.1682328, 3.9219782, 5.5510397)
+shadow_enabled = true
+spot_attenuation = 1.5
+spot_angle = 30.13
+
+[node name="Sun" type="SpotLight3D" parent="." unique_id=1556505685]
+transform = Transform3D(0.8130797, 0.17501266, -0.55522245, 7.917827e-09, 0.9537408, 0.30063027, 0.5821524, -0.24443637, 0.7754672, 1.1402369, 16.17688, -12.394962)
+light_energy = 7.605
+shadow_enabled = true
+shadow_bias = 10.0
+spot_range = 62.043
+spot_attenuation = -0.1
+spot_angle = 17.065355

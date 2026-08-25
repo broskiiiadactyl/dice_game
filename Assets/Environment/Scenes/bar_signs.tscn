@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cly6jb52mlcyu"]
+
+[ext_resource type="PackedScene" uid="uid://cem35a8pd6vdm" path="res://Assets/Environment/Raw/decorations/BarSigns.glb" id="1_u7sch"]
+
+[node name="BarSigns" unique_id=419388615 instance=ExtResource("1_u7sch")]
+
+[node name="Poster_1" parent="." index="0" unique_id=1859260486]
+transform = Transform3D(0, 0, -1.7992114, 0, 1.7992114, 0, 1.7992114, 0, 0, 1.4811792, -0.907197, 1.4763155)
+
+[node name="Poster_2" parent="." index="1" unique_id=1082361999]
+transform = Transform3D(0.21765423, 0, -0.976026, 0, 1, 0, 0.976026, 0, 0.21765423, 1.4545841, -0.044406414, 0.37412643)
+
+[node name="Poster_3" parent="." index="2" unique_id=1627680731]
+transform = Transform3D(0.9655219, -0.054063436, 0.2546462, 0.05590639, 0.99843603, 1.5320256e-07, -0.25424793, 0.014236201, 0.9670343, -3.462615, -0.052167654, -0.789763)
+
+[node name="Sign" parent="." index="3" unique_id=1998172402]
+transform = Transform3D(1.6578565, -0.022906236, -0.19193695, 0, 1.6573268, -0.1977895, 0.19329898, 0.19645864, 1.646175, -0.7820902, 0.34626913, -0.59797144)
+
+[node name="Sign_2" parent="." index="4" unique_id=2105092488]
+transform = Transform3D(-0.62411153, -0.21297035, 0.7517502, -8.195639e-08, 0.9621353, 0.27257228, -0.7813352, 0.17011546, -0.6004797, 1.2471142, 0.5510349, -0.49200773)

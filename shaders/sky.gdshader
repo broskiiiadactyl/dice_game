@@ -1,7 +1,5 @@
 shader_type spatial;
-render_mode depth_prepass_alpha;
-render_mode diffuse_toon;
-render_mode specular_toon;
+render_mode depth_prepass_alpha, diffuse_toon, specular_toon, fog_disabled;
 
 uniform vec4 background_color : source_color = vec4(0.02, 0.04, 0.12, 1.0);
 uniform sampler2D gradient_texture : repeat_disable, filter_linear;

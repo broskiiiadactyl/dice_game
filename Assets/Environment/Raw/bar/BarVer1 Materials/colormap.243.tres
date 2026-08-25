@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://s6y7absja67b"]
+
+[ext_resource type="Texture2D" uid="uid://0x0l1abboqkk" path="res://Assets/Environment/Raw/bar/BarVer1_Merged_colormap_2.png" id="1_hq2wl"]
+
+[resource]
+resource_name = "colormap.243"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_hq2wl")
+metadata/_gltf_primary_texture_coord = 0
