@@ -181,6 +181,6 @@ transform = Transform3D(0.8130797, 0.17501266, -0.55522245, 7.917827e-09, 0.9537
 light_energy = 7.605
 shadow_enabled = true
 shadow_bias = 10.0
-spot_range = 62.043
+spot_range = 52.87835
 spot_attenuation = -0.1
 spot_angle = 17.065355
