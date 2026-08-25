@@ -13,8 +13,8 @@ streams_count = 2
 stream_0/stream = ExtResource("4_8fivo")
 stream_1/stream = ExtResource("5_0mrrs")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p1f1a"]
-size = Vector3(0.24316406, 0.37677002, 0.037109375)
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqb7u"]
+size = Vector3(0.29785156, 0.31781006, 0.30078125)
 
 [node name="Player Cup" type="Node3D" unique_id=2144877282]
 script = ExtResource("1_u0t1n")
@@ -41,18 +41,7 @@ one_shot = true
 
 [node name="Cup Collision" type="StaticBody3D" parent="." unique_id=1468980321]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cup Collision" unique_id=975815531]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19082642, 0.12792969)
-shape = SubResource("BoxShape3D_p1f1a")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Cup Collision" unique_id=1738388159]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19082642, -0.12676638)
-shape = SubResource("BoxShape3D_p1f1a")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cup Collision" unique_id=2059400054]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.123996735, 0.19082642, -0.0061208904)
-shape = SubResource("BoxShape3D_p1f1a")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Cup Collision" unique_id=957326514]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.12567233, 0.19082642, -0.0061208904)
-shape = SubResource("BoxShape3D_p1f1a")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cup Collision" unique_id=1273745342]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1612854, 0)
+shape = SubResource("BoxShape3D_lqb7u")

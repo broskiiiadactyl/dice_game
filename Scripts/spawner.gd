@@ -13,7 +13,8 @@ extends Node3D
 @export var radius : float = 0.1
 
 func _ready() -> void:
-	spawn_objects(5)
+	#spawn_objects(5)
+	pass
 
 func spawn_objects(spawn_count: int) -> void:
 	if spawn_scene == null:

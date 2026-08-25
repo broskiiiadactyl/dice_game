@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b550rphcv2e8s" path="res://Scripts/player_camera.gd" id="3_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dt5ueltsfwo3f" path="res://Assets/Cups/Scenes/player_cup.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://flx3ui8q2vt8" path="res://Assets/Environment/Scenes/space_station.tscn" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://bgbcvblyeperi" path="res://Assets/Tables/Scenes/playmat.tscn" id="7_03owx"]
 [ext_resource type="Script" uid="uid://bufpjyasx4wsp" path="res://Scripts/debug_control.gd" id="8_trn2v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
@@ -57,11 +58,11 @@ max_pitch = 50.0
 
 [node name="Player Cup" parent="Player" unique_id=2144877282 instance=ExtResource("4_cm0pq")]
 unique_name_in_owner = true
-transform = Transform3D(0.37032, 0, 0.92890424, 0, 1, 0, -0.92890424, 0, 0.37032, -0.58681214, 0.79552513, 6.081184)
+transform = Transform3D(0.37031996, 0, 0.9289042, 0, 1, 0, -0.9289042, 0, 0.37031996, -0.58681214, 0.79552513, 6.081184)
 
-[node name="Dice Spawner" parent="Player" unique_id=1254509806 instance=ExtResource("2_r0du0")]
+[node name="Dice Spawner" parent="Player/Player Cup" unique_id=1254509806 instance=ExtResource("2_r0du0")]
 unique_name_in_owner = true
-transform = Transform3D(1.0000007, 0, -2.0861626e-07, 0, 1, 0, 2.0861626e-07, 0, 1.0000007, -1.273215, 0.8699107, 6.0914836)
+transform = Transform3D(0.3703201, 0, -0.9289051, 0, 1, 0, 0.9289051, 0, 0.3703201, 0, 0.31246465, 0)
 spawn_scene = ExtResource("1_glv2v")
 use_random_rotation = true
 
@@ -70,6 +71,13 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2046471, 1.4367213, 7.0975337)
 visible = false
 mesh = SubResource("QuadMesh_lgr22")
+
+[node name="Playmat" parent="Player" unique_id=1381321699 instance=ExtResource("7_03owx")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1816437, 0.7985132, 6.3363676)
+
+[node name="Player Dice" type="Node3D" parent="Player" unique_id=1649676760]
+unique_name_in_owner = true
 
 [node name="BarVer1_Merged" parent="." unique_id=1332937823 instance=ExtResource("6_3dxm6")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -165,27 +173,30 @@ area_range = 0.25
 area_attenuation = 1.579
 area_size = Vector2(0.55768967, 0.96605396)
 
-[node name="Room 1" type="OmniLight3D" parent="." unique_id=30110040]
+[node name="Lights" type="Node3D" parent="." unique_id=1077274441]
+unique_name_in_owner = true
+
+[node name="Room 1" type="OmniLight3D" parent="Lights" unique_id=30110040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81985235, 1.9600976, -3.6625438)
 omni_range = 8.09
 
-[node name="Room 2" type="OmniLight3D" parent="." unique_id=1693908935]
+[node name="Room 2" type="OmniLight3D" parent="Lights" unique_id=1693908935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81985235, 1.9600976, 1.526176)
 omni_range = 8.09
 
-[node name="Table Omni" type="OmniLight3D" parent="." unique_id=1602012366]
+[node name="Table Omni" type="OmniLight3D" parent="Lights" unique_id=1602012366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81985235, 2.7462761, 6.309512)
 light_energy = 0.5
 omni_attenuation = 0.0
 
-[node name="Table Spot" type="SpotLight3D" parent="." unique_id=180421256]
+[node name="Table Spot" type="SpotLight3D" parent="Lights" unique_id=180421256]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.1682328, 3.9219782, 5.5510397)
 shadow_enabled = true
 spot_attenuation = 1.5
 spot_angle = 30.13
 
-[node name="Sun" type="SpotLight3D" parent="." unique_id=1556505685]
-transform = Transform3D(0.8130797, 0.17501266, -0.55522245, 7.917827e-09, 0.9537408, 0.30063027, 0.5821524, -0.24443637, 0.7754672, 1.1402369, 16.17688, -12.394962)
+[node name="Sun" type="SpotLight3D" parent="Lights" unique_id=1556505685]
+transform = Transform3D(0.8130797, 0.17501263, -0.5552225, 7.917827e-09, 0.9537408, 0.3006303, 0.5821524, -0.2444364, 0.7754673, 1.1402369, 16.17688, -12.394962)
 light_energy = 7.605
 shadow_enabled = true
 shadow_bias = 10.0
@@ -200,6 +211,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("8_trn2v")
 
 [node name="check_value_button" type="Button" parent="DebugControl" unique_id=454953032]

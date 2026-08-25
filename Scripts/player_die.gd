@@ -10,9 +10,11 @@ var deece : Dictionary
 #models parent
 @onready var model_container : Node3D = %Models
 
-var start_basis : Basis = global_transform.basis
+@onready var label : Label3D = %Label3D
 
 func _ready() -> void:
+	label.visible = false
+	
 	deece = Globals.dice_dict
 	
 	#remove all existing models under %Models
@@ -34,13 +36,16 @@ func _ready() -> void:
 		model_instance.scale *= 0.1
 	
 	set_dice("normal")
-#
-#func _process(delta: float) -> void:
-	#%Label3D.global_position = global_position + Vector3.UP * 0.1
-	#%Label3D.global_rotation = Vector3.UP
-	#
-	#if linear_velocity.is_zero_approx():
-		#%Label3D.text = str(check_value())
+
+func _process(delta: float) -> void:
+	%Label3D.global_position = global_position + Vector3.UP * 0.1
+	%Label3D.global_rotation = Vector3.UP
+	
+	if linear_velocity.is_zero_approx():
+		%Label3D.text = str(check_value())
+		label.visible = true
+	else:
+		label.visible = false
 
 #function to set active dice model
 func set_dice(model: String) -> void:

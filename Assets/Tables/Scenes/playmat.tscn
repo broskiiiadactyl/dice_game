@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bgbcvblyeperi"]
+
+[ext_resource type="PackedScene" uid="uid://cnewlnlfia5a" path="res://Assets/Tables/Scenes/mat_placeholder.tscn" id="1_abybq"]
+[ext_resource type="Script" uid="uid://tcs0jnsyg7jj" path="res://Scripts/playmat.gd" id="1_mqh7v"]
+[ext_resource type="PackedScene" uid="uid://dhjgiu26tilek" path="res://Assets/Tables/Scenes/dice_slot.tscn" id="2_mqh7v"]
+
+[node name="Playmat" type="Node3D" unique_id=1381321699]
+script = ExtResource("1_mqh7v")
+
+[node name="blueprint2" parent="." unique_id=1157437687 instance=ExtResource("1_abybq")]
+
+[node name="Dice Slot1" parent="." unique_id=1916985034 instance=ExtResource("2_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20284718, 0.049961105, 0.40457243)
+
+[node name="Dice Slot2" parent="." unique_id=1764059749 instance=ExtResource("2_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10195817, 0.049961105, 0.40457243)
+
+[node name="Dice Slot3" parent="." unique_id=1642651999 instance=ExtResource("2_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049961105, 0.40457243)
+
+[node name="Dice Slot4" parent="." unique_id=1762171383 instance=ExtResource("2_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10188696, 0.049961105, 0.40457243)
+
+[node name="Dice Slot5" parent="." unique_id=1745939947 instance=ExtResource("2_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20366123, 0.049961105, 0.40457243)
+
+[node name="Cup Placer" type="Marker3D" parent="." unique_id=90898593]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05596438, 0)

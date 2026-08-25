@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cnewlnlfia5a"]
+
+[ext_resource type="PackedScene" uid="uid://dk2y2v58eboku" path="res://Assets/Tables/Raw/blueprint.gltf" id="1_havdj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g73gk"]
+albedo_color = Color(0, 0.36862746, 0.50980395, 1)
+
+[node name="blueprint2" unique_id=1157437687 instance=ExtResource("1_havdj")]
+
+[node name="blueprint" parent="." index="0" unique_id=824826722]
+surface_material_override/1 = SubResource("StandardMaterial3D_g73gk")

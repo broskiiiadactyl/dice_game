@@ -16,6 +16,7 @@ var cupses : Dictionary
 var last_pos : Vector3
 @export var shake_distance : float = 0.05
 var is_shaking : bool = false
+var can_play_sound : bool = true
 
 func _ready() -> void:
 	cupses = Globals.cup_dict
@@ -43,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 	#if last_pos == null:
 		#last_pos = global_position
 	
-	if last_pos.distance_to(global_position) >= shake_distance:
+	if last_pos.distance_to(global_position) >= shake_distance and can_play_sound:
 		play_shaker_sound()
 	else:
 		is_shaking = false
