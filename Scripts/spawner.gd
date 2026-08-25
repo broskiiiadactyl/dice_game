@@ -43,7 +43,7 @@ func spawn_objects(spawn_count: int) -> void:
 		instance.global_position = pos
 		instance.global_rotation = rot
 		instance.name = str("d", i + 1)
-		instance.owner = self
+		instance.owner = $"../.."
 		instance.unique_name_in_owner = true
 
 func place_dice(center: Vector3, dice: int, spawn_count: int) -> Vector3:
