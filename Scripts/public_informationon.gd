@@ -26,11 +26,11 @@ func set_dice_value( dice_value, target: = "player"):
 		push_error("Error: set_dice was called in player_die but no value was passed through.")
 	
 	results_dict[target].append(dice_value)
-	
-	# dict[key].clear() to remove values from an array
+	#dict[key].clear() to remove values from an array
 	#print( str(dice_value)+" adds to "+target+"'s result dictionary")
-	print( target+"'s hand is now : "+str(results_dict[target]) )
+	#print( target+"'s hand is now : "+str(results_dict[target]) )
 
+#note: potentially shift bids to a dictionary revolving around npcs
 func set_last_quantity(current):
 	last_quantity = current
 
@@ -57,3 +57,7 @@ func determine_npc_dice(npc):
 	for dice in range(handsize_dict[npc]):
 		roll = randi_range(1,6)
 		set_dice_value(roll, npc)
+
+func check_player_value():
+	#%d1.check_value().set_dice_value
+	pass

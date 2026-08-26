@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://flx3ui8q2vt8" path="res://Assets/Environment/Scenes/space_station.tscn" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bgbcvblyeperi" path="res://Assets/Tables/Scenes/playmat.tscn" id="7_03owx"]
 [ext_resource type="Script" uid="uid://bufpjyasx4wsp" path="res://Scripts/debug_control.gd" id="8_trn2v"]
-[ext_resource type="Script" uid="uid://dtwcuioakae7f" path="res://public_informationon.gd" id="10_wkp8b"]
+[ext_resource type="Script" uid="uid://dtwcuioakae7f" path="res://Scripts/public_informationon.gd" id="10_wkp8b"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -221,9 +221,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = 30.0
+offset_top = 78.0
 offset_right = -933.0
-offset_bottom = -583.0
+offset_bottom = -535.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Check Value of Dice"
@@ -266,6 +266,19 @@ offset_bottom = -429.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Roll NPC 3"
+
+[node name="declare_gamestate" type="Button" parent="DebugControl" unique_id=336421051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 568.0
+offset_right = -933.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Declare Gamestate"
 
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
 unique_name_in_owner = true
