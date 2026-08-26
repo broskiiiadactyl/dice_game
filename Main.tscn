@@ -280,6 +280,39 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Declare Gamestate"
 
+[node name="start_game" type="Button" parent="DebugControl" unique_id=506863642]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 921.0
+offset_top = 568.0
+offset_right = -52.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Game"
+
+[node name="gameinformation" type="RichTextLabel" parent="DebugControl" unique_id=1468729910]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -657.0
+offset_bottom = -130.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="DebugControl/gameinformation" unique_id=1093324149]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.08627451)
+
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
 unique_name_in_owner = true
 script = ExtResource("10_wkp8b")

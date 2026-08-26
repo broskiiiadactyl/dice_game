@@ -5,6 +5,7 @@ extends Control
 @onready var roll_npc2 : Button = $roll_npc2
 @onready var roll_npc3 : Button = $roll_npc3
 @onready var declare_gamestate : Button = $declare_gamestate
+@onready var start_game : Button = $start_game
 
 func _ready() -> void:
 	chkval_btn.pressed.connect(_check_value)
@@ -12,6 +13,7 @@ func _ready() -> void:
 	roll_npc2.pressed.connect(_roll_npc2_dice)
 	roll_npc3.pressed.connect(_roll_npc3_dice)
 	declare_gamestate.pressed.connect(_declare_gamestate)
+	start_game.pressed.connect(_start_game)
 	pass
 
 func _check_value():
@@ -27,4 +29,8 @@ func _roll_npc3_dice():
 	%PublicInformation.determine_npc_dice("npc3")
 
 func _declare_gamestate():
-	%PublicInformation.declare_game_state()
+	var info = %PublicInformation.declare_game_state()
+	$gameinformation.text = info
+
+func _start_game():
+	%PublicInformation.start_game()
