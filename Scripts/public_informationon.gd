@@ -14,33 +14,40 @@ var handsize_dict = {
 	"npc3" : 5
 }
 
-var last_quantity := 0
-var last_face := 0
-var last_bid := [0,0]
+var last_quantity := 3
+var last_face := 3
 
 var turn_order = ["player", "npc1", "npc2", "npc3"]
 
-func _ready():
+var final_pool : Array = []
+var filtered_final_pool : Array = []
+
+var round_result : bool = false #true for win, false for loss
+
+func _ready() -> void:
 	pass
 
-func start_game():
+func start_game() -> void:
 	pass
 
-func set_dice_value( dice_value, target: = "player"):
+func set_dice_value( dice_value, target: = "player") -> void:
+	var target_dict = results_dict[target]
 	if !dice_value:
 		push_error("Error: set_dice was called in player_die but no value was passed through.")
-	
-	results_dict[target].append(dice_value)
+	if target_dict.size() >= handsize_dict[target]:
+		push_error("Error: Attempting to add values to a hand when the hand is full.")
+		return
+	target_dict.append(dice_value)
 
-#note: potentially shift bids to a dictionary revolving around npcs
-func set_last_quantity(current):
+func set_bid(quant,face):
+	set_last_quantity(quant)
+	set_last_face(face)
+
+func set_last_quantity(current) -> void: #note: potentially shift bids to a dictionary revolving around npcs
 	last_quantity = current
 
-func set_last_face(current):
+func set_last_face(current) -> void:
 	last_face = current
-
-func set_last_bid():
-	last_bid = [last_quantity,last_face]
 
 func declare_game_state():
 	var game_state_string = ""
@@ -51,21 +58,30 @@ func declare_game_state():
 		game_state_string = game_state_string + "\n \n" + curr_prop
 	return game_state_string
 
-func determine_npc_dice(npc):
+func determine_npc_dice(npc) -> void:
 	if !npc:
 		push_error("Error: determine_npc_dice was called but there was no paramater for npc variable.")
 	
 	var roll = 0
 	
-	#clear the array, then generate a number for each dice they have left
-	results_dict[npc].clear()
+	results_dict[npc].clear() #clear the array, then generate a number for each dice they have left
 	for dice in range(handsize_dict[npc]):
 		roll = randi_range(1,6)
 		set_dice_value(roll, npc)
 
-func get_player_value():
+func get_player_value() -> void:
 	var dice_array = %"Player Dice".get_children()
 	if dice_array == []:
-		push_warning("Error: Your tried to check the value of the player dice but the dice haven't been rolled yet.")
+		push_error("Error: You tried to check the value of the player's dice but the dice haven't been rolled yet.")
+	results_dict["player"].clear()
 	for die in %"Player Dice".get_children():
-		print( str(die.name) + " has a value of " + str(die.dice_value) )
+		set_dice_value(die.dice_value)
+
+func resolve_challenge() -> void:
+	final_pool.clear()
+	for keys in results_dict.keys():
+		for val in results_dict[keys]:
+			final_pool.append(val)
+	filtered_final_pool = final_pool.filter( func(number): return number == last_face)
+	if last_quantity <= filtered_final_pool.size():
+		round_result = true

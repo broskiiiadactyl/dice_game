@@ -6,6 +6,7 @@ extends Control
 @onready var roll_npc3 : Button = $roll_npc3
 @onready var declare_gamestate : Button = $declare_gamestate
 @onready var start_game : Button = $start_game
+@onready var resolve_challenge : Button = $resolve_challenge
 
 func _ready() -> void:
 	chkval_btn.pressed.connect(_check_value)
@@ -14,6 +15,7 @@ func _ready() -> void:
 	roll_npc3.pressed.connect(_roll_npc3_dice)
 	declare_gamestate.pressed.connect(_declare_gamestate)
 	start_game.pressed.connect(_start_game)
+	resolve_challenge.pressed.connect(_resolve_challenge)
 	pass
 
 func _check_value():
@@ -34,3 +36,6 @@ func _declare_gamestate():
 
 func _start_game():
 	%PublicInformation.start_game()
+
+func _resolve_challenge():
+	%PublicInformation.resolve_challenge()
