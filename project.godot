@@ -18,7 +18,6 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 [autoload]
 
 Globals="*uid://c0ete5yps11qb"
-PublicInformation="*uid://cugpqgwhiajqp"
 
 [display]
 

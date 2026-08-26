@@ -53,7 +53,6 @@ func determine_npc_dice(npc):
 	var roll = 0
 	
 	#clear the array, then generate a number for each dice they have left
-
 	results_dict[npc].clear()
 	for dice in range(handsize_dict[npc]):
 		roll = randi_range(1,6)

@@ -16,10 +16,10 @@ func _check_value():
 	print('this is a test!')
 
 func _roll_npc1_dice():
-	PublicInformation.determine_npc_dice("npc1")
+	%PublicInformation.determine_npc_dice("npc1")
 
 func _roll_npc2_dice():
-	PublicInformation.determine_npc_dice("npc2")
+	%PublicInformation.determine_npc_dice("npc2")
 
 func _roll_npc3_dice():
-	PublicInformation.determine_npc_dice("npc3")
+	%PublicInformation.determine_npc_dice("npc3")

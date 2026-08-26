@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://flx3ui8q2vt8" path="res://Assets/Environment/Scenes/space_station.tscn" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bgbcvblyeperi" path="res://Assets/Tables/Scenes/playmat.tscn" id="7_03owx"]
 [ext_resource type="Script" uid="uid://bufpjyasx4wsp" path="res://Scripts/debug_control.gd" id="8_trn2v"]
+[ext_resource type="Script" uid="uid://dtwcuioakae7f" path="res://public_informationon.gd" id="10_wkp8b"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -205,7 +206,6 @@ spot_attenuation = -0.1
 spot_angle = 17.065355
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -266,3 +266,7 @@ offset_bottom = -429.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Roll NPC 3"
+
+[node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
+unique_name_in_owner = true
+script = ExtResource("10_wkp8b")
