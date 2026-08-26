@@ -59,5 +59,7 @@ func determine_npc_dice(npc):
 		set_dice_value(roll, npc)
 
 func check_player_value():
-	#%d1.check_value().set_dice_value
+	if !%d1:
+		push_error("Error: Dice don't exist yet.")
+	print
 	pass

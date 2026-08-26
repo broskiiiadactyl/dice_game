@@ -110,3 +110,4 @@ func place_dice() -> void:
 			continue
 		var slot_name : String = die.name
 		die.global_position = %Playmat.slot_dict[slot_name].global_position
+		%PublicInformation.set_dice_value(die.dice_value)
