@@ -213,7 +213,6 @@ spot_attenuation = -0.1
 spot_angle = 17.065355
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,6 +323,7 @@ offset_left = -657.0
 offset_bottom = -130.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="DebugControl/gameinformation" unique_id=1093324149]
 layout_mode = 1
@@ -332,6 +332,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 1, 1, 0.08627451)
 
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
