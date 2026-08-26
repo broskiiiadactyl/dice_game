@@ -17,7 +17,7 @@ func _ready() -> void:
 	pass
 
 func _check_value():
-	%PublicInformation.check_player_value()
+	%PublicInformation.get_player_value()
 
 func _roll_npc1_dice():
 	%PublicInformation.determine_npc_dice("npc1")

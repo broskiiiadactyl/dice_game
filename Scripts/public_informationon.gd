@@ -62,3 +62,10 @@ func determine_npc_dice(npc):
 	for dice in range(handsize_dict[npc]):
 		roll = randi_range(1,6)
 		set_dice_value(roll, npc)
+
+func get_player_value():
+	var dice_array = %"Player Dice".get_children()
+	if dice_array == []:
+		push_warning("Error: Your tried to check the value of the player dice but the dice haven't been rolled yet.")
+	for die in %"Player Dice".get_children():
+		print( str(die.name) + " has a value of " + str(die.dice_value) )
