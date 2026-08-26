@@ -214,7 +214,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("8_trn2v")
 
-[node name="check_value_button" type="Button" parent="DebugControl" unique_id=454953032]
+[node name="check_value" type="Button" parent="DebugControl" unique_id=454953032]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -226,3 +226,16 @@ offset_bottom = -583.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Check Value of Dice"
+
+[node name="roll_npc_dice" type="Button" parent="DebugControl" unique_id=767057405]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 88.0
+offset_right = -935.0
+offset_bottom = -525.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Roll NPC Dice"

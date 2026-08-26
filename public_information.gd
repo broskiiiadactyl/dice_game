@@ -29,6 +29,7 @@ func set_dice_value( dice_value, target: = "player"):
 	
 	# dict[key].clear() to remove values from an array
 	print( str(dice_value)+" adds to "+target+"'s result dictionary")
+	print( target+"'s hand is now : "+str(results_dict[target]) )
 
 func set_last_quantity(current):
 	last_quantity = current
@@ -44,3 +45,16 @@ func declare_game_state():
 		var var_name = property_info.name
 		var var_value = self.get(var_name)
 		print(var_name, " = ", var_value)
+
+func determine_npc_dice(npc):
+	if !npc:
+		push_error("Error: determine_npc_dice was called but there was no paramater for npc variable.")
+	
+	var roll = 0
+	
+	#clear the array, then generate a number for each dice they have left
+
+	results_dict[npc].clear()
+	for dice in range(handsize_dict[npc]):
+		roll = randi_range(1,6)
+		set_dice_value(roll, npc)
