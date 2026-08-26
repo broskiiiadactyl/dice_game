@@ -2,4 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bj2ymodamlf5e" path="res://Assets/Tables/Raw/container_A.gltf" id="1_5m71d"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5m71d"]
+albedo_color = Color(0.31693396, 0.36070886, 0.4102134, 1)
+metallic = 1.0
+roughness = 0.53
+
 [node name="container_A2" unique_id=198029377 instance=ExtResource("1_5m71d")]
+
+[node name="container_A" parent="." index="0" unique_id=1771735603]
+surface_material_override/0 = SubResource("StandardMaterial3D_5m71d")

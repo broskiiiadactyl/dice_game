@@ -5,37 +5,72 @@ extends Node3D
 @onready var sv : SubViewport = %SubViewport
 @onready var screen : MeshInstance3D = %MeshInstance3D
 
-var num_bet : int = 0
-var dice_bet : int = 0
+var num_bet : int = 1
+var dice_bet : int = 1
+var max_bet : int = 20
+var dice_max : int = 6
 
 var min_bet = 1
 
+#for managing button appearances
+@onready var bup : Button = %"Bet Up"
+@onready var bdown : Button = %"Bet Down"
+@onready var dup : Button = %"Dice Up"
+@onready var ddown : Button = %"Dice Down"
+@onready var face_label : TextureRect = %"Dice Faces"
+@onready var submit : Button = %Submit
+
+@onready var face_images : Array[CompressedTexture2D] = [
+	load("res://Assets/theme styling/die1.png"),
+	load("res://Assets/theme styling/die2.png"),
+	load("res://Assets/theme styling/die3.png"),
+	load("res://Assets/theme styling/die4.png"),
+	load("res://Assets/theme styling/die5.png"),
+	load("res://Assets/theme styling/die6.png")
+]
+
 func _on_bet_up_pressed() -> void:
 	set_num_bet(1)
+	await get_tree().create_timer(0.1).timeout
+	bup.release_focus()
 
 func _on_bet_down_pressed() -> void:
 	set_num_bet(-1)
+	await get_tree().create_timer(0.1).timeout
+	bdown.release_focus()
 
 func _on_dice_up_pressed() -> void:
 	set_dice_bet(1)
+	await get_tree().create_timer(0.1).timeout
+	dup.release_focus()
 
 func _on_dice_down_pressed() -> void:
 	set_dice_bet(-1)
+	await get_tree().create_timer(0.1).timeout
+	ddown.release_focus()
 
-#TODO replace min_bet with something
+
+#TODO add signal to lock in bet
+func _on_submit_pressed() -> void:
+	await get_tree().create_timer(0.1).timeout
+	submit.release_focus()
+
+
+#TODO replace min_bet with a global var
 func set_num_bet(dir: int) -> void:
 	var new_bet : int = num_bet + dir
-	if new_bet < min_bet:
+	if new_bet < min_bet or new_bet > max_bet:
 		return
 	num_bet = new_bet
 	bet_label.text = str(num_bet) 
 
 func set_dice_bet(dir: int) ->void:
 	var new_bet : int = dice_bet + dir
-	if new_bet < min_bet:
+	if new_bet < min_bet or new_bet > dice_max:
 		return
 	dice_bet = new_bet
-	dice_label.text = str(dice_bet) 
+	#dice_label.text = str(dice_bet) 
+	face_label.texture = face_images[dice_bet - 1]
 
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -45,7 +80,6 @@ func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Ve
 		translated_event.pressed = true
 		
 		var temp_scale = screen.scale
-		#var translated_mouse_pos : Vector2 = Vector2(temp_scale.x, temp_scale.y) * mouse_pos
 		
 		var translated_mouse_pos : Vector3 = screen.global_transform.affine_inverse() * event_position
 		

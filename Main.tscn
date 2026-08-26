@@ -53,11 +53,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4294772)
 
 [node name="Player Camera" type="Camera3D" parent="Player" unique_id=291328698]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, -1.2046471, 1.9092319, 8.255807)
+transform = Transform3D(1, 0, 0, 0, 0.86602545, 0.5, 0, -0.5, 0.86602545, -1.2046471, 1.9092319, 8.295868)
 fov = 50.0
 script = ExtResource("3_lgr22")
 max_yaw = 75.0
 max_pitch = 50.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player/Player Camera" unique_id=719079546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.096221924, -0.8581915)
+omni_range = 2.5
 
 [node name="Player Cup" parent="Player" unique_id=2144877282 instance=ExtResource("4_cm0pq")]
 unique_name_in_owner = true
@@ -77,15 +81,15 @@ mesh = SubResource("QuadMesh_lgr22")
 
 [node name="Playmat" parent="Player" unique_id=1381321699 instance=ExtResource("7_03owx")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1816437, 0.7985132, 6.3363676)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1816437, 0.7985132, 6.7147384)
 
 [node name="Player Dice" type="Node3D" parent="Player" unique_id=1649676760]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37837076)
 
 [node name="Betting Bot" parent="Player" unique_id=1001129361 instance=ExtResource("11_20pc6")]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -2.229204, 1.3929913, 6.75792)
-visible = false
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -1.7793456, 1.3001747, 7.280271)
 
 [node name="BarVer1_Merged" parent="." unique_id=1332937823 instance=ExtResource("6_3dxm6")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -324,6 +328,7 @@ offset_left = -657.0
 offset_bottom = -130.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="DebugControl/gameinformation" unique_id=1093324149]
 layout_mode = 1
@@ -332,6 +337,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 1, 1, 0.08627451)
 
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
