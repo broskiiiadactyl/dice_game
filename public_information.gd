@@ -28,7 +28,7 @@ func set_dice_value( dice_value, target: = "player"):
 	results_dict[target].append(dice_value)
 	
 	# dict[key].clear() to remove values from an array
-	print( str(dice_value)+" adds to "+target+"'s result dictionary")
+	#print( str(dice_value)+" adds to "+target+"'s result dictionary")
 	print( target+"'s hand is now : "+str(results_dict[target]) )
 
 func set_last_quantity(current):

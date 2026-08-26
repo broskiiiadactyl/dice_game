@@ -205,6 +205,7 @@ spot_attenuation = -0.1
 spot_angle = 17.065355
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -227,15 +228,41 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Check Value of Dice"
 
-[node name="roll_npc_dice" type="Button" parent="DebugControl" unique_id=767057405]
+[node name="roll_npc1" type="Button" parent="DebugControl" unique_id=767057405]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 38.0
-offset_top = 88.0
-offset_right = -935.0
-offset_bottom = -525.0
+offset_left = 40.0
+offset_top = 131.0
+offset_right = -933.0
+offset_bottom = -482.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Roll NPC Dice"
+text = "Roll NPC 1"
+
+[node name="roll_npc2" type="Button" parent="DebugControl" unique_id=448154873]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 241.0
+offset_right = -933.0
+offset_bottom = -372.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Roll NPC 2"
+
+[node name="roll_npc3" type="Button" parent="DebugControl" unique_id=2069867015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 184.0
+offset_right = -933.0
+offset_bottom = -429.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Roll NPC 3"
