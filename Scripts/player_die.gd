@@ -12,6 +12,8 @@ var deece : Dictionary
 
 @onready var label : Label3D = %Label3D
 
+var dice_value : int = 0
+
 func _ready() -> void:
 	label.visible = false
 	
@@ -42,7 +44,9 @@ func _process(delta: float) -> void:
 	%Label3D.global_rotation = Vector3.UP
 	
 	if linear_velocity.is_zero_approx():
-		%Label3D.text = str(check_value())
+		var value : int = check_value()
+		dice_value = value
+		%Label3D.text = str(value)
 		label.visible = true
 	else:
 		label.visible = false
