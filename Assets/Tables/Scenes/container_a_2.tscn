@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dc21pywjeki2x"]
+
+[ext_resource type="PackedScene" uid="uid://bj2ymodamlf5e" path="res://Assets/Tables/Raw/container_A.gltf" id="1_5m71d"]
+
+[node name="container_A2" unique_id=198029377 instance=ExtResource("1_5m71d")]

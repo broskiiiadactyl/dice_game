@@ -17,7 +17,7 @@ var is_shaking : bool = false
 @export_group("Cup Parameters")
 @export var shake_height : float = 0.15
 @export var shake_speed : float = 25
-@export var depth_offset : float = 7.0
+@export var depth_offset : float =  2.0
 var time_passed : float = 0.0
 
 
@@ -40,8 +40,9 @@ func _process(delta: float) -> void:
 	if is_shaking:
 		shake_cup(delta)
 
+#TODO redo input for rolling
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("LMB") and can_hold:
+	if event.is_action_pressed("LMB") and can_hold and cup.mouse_over:
 		is_holding = true
 	elif event.is_action_released("LMB") and can_hold:
 		is_holding = false
@@ -52,6 +53,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif (not is_holding and is_shaking) or event.is_action_released("RMB") and can_hold:
 		is_shaking = false
 		fukcing_roll_hellllll_yeah()
+	
+	if event.is_action_pressed("reset"):
+		get_tree().reload_current_scene()
 
 #draws a ray from the camera to the mouse position
 #defines a plane at an offset facing toward the camera
@@ -61,7 +65,7 @@ func follow_mouse() -> void:
 	var ray_start : Vector3 = camera.project_ray_origin(mouse_pos)
 	var ray_direction : Vector3 = camera.project_ray_normal(mouse_pos)
 	
-	var plane := Plane(Vector3.FORWARD, global_position.z - depth_offset)
+	var plane := Plane(Vector3.BACK, camera.global_position.z - depth_offset)
 	var intersection : Vector3 = plane.intersects_ray(ray_start, ray_direction)
 	
 	if intersection:

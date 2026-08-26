@@ -18,6 +18,8 @@ var last_pos : Vector3
 var is_shaking : bool = false
 var can_play_sound : bool = true
 
+var mouse_over : bool = false
+
 func _ready() -> void:
 	cupses = Globals.cup_dict
 	
@@ -67,3 +69,11 @@ func play_shaker_sound() -> void:
 	if shaker_timer.is_stopped():
 		shaker_sound.play()
 		shaker_timer.start()
+
+
+func _on_cup_collision_mouse_entered() -> void:
+	mouse_over = true
+
+
+func _on_cup_collision_mouse_exited() -> void:
+	mouse_over = false

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bgbcvblyeperi" path="res://Assets/Tables/Scenes/playmat.tscn" id="7_03owx"]
 [ext_resource type="Script" uid="uid://bufpjyasx4wsp" path="res://Scripts/debug_control.gd" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://dtwcuioakae7f" path="res://Scripts/public_informationon.gd" id="10_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://dqsquwyu1spjs" path="res://Assets/Tables/Scenes/betting_bot.tscn" id="11_20pc6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -48,6 +49,7 @@ unique_name_in_owner = true
 
 [node name="Player" type="Node3D" parent="." unique_id=1576922688]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4294772)
 
 [node name="Player Camera" type="Camera3D" parent="Player" unique_id=291328698]
 unique_name_in_owner = true
@@ -79,6 +81,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1816437, 0.7985132, 6.3363
 
 [node name="Player Dice" type="Node3D" parent="Player" unique_id=1649676760]
 unique_name_in_owner = true
+
+[node name="Betting Bot" parent="Player" unique_id=1001129361 instance=ExtResource("11_20pc6")]
+unique_name_in_owner = true
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -2.229204, 1.3929913, 6.75792)
+visible = false
 
 [node name="BarVer1_Merged" parent="." unique_id=1332937823 instance=ExtResource("6_3dxm6")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -206,6 +213,7 @@ spot_attenuation = -0.1
 spot_angle = 17.065355
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

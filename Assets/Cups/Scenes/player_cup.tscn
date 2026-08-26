@@ -45,3 +45,6 @@ one_shot = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1612854, 0)
 shape = SubResource("BoxShape3D_lqb7u")
+
+[connection signal="mouse_entered" from="Cup Collision" to="." method="_on_cup_collision_mouse_entered"]
+[connection signal="mouse_exited" from="Cup Collision" to="." method="_on_cup_collision_mouse_exited"]
