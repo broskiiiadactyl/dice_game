@@ -14,9 +14,9 @@ extends Node3D
 
 func _ready() -> void:
 	better.set_text("BET")
-	better.set_color("BET")
+	better.set_color("INACTIVE")
 	caller.set_text("CALL")
-	caller.set_color("CALL")
+	caller.set_color("INACTIVE")
 
 func set_buttons(on: bool) -> void:
 	if on:

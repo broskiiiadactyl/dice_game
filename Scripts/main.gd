@@ -110,10 +110,11 @@ func fukcing_roll_hellllll_yeah() -> void:
 	
 	cup.queue_free()
 	
-	place_dice()
+	await place_dice()
 	
+	playmat.set_buttons(true)
 
-func place_dice() -> void:
+func place_dice() -> bool:
 	#wait to make sure all dice have stopped moving
 	#if not by like 2 seconds then force them to stop moving
 	for die in player_dice.get_children():
@@ -139,6 +140,8 @@ func place_dice() -> void:
 		die.snap_to_world_axes()
 		die.display_value(true)
 		await get_tree().create_timer(0.1).timeout
+		
+	return true
 
 func playmat_button_pressed(type: String) -> void:
 	match type:
