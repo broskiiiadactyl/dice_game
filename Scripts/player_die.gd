@@ -102,8 +102,6 @@ func snap_to_world_axes() -> void:
 		target_y = target_z.cross(target_x).normalized()
 	
 	global_basis = Basis(target_x, target_y, target_z)
-	
-	
 
 func get_closest_axis(local_axis : Vector3) -> Vector3:
 	var world_vectors : Array[Vector3] = [

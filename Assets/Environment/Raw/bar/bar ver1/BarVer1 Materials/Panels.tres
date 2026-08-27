@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xmx1jtg40rci"]
+
+[ext_resource type="Texture2D" uid="uid://bbfi8r3s8mmai" path="res://Assets/Environment/Raw/bar/bar ver1/BarVer1_Merged_Panels.png" id="1_wk7pi"]
+
+[resource]
+resource_name = "Panels"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_wk7pi")
+roughness = 0.5
+metadata/_gltf_primary_texture_coord = 0

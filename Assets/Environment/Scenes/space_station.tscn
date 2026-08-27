@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://flx3ui8q2vt8"]
 
-[ext_resource type="PackedScene" uid="uid://ds27b6o46t7ht" path="res://Assets/Environment/Raw/bar/BarVer1_Merged.glb" id="1_g25wd"]
+[ext_resource type="PackedScene" uid="uid://ds27b6o46t7ht" path="res://Assets/Environment/Raw/bar/bar ver1/BarVer1_Merged.glb" id="1_g25wd"]
 [ext_resource type="Shader" uid="uid://bfu25qvucy7vb" path="res://shaders/sky.gdshader" id="2_eq28t"]
 
 [sub_resource type="Gradient" id="Gradient_eq28t"]
