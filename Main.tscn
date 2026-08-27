@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bgbcvblyeperi" path="res://Assets/Tables/Scenes/playmat.tscn" id="7_03owx"]
 [ext_resource type="Script" uid="uid://bufpjyasx4wsp" path="res://Scripts/debug_control.gd" id="8_trn2v"]
 [ext_resource type="PackedScene" uid="uid://cdrilefe4owip" path="res://Assets/Environment/Scenes/space_station.tscn" id="10_5vvyt"]
-[ext_resource type="Script" uid="uid://dtwcuioakae7f" path="res://Scripts/public_informationon.gd" id="10_wkp8b"]
+[ext_resource type="Script" uid="uid://dtwcuioakae7f" path="res://Scripts/public_information.gd" id="10_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://dqsquwyu1spjs" path="res://Assets/Tables/Scenes/betting_bot.tscn" id="11_20pc6"]
 [ext_resource type="PackedScene" uid="uid://bcndw842udumv" path="res://Assets/Environment/Scenes/gibzo.tscn" id="12_5vvyt"]
 [ext_resource type="Script" uid="uid://c8cdqad2nskt7" path="res://Scripts/environment_flavor.gd" id="12_c6i3y"]
@@ -266,6 +266,7 @@ unique_name_in_owner = true
 transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89790165, 0.76740026, -1.0428612, 4.103572)
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

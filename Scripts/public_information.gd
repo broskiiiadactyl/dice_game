@@ -1,6 +1,7 @@
 extends Node
 
 @onready var bettingbot : Node = %"Betting Bot"
+@onready var main : Node = get_parent()
 
 var results_dict = {
 	"player" : [],
@@ -34,7 +35,7 @@ func _ready() -> void:
 #lock_bet(amount: int, face: int) -> signal
 
 func start_round() -> void:
-	get_player_value()
+	main.fukcing_roll_hellllll_yeah()
 	for x in results_dict.keys():
 		if results_dict[x] == []:
 			set_npc_dice(x)
