@@ -1,8 +1,5 @@
-[gd_scene format=3 uid="uid://cymyvykix650k"]
+[gd_scene format=3 uid="uid://dm1ctmy8nhm35"]
 
-[ext_resource type="PackedScene" uid="uid://7vnp5fuhp3u6" path="res://Assets/Characters/npc3/raw/AlienLady_Final.glb" id="1_i2jwj"]
+[ext_resource type="PackedScene" uid="uid://c80i5fn1g21ox" path="res://Assets/Characters/npc3/raw/AlienLady_Jiggle_Final.glb" id="1_1mcar"]
 
-[node name="Vickie" unique_id=18673168 instance=ExtResource("1_i2jwj")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AlienLady/GeneralSkeleton" parent_id_path=PackedInt32Array(1765132985) index="4" unique_id=1425385521]
-unique_name_in_owner = true
+[node name="Vickie" unique_id=1544051158 instance=ExtResource("1_1mcar")]

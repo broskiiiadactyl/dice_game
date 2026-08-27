@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h3iusljlh4ie"
-path.s3tc="res://.godot/imported/AlienLady_Final_FaceTex02.png-4f64418218ccd2dcdd9fc62596bfbdcf.s3tc.ctex"
+uid="uid://bvij8pdbtc602"
+path.s3tc="res://.godot/imported/AlienLady_Jiggle_Final_FaceTex02.png-cc9e40a1ddad63e944150c4d28d56f5f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Characters/npc3/raw/AlienLady_Final_FaceTex02.png"
-dest_files=["res://.godot/imported/AlienLady_Final_FaceTex02.png-4f64418218ccd2dcdd9fc62596bfbdcf.s3tc.ctex"]
+source_file="res://Assets/Characters/npc3/raw/AlienLady_Jiggle_Final_FaceTex02.png"
+dest_files=["res://.godot/imported/AlienLady_Jiggle_Final_FaceTex02.png-cc9e40a1ddad63e944150c4d28d56f5f.s3tc.ctex"]
 
 [params]
 

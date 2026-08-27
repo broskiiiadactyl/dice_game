@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmajdgd434rgu"
-path.s3tc="res://.godot/imported/VampireDude_final_FaceTex02.png-7c3846af8c53ff1176a08d0d6a87143f.s3tc.ctex"
+uid="uid://cdbjdbu25ooum"
+path.s3tc="res://.godot/imported/VampireDude_Jiggle_final_Gradients.png-6959c0007c30c56b9c1805648e485fb1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fddda9f038edca664383df19ecdcc37a"
+"md5": "09ce4991aea43c9cbc1cd97fd8e45286"
 }
 
 [deps]
 
-source_file="res://Assets/Characters/npc1/raw/VampireDude_final_FaceTex02.png"
-dest_files=["res://.godot/imported/VampireDude_final_FaceTex02.png-7c3846af8c53ff1176a08d0d6a87143f.s3tc.ctex"]
+source_file="res://Assets/Characters/npc1/raw/VampireDude_Jiggle_final_Gradients.png"
+dest_files=["res://.godot/imported/VampireDude_Jiggle_final_Gradients.png-6959c0007c30c56b9c1805648e485fb1.s3tc.ctex"]
 
 [params]
 

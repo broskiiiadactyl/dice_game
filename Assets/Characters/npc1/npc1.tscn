@@ -1,8 +1,5 @@
 [gd_scene format=3 uid="uid://cb2ampu8408f4"]
 
-[ext_resource type="PackedScene" uid="uid://b4gtt4wugex7p" path="res://Assets/Characters/npc1/raw/VampireDude_final.glb" id="1_ib8fc"]
+[ext_resource type="PackedScene" uid="uid://cep0mxrenihxm" path="res://Assets/Characters/npc1/raw/VampireDude_Jiggle_final.glb" id="1_ib8fc"]
 
-[node name="Slade" unique_id=2008936169 instance=ExtResource("1_ib8fc")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BlueGuy/GeneralSkeleton" parent_id_path=PackedInt32Array(2028790020) index="7" unique_id=14759051]
-unique_name_in_owner = true
+[node name="Slade" unique_id=2085745744 instance=ExtResource("1_ib8fc")]

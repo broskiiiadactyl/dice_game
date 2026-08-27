@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mfm6na7u2bf"
-path.s3tc="res://.godot/imported/BaraWalrus_Final1_Gradients.png-0cdcdec5175f409a765544a149f127fc.s3tc.ctex"
+uid="uid://b4eo4lt7hhhok"
+path.s3tc="res://.godot/imported/BaraWalrus_Jiggle_Final_Gradients.png-cd5ec5d9539bda02d1265c4260101039.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Characters/npc2/raw/BaraWalrus_Final1_Gradients.png"
-dest_files=["res://.godot/imported/BaraWalrus_Final1_Gradients.png-0cdcdec5175f409a765544a149f127fc.s3tc.ctex"]
+source_file="res://Assets/Characters/npc2/raw/BaraWalrus_Jiggle_Final_Gradients.png"
+dest_files=["res://.godot/imported/BaraWalrus_Jiggle_Final_Gradients.png-cd5ec5d9539bda02d1265c4260101039.s3tc.ctex"]
 
 [params]
 

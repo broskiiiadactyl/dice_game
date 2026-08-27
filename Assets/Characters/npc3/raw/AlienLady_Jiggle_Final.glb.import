@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://7vnp5fuhp3u6"
-path="res://.godot/imported/AlienLady_Final.glb-973ecf0135f1b158d149fca7fc17584a.scn"
+uid="uid://c80i5fn1g21ox"
+path="res://.godot/imported/AlienLady_Jiggle_Final.glb-279b7aca2ad0294e4114fef282ba8c6b.scn"
 
 [deps]
 
-source_file="res://Assets/Characters/npc3/raw/AlienLady_Final.glb"
-dest_files=["res://.godot/imported/AlienLady_Final.glb-973ecf0135f1b158d149fca7fc17584a.scn"]
+source_file="res://Assets/Characters/npc3/raw/AlienLady_Jiggle_Final.glb"
+dest_files=["res://.godot/imported/AlienLady_Jiggle_Final.glb-279b7aca2ad0294e4114fef282ba8c6b.scn"]
 
 [params]
 
