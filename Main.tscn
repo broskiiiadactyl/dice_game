@@ -69,7 +69,7 @@ transform = Transform3D(0.37031996, 0, 0.9289042, 0, 1, 0, -0.9289042, 0, 0.3703
 
 [node name="Dice Spawner" parent="Player/Player Cup" unique_id=1254509806 instance=ExtResource("2_r0du0")]
 unique_name_in_owner = true
-transform = Transform3D(0.3703201, 0, -0.9289051, 0, 1, 0, 0.9289051, 0, 0.3703201, 0, 0.31246465, 0)
+transform = Transform3D(0.3703201, 0, -0.9289051, 0, 1, 0, 0.9289051, 0, 0.3703201, 0, 0.29696566, 0)
 spawn_scene = ExtResource("1_glv2v")
 use_random_rotation = true
 
@@ -217,6 +217,7 @@ spot_attenuation = -0.1
 spot_angle = 17.065355
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

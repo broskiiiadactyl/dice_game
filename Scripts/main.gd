@@ -134,5 +134,6 @@ func place_dice() -> void:
 		die.global_position = %Playmat.slot_dict[slot_name].global_position
 		
 		%PublicInformation.set_dice_value(die.dice_value)
+		die.snap_to_world_axes()
 		die.display_value(true)
 		await get_tree().create_timer(0.1).timeout

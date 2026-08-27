@@ -1,34 +1,67 @@
 [gd_scene format=3 uid="uid://bgbcvblyeperi"]
 
-[ext_resource type="PackedScene" uid="uid://cnewlnlfia5a" path="res://Assets/Tables/Scenes/mat_placeholder.tscn" id="1_abybq"]
 [ext_resource type="Script" uid="uid://tcs0jnsyg7jj" path="res://Scripts/playmat.gd" id="1_mqh7v"]
 [ext_resource type="PackedScene" uid="uid://dhjgiu26tilek" path="res://Assets/Tables/Scenes/dice_slot.tscn" id="2_mqh7v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abybq"]
+albedo_color = Color(0.31693396, 0.36070886, 0.4102134, 1)
+metallic = 1.0
+roughness = 0.53
+
+[sub_resource type="BoxMesh" id="BoxMesh_p1f1a"]
+material = SubResource("StandardMaterial3D_abybq")
+size = Vector3(1.3173828, 0.05355835, 0.71533203)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_abybq"]
+points = PackedVector3Array(-0.6586914, -0.03302002, -0.35766602, -0.6586914, 0.03302002, -0.35766602, 0.65856254, -0.03302002, -0.35766602, -0.6586914, -0.03302002, 0.35766602, -0.6586914, 0.03302002, 0.35766602, 0.65856254, 0.03302002, -0.35766602, 0.65856254, -0.03302002, 0.35766602, 0.65856254, 0.03302002, 0.35766602)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqh7v"]
+albedo_color = Color(0.31693396, 0.36070886, 0.4102134, 1)
+metallic = 1.0
+roughness = 0.53
+
+[sub_resource type="BoxMesh" id="BoxMesh_abybq"]
+material = SubResource("StandardMaterial3D_mqh7v")
+size = Vector3(1.3173828, 0.31048584, 0.092041016)
 
 [node name="Playmat" type="Node3D" unique_id=1381321699]
 script = ExtResource("1_mqh7v")
 
-[node name="blueprint2" parent="." unique_id=1157437687 instance=ExtResource("1_abybq")]
-
-[node name="Dice Slot1" parent="." unique_id=1916985034 instance=ExtResource("2_mqh7v")]
-unique_name_in_owner = true
+[node name="Slots" type="Node3D" parent="." unique_id=1838153830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20284718, 0.049961105, 0.40457243)
 
-[node name="Dice Slot2" parent="." unique_id=1764059749 instance=ExtResource("2_mqh7v")]
+[node name="Dice Slot1" parent="Slots" unique_id=1916985034 instance=ExtResource("2_mqh7v")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10195817, 0.049961105, 0.40457243)
 
-[node name="Dice Slot3" parent="." unique_id=1642651999 instance=ExtResource("2_mqh7v")]
+[node name="Dice Slot2" parent="Slots" unique_id=1764059749 instance=ExtResource("2_mqh7v")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049961105, 0.40457243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10088901, 0, 0)
 
-[node name="Dice Slot4" parent="." unique_id=1762171383 instance=ExtResource("2_mqh7v")]
+[node name="Dice Slot3" parent="Slots" unique_id=1642651999 instance=ExtResource("2_mqh7v")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10188696, 0.049961105, 0.40457243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20284718, 0, 0)
 
-[node name="Dice Slot5" parent="." unique_id=1745939947 instance=ExtResource("2_mqh7v")]
+[node name="Dice Slot4" parent="Slots" unique_id=1762171383 instance=ExtResource("2_mqh7v")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20366123, 0.049961105, 0.40457243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30473414, 0, 0)
+
+[node name="Dice Slot5" parent="Slots" unique_id=1745939947 instance=ExtResource("2_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40650842, 0, 0)
 
 [node name="Cup Placer" type="Marker3D" parent="." unique_id=90898593]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05596438, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08247031, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=857300527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02861023, 0.14233398)
+mesh = SubResource("BoxMesh_p1f1a")
+
+[node name="Area3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=985302896]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=1384327807]
+shape = SubResource("ConvexPolygonShape3D_abybq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=133065266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15707397, -0.24257773)
+mesh = SubResource("BoxMesh_abybq")

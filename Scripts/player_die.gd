@@ -40,9 +40,6 @@ func _ready() -> void:
 	
 	set_dice("normal")
 
-func _process(delta: float) -> void:
-	pass
-
 #function to set active dice model
 func set_dice(model: String) -> void:
 	
@@ -89,3 +86,42 @@ func display_value(on: bool) -> void:
 		label.visible = true
 	else:
 		label.visible = false
+
+#orient die so it is orthogonal based on current rotation
+func snap_to_world_axes() -> void:
+	var current_basis : Basis = global_basis
+	
+	var target_x : Vector3 = get_closest_axis(current_basis.x)
+	var target_y : Vector3 = get_closest_axis(current_basis.y)
+	var target_z : Vector3 = get_closest_axis(current_basis.z)
+	
+	if target_z.is_zero_approx():
+		target_z = get_closest_axis(current_basis.z)
+		target_x = target_y.cross(target_z).normalized()
+	else:
+		target_y = target_z.cross(target_x).normalized()
+	
+	global_basis = Basis(target_x, target_y, target_z)
+	
+	
+
+func get_closest_axis(local_axis : Vector3) -> Vector3:
+	var world_vectors : Array[Vector3] = [
+		Vector3.UP,
+		Vector3.DOWN,
+		Vector3.LEFT,
+		Vector3.RIGHT,
+		Vector3.FORWARD,
+		Vector3.BACK
+	]
+	
+	var closest_vector : Vector3 = Vector3.UP
+	var max_dot : float = -2.0
+	
+	for vec in world_vectors:
+		var dot : float = local_axis.normalized().dot(vec)
+		if dot > max_dot:
+			max_dot = dot
+			closest_vector = vec
+	
+	return closest_vector
