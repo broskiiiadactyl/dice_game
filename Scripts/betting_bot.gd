@@ -101,8 +101,8 @@ func enter() -> void:
 	min_num_bet = Globals.last_quantity
 	min_face_bet = Globals.last_face
 	
-	set_num_bet(min_num_bet)
-	set_dice_bet(min_face_bet)
+	set_num_bet(min_num_bet - 1)
+	set_dice_bet(min_face_bet - 1)
 	
 	$Area3D.process_mode = Node.PROCESS_MODE_INHERIT
 	await play_anim(0)

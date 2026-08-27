@@ -37,8 +37,8 @@ func _on_back_pressed() -> void:
 func move_camera(out: bool) -> bool:
 	var tween = get_tree().create_tween()
 	if out:
-		tween.parallel().tween_property(cam, "global_position", other_cam_pos, 0.5)
-		tween.tween_property(cam, "global_rotation.y", deg_to_rad(other_cam_rot), 0.5)
+		tween.parallel().tween_property(cam, "global_position", other_cam_pos, 0.25)
+		tween.tween_property(cam, "global_rotation.y", deg_to_rad(other_cam_rot), 0.25)
 		#cam.global_position = other_cam_pos
 		#cam.global_rotation = other_cam_rot
 	else:
