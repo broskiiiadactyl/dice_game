@@ -65,7 +65,7 @@ omni_range = 2.5
 
 [node name="Player Cup" parent="Player" unique_id=2144877282 instance=ExtResource("4_cm0pq")]
 unique_name_in_owner = true
-transform = Transform3D(0.37031996, 0, 0.9289042, 0, 1, 0, -0.9289042, 0, 0.37031996, -0.58681214, 0.79552513, 6.081184)
+transform = Transform3D(0.37031996, 0, 0.9289042, 0, 1, 0, -0.9289042, 0, 0.37031996, -0.6824382, 0.8524305, 6.6974306)
 
 [node name="Dice Spawner" parent="Player/Player Cup" unique_id=1254509806 instance=ExtResource("2_r0du0")]
 unique_name_in_owner = true
@@ -217,7 +217,6 @@ spot_attenuation = -0.1
 spot_angle = 17.065355
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

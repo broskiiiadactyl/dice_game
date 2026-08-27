@@ -68,7 +68,7 @@ func follow_mouse() -> void:
 	var ray_start : Vector3 = camera.project_ray_origin(mouse_pos)
 	var ray_direction : Vector3 = camera.project_ray_normal(mouse_pos)
 	
-	var plane := Plane(Vector3.BACK, camera.global_position.z - depth_offset)
+	var plane := Plane(Vector3.BACK, cup.global_position.z)
 	var intersection : Vector3 = plane.intersects_ray(ray_start, ray_direction)
 	
 	if intersection:
@@ -133,7 +133,6 @@ func place_dice() -> void:
 		
 		die.global_position = %Playmat.slot_dict[slot_name].global_position
 		
-		%PublicInformation.set_dice_value(die.dice_value)
 		die.snap_to_world_axes()
 		die.display_value(true)
 		await get_tree().create_timer(0.1).timeout
