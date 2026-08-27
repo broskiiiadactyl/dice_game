@@ -111,10 +111,28 @@ func fukcing_roll_hellllll_yeah() -> void:
 	
 
 func place_dice() -> void:
+	#wait to make sure all dice have stopped moving
+	#if not by like 2 seconds then force them to stop moving
 	for die in %"Player Dice".get_children():
+		var tries := 5
 		while not die.sleeping:
-			await get_tree().create_timer(0.5).timeout
+			if tries <= 0:
+				die.sleeping = true
+				break
+			tries -= 1
+			await get_tree().create_timer(0.1).timeout
 			continue
+	
+	#move the dice to the tray
+	for die in %"Player Dice".get_children():
 		var slot_name : String = die.name
+		var tween = get_tree().create_tween()
+		tween.tween_property(die, "global_position", %Playmat.slot_dict[slot_name].global_position, 0.15)
+		await tween.finished
+		tween.kill()
+		
 		die.global_position = %Playmat.slot_dict[slot_name].global_position
+		
 		%PublicInformation.set_dice_value(die.dice_value)
+		die.display_value(true)
+		await get_tree().create_timer(0.1).timeout

@@ -13,6 +13,7 @@ var deece : Dictionary
 @onready var label : Label3D = %Label3D
 
 var dice_value : int = 0
+var can_display : bool = false
 
 func _ready() -> void:
 	label.visible = false
@@ -40,16 +41,7 @@ func _ready() -> void:
 	set_dice("normal")
 
 func _process(delta: float) -> void:
-	%Label3D.global_position = global_position + Vector3.UP * 0.1
-	%Label3D.global_rotation = Vector3.UP
-	
-	if linear_velocity.is_zero_approx():
-		var value : int = check_value()
-		dice_value = value
-		%Label3D.text = str(value)
-		label.visible = true
-	else:
-		label.visible = false
+	pass
 
 #function to set active dice model
 func set_dice(model: String) -> void:
@@ -86,3 +78,14 @@ func check_value() -> int:
 			return 3
 		else:
 			return 4
+
+func display_value(on: bool) -> void:
+	if on:
+		%Label3D.global_position = global_position + Vector3.UP * 0.1
+		%Label3D.global_rotation = Vector3.UP
+		var value : int = check_value()
+		dice_value = value
+		%Label3D.text = str(value)
+		label.visible = true
+	else:
+		label.visible = false
