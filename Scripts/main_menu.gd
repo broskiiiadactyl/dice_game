@@ -20,29 +20,30 @@ func _ready() -> void:
 
 func _on_options_pressed() -> void:
 	main.visible = false
+	await move_camera(1)
 	opt.visible = true
-	move_camera(1)
 
 func _on_tutorial_pressed() -> void:
 	main.visible = false
+	await move_camera(1)
 	tut.visible = true
-	move_camera(1)
 
 func _on_back_pressed() -> void:
-	main.visible = true
 	opt.visible = false
 	tut.visible = false
-	move_camera(0)
+	await move_camera(0)
+	main.visible = true
 
 func move_camera(out: bool) -> bool:
 	var tween = get_tree().create_tween()
 	if out:
 		tween.parallel().tween_property(cam, "global_position", other_cam_pos, 0.25)
 		tween.tween_property(cam, "global_rotation.y", deg_to_rad(other_cam_rot), 0.25)
-		#cam.global_position = other_cam_pos
-		#cam.global_rotation = other_cam_rot
 	else:
-		cam.global_position = main_cam_pos
-		cam.global_rotation.y = deg_to_rad(main_cam_rot)
+		tween.parallel().tween_property(cam, "global_position", main_cam_pos, 0.25)
+		tween.tween_property(cam, "global_rotation.y", deg_to_rad(main_cam_rot), 0.25)
+	
+	await tween.finished
+	tween.kill()
 
 	return true

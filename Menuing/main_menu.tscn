@@ -88,11 +88,10 @@ color = Color(0.7304812, 0.58912814, 0.5495717, 1)
 
 [node name="Main" type="CenterContainer" parent="UI" unique_id=1465721750]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Control" type="Control" parent="UI/Main" unique_id=36503353]
 custom_minimum_size = Vector2(1000, 500)
@@ -111,6 +110,7 @@ grow_horizontal = 0
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 8
+bbcode_enabled = true
 text = "Last Call
 at the
 Brigadier's"
