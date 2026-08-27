@@ -19,7 +19,8 @@ var handsize_dict = {
 var last_quantity := 3
 var last_face := 3
 
-var turn_order = ["player", "npc1", "npc2", "npc3"]
+const turn_order = ["player", "npc1", "npc2", "npc3"]
+var turn_pos : int = 0
 
 var final_pool : Array = []
 var filtered_final_pool : Array = []
@@ -32,8 +33,14 @@ func _ready() -> void:
 
 #lock_bet(amount: int, face: int) -> signal
 
-func start_game() -> void:
-	pass
+func start_round() -> void:
+	get_player_value()
+	for x in results_dict.keys():
+		if results_dict[x] == []:
+			set_npc_dice(x)
+
+func next_turn() -> void:
+	turn_pos + 1
 
 func set_dice_value( dice_value, target: = "player") -> void:
 	var target_dict = results_dict[target]
@@ -44,12 +51,11 @@ func set_dice_value( dice_value, target: = "player") -> void:
 		return
 	target_dict.append(dice_value)
 
-func set_bid(quant,face):
-	set_last_quantity(quant)
-	set_last_face(face)
-
+#bid information
 func _set_player_bid(amount: int, face: int) -> void:
 	print("Player bid is: "+str(amount) +" "+str(face)+"s")
+	last_quantity = amount
+	last_face = face
 
 func set_last_quantity(current) -> void: #note: potentially shift bids to a dictionary revolving around npcs
 	last_quantity = current
@@ -57,18 +63,10 @@ func set_last_quantity(current) -> void: #note: potentially shift bids to a dict
 func set_last_face(current) -> void:
 	last_face = current
 
-func declare_game_state():
-	var game_state_string = ""
-	for property_info in self.get_script().get_script_property_list():
-		var var_name = property_info.name
-		var var_value = self.get(var_name)
-		var curr_prop = str(var_name) + " = " + str(var_value)
-		game_state_string = game_state_string + "\n \n" + curr_prop
-	return game_state_string
-
-func determine_npc_dice(npc) -> void:
+#determining dice values
+func set_npc_dice(npc) -> void:
 	if !npc:
-		push_error("Error: determine_npc_dice was called but there was no paramater for npc variable.")
+		push_error("Error: set_npc_dice was called but there was no paramater for npc variable.")
 	
 	var roll = 0
 	
@@ -85,6 +83,15 @@ func get_player_value() -> void:
 	for die in %"Player Dice".get_children():
 		set_dice_value(die.dice_value)
 
+func declare_game_state():
+	var game_state_string = ""
+	for property_info in self.get_script().get_script_property_list():
+		var var_name = property_info.name
+		var var_value = self.get(var_name)
+		var curr_prop = str(var_name) + " = " + str(var_value)
+		game_state_string = game_state_string + "\n \n" + curr_prop
+	return game_state_string
+	
 func resolve_challenge() -> void:
 	final_pool.clear()
 	for keys in results_dict.keys():

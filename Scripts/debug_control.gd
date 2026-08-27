@@ -5,7 +5,7 @@ extends Control
 @onready var roll_npc2 : Button = $roll_npc2
 @onready var roll_npc3 : Button = $roll_npc3
 @onready var declare_gamestate : Button = $declare_gamestate
-@onready var start_game : Button = $start_game
+@onready var start_round : Button = $start_round
 @onready var resolve_challenge : Button = $resolve_challenge
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 	roll_npc2.pressed.connect(_roll_npc2_dice)
 	roll_npc3.pressed.connect(_roll_npc3_dice)
 	declare_gamestate.pressed.connect(_declare_gamestate)
-	start_game.pressed.connect(_start_game)
+	start_round.pressed.connect(_start_game)
 	resolve_challenge.pressed.connect(_resolve_challenge)
 	pass
 
@@ -22,20 +22,20 @@ func _check_value():
 	%PublicInformation.get_player_value()
 
 func _roll_npc1_dice():
-	%PublicInformation.determine_npc_dice("npc1")
+	%PublicInformation.set_npc_dice("npc1")
 
 func _roll_npc2_dice():
-	%PublicInformation.determine_npc_dice("npc2")
+	%PublicInformation.set_npc_dice("npc2")
 
 func _roll_npc3_dice():
-	%PublicInformation.determine_npc_dice("npc3")
+	%PublicInformation.set_npc_dice("npc3")
 
 func _declare_gamestate():
 	var info = %PublicInformation.declare_game_state()
 	$gameinformation.text = info
 
 func _start_game():
-	%PublicInformation.start_game()
+	%PublicInformation.start_round()
 
 func _resolve_challenge():
 	%PublicInformation.resolve_challenge()

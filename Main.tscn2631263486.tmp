@@ -231,40 +231,6 @@ spot_angle = 17.065355
 transform = Transform3D(0.94196206, -0.33571923, 0, 0.33571923, 0.94196206, 0, 0, 0, 1, 0.6865051, 14.876227, -15.406023)
 mesh = SubResource("QuadMesh_p1f1a")
 
-[node name="Environment Flavor" type="Node3D" parent="." unique_id=977183113]
-unique_name_in_owner = true
-script = ExtResource("12_c6i3y")
-
-[node name="Random Event" type="Timer" parent="Environment Flavor" unique_id=1281243896]
-unique_name_in_owner = true
-one_shot = true
-autostart = true
-
-[node name="Gibzo" parent="Environment Flavor" unique_id=1692303026 instance=ExtResource("12_5vvyt")]
-unique_name_in_owner = true
-process_mode = 4
-transform = Transform3D(0.6587547, 0.052061442, -0.750554, 0.15492523, 0.96683663, 0.20304017, 0.73623383, -0.25003356, 0.62884295, 28.172054, -1.9655805, -11.529282)
-
-[node name="hormse" parent="Environment Flavor" unique_id=1185207333 instance=ExtResource("14_sc1dx")]
-unique_name_in_owner = true
-process_mode = 4
-transform = Transform3D(-0.799711, 0, 0.6003851, 0, 1, 0, -0.6003851, 0, -0.799711, -6.131385, 0, 10.84076)
-
-[node name="NPCs" type="Node3D" parent="." unique_id=525701003]
-unique_name_in_owner = true
-
-[node name="Slade" parent="NPCs" unique_id=2085745744 instance=ExtResource("14_fpfj3")]
-unique_name_in_owner = true
-transform = Transform3D(0.7353007, 0, 1.3074145, 0, 1.5, 0, -1.3074145, 0, 0.7353007, -3.176565, -1.0286118, 4.273549)
-
-[node name="Boone" parent="NPCs" unique_id=341843254 instance=ExtResource("15_sc1dx")]
-unique_name_in_owner = true
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.1680741, -0.9797753, 3.1478157)
-
-[node name="Vickie" parent="NPCs" unique_id=1544051158 instance=ExtResource("16_kjvhd")]
-unique_name_in_owner = true
-transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89790165, 0.76740026, -1.0428612, 4.103572)
-
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
 layout_mode = 3
 anchors_preset = 15
@@ -393,5 +359,35 @@ color = Color(1, 1, 1, 0.08627451)
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
 unique_name_in_owner = true
 script = ExtResource("10_wkp8b")
+
+[node name="Environment Flavor" type="Node3D" parent="." unique_id=977183113]
+unique_name_in_owner = true
+script = ExtResource("12_c6i3y")
+
+[node name="Random Event" type="Timer" parent="Environment Flavor" unique_id=1281243896]
+unique_name_in_owner = true
+one_shot = true
+autostart = true
+
+[node name="Gibzo" parent="Environment Flavor" unique_id=1692303026 instance=ExtResource("12_5vvyt")]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(0.6587547, 0.052061442, -0.750554, 0.15492523, 0.96683663, 0.20304017, 0.73623383, -0.25003356, 0.62884295, 28.172054, -1.9655805, -11.529282)
+
+[node name="hormse" parent="Environment Flavor" unique_id=1185207333 instance=ExtResource("14_sc1dx")]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(-0.799711, 0, 0.6003851, 0, 1, 0, -0.6003851, 0, -0.799711, -6.131385, 0, 10.84076)
+
+[node name="NPCs" type="Node3D" parent="." unique_id=525701003]
+
+[node name="Slade" parent="NPCs" unique_id=2085745744 instance=ExtResource("14_fpfj3")]
+transform = Transform3D(0.7353007, 0, 1.3074145, 0, 1.5, 0, -1.3074145, 0, 0.7353007, -3.176565, -1.0286118, 4.273549)
+
+[node name="Boone" parent="NPCs" unique_id=341843254 instance=ExtResource("15_sc1dx")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.1680741, -0.9797753, 3.1478157)
+
+[node name="Vickie" parent="NPCs" unique_id=1544051158 instance=ExtResource("16_kjvhd")]
+transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89790165, 0.76740026, -1.0428612, 4.103572)
 
 [connection signal="timeout" from="Environment Flavor/Random Event" to="Environment Flavor" method="_on_random_event_timeout"]
