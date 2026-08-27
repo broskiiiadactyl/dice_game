@@ -8,6 +8,8 @@ extends Node3D
 @onready var anim_player : AnimationPlayer = %AnimationPlayer
 @onready var text_display : Control = %CenterContainer
 
+@onready var whir : AudioStreamPlayer3D = %Whir
+
 var num_bet : int = 1
 var dice_bet : int = 1
 var max_bet : int = 20
@@ -117,9 +119,16 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, event_position: V
 func play_anim(dir: bool) -> bool:
 	if dir:
 		anim_player.play("Move Out")
+		whir.play()
+		await whir.finished
+		whir.play()
+		
 		return true
 	else:
 		anim_player.play("Move In")
+		whir.play()
+		await whir.finished
+		whir.play()
 		await anim_player.animation_finished
 		print(true)
 		return true

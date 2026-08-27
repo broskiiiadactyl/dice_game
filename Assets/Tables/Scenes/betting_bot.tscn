@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bmiaf7uiydxe5" path="res://Assets/theme styling/arrow.png" id="5_cxaav"]
 [ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="5_vafuu"]
 [ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="7_61cmi"]
+[ext_resource type="AudioStream" uid="uid://dgsfva520vi37" path="res://Assets/Sounds/robot_whir_2.wav" id="8_d2h50"]
 
 [sub_resource type="Gradient" id="Gradient_l4y4c"]
 
@@ -385,6 +386,13 @@ shape = SubResource("BoxShape3D_p1f1a")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_l4y4c")
 autoplay = &"RESET"
+
+[node name="Whir" type="AudioStreamPlayer3D" parent="." unique_id=2057095818]
+unique_name_in_owner = true
+stream = ExtResource("8_d2h50")
+volume_db = -20.0
+pitch_scale = 3.0
+max_polyphony = 2
 
 [connection signal="pressed" from="SubViewport/Bet UI/CenterContainer/VBoxContainer/HBoxContainer/Bet Up" to="." method="_on_bet_up_pressed"]
 [connection signal="pressed" from="SubViewport/Bet UI/CenterContainer/VBoxContainer/HBoxContainer/Bet Down" to="." method="_on_bet_down_pressed"]
