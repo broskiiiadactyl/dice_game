@@ -1,5 +1,7 @@
 extends Node
 
+@onready var bettingbot : Node = %"Betting Bot"
+
 var results_dict = {
 	"player" : [],
 	"npc1" : [],
@@ -25,7 +27,10 @@ var filtered_final_pool : Array = []
 var round_result : bool = false #true for win, false for loss
 
 func _ready() -> void:
+	bettingbot.lock_bet.connect(_set_player_bid)
 	pass
+
+#lock_bet(amount: int, face: int) -> signal
 
 func start_game() -> void:
 	pass
@@ -42,6 +47,9 @@ func set_dice_value( dice_value, target: = "player") -> void:
 func set_bid(quant,face):
 	set_last_quantity(quant)
 	set_last_face(face)
+
+func _set_player_bid(amount: int, face: int) -> void:
+	print("Player bid is: "+str(amount) +" "+str(face)+"s")
 
 func set_last_quantity(current) -> void: #note: potentially shift bids to a dictionary revolving around npcs
 	last_quantity = current
