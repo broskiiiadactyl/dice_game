@@ -12,3 +12,7 @@ var cup_dict : Dictionary = {
 }
 
 signal playmat_button_pressed(type: String)
+
+#public information variables that need to be declared
+var last_quantity : int = 0
+var last_face : int = 0

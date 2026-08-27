@@ -2,6 +2,8 @@ extends Node
 
 @onready var bettingbot : Node = %"Betting Bot"
 @onready var main : Node = get_parent()
+@onready var last_quantity = Globals.last_quantity
+@onready var last_face = Globals.last_face
 
 var results_dict = {
 	"player" : [],
@@ -17,8 +19,7 @@ var handsize_dict = {
 	"npc3" : 5
 }
 
-var last_quantity := 3
-var last_face := 3
+var last_bidder : String 
 
 const turn_order = ["player", "npc1", "npc2", "npc3"]
 var turn_pos : int = 0
@@ -26,22 +27,26 @@ var turn_pos : int = 0
 var final_pool : Array = []
 var filtered_final_pool : Array = []
 
-var round_result : bool = false #true for win, false for loss
+var round_result : String
 
 func _ready() -> void:
 	bettingbot.lock_bet.connect(_set_player_bid)
 	pass
 
-#lock_bet(amount: int, face: int) -> signal
-
 func start_round() -> void:
-	main.fukcing_roll_hellllll_yeah()
 	for x in results_dict.keys():
 		if results_dict[x] == []:
 			set_npc_dice(x)
 
 func next_turn() -> void:
 	turn_pos + 1
+
+func end_round() -> void:
+	for x in results_dict.keys():
+		results_dict[x].clear()
+	last_quantity = 0
+	last_face = 0
+	pass
 
 func set_dice_value( dice_value, target: = "player") -> void:
 	var target_dict = results_dict[target]
@@ -52,11 +57,12 @@ func set_dice_value( dice_value, target: = "player") -> void:
 		return
 	target_dict.append(dice_value)
 
-#bid information
-func _set_player_bid(amount: int, face: int) -> void:
+#bid information -------------
+func _set_player_bid(amount: int, face: int, bidder := "player") -> void:
 	print("Player bid is: "+str(amount) +" "+str(face)+"s")
 	last_quantity = amount
 	last_face = face
+	last_bidder = bidder
 
 func set_last_quantity(current) -> void: #note: potentially shift bids to a dictionary revolving around npcs
 	last_quantity = current
@@ -64,7 +70,7 @@ func set_last_quantity(current) -> void: #note: potentially shift bids to a dict
 func set_last_face(current) -> void:
 	last_face = current
 
-#determining dice values
+#determining dice values --------
 func set_npc_dice(npc) -> void:
 	if !npc:
 		push_error("Error: set_npc_dice was called but there was no paramater for npc variable.")
@@ -90,14 +96,18 @@ func declare_game_state():
 		var var_name = property_info.name
 		var var_value = self.get(var_name)
 		var curr_prop = str(var_name) + " = " + str(var_value)
-		game_state_string = game_state_string + "\n \n" + curr_prop
+		game_state_string = game_state_string + "\n" + curr_prop
 	return game_state_string
 	
-func resolve_challenge() -> void:
+func resolve_challenge(bidder : String, chal :="player") -> void:
 	final_pool.clear()
+	
 	for keys in results_dict.keys():
 		for val in results_dict[keys]:
 			final_pool.append(val)
 	filtered_final_pool = final_pool.filter( func(number): return number == last_face)
-	if last_quantity <= filtered_final_pool.size():
-		round_result = true
+	if last_quantity <= filtered_final_pool.size(): #if the last bid was equal to or less than the final pool
+		round_result = bidder
+	else:
+		round_result = chal
+	
