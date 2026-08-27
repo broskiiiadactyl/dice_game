@@ -6,6 +6,7 @@ extends Node3D
 @onready var screen : MeshInstance3D = %MeshInstance3D
 
 @onready var anim_player : AnimationPlayer = %AnimationPlayer
+@onready var text_display : Control = %CenterContainer
 
 var num_bet : int = 1
 var dice_bet : int = 1
@@ -63,6 +64,8 @@ func _on_submit_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
 	submit.release_focus()
 	lock_bet.emit(num_bet, dice_bet)
+	text_display.visible = false
+	play_anim(1)
 
 
 #TODO replace min_bet with a global var
@@ -80,6 +83,12 @@ func set_dice_bet(dir: int) ->void:
 	dice_bet = new_bet
 	#dice_label.text = str(dice_bet) 
 	face_label.texture = face_images[dice_bet - 1]
+
+func enter() -> void:
+	await play_anim(0)
+	print("hey")
+	text_display.visible = true
+	can_take_input = true
 
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
@@ -105,8 +114,12 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, event_position: V
 		
 		sv.push_input(translated_event)
 
-func play_anim(dir: bool) -> void:
+func play_anim(dir: bool) -> bool:
 	if dir:
 		anim_player.play("Move Out")
+		return true
 	else:
 		anim_player.play("Move In")
+		await anim_player.animation_finished
+		print(true)
+		return true

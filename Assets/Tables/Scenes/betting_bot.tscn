@@ -112,7 +112,7 @@ size = Vector3(0.48828125, 0.4873047, 0.02514267)
 
 [sub_resource type="Animation" id="Animation_61cmi"]
 resource_name = "Move In"
-length = 1.1351
+length = 0.6333333
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -232,6 +232,7 @@ color = Color(0.42107603, 0.6908165, 0.71385, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=709710725]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -383,7 +384,7 @@ shape = SubResource("BoxShape3D_p1f1a")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1007616303]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_l4y4c")
-autoplay = &"Move In"
+autoplay = &"RESET"
 
 [connection signal="pressed" from="SubViewport/Bet UI/CenterContainer/VBoxContainer/HBoxContainer/Bet Up" to="." method="_on_bet_up_pressed"]
 [connection signal="pressed" from="SubViewport/Bet UI/CenterContainer/VBoxContainer/HBoxContainer/Bet Down" to="." method="_on_bet_down_pressed"]

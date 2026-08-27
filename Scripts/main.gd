@@ -20,6 +20,7 @@ var is_shaking : bool = false
 @export var depth_offset : float =  2.0
 var time_passed : float = 0.0
 
+@onready var bot : Node3D = %"Betting Bot"
 
 func _ready() -> void:
 	var w = cup_bounds_qm.size.x / 2.0
@@ -29,6 +30,8 @@ func _ready() -> void:
 	boundR = cup_bounds.global_position.x + w
 	boundT = cup_bounds.global_position.y + h
 	boundB = cup_bounds.global_position.y - h
+	
+	bot.enter()
 
 
 func _process(delta: float) -> void:
