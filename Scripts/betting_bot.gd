@@ -98,6 +98,12 @@ func set_dice_bet(dir: int) ->void:
 	face_label.texture = face_images[dice_bet - 1]
 
 func enter() -> void:
+	min_num_bet = Globals.last_quantity
+	min_face_bet = Globals.last_face
+	
+	set_num_bet(min_num_bet)
+	set_dice_bet(min_face_bet)
+	
 	$Area3D.process_mode = Node.PROCESS_MODE_INHERIT
 	await play_anim(0)
 	text_display.visible = true
