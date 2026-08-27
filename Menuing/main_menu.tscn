@@ -3,9 +3,21 @@
 [ext_resource type="Script" uid="uid://b20lxn8jirsva" path="res://Scripts/main_menu.gd" id="1_6tqqd"]
 [ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="2_pp1rk"]
 [ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="3_lgi1p"]
+[ext_resource type="PackedScene" uid="uid://cdrilefe4owip" path="res://Assets/Environment/Scenes/space_station.tscn" id="4_pp1rk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lqb7u"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pp1rk"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_cmde0"]
+sky_material = SubResource("ProceduralSkyMaterial_pp1rk")
+
+[sub_resource type="Environment" id="Environment_ql5rc"]
+background_energy_multiplier = 3.67
+sky = SubResource("Sky_cmde0")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ql5rc"]
 
@@ -41,6 +53,17 @@ texture = SubResource("ViewportTexture_lqb7u")
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1570294353]
 size = Vector2i(1152, 648)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport" unique_id=1910103390]
+environment = SubResource("Environment_ql5rc")
+
+[node name="Bar1_2_Finalbase" parent="SubViewport" unique_id=739803072 instance=ExtResource("4_pp1rk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=185489769]
+transform = Transform3D(0.9465448, 0, -0.3225723, 0, 1, 0, 0.3225723, 0, 0.9465448, 17.357939, 4.7620077, -38.3601)
+projection = 1
+size = 13.981
+
 [node name="UI" type="Control" parent="." unique_id=1984121070]
 unique_name_in_owner = true
 layout_mode = 1
@@ -52,16 +75,6 @@ grow_vertical = 2
 theme = SubResource("Theme_3pjdi")
 
 [node name="ColorRect" type="ColorRect" parent="UI" unique_id=647844035]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.7304812, 0.58912814, 0.5495717, 1)
-
-[node name="fdasbkbdaskhjb" type="CenterContainer" parent="UI" unique_id=151593097]
-unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -69,21 +82,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/fdasbkbdaskhjb" unique_id=1278879359]
-layout_mode = 2
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/fdasbkbdaskhjb/HBoxContainer" unique_id=446877537]
-layout_mode = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="UI/fdasbkbdaskhjb/HBoxContainer/VBoxContainer" unique_id=635709471]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-text = "TITLE"
-horizontal_alignment = 1
-vertical_alignment = 1
+color = Color(0.7304812, 0.58912814, 0.5495717, 1)
 
 [node name="Main" type="CenterContainer" parent="UI" unique_id=1465721750]
 unique_name_in_owner = true
