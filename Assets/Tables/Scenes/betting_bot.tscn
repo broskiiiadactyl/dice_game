@@ -52,7 +52,28 @@ shader_parameter/viewport_texture = SubResource("ViewportTexture_ycapl")
 [sub_resource type="QuadMesh" id="QuadMesh_p1f1a"]
 resource_local_to_scene = true
 material = SubResource("ShaderMaterial_p1f1a")
-size = Vector2(2.025, 2.02)
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61cmi"]
+albedo_color = Color(0.31693396, 0.36070886, 0.4102134, 1)
+metallic = 1.0
+roughness = 0.53
+
+[sub_resource type="SphereMesh" id="SphereMesh_p1f1a"]
+material = SubResource("StandardMaterial3D_61cmi")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2h50"]
+albedo_color = Color(0.31693396, 0.36070886, 0.4102134, 1)
+metallic = 1.0
+roughness = 0.53
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p1f1a"]
+material = SubResource("StandardMaterial3D_d2h50")
+top_radius = 0.026855469
+bottom_radius = 0.026855469
+height = 0.96881104
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5m71d"]
 texture = ExtResource("5_cxaav")
@@ -89,16 +110,100 @@ corner_radius_bottom_left = 10
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1f1a"]
 size = Vector3(0.48828125, 0.4873047, 0.02514267)
 
+[sub_resource type="Animation" id="Animation_61cmi"]
+resource_name = "Move In"
+length = 1.1351
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("container_A2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.46666667, 1, -0.5, -0.5, 0.5, -0.5, 0.6333333, 1, 0.70710677, 0, 0, 0.70710677)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ball Pivot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.8133911, 0, -0.012833854, 0.29666662, 1, -0.02, 0, -0.02, 0.46666667, 1, -0.02, 0, -0.02)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("container_A2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -1.8005573, 0, 0, 0.29666662, 1, 0, 0, 0, 0.46666667, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_l4y4c"]
+resource_name = "Move Out"
+length = 1.1351
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("container_A2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.70710677, 0, 0, 0.70710677, 0.16666667, 1, -0.5, -0.5, 0.5, -0.5)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ball Pivot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.16666667, 1, -0.02, 0, -0.02, 0.33333334, 1, -0.02, 0, -0.02, 1.1333333, 1, -5.025176, 0, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("container_A2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0.16666667, 1, 0, 0, 0, 0.33333334, 1, 0, 0, 0, 1.1333333, 1, -5.025176, 0, 0)
+
+[sub_resource type="Animation" id="Animation_d2h50"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("container_A2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.70710677, 0, 0, 0.70710677)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ball Pivot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4y4c"]
+_data = {
+&"Move In": SubResource("Animation_61cmi"),
+&"Move Out": SubResource("Animation_l4y4c"),
+&"RESET": SubResource("Animation_d2h50")
+}
+
 [node name="Betting Bot" type="Node3D" unique_id=1001129361]
 script = ExtResource("1_gtvtt")
 
 [node name="container_A2" parent="." unique_id=198029377 instance=ExtResource("1_p4tkh")]
-transform = Transform3D(0.25, 0, 0, 0, -3.2783543e-09, -0.25, 0, 0.075, -1.0927847e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="container_A2" unique_id=1635677951]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.40660644, -1.7773331e-08)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.033675283, -1.7773331e-08)
 mesh = SubResource("QuadMesh_p1f1a")
+
+[node name="Ball Pivot" type="MeshInstance3D" parent="." unique_id=811393756]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = SubResource("SphereMesh_p1f1a")
+
+[node name="Arm" type="MeshInstance3D" parent="Ball Pivot" unique_id=15037385]
+unique_name_in_owner = true
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 0, 1, -4.371139e-08, -1, 0, 1.9106855e-15, -2.253735e-08, -0.49013534, -1.1128544e-09)
+mesh = SubResource("CylinderMesh_p1f1a")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1890642447]
 unique_name_in_owner = true
@@ -126,6 +231,7 @@ mouse_filter = 2
 color = Color(0.42107603, 0.6908165, 0.71385, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=709710725]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,6 +379,11 @@ text = "Submit Bet"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=616063256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.021223046)
 shape = SubResource("BoxShape3D_p1f1a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1007616303]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_l4y4c")
+autoplay = &"Move In"
 
 [connection signal="pressed" from="SubViewport/Bet UI/CenterContainer/VBoxContainer/HBoxContainer/Bet Up" to="." method="_on_bet_up_pressed"]
 [connection signal="pressed" from="SubViewport/Bet UI/CenterContainer/VBoxContainer/HBoxContainer/Bet Down" to="." method="_on_bet_down_pressed"]
