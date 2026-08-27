@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tcs0jnsyg7jj" path="res://Scripts/playmat.gd" id="1_mqh7v"]
 [ext_resource type="PackedScene" uid="uid://dhjgiu26tilek" path="res://Assets/Tables/Scenes/dice_slot.tscn" id="2_mqh7v"]
+[ext_resource type="PackedScene" uid="uid://da5pvp84wabvu" path="res://Assets/Tables/Scenes/button.tscn" id="3_mqh7v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abybq"]
 albedo_color = Color(0.31693396, 0.36070886, 0.4102134, 1)
@@ -65,3 +66,11 @@ shape = SubResource("ConvexPolygonShape3D_abybq")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=133065266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15707397, -0.24257773)
 mesh = SubResource("BoxMesh_abybq")
+
+[node name="BET" parent="." unique_id=395641824 instance=ExtResource("3_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495, 0.062, 0.34)
+
+[node name="CALL" parent="." unique_id=1489882787 instance=ExtResource("3_mqh7v")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4949252, 0.062, 0.33984542)

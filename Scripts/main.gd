@@ -5,6 +5,8 @@ extends Node3D
 @onready var cup_pos : Vector3 = cup.global_position
 @onready var cup_bounds : MeshInstance3D = %"Cup Bounds"
 @onready var cup_bounds_qm : QuadMesh = cup_bounds.mesh
+@onready var spawner : Node3D = %"Dice Spawner"
+@onready var player_dice : Node3D = %"Player Dice"
 var boundL : float
 var boundR : float
 var boundT : float
@@ -21,6 +23,7 @@ var is_shaking : bool = false
 var time_passed : float = 0.0
 
 @onready var bot : Node3D = %"Betting Bot"
+@onready var playmat : Node3D = %Playmat
 
 func _ready() -> void:
 	var w = cup_bounds_qm.size.x / 2.0
@@ -31,7 +34,7 @@ func _ready() -> void:
 	boundT = cup_bounds.global_position.y + h
 	boundB = cup_bounds.global_position.y - h
 	
-	bot.enter()
+	Globals.playmat_button_pressed.connect(playmat_button_pressed)
 
 
 func _process(delta: float) -> void:
@@ -87,19 +90,19 @@ func fukcing_roll_hellllll_yeah() -> void:
 	tween.kill()
 	tween = get_tree().create_tween()
 	
-	cup.global_position = %Playmat.cup_placer.global_position + Vector3(0,5,0)
+	cup.global_position = playmat.cup_placer.global_position + Vector3(0,5,0)
 	cup.global_rotation.z += deg_to_rad(180)
 	
-	await tween.tween_property(cup, "global_position", %Playmat.cup_placer.global_position + Vector3(0,cup.get_node("%CollisionShape3D").shape.size.y,0), 0.25).finished
+	await tween.tween_property(cup, "global_position", playmat.cup_placer.global_position + Vector3(0,cup.get_node("%CollisionShape3D").shape.size.y,0), 0.25).finished
 	
 	await get_tree().create_timer(1.0).timeout
 	
 	tween.kill()
 	tween = get_tree().create_tween()
 	
-	%"Dice Spawner".spawn_objects(5)
-	for die in %"Dice Spawner".get_children():
-		die.reparent(%"Player Dice")
+	spawner.spawn_objects(5)
+	for die in spawner.get_children():
+		die.reparent(player_dice)
 	
 	tween.tween_property(cup, "global_position", Vector3(cup.global_position.x, cup.global_position.y + 5.0, cup.global_position.z), 0.25)
 	
@@ -113,7 +116,7 @@ func fukcing_roll_hellllll_yeah() -> void:
 func place_dice() -> void:
 	#wait to make sure all dice have stopped moving
 	#if not by like 2 seconds then force them to stop moving
-	for die in %"Player Dice".get_children():
+	for die in player_dice.get_children():
 		var tries := 5
 		while not die.sleeping:
 			if tries <= 0:
@@ -124,15 +127,23 @@ func place_dice() -> void:
 			continue
 	
 	#move the dice to the tray
-	for die in %"Player Dice".get_children():
+	for die in player_dice.get_children():
 		var slot_name : String = die.name
 		var tween = get_tree().create_tween()
-		tween.tween_property(die, "global_position", %Playmat.slot_dict[slot_name].global_position, 0.15)
+		tween.tween_property(die, "global_position", playmat.slot_dict[slot_name].global_position, 0.15)
 		await tween.finished
 		tween.kill()
 		
-		die.global_position = %Playmat.slot_dict[slot_name].global_position
+		die.global_position = playmat.slot_dict[slot_name].global_position
 		
 		die.snap_to_world_axes()
 		die.display_value(true)
 		await get_tree().create_timer(0.1).timeout
+
+func playmat_button_pressed(type: String) -> void:
+	match type:
+		"CALL":
+			pass
+		"BET":
+			bot.enter()
+	playmat.set_buttons(false)

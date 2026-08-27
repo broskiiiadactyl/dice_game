@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://da5pvp84wabvu"]
+
+[ext_resource type="Shader" uid="uid://bq50yfti0m6nu" path="res://shaders/buttons.gdshader" id="1_2l2q0"]
+[ext_resource type="Script" uid="uid://c8hoks1twmhxk" path="res://Scripts/button.gd" id="1_mkqu1"]
+[ext_resource type="PackedScene" uid="uid://dc21pywjeki2x" path="res://Assets/Tables/Scenes/container_a_2.tscn" id="2_fe7ym"]
+[ext_resource type="Shader" uid="uid://dkl7lxissbswo" path="res://shaders/screen.gdshader" id="2_mkqu1"]
+[ext_resource type="Shader" uid="uid://bvs5cglo3p686" path="res://shaders/betting_bot.gdshader" id="3_miujm"]
+[ext_resource type="Texture2D" uid="uid://bmiaf7uiydxe5" path="res://Assets/theme styling/arrow.png" id="5_a26iv"]
+[ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="6_0ah53"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqb7u"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_2l2q0")
+shader_parameter/hologram_color = Vector4(0, 0.6, 1, 1)
+shader_parameter/transparency = 1.0
+shader_parameter/glitch_strength = 0.3
+shader_parameter/glow_intensity = 0.50000002375
+shader_parameter/time_factor = 1.0
+shader_parameter/noise_amount = 0.0
+shader_parameter/vertical_shift_speed = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_133va"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_lqb7u")
+radius = 0.055664063
+height = 0.23242188
+radial_segments = 16
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mkqu1"]
+points = PackedVector3Array(-0.055664063, -0.06056255, 0, -0.05143586, -0.06056255, -0.021304473, -0.05482496, -0.07023163, 0, -0.05143586, -0.06056255, 0.021293573, -0.055664063, 0.06053981, 0, -0.03936151, -0.06056255, -0.03936151, -0.03877305, -0.07023163, -0.03877305, -0.050651245, -0.07023163, -0.020988446, -0.05143586, 0.06053981, -0.021304473, -0.050651245, -0.07023163, 0.02097755, -0.048330095, -0.079604946, -0.020018574, -0.052307654, -0.079604946, 0, -0.048330095, -0.079604946, 0.020007677, -0.03877305, -0.07023163, 0.038762152, -0.03936151, -0.06056255, 0.039350614, -0.05143586, 0.06053981, 0.021293573, -0.05482496, 0.07020889, 0, -0.021304473, -0.06056255, -0.05143586, -0.03936151, 0.06053981, -0.03936151, -0.020988446, -0.07023163, -0.050651245, -0.036996767, -0.079604946, -0.036996767, -0.050651245, 0.07020889, -0.020988446, -0.03877305, 0.07020889, -0.03877305, -0.036996767, -0.079604946, 0.036985874, -0.04453779, -0.088386744, -0.018449344, -0.048210222, -0.088386744, 0, -0.04453779, -0.088386744, 0.018438451, -0.020988446, -0.07023163, 0.050640352, -0.021304473, -0.06056255, 0.051424965, -0.03936151, 0.06053981, 0.039350614, -0.03877305, 0.07020889, 0.038762152, -0.050651245, 0.07020889, 0.02097755, -0.048330095, 0.0795822, 0.020007677, -0.052307654, 0.0795822, 0, -0.048330095, 0.0795822, -0.020018574, 0, -0.06056255, -0.055664063, 0, -0.07023163, -0.05482496, -0.021304473, 0.06053981, -0.05143586, -0.020018574, -0.079604946, -0.048330095, -0.018449344, -0.088386744, -0.04453779, -0.034087155, -0.088386744, -0.034087155, -0.036996767, 0.0795822, -0.036996767, -0.020988446, 0.07020889, -0.050651245, -0.020018574, -0.079604946, 0.0483192, -0.034087155, -0.088386744, 0.03407626, -0.018449344, -0.088386744, 0.04452689, -0.0394051, -0.096349515, -0.016324345, -0.042641636, -0.096349515, 0, -0.0394051, -0.096349515, 0.016313449, 0, -0.07023163, 0.054814063, 0, -0.06056255, 0.055664063, -0.021304473, 0.06053981, 0.051424965, -0.020988446, 0.07020889, 0.050640352, -0.036996767, 0.0795822, 0.036985874, -0.04453779, 0.088364005, 0.018438451, -0.048210222, 0.088364005, 0, -0.04453779, 0.088364005, -0.018449344, 0.021293573, -0.06056255, -0.05143586, 0, 0.06053981, -0.055664063, 0.02097755, -0.07023163, -0.050651245, 0.020007677, -0.079604946, -0.048330095, 0, -0.079604946, -0.052307654, 0, 0.07020889, -0.05482496, 0, -0.088386744, -0.048210222, -0.016324345, -0.096349515, -0.0394051, -0.030153183, -0.096349515, -0.030153183, -0.034087155, 0.088364005, -0.034087155, -0.018449344, 0.088364005, -0.04453779, -0.020018574, 0.0795822, -0.048330095, 0, -0.088386744, 0.048199326, 0, -0.079604946, 0.052296758, -0.030153183, -0.096349515, 0.030142285, -0.016324345, -0.096349515, 0.0393942, -0.025303828, -0.1031975, -0.025303828, -0.033062797, -0.1031975, -0.0136980675, -0.035787154, -0.1031975, 0, -0.033062797, -0.1031975, 0.013687171, -0.025303828, -0.1031975, 0.025292933, 0.020007677, -0.079604946, 0.0483192, 0.02097755, -0.07023163, 0.050640352, 0.021293573, -0.06056255, 0.051424965, 0, 0.06053981, 0.055664063, 0, 0.07020889, 0.054814063, -0.020018574, 0.0795822, 0.0483192, -0.018449344, 0.088364005, 0.04452689, -0.034087155, 0.088364005, 0.03407626, -0.0394051, 0.09632677, 0.016313449, -0.042641636, 0.09632677, 0, -0.0394051, 0.09632677, -0.016324345, 0.039350614, -0.06056255, -0.03936151, 0.038762152, -0.07023163, -0.03877305, 0.021293573, 0.06053981, -0.05143586, 0.036985874, -0.079604946, -0.036996767, 0.018438451, -0.088386744, -0.04453779, 0, 0.0795822, -0.052307654, 0.020007677, 0.0795822, -0.048330095, 0.02097755, 0.07020889, -0.050651245, 0.016313449, -0.096349515, -0.0394051, 0, -0.096349515, -0.042641636, 0, -0.1031975, -0.035787154, -0.0136980675, -0.1031975, -0.033062797, -0.030153183, 0.09632677, -0.030153183, -0.016324345, 0.09632677, -0.0394051, 0, 0.088364005, -0.048210222, 0.018438451, -0.088386744, 0.04452689, 0, -0.096349515, 0.04263074, 0.016313449, -0.096349515, 0.0393942, -0.0136980675, -0.1031975, 0.0330519, 0, -0.1031975, 0.035776258, -0.010657683, -0.108771436, -0.025717929, -0.019680753, -0.108771436, -0.019680753, -0.025717929, -0.108771436, -0.010657683, -0.027832031, -0.108771436, 0, -0.025717929, -0.108771436, 0.01064679, -0.019680753, -0.108771436, 0.01966986, -0.010657683, -0.108771436, 0.025707036, 0.036985874, -0.079604946, 0.036985874, 0.038762152, -0.07023163, 0.038762152, 0.039350614, -0.06056255, 0.039350614, 0.021293573, 0.06053981, 0.051424965, 0.02097755, 0.07020889, 0.050640352, 0.020007677, 0.0795822, 0.0483192, 0, 0.0795822, 0.052296758, 0, 0.088364005, 0.048199326, -0.016324345, 0.09632677, 0.0393942, -0.030153183, 0.09632677, 0.030142285, -0.025303828, 0.10317476, 0.025292933, -0.033062797, 0.10317476, 0.013687171, -0.035787154, 0.10317476, 0, -0.033062797, 0.10317476, -0.0136980675, -0.025303828, 0.10317476, -0.025303828, 0.051424965, -0.06056255, -0.021304473, 0.039350614, 0.06053981, -0.03936151, 0.050640352, -0.07023163, -0.020988446, 0.038762152, 0.07020889, -0.03877305, 0.0483192, -0.079604946, -0.020018574, 0.04452689, -0.088386744, -0.018449344, 0.03407626, -0.088386744, -0.034087155, 0.018438451, 0.088364005, -0.04453779, 0.036985874, 0.0795822, -0.036996767, 0.030142285, -0.096349515, -0.030153183, 0.025292933, -0.1031975, -0.025303828, 0.013687171, -0.1031975, -0.033062797, 0.01064679, -0.108771436, -0.025717929, 0, -0.108771436, -0.027832031, -0.0136980675, 0.10317476, -0.033062797, 0, 0.10317476, -0.035787154, 0, 0.09632677, -0.042641636, 0.016313449, 0.09632677, -0.0394051, 0.03407626, -0.088386744, 0.03407626, 0.030142285, -0.096349515, 0.030142285, 0.013687171, -0.1031975, 0.0330519, 0.025292933, -0.1031975, 0.025292933, 0, -0.108771436, 0.027832031, 0, -0.11286657, -0.019048702, -0.007290378, -0.11286657, -0.017599344, -0.013469219, -0.11286657, -0.013469219, -0.017599344, -0.11286657, -0.007290378, -0.019048702, -0.11286657, 0, -0.017599344, -0.11286657, 0.0072794855, -0.013469219, -0.11286657, 0.013458326, -0.007290378, -0.11286657, 0.017588452, 0.04452689, -0.088386744, 0.018438451, 0.0483192, -0.079604946, 0.020007677, 0.050640352, -0.07023163, 0.02097755, 0.051424965, -0.06056255, 0.021293573, 0.039350614, 0.06053981, 0.039350614, 0.038762152, 0.07020889, 0.038762152, 0.036985874, 0.0795822, 0.036985874, 0.018438451, 0.088364005, 0.04452689, 0.016313449, 0.09632677, 0.0393942, 0, 0.09632677, 0.04263074, 0, 0.10317476, 0.035776258, -0.0136980675, 0.10317476, 0.0330519, -0.010657683, 0.10874869, 0.025707036, -0.019680753, 0.10874869, 0.01966986, -0.025717929, 0.10874869, 0.01064679, -0.027832031, 0.10874869, 0, -0.025717929, 0.10874869, -0.010657683, -0.019680753, 0.10874869, -0.019680753, -0.010657683, 0.10874869, -0.025717929, 0.055664063, -0.06056255, 0, 0.051424965, 0.06053981, -0.021304473, 0.054814063, -0.07023163, 0, 0.050640352, 0.07020889, -0.020988446, 0.052296758, -0.079604946, 0, 0.048199326, -0.088386744, 0, 0.0393942, -0.096349515, -0.016324345, 0.03407626, 0.088364005, -0.034087155, 0.0483192, 0.0795822, -0.020018574, 0.04452689, 0.088364005, -0.018449344, 0.0330519, -0.1031975, -0.0136980675, 0.025707036, -0.108771436, -0.010657683, 0.01966986, -0.108771436, -0.019680753, 0.013458326, -0.11286657, -0.013469219, 0.0072794855, -0.11286657, -0.017599344, 0.013687171, 0.10317476, -0.033062797, 0, 0.10874869, -0.027832031, 0.01064679, 0.10874869, -0.025717929, 0.030142285, 0.09632677, -0.030153183, 0.025292933, 0.10317476, -0.025303828, 0.0393942, -0.096349515, 0.016313449, 0.01064679, -0.108771436, 0.025707036, 0.01966986, -0.108771436, 0.01966986, 0.025707036, -0.108771436, 0.01064679, 0.0330519, -0.1031975, 0.013687171, 0, -0.11286657, 0.019037805, 0.0072794855, -0.11286657, 0.017588452, 0.0036942288, -0.115369156, -0.008935891, 0, -0.115369156, -0.009666018, -0.0037051253, -0.115369156, -0.008935891, -0.0068435855, -0.115369156, -0.0068435855, -0.008935891, -0.115369156, -0.0037051253, -0.009666018, -0.115369156, 0, -0.008935891, -0.115369156, 0.0036942288, -0.0068435855, -0.115369156, 0.006832689, -0.0037051253, -0.115369156, 0.008924991, 0.051424965, 0.06053981, 0.021293573, 0.050640352, 0.07020889, 0.02097755, 0.0483192, 0.0795822, 0.020007677, 0.04452689, 0.088364005, 0.018438451, 0.03407626, 0.088364005, 0.03407626, 0.030142285, 0.09632677, 0.030142285, 0.025292933, 0.10317476, 0.025292933, 0.013687171, 0.10317476, 0.0330519, 0, 0.10874869, 0.027832031, -0.007290378, 0.11284383, 0.017588452, -0.013469219, 0.11284383, 0.013458326, -0.017599344, 0.11284383, 0.0072794855, -0.019048702, 0.11284383, 0, -0.017599344, 0.11284383, -0.007290378, -0.013469219, 0.11284383, -0.013469219, -0.007290378, 0.11284383, -0.017599344, 0, 0.11284383, -0.019048702, 0.055664063, 0.06053981, 0, 0.054814063, 0.07020889, 0, 0.04263074, -0.096349515, 0, 0.035776258, -0.1031975, 0, 0.0393942, 0.09632677, -0.016324345, 0.052296758, 0.0795822, 0, 0.048199326, 0.088364005, 0, 0.027832031, -0.108771436, 0, 0.017588452, -0.11286657, -0.007290378, 0.006832689, -0.115369156, -0.0068435855, 0.01966986, 0.10874869, -0.019680753, 0.0072794855, 0.11284383, -0.017599344, 0.013458326, 0.11284383, -0.013469219, 0.0330519, 0.10317476, -0.0136980675, 0.025707036, 0.10874869, -0.010657683, 0.013458326, -0.11286657, 0.013458326, 0.017588452, -0.11286657, 0.0072794855, 0, -0.115369156, 0.009655125, 0.0036942288, -0.115369156, 0.008924991, 0.006832689, -0.115369156, 0.006832689, 0, -0.11621094, 0, 0.0393942, 0.09632677, 0.016313449, 0.0330519, 0.10317476, 0.013687171, 0.025707036, 0.10874869, 0.01064679, 0.01966986, 0.10874869, 0.01966986, 0.01064679, 0.10874869, 0.025707036, 0.0072794855, 0.11284383, 0.017588452, 0, 0.11284383, 0.019037805, -0.0037051253, 0.11534642, 0.008924991, -0.0068435855, 0.11534642, 0.006832689, -0.008935891, 0.11534642, 0.0036942288, -0.009666018, 0.11534642, 0, -0.008935891, 0.11534642, -0.0037051253, -0.0068435855, 0.11534642, -0.0068435855, -0.0037051253, 0.11534642, -0.008935891, 0, 0.11534642, -0.009666018, 0.0036942288, 0.11534642, -0.008935891, 0.04263074, 0.09632677, 0, 0.035776258, 0.10317476, 0, 0.019037805, -0.11286657, 0, 0.008924991, -0.115369156, -0.0037051253, 0.006832689, 0.11534642, -0.0068435855, 0.017588452, 0.11284383, -0.007290378, 0.027832031, 0.10874869, 0, 0.008924991, -0.115369156, 0.0036942288, 0.009655125, -0.115369156, 0, 0.017588452, 0.11284383, 0.0072794855, 0.013458326, 0.11284383, 0.013458326, 0.006832689, 0.11534642, 0.006832689, 0.0036942288, 0.11534642, 0.008924991, 0, 0.11534642, 0.009655125, 0, 0.11621095, 0, 0.008924991, 0.11534642, -0.0037051253, 0.019037805, 0.11284383, 0, 0.008924991, 0.11534642, 0.0036942288, 0.009655125, 0.11534642, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyrew"]
+albedo_color = Color(0.31693396, 0.36070886, 0.4102134, 1)
+metallic = 1.0
+roughness = 0.53
+
+[sub_resource type="PrismMesh" id="PrismMesh_yscwy"]
+material = SubResource("StandardMaterial3D_kyrew")
+left_to_right = 0.0
+size = Vector3(0.11, 0.02, 0.22)
+
+[sub_resource type="Gradient" id="Gradient_l4y4c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d2h50"]
+noise_type = 5
+frequency = 0.005
+offset = Vector3(209.9, -567.16, 0)
+fractal_type = 0
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_61cmi"]
+noise = SubResource("FastNoiseLite_d2h50")
+color_ramp = SubResource("Gradient_l4y4c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vafuu"]
+render_priority = 0
+shader = ExtResource("2_mkqu1")
+shader_parameter/albedo_texture = SubResource("NoiseTexture2D_61cmi")
+shader_parameter/albedo_alpha = 0.118000005605
+shader_parameter/tint_color = Color(1, 1, 1, 0)
+shader_parameter/edge_color = Color(0, 0.5294118, 0.99215686, 0)
+shader_parameter/edge_power = 0.0
+shader_parameter/edge_size = 0.10000000149012
+shader_parameter/edge_intensity = 0.0
+shader_parameter/scanline_tint = Color(0, 0.6509804, 0.6509804, 0.28235295)
+shader_parameter/scanline_intensity = 1.10800005263
+shader_parameter/scanline_density = 10.0
+shader_parameter/scanline_thickness = 1.93600008870012
+shader_parameter/scanline_spacing = 3.0110001192725
+shader_parameter/scanline_angle = 1.55600007391
+shader_parameter/scanline_speed = 4.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_j7sgi"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1rlr"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vafuu")
+shader = ExtResource("3_miujm")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_j7sgi")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mn6jh"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_e1rlr")
+size = Vector2(0.2, 0.1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5m71d"]
+texture = ExtResource("5_a26iv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_61cmi"]
+texture = ExtResource("5_a26iv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4y4c"]
+texture = ExtResource("5_a26iv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cxaav"]
+texture = ExtResource("5_a26iv")
+modulate_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+
+[sub_resource type="Theme" id="Theme_b36yb"]
+default_font = ExtResource("6_0ah53")
+Button/styles/disabled = SubResource("StyleBoxTexture_5m71d")
+Button/styles/focus = SubResource("StyleBoxTexture_61cmi")
+Button/styles/hover = SubResource("StyleBoxTexture_l4y4c")
+Button/styles/normal = SubResource("StyleBoxTexture_l4y4c")
+Button/styles/pressed = SubResource("StyleBoxTexture_cxaav")
+RichTextLabel/font_sizes/normal_font_size = 24
+
+[sub_resource type="Animation" id="Animation_mkqu1"]
+resource_name = "Press"
+length = 0.33333334
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("press button")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.011064812, -0.065, 0.17026435, 1, 0, -0.03189543, -0.065, 0.33333337, 1, 0, 0.011064812, -0.065)
+
+[sub_resource type="Animation" id="Animation_miujm"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("press button")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.011064812, -0.065)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_miujm"]
+_data = {
+&"Press": SubResource("Animation_mkqu1"),
+&"RESET": SubResource("Animation_miujm")
+}
+
+[node name="BUTTON" type="Node3D" unique_id=395641824]
+script = ExtResource("1_mkqu1")
+
+[node name="press button" type="MeshInstance3D" parent="." unique_id=1486071824]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.011064812, -0.065)
+mesh = SubResource("CapsuleMesh_133va")
+
+[node name="Button Area" type="Area3D" parent="press button" unique_id=1131952316]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="press button/Button Area" unique_id=965301600]
+shape = SubResource("ConvexPolygonShape3D_mkqu1")
+
+[node name="Slant" type="MeshInstance3D" parent="." unique_id=1234335550]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.020383494, 0.065505005)
+mesh = SubResource("PrismMesh_yscwy")
+
+[node name="Screen" type="MeshInstance3D" parent="." unique_id=1725628971]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.19862051, 0.9800765, 0, -0.9800765, 0.19862051, 0, 0.02102286, 0.06860967)
+mesh = SubResource("QuadMesh_mn6jh")
+
+[node name="container_A2" parent="." unique_id=198029377 instance=ExtResource("2_fe7ym")]
+transform = Transform3D(0.5, 0, 0, 0, -0.5, -7.54979e-08, 0, 7.54979e-08, -0.5, 0, 0.010224424, 0)
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=200466727]
+unique_name_in_owner = true
+size = Vector2i(200, 100)
+
+[node name="Bet UI" type="Control" parent="SubViewport" unique_id=1616822661]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_b36yb")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Bet UI" unique_id=2053963872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.42107603, 0.6908165, 0.71385, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=46809206]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer" unique_id=1375178010]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 55
+text = "BET"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=551389143]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_miujm")
+
+[node name="sounds" type="AudioStreamPlayer3D" parent="." unique_id=1619836944]
+unique_name_in_owner = true
+volume_db = -5.0
+
+[connection signal="mouse_entered" from="press button/Button Area" to="." method="_on_button_area_mouse_entered"]
+[connection signal="mouse_exited" from="press button/Button Area" to="." method="_on_button_area_mouse_exited"]

@@ -9,6 +9,9 @@ extends Node3D
 @onready var text_display : Control = %CenterContainer
 
 @onready var whir : AudioStreamPlayer3D = %Whir
+@onready var button : AudioStreamPlayer3D = %Button
+@onready var whir_sfx : AudioStreamWAV = load("res://Assets/Sounds/robot_whir_2.wav")
+@onready var submit_button : AudioStreamPlayer3D = %"Submit Button"
 
 var num_bet : int = 1
 var dice_bet : int = 1
@@ -62,16 +65,23 @@ func _on_dice_down_pressed() -> void:
 
 #SENDS SIGNAL "lock_bet" with the currently entered bets
 func _on_submit_pressed() -> void:
+	$Area3D.process_mode = Node.PROCESS_MODE_DISABLED
+	submit_button.play()
 	can_take_input = false
 	await get_tree().create_timer(0.1).timeout
 	submit.release_focus()
 	lock_bet.emit(num_bet, dice_bet)
+	await enter_anim()
 	text_display.visible = false
+	%CenterContainer2.visible = true
+	%Check.animate()
+	await get_tree().create_timer(1.0).timeout
 	play_anim(1)
 
 
 #TODO replace min_bet with a global var
 func set_num_bet(dir: int) -> void:
+	button.play()
 	var new_bet : int = num_bet + dir
 	if new_bet < min_num_bet or new_bet > max_bet:
 		return
@@ -79,6 +89,7 @@ func set_num_bet(dir: int) -> void:
 	bet_label.text = str(num_bet) 
 
 func set_dice_bet(dir: int) ->void:
+	button.play()
 	var new_bet : int = dice_bet + dir
 	if new_bet < min_face_bet or new_bet > dice_max:
 		return
@@ -87,8 +98,8 @@ func set_dice_bet(dir: int) ->void:
 	face_label.texture = face_images[dice_bet - 1]
 
 func enter() -> void:
+	$Area3D.process_mode = Node.PROCESS_MODE_INHERIT
 	await play_anim(0)
-	print("hey")
 	text_display.visible = true
 	can_take_input = true
 
@@ -119,16 +130,23 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, event_position: V
 func play_anim(dir: bool) -> bool:
 	if dir:
 		anim_player.play("Move Out")
-		whir.play()
-		await whir.finished
-		whir.play()
+		await play_sound(whir_sfx)
+		play_sound(whir_sfx)
 		
 		return true
 	else:
 		anim_player.play("Move In")
-		whir.play()
-		await whir.finished
-		whir.play()
+		await play_sound(whir_sfx)
+		play_sound(whir_sfx)
 		await anim_player.animation_finished
 		print(true)
 		return true
+
+func play_sound(sound : AudioStream) -> bool:
+	whir.stream = sound
+	whir.play()
+	await whir.finished
+	return true
+
+func enter_anim() -> bool:
+	return true

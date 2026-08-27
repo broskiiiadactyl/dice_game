@@ -9,3 +9,19 @@ extends Node3D
 }
 
 @onready var cup_placer : Marker3D = %"Cup Placer"
+@onready var better : Node3D = %BET
+@onready var caller : Node3D = %CALL
+
+func _ready() -> void:
+	better.set_text("BET")
+	better.set_color("BET")
+	caller.set_text("CALL")
+	caller.set_color("CALL")
+
+func set_buttons(on: bool) -> void:
+	if on:
+		better.set_color("BET")
+		caller.set_color("CALL")
+	else:
+		better.set_color("INACTIVE")
+		caller.set_color("INACTIVE")
