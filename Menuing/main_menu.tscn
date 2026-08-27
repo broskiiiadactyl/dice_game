@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://c1i6r8xa4owfa"]
+
+[ext_resource type="Script" uid="uid://b20lxn8jirsva" path="res://Scripts/main_menu.gd" id="1_6tqqd"]
+[ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="2_pp1rk"]
+[ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="3_lgi1p"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lqb7u"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ql5rc"]
+
+[sub_resource type="Theme" id="Theme_3pjdi"]
+default_font = ExtResource("2_pp1rk")
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 40
+Button/styles/disabled = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/focus = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/hover = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/normal = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/pressed = SubResource("StyleBoxTexture_ql5rc")
+RichTextLabel/font_sizes/normal_font_size = 52
+
+[node name="Main Menu" type="Control" unique_id=240410558]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6tqqd")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=731086654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_lqb7u")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1570294353]
+size = Vector2i(1152, 648)
+
+[node name="UI" type="Control" parent="." unique_id=1984121070]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3pjdi")
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=647844035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7304812, 0.58912814, 0.5495717, 1)
+
+[node name="fdasbkbdaskhjb" type="CenterContainer" parent="UI" unique_id=151593097]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/fdasbkbdaskhjb" unique_id=1278879359]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/fdasbkbdaskhjb/HBoxContainer" unique_id=446877537]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="UI/fdasbkbdaskhjb/HBoxContainer/VBoxContainer" unique_id=635709471]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Main" type="CenterContainer" parent="UI" unique_id=1465721750]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/Main" unique_id=36503353]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Main/Control" unique_id=1087977732]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -455.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="Title" type="RichTextLabel" parent="UI/Main/Control/MarginContainer" unique_id=643301878]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Last Call
+at the
+Brigadier's"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Main/Control" unique_id=1614786159]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 500.0
+alignment = 2
+
+[node name="Start" type="Button" parent="UI/Main/Control/VBoxContainer" unique_id=327169567]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Start"
+alignment = 0
+
+[node name="Options" type="Button" parent="UI/Main/Control/VBoxContainer" unique_id=1766004700]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Options"
+alignment = 0
+
+[node name="Tutorial" type="Button" parent="UI/Main/Control/VBoxContainer" unique_id=32576809]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "How to play"
+alignment = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Main" unique_id=1985041053]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Main/CenterContainer" unique_id=1916037991]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_lgi1p")
+
+[node name="Tutorial" type="CenterContainer" parent="UI" unique_id=188038399]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/Tutorial" unique_id=143487916]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tutorial/Control" unique_id=1306239815]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -455.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="Title" type="RichTextLabel" parent="UI/Tutorial/Control/MarginContainer" unique_id=44067520]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "How to Play"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorial/Control" unique_id=1085855497]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 500.0
+alignment = 2
+
+[node name="Back" type="Button" parent="UI/Tutorial/Control/VBoxContainer" unique_id=238483896]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
+alignment = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Tutorial" unique_id=1605332346]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Tutorial/CenterContainer" unique_id=438462600]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_lgi1p")
+
+[node name="Options" type="CenterContainer" parent="UI" unique_id=1809407177]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/Options" unique_id=1646993615]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Options/Control" unique_id=1886825275]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -455.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="Title" type="RichTextLabel" parent="UI/Options/Control/MarginContainer" unique_id=1999922649]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Options"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Options/Control" unique_id=905433149]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 500.0
+alignment = 2
+
+[node name="Back" type="Button" parent="UI/Options/Control/VBoxContainer" unique_id=292871006]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
+alignment = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Options" unique_id=866710382]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Options/CenterContainer" unique_id=1625570638]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_lgi1p")
+
+[connection signal="pressed" from="UI/Main/Control/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="UI/Main/Control/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="UI/Tutorial/Control/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="UI/Options/Control/VBoxContainer/Back" to="." method="_on_back_pressed"]
