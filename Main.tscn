@@ -11,6 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://cdrilefe4owip" path="res://Assets/Environment/Scenes/space_station.tscn" id="10_5vvyt"]
 [ext_resource type="Script" uid="uid://dtwcuioakae7f" path="res://Scripts/public_informationon.gd" id="10_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://dqsquwyu1spjs" path="res://Assets/Tables/Scenes/betting_bot.tscn" id="11_20pc6"]
+[ext_resource type="PackedScene" uid="uid://bcndw842udumv" path="res://Assets/Environment/Scenes/gibzo.tscn" id="12_5vvyt"]
+[ext_resource type="Script" uid="uid://c8cdqad2nskt7" path="res://Scripts/environment_flavor.gd" id="12_c6i3y"]
+[ext_resource type="PackedScene" uid="uid://cb2ampu8408f4" path="res://Assets/Characters/npc1/npc1.tscn" id="14_fpfj3"]
+[ext_resource type="PackedScene" uid="uid://dg2veqx3k7fke" path="res://Assets/Environment/Scenes/hormse.tscn" id="14_sc1dx"]
+[ext_resource type="PackedScene" uid="uid://8f4jluqgb05v" path="res://Assets/Characters/npc2/npc2.tscn" id="15_sc1dx"]
+[ext_resource type="PackedScene" uid="uid://dm1ctmy8nhm35" path="res://Assets/Characters/npc3/npc3.tscn" id="16_kjvhd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -26,9 +32,11 @@ sky_rotation = Vector3(-1.0210177, 3.132866, 0.2268928)
 tonemap_exposure = 0.75
 glow_enabled = true
 glow_intensity = 1.0
+glow_bloom = 0.2
 fog_enabled = true
 fog_light_color = Color(0.43057704, 0.5681656, 0.70668876, 1)
 fog_light_energy = 0.1
+fog_density = 0.025
 
 [sub_resource type="QuadMesh" id="QuadMesh_lgr22"]
 size = Vector2(1.505, 0.835)
@@ -91,7 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37837076)
 
 [node name="Betting Bot" parent="Player" unique_id=1001129361 instance=ExtResource("11_20pc6")]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -1.820572, 1.3138683, 7.280271)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -1.9165963, 1.3978807, 7.318541)
 
 [node name="Bar1_2_Finalbase" parent="." unique_id=739803072 instance=ExtResource("10_5vvyt")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -350,3 +358,35 @@ color = Color(1, 1, 1, 0.08627451)
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
 unique_name_in_owner = true
 script = ExtResource("10_wkp8b")
+
+[node name="Environment Flavor" type="Node3D" parent="." unique_id=977183113]
+unique_name_in_owner = true
+script = ExtResource("12_c6i3y")
+
+[node name="Random Event" type="Timer" parent="Environment Flavor" unique_id=1281243896]
+unique_name_in_owner = true
+one_shot = true
+autostart = true
+
+[node name="Gibzo" parent="Environment Flavor" unique_id=1692303026 instance=ExtResource("12_5vvyt")]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(0.6587547, 0.052061442, -0.750554, 0.15492523, 0.96683663, 0.20304017, 0.73623383, -0.25003356, 0.62884295, 28.172054, -1.9655805, -11.529282)
+
+[node name="hormse" parent="Environment Flavor" unique_id=1185207333 instance=ExtResource("14_sc1dx")]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(-0.799711, 0, 0.6003851, 0, 1, 0, -0.6003851, 0, -0.799711, -6.131385, 0, 10.84076)
+
+[node name="NPCs" type="Node3D" parent="." unique_id=525701003]
+
+[node name="Slade" parent="NPCs" unique_id=2085745744 instance=ExtResource("14_fpfj3")]
+transform = Transform3D(0.7353007, 0, 1.3074145, 0, 1.5, 0, -1.3074145, 0, 0.7353007, -3.176565, -1.0286118, 4.273549)
+
+[node name="Boone" parent="NPCs" unique_id=341843254 instance=ExtResource("15_sc1dx")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.1680741, -0.9797753, 3.1478157)
+
+[node name="Vickie" parent="NPCs" unique_id=1544051158 instance=ExtResource("16_kjvhd")]
+transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89790165, 0.76740026, -1.0428612, 4.103572)
+
+[connection signal="timeout" from="Environment Flavor/Random Event" to="Environment Flavor" method="_on_random_event_timeout"]

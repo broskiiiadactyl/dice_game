@@ -12,7 +12,7 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_2l2q0")
-shader_parameter/hologram_color = Vector4(0, 0.6, 1, 1)
+shader_parameter/hologram_color = Color(0.486, 0.769, 0.235, 1)
 shader_parameter/transparency = 1.0
 shader_parameter/glitch_strength = 0.3
 shader_parameter/glow_intensity = 0.50000002375

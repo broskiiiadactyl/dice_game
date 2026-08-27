@@ -2,7 +2,7 @@
 
 shader_type spatial;
 
-uniform vec4 hologram_color = vec4(0.0, 0.6, 1.0, 1.0);
+uniform vec4 hologram_color : source_color = vec4(0.0, 0.6, 1.0, 1.0);
 uniform float transparency : hint_range(0.0, 1.0) = 0.6;
 uniform float glitch_strength : hint_range(0.0, 1.0) = 0.3;
 uniform float glow_intensity : hint_range(0.0, 1.0) = 0.4;

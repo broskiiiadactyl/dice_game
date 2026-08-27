@@ -7,6 +7,7 @@ extends Node3D
 @onready var cup_bounds_qm : QuadMesh = cup_bounds.mesh
 @onready var spawner : Node3D = %"Dice Spawner"
 @onready var player_dice : Node3D = %"Player Dice"
+@onready var pub_info : Node = %PublicInformation
 var boundL : float
 var boundR : float
 var boundT : float
@@ -110,11 +111,13 @@ func fukcing_roll_hellllll_yeah() -> void:
 	
 	cup.queue_free()
 	
-	await place_dice()
+	var current_dice : Array[int] = await place_dice()
+	#pub_info.set_dice_value(current_dice)
 	
 	playmat.set_buttons(true)
 
-func place_dice() -> bool:
+func place_dice() -> Array[int]:
+	var dice_array : Array[int] = []
 	#wait to make sure all dice have stopped moving
 	#if not by like 2 seconds then force them to stop moving
 	for die in player_dice.get_children():
@@ -140,8 +143,9 @@ func place_dice() -> bool:
 		die.snap_to_world_axes()
 		die.display_value(true)
 		await get_tree().create_timer(0.1).timeout
+		dice_array.append(die.dice_value)
 		
-	return true
+	return dice_array
 
 func playmat_button_pressed(type: String) -> void:
 	match type:

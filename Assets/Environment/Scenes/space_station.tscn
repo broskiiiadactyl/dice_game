@@ -107,6 +107,9 @@ libraries/ = SubResource("AnimationLibrary_vgq7j")
 autoplay = &"rotation"
 speed_scale = 0.1
 
+[node name="TeeHee" parent="." index="14" unique_id=1776709086]
+transform = Transform3D(0.8474668, -0.53084856, -5.0148515e-08, 1.4901163e-08, 1.7881395e-07, -0.99999994, 0.53084856, 0.8474668, 1.7228352e-07, -3.3734338, 0.98591375, 5.802207)
+
 [node name="SkyBox" type="MeshInstance3D" parent="." index="18" unique_id=588953522]
 transform = Transform3D(-0.5337279, 0, -0.8456563, 0, 1, 0, 0.8456563, 0, -0.5337279, 22.26911, -0.15584183, 3.3895268)
 mesh = SubResource("CylinderMesh_ixp3g")

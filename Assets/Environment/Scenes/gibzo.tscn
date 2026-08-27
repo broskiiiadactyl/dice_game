@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bcndw842udumv"]
+
+[ext_resource type="PackedScene" uid="uid://ykfwwl0hw8kr" path="res://Assets/Environment/Scenes/gibo.tscn" id="1_at4au"]
+[ext_resource type="Script" uid="uid://nilnjt8u70jq" path="res://Scripts/gibzo.gd" id="1_vkoa7"]
+
+[sub_resource type="Animation" id="Animation_vkoa7"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gibo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -18.433617, 12.688581, 0)
+
+[sub_resource type="Animation" id="Animation_p31t2"]
+resource_name = "floating"
+length = 10.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gibo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -18.433617, 12.688581, 0, 10, 1, 26.405998, -16.481398, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gibo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.18206032, -0.28704238, 0.5037207, 0.7941827, 10, 1, 0.3724732, 0.6422905, -0.17551503, 0.64646816)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3262"]
+_data = {
+&"RESET": SubResource("Animation_vkoa7"),
+&"floating": SubResource("Animation_p31t2")
+}
+
+[node name="Gibzo" type="Node3D" unique_id=1692303026]
+script = ExtResource("1_vkoa7")
+
+[node name="gibo" parent="." unique_id=903669356 instance=ExtResource("1_at4au")]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, -18.433617, 12.688581, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1503021949]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_r3262")
+autoplay = &"RESET"

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ykfwwl0hw8kr"]
+
+[ext_resource type="PackedScene" uid="uid://bpwjpsk4ryr8i" path="res://testing/gibbzorig2.0_Smoother_Aug26.glb" id="1_5xefc"]
+
+[node name="gibo" unique_id=903669356 instance=ExtResource("1_5xefc")]
+
+[node name="Skeleton3D" parent="Skeleton" parent_id_path=PackedInt32Array(1386593072) index="0" unique_id=429407984]
+bones/6/rotation = Quaternion(-0.0033841587, -9.7291e-05, 0.056507234, 0.99839646)
+bones/7/rotation = Quaternion(0.12908155, -0.02780468, -0.20453481, 0.9699126)
+bones/9/rotation = Quaternion(-0.0033841587, 9.7291e-05, -0.056507234, 0.99839646)
+bones/10/rotation = Quaternion(0.12908155, 0.02780468, 0.20453481, 0.9699126)
+bones/11/rotation = Quaternion(0.9507916, 0.009114817, -0.006817111, 0.3096221)
+bones/12/rotation = Quaternion(0.4576389, -0.5375129, -0.49156782, 0.5099094)
+bones/13/rotation = Quaternion(0.03685533, 0.016414722, 0.9072048, 0.4187502)
+bones/14/rotation = Quaternion(-0.024140859, -0.14452958, 0.019494448, 0.98901385)
+bones/15/rotation = Quaternion(0.9507916, -0.00911488, 0.0068172966, 0.3096221)
+bones/16/rotation = Quaternion(0.45763892, 0.53751296, 0.49156788, 0.5099092)
+bones/17/rotation = Quaternion(-0.036855403, 0.01641469, 0.9072048, -0.4187504)
+bones/18/rotation = Quaternion(-0.024140848, 0.14452958, -0.019494483, 0.98901385)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=885452066]
+autoplay = &"WalkLoop"
