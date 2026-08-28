@@ -50,5 +50,6 @@ func move_camera(out: bool) -> bool:
 
 func _on_start_pressed() -> void:
 	self.visible = false
+	$SubViewport.queue_free()
 	self.process_mode = Node.PROCESS_MODE_DISABLED
 	%DebugControl.visible = true

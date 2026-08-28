@@ -18,10 +18,14 @@ func _ready() -> void:
 	caller.set_text("CALL")
 	caller.set_color("INACTIVE")
 
-func set_buttons(on: bool) -> void:
+func set_buttons(type: String, on: bool) -> void:
 	if on:
-		better.set_color("BET")
-		caller.set_color("CALL")
+		if type == "BET" or type == "BOTH":
+			better.set_color("BET")
+		if type == "CALL" or type == "BOTH":
+			caller.set_color("CALL")
 	else:
-		better.set_color("INACTIVE")
-		caller.set_color("INACTIVE")
+		if type == "BET" or type == "BOTH":
+			better.set_color("INACTIVE")
+		if type == "CALL" or type == "BOTH":
+			caller.set_color("INACTIVE")
