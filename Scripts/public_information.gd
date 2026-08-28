@@ -19,22 +19,22 @@ var handsize_dict = {
 	"npc3" : 5
 }
 
-var last_bidder : String 
+var last_bidder : String = "player"
 
 const turn_order = ["player", "npc1", "npc2", "npc3"]
 var turn_pos : int = 0
+var remaining_players : int = 4
 
 var final_pool : Array = []
 var filtered_final_pool : Array = []
-
-var round_result : String
 
 func _ready() -> void:
 	bettingbot.lock_bet.connect(_set_player_bid)
 	pass
 
+#turn management-------------------
 func start_round() -> void:
-	for x in results_dict.keys():
+	for x in results_dict.keys(): #roll the dice for npcs
 		if results_dict[x] == []:
 			set_npc_dice(x)
 
@@ -90,6 +90,8 @@ func get_player_value() -> void:
 	for die in %"Player Dice".get_children():
 		set_dice_value(die.dice_value)
 
+
+#game functions ------------------
 func declare_game_state():
 	var game_state_string = ""
 	for property_info in self.get_script().get_script_property_list():
@@ -99,7 +101,9 @@ func declare_game_state():
 		game_state_string = game_state_string + "\n" + curr_prop
 	return game_state_string
 	
-func resolve_challenge(bidder : String, chal :="player") -> void:
+func resolve_challenge(chal :="player") -> void:
+	var round_result : String
+	
 	final_pool.clear()
 	
 	for keys in results_dict.keys():
@@ -107,7 +111,8 @@ func resolve_challenge(bidder : String, chal :="player") -> void:
 			final_pool.append(val)
 	filtered_final_pool = final_pool.filter( func(number): return number == last_face)
 	if last_quantity <= filtered_final_pool.size(): #if the last bid was equal to or less than the final pool
-		round_result = bidder
+		round_result = last_bidder
 	else:
 		round_result = chal
 	
+	handsize_dict[round_result] = handsize_dict[round_result] - 1 #reduces the losing player's handsize by one hand sizes
