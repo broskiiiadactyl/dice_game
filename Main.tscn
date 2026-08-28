@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://dg2veqx3k7fke" path="res://Assets/Environment/Scenes/hormse.tscn" id="14_sc1dx"]
 [ext_resource type="PackedScene" uid="uid://8f4jluqgb05v" path="res://Assets/Characters/npc2/npc2.tscn" id="15_sc1dx"]
 [ext_resource type="PackedScene" uid="uid://dm1ctmy8nhm35" path="res://Assets/Characters/npc3/npc3.tscn" id="16_kjvhd"]
-[ext_resource type="PackedScene" uid="uid://c1i6r8xa4owfa" path="res://Menuing/main_menu.tscn" id="18_kjvhd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -76,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7767129)
 
 [node name="Player Camera" type="Camera3D" parent="Player" unique_id=291328698]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.9509076, 0.30947503, 0, -0.30947503, 0.9509076, -1.2046471, 1.9092319, 8.442925)
+transform = Transform3D(1, 0, 0, 0, 0.97573715, 0.21894518, 0, -0.21894518, 0.97573715, -1.2046471, 1.7696822, 8.442925)
 fov = 50.0
 script = ExtResource("3_lgr22")
 max_yaw = 75.0
@@ -264,6 +263,7 @@ script = ExtResource("12_c6i3y")
 
 [node name="Random Event" type="Timer" parent="Environment Flavor" unique_id=1281243896]
 unique_name_in_owner = true
+wait_time = 10.0
 one_shot = true
 autostart = true
 
@@ -293,11 +293,8 @@ transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -1.1680741, -1.05957
 unique_name_in_owner = true
 transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89790165, 0.76740026, -1.0428612, 4.103572)
 
-[node name="Main Menu" parent="." unique_id=240410558 instance=ExtResource("18_kjvhd")]
-
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -12,6 +12,7 @@ var other_cam_pos := Vector3(37.966, 4.762, -24.32)
 var other_cam_rot := -48.3
 
 func _ready() -> void:
+	Trans.load_scene()
 	for child in %Bar1_2_Finalbase.get_children():
 		if child.is_in_group("visible"):
 			continue
@@ -49,7 +50,4 @@ func move_camera(out: bool) -> bool:
 	return true
 
 func _on_start_pressed() -> void:
-	self.visible = false
-	$SubViewport.queue_free()
-	self.process_mode = Node.PROCESS_MODE_DISABLED
-	%DebugControl.visible = true
+	Trans.start_scene()

@@ -98,10 +98,10 @@ func bid_phase(npc) -> bool:
 func call_phase(npc : String) -> bool:
 	var decision = await decision_process(npc) #true is bid, false is call
 	if decision == false:
+		if call_pressed == true:
+			challenger = 'player'
 		gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] calls.[shake]"
 		await get_tree().create_timer(3.0).timeout
-		if call_pressed == true:
-			challenger == 'player'
 		await resolve_challenge(challenger)
 	if decision == true:
 		gameactions_label.text = "No one calls.\n"+sinister_phrases[randi_range(0,sinister_phrases.size()-1)]
@@ -137,7 +137,7 @@ func start_player_turn():
 	if turn_pos == 4:
 		playmat.set_buttons("BET",true)
 	else:
-		playmat.set_buttons("BET",true)
+		playmat.set_buttons("BET",false)
 	turn_pos = 0
 
 	update_global_minimum()
@@ -155,6 +155,8 @@ func end_round() -> bool:
 	
 	gameactions_label.text = start_of_turn_phrases[randi_range(0, start_of_turn_phrases.size()-1)]
 	allbets_label.text = ""
+	
+	get_parent().reset()
 	
 	return true
 
@@ -174,21 +176,26 @@ func set_last_quantity(current) -> void: #note: potentially shift bids to a dict
 func set_last_face(current) -> void:
 	last_face = current
 
-func get_npc_bid():
+func get_npc_bid() -> Array[int]:
 	#TODO: insert literally any npc betting logic here
 	#TODO: if they amount they should never call
 	var quantity : int = last_quantity
 	var face : int = last_face
 	
-	if face == 6 : # if it's already 6, incremener quantity a random amount.
+	if face >= 6 : # if it's already 6, incremener quantity a random amount. [note from z: always use greater than to clamp an amount, otherwise overshoots can cause errors]
 		quantity = quantity+randi_range(1,3)
 		return [quantity,face]
 	
+	#TODO: note from z - recommendation for AI to check their own dice and match a number to that
+	#ex1: the current bet is 2x5s, slade has 4x5s, slade increases the bet amount to at least 4x5s
+	#ex2: the current bet is 4x3s, slade increases dice face to 4, slade has 2x4s, slade increases the bet amount to at least 2x4s 
 	if randi_range(1, 10) <= 5: # flip a coin and increment either quantity or face
 		quantity = last_quantity+randi_range(1,3)
 		return [quantity,face]
 	else:
 		face = last_face+randi_range(1,3)
+		if face > 6:		#note from z: this needed to be clamped. It was possible for this to return face values over 6
+			face = 6
 	return [quantity,face]
 
 #determining dice values --------
@@ -246,6 +253,7 @@ func determine_bet_or_pass(npc,char_string) -> bool: #true means bid, false mean
 		gameactions_label.text = "Your decision. [shake][color=red]Call?[color=red][shake]"
 		playmat.set_buttons("CALL",true)
 		await get_tree().create_timer(3.0).timeout
+		playmat.set_buttons("CALL", false)
 		if call_pressed == true:
 			return false
 		return true
@@ -276,7 +284,8 @@ func set_call_pressed(press : bool):
 	call_pressed = press
 
 func resolve_challenge(chal :="player") -> bool: 
-	var round_result : String
+	var loser : String
+	var winner : String
 	
 	final_pool.clear()
 	
@@ -284,24 +293,24 @@ func resolve_challenge(chal :="player") -> bool:
 		for val in results_dict[keys]:
 			final_pool.append(val)
 	filtered_final_pool = final_pool.filter( func(number): return number == last_face)
+	print(last_quantity, " ", filtered_final_pool.size())
 	if last_quantity <= filtered_final_pool.size(): #if the last bid was equal to or less than the final pool
-		round_result = last_bidder
+		loser = chal
+		winner = last_bidder
 	else:
-		round_result = chal
+		loser = last_bidder
+		winner = chal
 	
 	var a = str(name_conversion[chal]) + " made the challenge.\n"
 	var b = str(name_conversion[last_bidder]) + " made the bid.\n"
 	var c = "Current bid: " +str(last_quantity)+" "+num_conversion[last_face]+"(s)\n"
 	var d = "Pool has: "+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)\n \n"
-	var e = str(name_conversion[round_result])+" wins the challenge.\n"
-	if str(name_conversion[round_result]) ==  "You":
-		e = str(name_conversion[round_result])+" won the challenge.\n"
+	var e = str(name_conversion[winner])+" wins the challenge.\n"
+	if str(name_conversion[winner]) ==  "You":
+		e = str(name_conversion[winner])+" won the challenge.\n"
 	var f : String
 	
-	if round_result == last_bidder:
-		f = "[color=crimson]"+str(name_conversion[chal])+" will lose a dice.\nWe keep it moving.[color=crimson]"
-	else:
-		f =  "[color=crimson]"+str(name_conversion[last_bidder])+" will lose a dice.\nWe keep it moving. [color=crimson]"
+	f =  "[color=crimson]"+str(name_conversion[loser])+" will lose a dice.\nWe keep it moving. [color=crimson]"
 	
 	var conclusion = [a,b,c,d,f]
 	gameactions_label.text = e
@@ -309,7 +318,8 @@ func resolve_challenge(chal :="player") -> bool:
 	
 	await get_tree().create_timer(6.0).timeout #display all the information
 	
-	handsize_dict[round_result] = handsize_dict[round_result] - 1 #reduces the losing player's handsize by one hand sizes
+	print(loser, " ", chal)
+	handsize_dict[loser] -= 1 #reduces the losing player's handsize by one hand sizes
 	
 	end_round()
 	return true

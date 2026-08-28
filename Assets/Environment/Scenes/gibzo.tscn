@@ -15,21 +15,21 @@ tracks/0/keys = PackedFloat32Array(0, 1, -18.433617, 12.688581, 0)
 
 [sub_resource type="Animation" id="Animation_p31t2"]
 resource_name = "floating"
-length = 10.0
+length = 5.0
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("gibo")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -18.433617, 12.688581, 0, 10, 1, 26.405998, -16.481398, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, -18.433617, 12.688581, 0, 5, 1, 4.1207104, -1.9839182, 0)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("gibo")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.18206032, -0.28704238, 0.5037207, 0.7941827, 10, 1, 0.3724732, 0.6422905, -0.17551503, 0.64646816)
+tracks/1/keys = PackedFloat32Array(0, 1, -0.18206032, -0.28704238, 0.5037207, 0.7941827, 5, 1, 0.12613267, 0.23497929, 0.21208084, 0.94015795)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r3262"]
 _data = {
@@ -41,7 +41,7 @@ _data = {
 script = ExtResource("1_vkoa7")
 
 [node name="gibo" parent="." unique_id=903669356 instance=ExtResource("1_at4au")]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, -18.433617, 12.688581, 0)
+transform = Transform3D(0.799613, -0.33950183, 0.49533588, 0.45805618, 0.8782244, -0.13750002, -0.3883347, 0.33683845, 0.85775036, -18.433617, 12.688581, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1503021949]
 unique_name_in_owner = true

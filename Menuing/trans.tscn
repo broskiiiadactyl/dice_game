@@ -1,13 +1,61 @@
 [gd_scene format=3 uid="uid://bfqh5h6innog7"]
 
 [ext_resource type="Script" uid="uid://yr2yc8cr2bii" path="res://Menuing/trans.gd" id="1_svxcv"]
+[ext_resource type="Theme" uid="uid://cccbqrcecp5le" path="res://Assets/theme styling/THE THEME.tres" id="2_gr4j4"]
+[ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="3_3w5da"]
+[ext_resource type="Texture2D" uid="uid://t40wqujwfhob" path="res://Assets/theme styling/die2.png" id="4_rl4xa"]
+[ext_resource type="Texture2D" uid="uid://sjdic6occchp" path="res://Assets/theme styling/die3.png" id="5_vof4c"]
+[ext_resource type="Texture2D" uid="uid://b7iknbnu6bcon" path="res://Assets/theme styling/die4.png" id="6_xb71s"]
+[ext_resource type="Texture2D" uid="uid://4h0mqv0twqjm" path="res://Assets/theme styling/die5.png" id="7_88lbb"]
+[ext_resource type="Texture2D" uid="uid://dbtpmx7pxw50p" path="res://Assets/theme styling/die6.png" id="8_6i0ed"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqb7u"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("3_3w5da")
+}, {
+"duration": 5.0,
+"texture": ExtResource("4_rl4xa")
+}, {
+"duration": 5.0,
+"texture": ExtResource("5_vof4c")
+}, {
+"duration": 5.0,
+"texture": ExtResource("6_xb71s")
+}, {
+"duration": 5.0,
+"texture": ExtResource("7_88lbb")
+}, {
+"duration": 5.0,
+"texture": ExtResource("8_6i0ed")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Trans" type="CanvasLayer" unique_id=678449350]
+process_priority = -1
+process_physics_priority = -1
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
 visible = false
 script = ExtResource("1_svxcv")
 
-[node name="Cover" type="ColorRect" parent="." unique_id=1176956056]
+[node name="Control" type="Control" parent="." unique_id=2104461390]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gr4j4")
+
+[node name="Cover" type="ColorRect" parent="Control" unique_id=1176956056]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,18 +63,48 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=280462617]
-unique_name_in_owner = true
-
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1667903835]
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=1667903835]
 unique_name_in_owner = true
 custom_maximum_size = Vector2(1000, 50)
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 76.0
 offset_top = -27.0
+offset_right = -76.0
 grow_horizontal = 2
 grow_vertical = 0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -49.33)
+
+[node name="Load2" type="RichTextLabel" parent="Control" unique_id=1540412447]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading some extra assets, hold tight!"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Load2" unique_id=1314632398]
+unique_name_in_owner = true
+position = Vector2(571, 466.99997)
+rotation = 0.7853982
+scale = Vector2(0.615, 0.615)
+sprite_frames = SubResource("SpriteFrames_lqb7u")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=280462617]
+unique_name_in_owner = true
+
+[node name="Progress Check" type="Timer" parent="." unique_id=41497495]
+unique_name_in_owner = true
+wait_time = 0.5
+
+[connection signal="timeout" from="Progress Check" to="." method="_on_progress_check_timeout"]

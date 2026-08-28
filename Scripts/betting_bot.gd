@@ -78,8 +78,6 @@ func _on_submit_pressed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	play_anim(1)
 
-
-#TODO replace min_bet with a global var
 func set_num_bet(dir: int) -> void:
 	button.play()
 	var new_bet : int = num_bet + dir
@@ -94,7 +92,6 @@ func set_dice_bet(dir: int) ->void:
 	if new_bet < min_face_bet or new_bet > dice_max:
 		return
 	dice_bet = new_bet
-	#dice_label.text = str(dice_bet) 
 	face_label.texture = face_images[dice_bet - 1]
 
 func enter() -> void:

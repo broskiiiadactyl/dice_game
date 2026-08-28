@@ -1,0 +1,17 @@
+[gd_resource type="Theme" format=3 uid="uid://cccbqrcecp5le"]
+
+[ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="1_8k5w7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ql5rc"]
+
+[resource]
+resource_local_to_scene = true
+default_font = ExtResource("1_8k5w7")
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 40
+Button/styles/disabled = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/focus = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/hover = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/normal = SubResource("StyleBoxTexture_ql5rc")
+Button/styles/pressed = SubResource("StyleBoxTexture_ql5rc")
+RichTextLabel/font_sizes/normal_font_size = 52

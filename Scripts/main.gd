@@ -13,6 +13,8 @@ var boundL : float
 var boundR : float
 var boundT : float
 var boundB : float
+var cup_start_pos : Vector3
+var cup_start_rot : Vector3
 
 var can_hold : bool = true
 var is_holding : bool = false
@@ -29,21 +31,24 @@ var time_passed : float = 0.0
 
 func _ready() -> void:
 	set_cup_bounds()
+	cup_start_pos = cup.global_position
+	cup_start_rot = cup.global_rotation
 	
 	Globals.playmat_button_pressed.connect(playmat_button_pressed)
 	
 	for die in player_dice.get_children():
 		die.visible = false
 	
-	#if not Globals.ran_test:
-		#is_holding = true
-		#await fukcing_roll_hellllll_yeah()
-		#%"Environment Flavor".play_all_events()
-		#Globals.ran_test = true
-		#get_tree().reload_current_scene()
-	#else:
-		#await  get_tree().create_timer(2.0).timeout
-		#Globals.main_loaded.emit()
+	if not Globals.ran_test:
+		is_holding = true
+		await fukcing_roll_hellllll_yeah(true)
+		await %"Environment Flavor".play_all_events()
+		Globals.ran_test = true
+		get_tree().reload_current_scene()
+	else:
+		await get_tree().create_timer(1.0).timeout
+		Globals.main_loaded.emit()
+		get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
 
 
 func _process(delta: float) -> void:
@@ -71,6 +76,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
+	
+	if event.is_action_pressed("ui_cancel"):
+		reset()
+
+func reset() -> void:
+	for die in player_dice.get_children():
+		die.visible = false
+		die.display_value(false)
+	return_cup()
+	can_hold = true
+
 
 #draws a ray from the camera to the mouse position
 #defines a plane at an offset facing toward the camera
@@ -90,11 +106,16 @@ func shake_cup(delta: float) -> void:
 	time_passed += delta
 	cup.global_position.y = cup.global_position.y + sin(time_passed * shake_speed) * shake_height
 
-func fukcing_roll_hellllll_yeah() -> bool:
+func return_cup() -> void:
+	cup.global_position = cup_start_pos
+	cup.global_rotation = cup_start_rot
+
+func fukcing_roll_hellllll_yeah(instant: bool = false) -> bool:
 	can_hold = false
 	cup.can_play_sound = false
 	var tween := get_tree().create_tween()
-	await tween.tween_property(cup, "global_position", Vector3(cup.global_position.x, cup.global_position.y + 5.0, cup.global_position.z), 0.25).finished
+	if not instant:
+		await tween.tween_property(cup, "global_position", Vector3(cup.global_position.x, cup.global_position.y + 5.0, cup.global_position.z), 0.25).finished
 	
 	tween.kill()
 	tween = get_tree().create_tween()
@@ -102,20 +123,20 @@ func fukcing_roll_hellllll_yeah() -> bool:
 	cup.global_position = playmat.cup_placer.global_position + Vector3(0,5,0)
 	cup.global_rotation.z += deg_to_rad(180)
 	
-	await tween.tween_property(cup, "global_position", playmat.cup_placer.global_position + Vector3(0,cup.get_node("%CollisionShape3D").shape.size.y,0), 0.25).finished
+	if not instant:
+		await tween.tween_property(cup, "global_position", playmat.cup_placer.global_position + Vector3(0,cup.get_node("%CollisionShape3D").shape.size.y,0), 0.25).finished
 	
-	await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(1.0).timeout
 	
 	tween.kill()
 	tween = get_tree().create_tween()
 	
 	spawner.spawn_objects()
 	
-	tween.tween_property(cup, "global_position", Vector3(cup.global_position.x, cup.global_position.y + 5.0, cup.global_position.z), 0.25)
+	if not instant:
+		tween.tween_property(cup, "global_position", Vector3(cup.global_position.x, cup.global_position.y + 5.0, cup.global_position.z), 0.25)
 	
-	await get_tree().create_timer(1.0).timeout
-	
-	cup.queue_free()
+		await get_tree().create_timer(1.0).timeout
 	
 	var current_dice : Array[int] = await place_dice()
 	pub_info.set_dice_value(current_dice)
@@ -149,6 +170,7 @@ func place_dice() -> Array[int]:
 		die.global_position = playmat.slot_dict[slot_name].global_position
 		
 		die.snap_to_world_axes()
+		await get_tree().process_frame
 		die.display_value(true)
 		await get_tree().create_timer(0.1).timeout
 		dice_array.append(die.dice_value)
