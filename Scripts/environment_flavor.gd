@@ -12,7 +12,6 @@ var events : Array[String] = [
 @onready var hormse : Node3D = %hormse
 
 func play_event(event: String) -> bool:
-	print(event)
 	match event:
 		"gib_float":
 			gibzo.process_mode = Node.PROCESS_MODE_INHERIT
