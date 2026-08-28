@@ -39,3 +39,6 @@ func _start_game():
 
 func _resolve_challenge():
 	%PublicInformation.resolve_challenge()
+
+func _on_start():
+	self.visible = true

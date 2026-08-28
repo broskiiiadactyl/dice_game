@@ -284,7 +284,6 @@ transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -300,39 +299,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 870.0
+offset_left = 917.0
 offset_top = 29.0
 offset_right = -65.0
-offset_bottom = -401.0
+offset_bottom = -590.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 text = "Time to get rolling."
-fit_content = true
-
-[node name="allbets" type="RichTextLabel" parent="DebugControl" unique_id=1193070678]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 907.0
-offset_top = 514.0
-offset_right = -75.0
-offset_bottom = -58.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-
-[node name="ColorRect2" type="ColorRect" parent="DebugControl/allbets" unique_id=1144116893]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 1, 0.08627451)
 
 [node name="debugfunctions" type="Control" parent="DebugControl" unique_id=38260393]
 visible = false
