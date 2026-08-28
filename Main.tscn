@@ -267,6 +267,7 @@ transform = Transform3D(-0.799711, 0, 0.6003851, 0, 1, 0, -0.6003851, 0, -0.7997
 
 [node name="NPCs" type="Node3D" parent="." unique_id=525701003]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3656882, 0)
 
 [node name="Slade" parent="NPCs" unique_id=2085745744 instance=ExtResource("14_fpfj3")]
 unique_name_in_owner = true
@@ -274,7 +275,7 @@ transform = Transform3D(0.7353007, 0, 1.3074145, 0, 1.5, 0, -1.3074145, 0, 0.735
 
 [node name="Boone" parent="NPCs" unique_id=341843254 instance=ExtResource("15_sc1dx")]
 unique_name_in_owner = true
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.1680741, -0.9797753, 3.1478157)
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -1.1680741, -1.0595719, 3.1478157)
 
 [node name="Vickie" parent="NPCs" unique_id=1544051158 instance=ExtResource("16_kjvhd")]
 unique_name_in_owner = true

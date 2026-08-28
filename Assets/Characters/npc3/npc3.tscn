@@ -1,5 +1,47 @@
 [gd_scene format=3 uid="uid://dm1ctmy8nhm35"]
 
 [ext_resource type="PackedScene" uid="uid://c80i5fn1g21ox" path="res://Assets/Characters/npc3/raw/AlienLady_Jiggle_Final.glb" id="1_1mcar"]
+[ext_resource type="AnimationLibrary" uid="uid://cgmpfe5415e0c" path="res://Assets/Characters/anims/Humanoid.res" id="2_lq873"]
 
 [node name="Vickie" unique_id=1544051158 instance=ExtResource("1_1mcar")]
+
+[node name="GeneralSkeleton" parent="AlienLady" parent_id_path=PackedInt32Array(2132784745) index="0" unique_id=390111324]
+bones/0/position = Vector3(0, 0, 0.80552864)
+bones/1/rotation = Quaternion(-4.9073595e-10, 0.70766795, 9.476859e-09, 0.7065452)
+bones/2/rotation = Quaternion(-0.0033226134, 0.70765984, -0.003327922, 0.70653766)
+bones/7/position = Vector3(2.941466e-06, 0.72406685, -0.8055287)
+bones/8/rotation = Quaternion(0.026890585, 0.50676304, 0.8603039, -0.04842903)
+bones/9/rotation = Quaternion(-0.054068178, 0.8811999, -0.46905285, 0.023511712)
+bones/10/rotation = Quaternion(-0.037319712, 0.7518809, -0.65719295, 0.037147038)
+bones/11/rotation = Quaternion(2.1642405e-05, 0.99999905, -0.0014118849, -4.6740846e-05)
+bones/18/rotation = Quaternion(-0.009720174, 0.5063706, 0.86149895, 0.03624793)
+bones/19/rotation = Quaternion(0.034508236, 0.8826316, -0.4618147, -0.08060968)
+bones/20/rotation = Quaternion(-0.06531408, 0.7498725, -0.652831, -0.08507038)
+bones/21/rotation = Quaternion(-0.00023035357, 0.99986887, 0.016185401, 0.00047868275)
+bones/28/rotation = Quaternion(0.011978965, -0.0016915201, 0.02198131, 0.9996852)
+bones/29/rotation = Quaternion(0.0051360526, 0.0056149582, 0.0046076206, 0.9999605)
+bones/30/rotation = Quaternion(0.4428801, 0.535785, 0.5816123, -0.42251498)
+bones/31/rotation = Quaternion(0.014198899, 0.87849677, -0.47430763, 0.05544509)
+bones/32/rotation = Quaternion(0.07692716, -0.72029376, 0.09635345, 0.68262374)
+bones/33/rotation = Quaternion(0.0114920065, 0.5145042, -0.08228861, 0.85345304)
+bones/34/rotation = Quaternion(0.006598952, -0.0056120795, -0.01930607, 0.9997762)
+bones/35/rotation = Quaternion(0.006352708, -0.0066460115, -0.01913406, 0.99977475)
+bones/36/rotation = Quaternion(0.081573255, 0.3143893, 0.3101388, 0.89348716)
+bones/36/scale = Vector3(1, 0.99999994, 0.9999999)
+bones/37/rotation = Quaternion(-0.1017484, -0.020689942, -0.08437504, 0.99100965)
+bones/37/scale = Vector3(1.0000002, 1.0000001, 0.9999999)
+bones/39/rotation = Quaternion(-0.5183809, -0.13784288, -0.22021496, 0.81473064)
+bones/41/rotation = Quaternion(0.08157329, -0.31439027, -0.31013864, 0.89348674)
+bones/41/scale = Vector3(0.9999999, 1.0000001, 0.9999999)
+bones/42/rotation = Quaternion(-0.10174835, 0.02069162, 0.08437563, 0.99100953)
+bones/42/scale = Vector3(1.0000002, 0.9999998, 1.0000002)
+bones/44/rotation = Quaternion(-0.51838315, 0.1378438, 0.22021501, 0.81472903)
+bones/46/rotation = Quaternion(0.48094618, -0.4682098, -0.5539211, -0.4925869)
+bones/47/rotation = Quaternion(-0.08832651, 0.8834208, -0.4597584, -0.019704094)
+bones/48/rotation = Quaternion(0.06617259, 0.7179563, -0.0830138, 0.68794525)
+bones/49/rotation = Quaternion(0.08365279, -0.54907984, 0.0011324735, 0.8315722)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AlienLady/GeneralSkeleton" index="4" unique_id=915290787]
+root_node = NodePath("../../..")
+libraries/Humanoid = ExtResource("2_lq873")
+autoplay = &"Humanoid/VickiIdle"
