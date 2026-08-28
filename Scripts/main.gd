@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var player_node : Node3D = %"Player"
 @onready var camera : Camera3D = %"Player Camera"
 @onready var cup : Node3D = %"Player Cup"
 @onready var cup_pos : Vector3 = cup.global_position
@@ -27,13 +28,7 @@ var time_passed : float = 0.0
 @onready var playmat : Node3D = %Playmat
 
 func _ready() -> void:
-	var w = cup_bounds_qm.size.x / 2.0
-	var h = cup_bounds_qm.size.y / 2.0
-	
-	boundL = cup_bounds.global_position.x - w
-	boundR = cup_bounds.global_position.x + w
-	boundT = cup_bounds.global_position.y + h
-	boundB = cup_bounds.global_position.y - h
+	set_cup_bounds()
 	
 	Globals.playmat_button_pressed.connect(playmat_button_pressed)
 	
@@ -125,7 +120,7 @@ func fukcing_roll_hellllll_yeah() -> bool:
 	var current_dice : Array[int] = await place_dice()
 	pub_info.set_dice_value(current_dice)
 	
-	playmat.set_buttons("BOTH", true)
+	playmat.set_buttons("BET", true)
 	
 	return true
 
@@ -163,7 +158,17 @@ func place_dice() -> Array[int]:
 func playmat_button_pressed(type: String) -> void:
 	match type:
 		"CALL":
-			pass
+			pub_info.set_call_pressed(true)
 		"BET":
 			bot.enter()
 	playmat.set_buttons("BOTH", false)
+
+
+func set_cup_bounds():
+	var w = cup_bounds_qm.size.x / 2.0
+	var h = cup_bounds_qm.size.y / 2.0
+	
+	boundL = cup_bounds.global_position.x - w
+	boundR = cup_bounds.global_position.x + w
+	boundT = cup_bounds.global_position.y + h
+	boundB = cup_bounds.global_position.y - h

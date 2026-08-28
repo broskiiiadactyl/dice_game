@@ -7,6 +7,8 @@ extends Control
 @onready var declare_gamestate : Button = $debugfunctions/declare_gamestate
 @onready var start_round : Button = $debugfunctions/start_round
 @onready var resolve_challenge : Button = $debugfunctions/resolve_challenge
+@onready var warning_timer : ProgressBar = $warning_timer
+@onready var timer : Timer = $warning_timer/timer
 
 func _ready() -> void:
 	chkval_btn.pressed.connect(_check_value)
@@ -16,7 +18,12 @@ func _ready() -> void:
 	declare_gamestate.pressed.connect(_declare_gamestate)
 	start_round.pressed.connect(_start_game)
 	resolve_challenge.pressed.connect(_resolve_challenge)
+	%PublicInformation.connect("timer_start",_run_timer)
 	pass
+
+func _process(delta: float) -> void:
+	if not timer.is_stopped():
+		warning_timer.value = timer.time_left
 
 func _check_value():
 	%PublicInformation.get_player_value()
@@ -42,3 +49,9 @@ func _resolve_challenge():
 
 func _on_start():
 	self.visible = true
+
+func _run_timer() -> bool:
+	warning_timer.max_value = timer.wait_time
+	timer.start() # Start the timer when ready
+	await get_tree().create_timer(3.0).timeout
+	return true

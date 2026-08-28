@@ -297,7 +297,6 @@ transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -343,8 +342,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 839.0
-offset_top = 409.0
-offset_right = -49.0
+offset_top = 479.0
+offset_right = -75.0
 offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -356,7 +355,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -484,25 +482,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0.08627451)
-
-[node name="warning_timer" type="ProgressBar" parent="DebugControl" unique_id=775142937]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 69.0
-offset_top = 570.0
-offset_right = -742.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 3.0
-step = 0.0
-show_percentage = false
-
-[node name="timer" type="Timer" parent="DebugControl/warning_timer" unique_id=1732924509]
-wait_time = 3.0
 
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
 unique_name_in_owner = true

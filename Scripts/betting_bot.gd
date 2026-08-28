@@ -106,6 +106,7 @@ func enter() -> void:
 	set_num_bet(min_num_bet - 1)
 	set_dice_bet(min_face_bet - 1)
 	
+	%CenterContainer2.visible = false
 	$Area3D.process_mode = Node.PROCESS_MODE_INHERIT
 	await play_anim(0)
 	text_display.visible = true

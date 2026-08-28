@@ -215,6 +215,7 @@ _data = {
 script = ExtResource("1_gtvtt")
 
 [node name="container_A2" parent="." unique_id=198029377 instance=ExtResource("1_p4tkh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2965584, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="container_A2" unique_id=1635677951]
 unique_name_in_owner = true

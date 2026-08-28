@@ -3,11 +3,10 @@ extends Node
 @onready var bettingbot : Node = %"Betting Bot"
 @onready var gameactions_label : Node = %"gameactions"
 @onready var allbets_label : Node = %"allbets"
+@onready var playmat : Node = %"Playmat"
 @onready var main : Node = get_parent()
 @onready var last_quantity = Globals.last_quantity
 @onready var last_face = Globals.last_face
-
-signal bid_set
 
 var results_dict = {
 	"player" : [],
@@ -27,13 +26,13 @@ var bets_dict = {
 }
 
 const name_conversion = {
-	"player" : "Major",
+	"player" : "You",
 	"npc1" : "Slade",
 	"npc2" : "Boone",
 	"npc3" : "Vickie"
 }
 
-const dice_conversion_dict = {
+const num_conversion = {
 	1 : 'One',
 	2 : 'Two',
 	3 : 'Three',
@@ -42,8 +41,25 @@ const dice_conversion_dict = {
 	6 : 'Six',
 }
 
-#last_quantity, last_face are declared in on ready and are linked to the global property
-var last_bidder : String = "player"
+const sinister_phrases = [
+	"Lucky you.",
+	"Trusting bunch.",
+	"But [shake]why?[shake]",
+	"Have they forgiven?",
+	"Could life be so sweet?",
+	"They might remember the good times."
+]
+
+const start_of_turn_phrases = [
+	"You're up, playboy.",
+	"Let's try hard this time.",
+	"Tricked them then, too.",
+	"Do you think they trust you?",
+	"Back up to bat."
+]
+
+var last_bidder : String = "player" #last_quantity, last_face are declared in on ready and are linked to the global property
+var challenger : String
 
 const turn_order = ["player", "npc1", "npc2", "npc3"]
 const char_name = ["Major","Slade","Boone","Vickie"]
@@ -52,6 +68,9 @@ var remaining_players : int = 4
 
 var final_pool : Array = []
 var filtered_final_pool : Array = []
+var call_pressed :bool = false
+
+signal timer_start
 
 func _ready() -> void:
 	bettingbot.lock_bet.connect(_set_bid)
@@ -62,57 +81,91 @@ func start_round() -> void:
 	if results_dict["player" ] == []:
 		get_player_value()
 	for x in results_dict.keys(): #roll the dice for npcs
-		if results_dict[x] == []:
-			set_npc_dice(x)
-	
+		set_npc_dice(x)
+	next_turn()
+
+func bid_phase(npc) -> bool:
+	var char_string = name_conversion[npc]
+	gameactions_label.text = str(char_string)+"'s turn. [shake]Thinking...[shake]"
+	await get_tree().create_timer( randf_range(1.0,3.0)).timeout
+	var curr_bid : Array = get_npc_bid()
+	gameactions_label.text = str(char_string)+" bids." # allbets label is set in the set_bid function
+	_set_bid(curr_bid[0],curr_bid[1],npc)
+	await get_tree().create_timer(3.0).timeout
+	call_phase(npc)
+	return true
 
 func call_phase(npc : String) -> bool:
-	var char_name = name_conversion[npc]
-	gameactions_label.text = "[shake]"+str(char_name)+" is thinking...[shake]"
-	var random_time = randf_range(2.0, 4.0)
-	await get_tree().create_timer(random_time).timeout
-	if randi_range(1, 10) == 10:
-		gameactions_label.text = str(char_name)+" calls. [raindbow]Let's see how this one goes.[rainbow]"
+	var decision = await decision_process(npc) #true is bid, false is call
+	if decision == false:
+		gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] calls.[shake]"
 		await get_tree().create_timer(3.0).timeout
-		await resolve_challenge() 
-	else:
-		var curr_bid : Array = get_npc_bid()
-		var bet_string = str(char_name)+" bids "+str(curr_bid[0])+" "+str(dice_conversion_dict[curr_bid[1]])+"s \n"
-		gameactions_label.text = bet_string
-		allbets_label.text = allbets_label.text + bet_string
-		await get_tree().create_timer(3.0).timeout
-		print(npc+" is the current npc")
-		await _set_bid(curr_bid[0],curr_bid[1],npc)
+		if call_pressed == true:
+			challenger == 'player'
+		await resolve_challenge(challenger)
+	if decision == true:
+		gameactions_label.text = "No one calls.\n"+sinister_phrases[randi_range(0,sinister_phrases.size()-1)]
+		await get_tree().create_timer(2.0).timeout
+		turn_pos = turn_pos+1
 		next_turn()
 	return true
 
+func decision_process( npc ) -> bool:
+	var determined_decision = true
+	for deciding_char in turn_order:
+		if deciding_char == npc:
+			continue
+		determined_decision = await determine_bet_or_pass(deciding_char, name_conversion[deciding_char]) #true for bet, false for pass
+		playmat.set_buttons("BOTH",false)
+		if determined_decision == false:
+			challenger = deciding_char
+			return false
+		gameactions_label.text = name_conversion[deciding_char] +" will [color=green]pass.[color=green]"
+		await get_tree().create_timer(0.5).timeout
+	return true
+
 func next_turn():
-	turn_pos = turn_pos+1
+	if turn_pos == 0:
+		call_phase(turn_order[turn_pos])
+		return
 	if turn_pos == 4:
 		start_player_turn()
 		return
-	call_phase(turn_order[turn_pos])
+	bid_phase(turn_order[turn_pos])
 
 func start_player_turn():
+	if turn_pos == 4:
+		playmat.set_buttons("BET",true)
+	else:
+		playmat.set_buttons("BET",true)
 	turn_pos = 0
-	gameactions_label.text = 'Your turn, playboy.'
+
+	update_global_minimum()
 
 func end_round() -> bool:
+	turn_pos = 0
 	for x in results_dict.keys():
 		results_dict[x].clear()
+	
+	challenger = ""
+	call_pressed = false
 	last_quantity = 0
 	last_face = 0
-	turn_pos = 0
+	update_global_minimum()
+	
+	gameactions_label.text = start_of_turn_phrases[randi_range(0, start_of_turn_phrases.size()-1)]
+	allbets_label.text = ""
+	
 	return true
 
 #bid information & management-----------------
 func _set_bid(amount: int, face: int, bidder := "player") -> bool:
-	print( bidder+" bid is: "+str(amount) +" "+str(face)+"s")
 	last_quantity = amount
 	last_face = face
 	last_bidder = bidder
+	allbets_label.text = str(name_conversion[bidder])+" bid "+str(last_quantity)+" "+str(num_conversion[last_face])+"(s) \n" + allbets_label.text
 	if turn_pos == 0:
-		next_turn()
+		start_round()
 	return true
 
 func set_last_quantity(current) -> void: #note: potentially shift bids to a dictionary revolving around npcs
@@ -123,18 +176,19 @@ func set_last_face(current) -> void:
 
 func get_npc_bid():
 	#TODO: insert literally any npc betting logic here
+	#TODO: if they amount they should never call
 	var quantity : int = last_quantity
 	var face : int = last_face
 	
 	if face == 6 : # if it's already 6, incremener quantity a random amount.
-		quantity = quantity+randi_range(1,4)
+		quantity = quantity+randi_range(1,3)
 		return [quantity,face]
 	
 	if randi_range(1, 10) <= 5: # flip a coin and increment either quantity or face
-		quantity = last_quantity+1
+		quantity = last_quantity+randi_range(1,3)
 		return [quantity,face]
 	else:
-		face = last_face+1
+		face = last_face+randi_range(1,3)
 	return [quantity,face]
 
 #determining dice values --------
@@ -185,7 +239,42 @@ func declare_game_state():
 		var curr_prop = str(var_name) + " = " + str(var_value)
 		game_state_string = game_state_string + "\n" + curr_prop
 	return game_state_string
+
+func determine_bet_or_pass(npc,char_string) -> bool: #true means bid, false means call
+	if npc == 'player':
+		#await timer_start.emit()
+		gameactions_label.text = "Your decision. [shake][color=red]Call?[color=red][shake]"
+		playmat.set_buttons("CALL",true)
+		await get_tree().create_timer(3.0).timeout
+		if call_pressed == true:
+			return false
+		return true
 	
+	gameactions_label.text =  str(char_string)+"'s decision..."
+	await get_tree().create_timer(1.0).timeout
+	
+	var hand = results_dict[npc]
+	if last_quantity >= 20:
+		return false
+		#will call you if you max bet or higher
+	if last_quantity >= 10 and randi_range(1,10) >= 2:
+		return false
+		#if over 10, very likely to call you
+	if hand.filter( func(number): return number == last_face).size() >= last_quantity:
+		return true
+		# if you bid more of a face than they have in hand, they bid as you will always win challenge
+	if randi_range(1,100) <= 10:
+		return false
+		#random chance to call
+	return true
+
+func update_global_minimum() -> void:
+	Globals.last_quantity = last_quantity
+	Globals.last_face = last_face
+
+func set_call_pressed(press : bool):
+	call_pressed = press
+
 func resolve_challenge(chal :="player") -> bool: 
 	var round_result : String
 	
@@ -200,27 +289,27 @@ func resolve_challenge(chal :="player") -> bool:
 	else:
 		round_result = chal
 	
-	await get_tree().create_timer(6.0).timeout #wait some time then display all the information
-	
-	
 	var a = str(name_conversion[chal]) + " made the challenge.\n"
-	var b = str(name_conversion[last_bidder]) + "made the bid.\n"
-	var c = "Current bid is: " +str(last_quantity)+" "+dice_conversion_dict[last_face]+"\n"
-	var d = "There are currently "+ str(filtered_final_pool.size())+" "+dice_conversion_dict[last_face]+"\n \n"
+	var b = str(name_conversion[last_bidder]) + " made the bid.\n"
+	var c = "Current bid: " +str(last_quantity)+" "+num_conversion[last_face]+"(s)\n"
+	var d = "Pool has: "+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)\n \n"
 	var e = str(name_conversion[round_result])+" wins the challenge.\n"
+	if str(name_conversion[round_result]) ==  "You":
+		e = str(name_conversion[round_result])+" won the challenge.\n"
 	var f : String
 	
 	if round_result == last_bidder:
-		f = str(name_conversion[chal])+" will lose a dice. We keep it moving."
+		f = "[color=crimson]"+str(name_conversion[chal])+" will lose a dice.\nWe keep it moving.[color=crimson]"
 	else:
-		f =  str(name_conversion[last_bidder])+" will lose a dice. We keep it moving."
+		f =  "[color=crimson]"+str(name_conversion[last_bidder])+" will lose a dice.\nWe keep it moving. [color=crimson]"
 	
-	var conclusion = [a,b,c,d,e,f]
-	gameactions_label.text = "".join(conclusion)
+	var conclusion = [a,b,c,d,f]
+	gameactions_label.text = e
+	allbets_label.text = "".join(conclusion)
 	
-	await get_tree().create_timer(60.0).timeout #display all the information
+	await get_tree().create_timer(6.0).timeout #display all the information
 	
 	handsize_dict[round_result] = handsize_dict[round_result] - 1 #reduces the losing player's handsize by one hand sizes
 	
-	await end_round()
+	end_round()
 	return true
