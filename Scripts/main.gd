@@ -112,7 +112,7 @@ func fukcing_roll_hellllll_yeah() -> void:
 	cup.queue_free()
 	
 	var current_dice : Array[int] = await place_dice()
-	#pub_info.set_dice_value(current_dice)
+	pub_info.set_dice_value(current_dice)
 	
 	playmat.set_buttons(true)
 

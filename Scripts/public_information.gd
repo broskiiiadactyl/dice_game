@@ -29,7 +29,7 @@ var final_pool : Array = []
 var filtered_final_pool : Array = []
 
 func _ready() -> void:
-	bettingbot.lock_bet.connect(_set_player_bid)
+	bettingbot.lock_bet.connect(_set_bid)
 	pass
 
 #turn management-------------------
@@ -46,20 +46,12 @@ func end_round() -> void:
 		results_dict[x].clear()
 	last_quantity = 0
 	last_face = 0
+	turn_pos = 0
 	pass
 
-func set_dice_value( dice_value, target: = "player") -> void:
-	var target_dict = results_dict[target]
-	if !dice_value:
-		push_error("Error: set_dice was called in player_die but no value was passed through.")
-	if target_dict.size() >= handsize_dict[target]:
-		push_error("Error: Attempting to add values to a hand when the hand is full.")
-		return
-	target_dict.append(dice_value)
-
-#bid information -------------
-func _set_player_bid(amount: int, face: int, bidder := "player") -> void:
-	print("Player bid is: "+str(amount) +" "+str(face)+"s")
+#bid information -----------------
+func _set_bid(amount: int, face: int, bidder := "player") -> void:
+	print( bidder+" bid is: "+str(amount) +" "+str(face)+"s")
 	last_quantity = amount
 	last_face = face
 	last_bidder = bidder
@@ -71,24 +63,43 @@ func set_last_face(current) -> void:
 	last_face = current
 
 #determining dice values --------
+
+func set_dice_value( dice_value_array : Array, target: = "player") -> void:
+	var target_dict = results_dict[target]
+	if !dice_value_array:
+		push_error("Error: set_dice was called in player_die but no value was passed through.")
+	if target_dict.size() >= handsize_dict[target]:
+		push_error("Error: Attempting to add values to a hand when the hand is full.")
+		return
+	results_dict[target] = dice_value_array
+
 func set_npc_dice(npc) -> void:
 	if !npc:
-		push_error("Error: set_npc_dice was called but there was no paramater for npc variable.")
+		push_error("Error: set_npc_dice was called but there was no parameter for npc variable.")
+	var roll : int = 0
+	var curr_rolls := []
 	
-	var roll = 0
-	
-	results_dict[npc].clear() #clear the array, then generate a number for each dice they have left
-	for dice in range(handsize_dict[npc]):
+	for x in handsize_dict[npc]:
 		roll = randi_range(1,6)
-		set_dice_value(roll, npc)
+		curr_rolls.append(roll)
+	
+	set_dice_value(curr_rolls,npc)
 
 func get_player_value() -> void:
 	var dice_array = %"Player Dice".get_children()
+	
 	if dice_array == []:
 		push_error("Error: You tried to check the value of the player's dice but the dice haven't been rolled yet.")
+		return
+	
 	results_dict["player"].clear()
+	
+	var curr_roll : Array
 	for die in %"Player Dice".get_children():
-		set_dice_value(die.dice_value)
+		if die.visible == true:
+			curr_roll.append(die.dice_value)
+	
+	set_dice_value(curr_roll)
 
 
 #game functions ------------------
