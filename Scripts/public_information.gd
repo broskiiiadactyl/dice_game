@@ -1,6 +1,7 @@
 extends Node
 
 @onready var bettingbot : Node = %"Betting Bot"
+@onready var gameactions_label : Node = %"gameactions"
 @onready var main : Node = get_parent()
 @onready var last_quantity = Globals.last_quantity
 @onready var last_face = Globals.last_face
@@ -19,9 +20,11 @@ var handsize_dict = {
 	"npc3" : 5
 }
 
+#last_quantity, last_face are declared in on ready and are linked to the global property
 var last_bidder : String = "player"
 
 const turn_order = ["player", "npc1", "npc2", "npc3"]
+const char_name = ["Major","Slade","Boone","Vickie"]
 var turn_pos : int = 0
 var remaining_players : int = 4
 
@@ -34,9 +37,26 @@ func _ready() -> void:
 
 #turn management-------------------
 func start_round() -> void:
+	if results_dict["player" ] == []:
+		get_player_value()
 	for x in results_dict.keys(): #roll the dice for npcs
 		if results_dict[x] == []:
 			set_npc_dice(x)
+
+func resolve_call_phase():
+	pass
+
+func call_phase():
+	var char = char_name[turn_pos+1]
+	
+	gameactions_label.text = "[shake]"+str(char)+" is thinking...[shake]"
+	var random_time = randf_range(1.0, 3.0)
+	await get_tree().create_timer(random_time).timeout
+	if randi_range(1, 10) == 10:
+		gameactions_label.text = str(char)+" calls."
+	else:
+		var curr_bid : Array = get_npc_bid()
+		gameactions_label.text = str(char)+" bids "+str(curr_bid[0])+" "+str(curr_bid[1])+"s"
 
 func next_turn() -> void:
 	turn_pos + 1
@@ -49,12 +69,13 @@ func end_round() -> void:
 	turn_pos = 0
 	pass
 
-#bid information -----------------
+#bid information & management-----------------
 func _set_bid(amount: int, face: int, bidder := "player") -> void:
 	print( bidder+" bid is: "+str(amount) +" "+str(face)+"s")
 	last_quantity = amount
 	last_face = face
 	last_bidder = bidder
+	call_phase()
 
 func set_last_quantity(current) -> void: #note: potentially shift bids to a dictionary revolving around npcs
 	last_quantity = current
@@ -62,8 +83,23 @@ func set_last_quantity(current) -> void: #note: potentially shift bids to a dict
 func set_last_face(current) -> void:
 	last_face = current
 
-#determining dice values --------
+func get_npc_bid():
+	#TODO: insert literally any npc betting logic here
+	var quantity : int = last_quantity
+	var face : int = last_face
+	
+	if face == 6 : # if it's already 6, incremener quantity a random amount.
+		quantity = quantity+randi_range(1,4)
+		return [quantity,face]
+	
+	if randi_range(1, 10) <= 5: # flip a coin and increment either quantity or face
+		quantity = last_quantity+1
+		return [quantity,face]
+	else:
+		face = last_face+1
+	return [quantity,face]
 
+#determining dice values --------
 func set_dice_value( dice_value_array : Array, target: = "player") -> void:
 	var target_dict = results_dict[target]
 	if !dice_value_array:
@@ -127,3 +163,4 @@ func resolve_challenge(chal :="player") -> void:
 		round_result = chal
 	
 	handsize_dict[round_result] = handsize_dict[round_result] - 1 #reduces the losing player's handsize by one hand sizes
+	end_round()

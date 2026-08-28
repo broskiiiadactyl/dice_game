@@ -291,110 +291,133 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("8_trn2v")
 
-[node name="check_value" type="Button" parent="DebugControl" unique_id=454953032]
+[node name="gameactions" type="RichTextLabel" parent="DebugControl" unique_id=1147502476]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 917.0
+offset_top = 29.0
+offset_right = -65.0
+offset_bottom = -590.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Time to get rolling."
+
+[node name="debugfunctions" type="Control" parent="DebugControl" unique_id=38260393]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="check_value" type="Button" parent="DebugControl/debugfunctions" unique_id=454953032]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 78.0
-offset_right = -933.0
-offset_bottom = -535.0
+offset_right = 160.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Check Value of Dice"
 
-[node name="roll_npc1" type="Button" parent="DebugControl" unique_id=767057405]
+[node name="roll_npc1" type="Button" parent="DebugControl/debugfunctions" unique_id=767057405]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 131.0
-offset_right = -933.0
-offset_bottom = -482.0
+offset_right = 87.0
+offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Roll NPC 1"
 
-[node name="roll_npc2" type="Button" parent="DebugControl" unique_id=448154873]
+[node name="roll_npc2" type="Button" parent="DebugControl/debugfunctions" unique_id=448154873]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 241.0
-offset_right = -933.0
-offset_bottom = -372.0
+offset_right = 87.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Roll NPC 2"
 
-[node name="roll_npc3" type="Button" parent="DebugControl" unique_id=2069867015]
+[node name="roll_npc3" type="Button" parent="DebugControl/debugfunctions" unique_id=2069867015]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 184.0
-offset_right = -933.0
-offset_bottom = -429.0
+offset_right = 87.0
+offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Roll NPC 3"
 
-[node name="declare_gamestate" type="Button" parent="DebugControl" unique_id=336421051]
+[node name="declare_gamestate" type="Button" parent="DebugControl/debugfunctions" unique_id=336421051]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 568.0
-offset_right = -933.0
-offset_bottom = -45.0
+offset_right = 156.0
+offset_bottom = 559.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Declare Gamestate"
 
-[node name="start_round" type="Button" parent="DebugControl" unique_id=506863642]
+[node name="start_round" type="Button" parent="DebugControl/debugfunctions" unique_id=506863642]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 921.0
 offset_top = 568.0
-offset_right = -52.0
-offset_bottom = -45.0
+offset_right = 982.0
+offset_bottom = 568.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start Round"
 
-[node name="resolve_challenge" type="Button" parent="DebugControl" unique_id=556437698]
+[node name="resolve_challenge" type="Button" parent="DebugControl/debugfunctions" unique_id=556437698]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = 518.0
-offset_right = -933.0
-offset_bottom = -95.0
+offset_right = 148.0
+offset_bottom = 509.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Resolve Challenge"
 
-[node name="gameinformation" type="RichTextLabel" parent="DebugControl" unique_id=1468729910]
+[node name="gameinformation" type="RichTextLabel" parent="DebugControl/debugfunctions" unique_id=1468729910]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.573
 anchor_right = 1.0
 anchor_bottom = 0.799
-offset_left = -0.0960083
-offset_bottom = 0.24798584
+offset_left = 637.08
+offset_right = 637.176
+offset_bottom = 0.24798393
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="DebugControl/gameinformation" unique_id=1093324149]
+[node name="ColorRect" type="ColorRect" parent="DebugControl/debugfunctions/gameinformation" unique_id=1093324149]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

@@ -1,12 +1,12 @@
 extends Control
 
-@onready var chkval_btn : Button = $check_value
-@onready var roll_npc1 : Button = $roll_npc1
-@onready var roll_npc2 : Button = $roll_npc2
-@onready var roll_npc3 : Button = $roll_npc3
-@onready var declare_gamestate : Button = $declare_gamestate
-@onready var start_round : Button = $start_round
-@onready var resolve_challenge : Button = $resolve_challenge
+@onready var chkval_btn : Button = $debugfunctions/check_value
+@onready var roll_npc1 : Button = $debugfunctions/roll_npc1
+@onready var roll_npc2 : Button = $debugfunctions/roll_npc2
+@onready var roll_npc3 : Button = $debugfunctions/roll_npc3
+@onready var declare_gamestate : Button = $debugfunctions/declare_gamestate
+@onready var start_round : Button = $debugfunctions/start_round
+@onready var resolve_challenge : Button = $debugfunctions/resolve_challenge
 
 func _ready() -> void:
 	chkval_btn.pressed.connect(_check_value)
