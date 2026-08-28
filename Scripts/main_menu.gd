@@ -47,3 +47,6 @@ func move_camera(out: bool) -> bool:
 	tween.kill()
 
 	return true
+
+func _on_start_pressed() -> void:
+	Trans.load_scene()
