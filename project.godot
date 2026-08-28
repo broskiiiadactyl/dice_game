@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Brackeys Game Jam 2026.2 Trust No One"
 config/tags=PackedStringArray("game_jam")
-run/main_scene="uid://cp0jsy2mmjan0"
+run/main_scene="uid://c1i6r8xa4owfa"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
