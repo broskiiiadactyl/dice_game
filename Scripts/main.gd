@@ -125,7 +125,7 @@ func fukcing_roll_hellllll_yeah() -> bool:
 	var current_dice : Array[int] = await place_dice()
 	pub_info.set_dice_value(current_dice)
 	
-	playmat.set_buttons(true)
+	playmat.set_buttons("BOTH", true)
 	
 	return true
 
@@ -166,4 +166,4 @@ func playmat_button_pressed(type: String) -> void:
 			pass
 		"BET":
 			bot.enter()
-	playmat.set_buttons(false)
+	playmat.set_buttons("BOTH", false)
