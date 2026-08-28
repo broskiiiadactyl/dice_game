@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dg2veqx3k7fke" path="res://Assets/Environment/Scenes/hormse.tscn" id="14_sc1dx"]
 [ext_resource type="PackedScene" uid="uid://8f4jluqgb05v" path="res://Assets/Characters/npc2/npc2.tscn" id="15_sc1dx"]
 [ext_resource type="PackedScene" uid="uid://dm1ctmy8nhm35" path="res://Assets/Characters/npc3/npc3.tscn" id="16_kjvhd"]
+[ext_resource type="PackedScene" uid="uid://c1i6r8xa4owfa" path="res://Menuing/main_menu.tscn" id="18_kjvhd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -80,7 +81,6 @@ transform = Transform3D(0.37031996, 0, 0.9289042, 0, 1, 0, -0.9289042, 0, 0.3703
 [node name="Dice Spawner" parent="Player/Player Cup" unique_id=1254509806 instance=ExtResource("2_r0du0")]
 unique_name_in_owner = true
 transform = Transform3D(0.3703201, 0, -0.9289051, 0, 1, 0, 0.9289051, 0, 0.3703201, 0, 0.29696566, 0)
-spawn_scene = ExtResource("1_glv2v")
 use_random_rotation = true
 
 [node name="Cup Bounds" type="MeshInstance3D" parent="Player" unique_id=403640780]
@@ -96,6 +96,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1816437, 0.7985132, 6.7147
 [node name="Player Dice" type="Node3D" parent="Player" unique_id=1649676760]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37837076)
+
+[node name="d1" parent="Player/Player Dice" unique_id=1637512958 instance=ExtResource("1_glv2v")]
+unique_name_in_owner = true
+
+[node name="d2" parent="Player/Player Dice" unique_id=154029815 instance=ExtResource("1_glv2v")]
+unique_name_in_owner = true
+
+[node name="d3" parent="Player/Player Dice" unique_id=1622953155 instance=ExtResource("1_glv2v")]
+unique_name_in_owner = true
+
+[node name="d4" parent="Player/Player Dice" unique_id=1749174624 instance=ExtResource("1_glv2v")]
+unique_name_in_owner = true
+
+[node name="d5" parent="Player/Player Dice" unique_id=1262770941 instance=ExtResource("1_glv2v")]
+unique_name_in_owner = true
 
 [node name="Betting Bot" parent="Player" unique_id=1001129361 instance=ExtResource("11_20pc6")]
 unique_name_in_owner = true
@@ -394,5 +409,7 @@ color = Color(1, 1, 1, 0.08627451)
 [node name="PublicInformation" type="Node" parent="." unique_id=1716966828]
 unique_name_in_owner = true
 script = ExtResource("10_wkp8b")
+
+[node name="Main Menu" parent="." unique_id=240410558 instance=ExtResource("18_kjvhd")]
 
 [connection signal="timeout" from="Environment Flavor/Random Event" to="Environment Flavor" method="_on_random_event_timeout"]

@@ -40,6 +40,8 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Cup Collision" type="Area3D" parent="." unique_id=386505429]
+unique_name_in_owner = true
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cup Collision" unique_id=1273745342]
 unique_name_in_owner = true

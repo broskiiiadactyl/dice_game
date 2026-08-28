@@ -12,8 +12,11 @@ config_version=5
 
 config/name="Brackeys Game Jam 2026.2 Trust No One"
 config/tags=PackedStringArray("game_jam")
-run/main_scene="uid://c1i6r8xa4owfa"
+run/main_scene="uid://cp0jsy2mmjan0"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+run/max_fps=60
+boot_splash/bg_color=Color(0.7535482, 0.47037518, 0.75487894, 1)
+boot_splash/image="uid://sjdic6occchp"
 
 [autoload]
 

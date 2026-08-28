@@ -49,4 +49,5 @@ func move_camera(out: bool) -> bool:
 	return true
 
 func _on_start_pressed() -> void:
-	Trans.load_scene()
+	self.visible = false
+	self.process_mode = Node.PROCESS_MODE_DISABLED

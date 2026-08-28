@@ -37,6 +37,11 @@ func play_event(event: String) -> bool:
 	
 	return true
 
+func play_all_events() -> bool:
+	for event in events:
+		await play_event(event)
+	return true
+
 func pick_event() -> String:
 	return events[randi_range(0, events.size() - 1)]
 

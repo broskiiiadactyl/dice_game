@@ -36,6 +36,19 @@ func _ready() -> void:
 	boundB = cup_bounds.global_position.y - h
 	
 	Globals.playmat_button_pressed.connect(playmat_button_pressed)
+	
+	for die in player_dice.get_children():
+		die.visible = false
+	
+	#if not Globals.ran_test:
+		#is_holding = true
+		#await fukcing_roll_hellllll_yeah()
+		#%"Environment Flavor".play_all_events()
+		#Globals.ran_test = true
+		#get_tree().reload_current_scene()
+	#else:
+		#await  get_tree().create_timer(2.0).timeout
+		#Globals.main_loaded.emit()
 
 
 func _process(delta: float) -> void:
@@ -82,7 +95,7 @@ func shake_cup(delta: float) -> void:
 	time_passed += delta
 	cup.global_position.y = cup.global_position.y + sin(time_passed * shake_speed) * shake_height
 
-func fukcing_roll_hellllll_yeah() -> void:
+func fukcing_roll_hellllll_yeah() -> bool:
 	can_hold = false
 	cup.can_play_sound = false
 	var tween := get_tree().create_tween()
@@ -101,9 +114,7 @@ func fukcing_roll_hellllll_yeah() -> void:
 	tween.kill()
 	tween = get_tree().create_tween()
 	
-	spawner.spawn_objects(5)
-	for die in spawner.get_children():
-		die.reparent(player_dice)
+	spawner.spawn_objects()
 	
 	tween.tween_property(cup, "global_position", Vector3(cup.global_position.x, cup.global_position.y + 5.0, cup.global_position.z), 0.25)
 	
@@ -115,6 +126,8 @@ func fukcing_roll_hellllll_yeah() -> void:
 	pub_info.set_dice_value(current_dice)
 	
 	playmat.set_buttons(true)
+	
+	return true
 
 func place_dice() -> Array[int]:
 	var dice_array : Array[int] = []
