@@ -98,8 +98,10 @@ func set_dice_bet(dir: int) ->void:
 	face_label.texture = face_images[dice_bet - 1]
 
 func enter() -> void:
-	min_num_bet = Globals.last_quantity
-	min_face_bet = Globals.last_face
+	if Globals.last_quantity:
+		min_num_bet = Globals.last_quantity
+	if Globals.last_face:
+		min_face_bet = Globals.last_face
 	
 	set_num_bet(min_num_bet - 1)
 	set_dice_bet(min_face_bet - 1)
