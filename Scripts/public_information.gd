@@ -101,6 +101,8 @@ func call_phase(npc : String) -> bool:
 		if call_pressed == true:
 			challenger = 'player'
 		gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] calls.[shake]"
+		if str(name_conversion[challenger]) == 'You':
+			gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] called.[shake]"
 		await get_tree().create_timer(3.0).timeout
 		await resolve_challenge(challenger)
 	if decision == true:
