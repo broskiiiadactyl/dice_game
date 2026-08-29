@@ -19,7 +19,6 @@ func _ready() -> void:
 func expression_test() -> void:
 	while true:
 		for face in expressions:
-			print(face)
 			change_expression(face)
 			await get_tree().create_timer(2.0).timeout
 
@@ -30,7 +29,6 @@ func animation_test() -> void:
 			await player.animation_finished
 
 func change_expression(expression: String = "Neutral") ->void:
-	print(head_material.emission_texture, " ", expressions[expression])
 	head_material.emission_texture = expressions[expression]
 
 func play_animation(anim: String = "Idle") -> void:
