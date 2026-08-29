@@ -15,24 +15,27 @@ script = ExtResource("2_am3ba")
 [node name="GeneralSkeleton" parent="BlueGuy" parent_id_path=PackedInt32Array(1921091000) index="0" unique_id=1511177123]
 bones/0/position = Vector3(0, 0, 0.806776)
 bones/1/rotation = Quaternion(-4.9072746e-10, 0.70766795, 9.476868e-09, 0.7065452)
-bones/2/position = Vector3(3.1678937e-06, 0.98116285, -0.80677605)
-bones/3/rotation = Quaternion(-6.661337e-16, -9.313225e-09, 1, 5.773159e-15)
-bones/4/rotation = Quaternion(-1.0748996e-08, 1, -4.6564072e-10, 1.0839956e-07)
-bones/5/rotation = Quaternion(-6.585445e-09, 0.7071068, -0.7071067, 6.585445e-09)
-bones/6/rotation = Quaternion(-5.7951908e-08, 1, -1.19209275e-07, 3.6878486e-08)
-bones/7/rotation = Quaternion(-2.9309884e-14, -9.313225e-09, 1, -4.4408916e-16)
-bones/8/rotation = Quaternion(3.822462e-09, 1, -4.6566423e-10, 4.263428e-08)
-bones/9/rotation = Quaternion(2.6341784e-08, 0.70710677, -0.70710677, -2.6341784e-08)
-bones/10/rotation = Quaternion(-5.268356e-09, 1, 0, 2.6341784e-08)
-bones/11/rotation = Quaternion(1.8626451e-09, -2.88658e-14, 1.37667655e-14, 1)
-bones/12/rotation = Quaternion(-7.4505797e-09, 3.0198063e-14, 7.1054265e-15, 1)
-bones/13/rotation = Quaternion(0.49999994, 0.50000006, 0.49999994, -0.50000006)
-bones/14/rotation = Quaternion(2.9802319e-08, 1, 2.9802319e-08, 2.9802319e-08)
-bones/15/rotation = Quaternion(2.1073424e-08, -0.7071068, -2.1073424e-08, 0.7071067)
-bones/16/rotation = Quaternion(1.7813795e-08, 0.70710677, -2.4333055e-08, 0.70710677)
-bones/17/rotation = Quaternion(-7.4505815e-09, 5.7731604e-14, 0, 1)
-bones/25/rotation = Quaternion(-4.2146844e-08, 0.7071068, -4.2146844e-08, 0.7071067)
-bones/26/rotation = Quaternion(-2.6661361e-08, -0.70710677, -1.5485488e-08, 0.70710677)
+bones/2/position = Vector3(2.9460061e-06, 0.7251881, -0.80677605)
+bones/3/rotation = Quaternion(0.026890585, 0.50676304, 0.8603039, -0.04842903)
+bones/4/rotation = Quaternion(-0.054068178, 0.8811999, -0.46905285, 0.023511712)
+bones/5/rotation = Quaternion(-0.037319712, 0.7518809, -0.65719295, 0.037147038)
+bones/6/rotation = Quaternion(2.1642405e-05, 0.99999905, -0.0014118849, -4.6740846e-05)
+bones/7/rotation = Quaternion(-0.009720174, 0.5063706, 0.86149895, 0.03624793)
+bones/8/rotation = Quaternion(0.034508236, 0.8826316, -0.4618147, -0.08060968)
+bones/9/rotation = Quaternion(-0.06531408, 0.7498725, -0.652831, -0.08507038)
+bones/10/rotation = Quaternion(-0.00023035357, 0.99986887, 0.016185401, 0.00047868275)
+bones/11/rotation = Quaternion(0.011978965, -0.0016915201, 0.02198131, 0.9996852)
+bones/12/rotation = Quaternion(0.0051360526, 0.0056149582, 0.0046076206, 0.9999605)
+bones/13/rotation = Quaternion(0.4428801, 0.53578496, 0.58161235, -0.42251495)
+bones/14/rotation = Quaternion(0.014198899, 0.87849677, -0.47430763, 0.05544509)
+bones/15/rotation = Quaternion(0.077172615, -0.71894807, 0.096813515, 0.68394834)
+bones/16/rotation = Quaternion(0.011491954, 0.51450425, -0.08228853, 0.853453)
+bones/17/rotation = Quaternion(0.006598952, -0.0056120795, -0.01930607, 0.9997762)
+bones/18/rotation = Quaternion(0.006352708, -0.006646012, -0.019134056, 0.99977475)
+bones/23/rotation = Quaternion(0.48094618, -0.4682098, -0.5539211, -0.4925869)
+bones/24/rotation = Quaternion(-0.08832651, 0.8834208, -0.4597584, -0.019704094)
+bones/25/rotation = Quaternion(0.06617259, 0.7179563, -0.0830138, 0.68794525)
+bones/26/rotation = Quaternion(0.08365279, -0.54907984, 0.0011324735, 0.8315722)
 
 [node name="CyberWear" parent="BlueGuy/GeneralSkeleton" index="1" unique_id=1863372030]
 surface_material_override/1 = SubResource("StandardMaterial3D_p1f1a")
@@ -42,7 +45,8 @@ unique_name_in_owner = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlueGuy/GeneralSkeleton" index="8" unique_id=1526063569]
 unique_name_in_owner = true
-libraries/Slade = ExtResource("2_o24wk")
+libraries/ = ExtResource("2_o24wk")
+autoplay = &"Attention"
 
 [node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="BlueGuy/GeneralSkeleton" index="9" unique_id=89588157]
 setting_count = 1
@@ -77,7 +81,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionSphere3D" type="SpringBoneCollisionPlane3D" parent="BlueGuy/GeneralSkeleton/SpringBoneSimulator3D" index="0" unique_id=12225929]
-transform = Transform3D(1, -1.2440996e-13, -1.4795748e-14, 4.1744382e-14, 0.2195122, 0.9756097, -1.1812773e-13, -0.9756097, 0.2195122, 3.2406494e-06, 1.7433949, -0.110056445)
+transform = Transform3D(0.9998927, -0.0013245774, -0.014591501, 0.0144198015, 0.26538464, 0.96403474, 0.0025954219, -0.9641418, 0.2653753, -0.02696136, 1.4911197, -0.091338366)
 bone_name = "Neck"
 bone = 17
 position_offset = Vector3(0, 0.055, -0.065)

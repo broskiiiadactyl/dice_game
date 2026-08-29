@@ -9,12 +9,21 @@ var expressions : Dictionary = {
 	"Neutral" : load("res://Assets/Characters/npc3/faces/Vicki_Neutral_Expr.png")
 }
 
+var animations : Array = [
+	"Idle",
+	"Attention",
+	"OneHandTalk",
+	"TwoHandTalk",
+	"SmallTalk",
+	"TPose",
+	"Thinky"
+]
+
 @onready var player : AnimationPlayer = %AnimationPlayer
 @onready var head_material : Material = %Head_003.get_active_material(0)
 
 func _ready() -> void:
-	expression_test()
-	animation_test()
+	play_animation("Idle")
 
 func expression_test() -> void:
 	while true:

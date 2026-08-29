@@ -8,13 +8,23 @@ var expressions : Dictionary = {
 	"Neutral" : load("res://Assets/Characters/npc1/faces/Slade_Neutral_Expr.png")
 }
 
+var animations : Array = [
+	"Idle",
+	"Attention",
+	"OneHandTalk",
+	"TwoHandTalk",
+	"SmallTalk",
+	"TPose",
+	"Thinky",
+	"DiceShake"
+]
+
 @onready var player : AnimationPlayer = %AnimationPlayer
 @onready var head_material : Material = %Hair.get_active_material(1)
 
-
 func _ready() -> void:
-	expression_test()
-	animation_test()
+	print(player.get_animation_list())
+	play_animation("Idle")
 
 func expression_test() -> void:
 	while true:
