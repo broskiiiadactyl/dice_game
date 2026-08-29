@@ -62,7 +62,7 @@ var last_bidder : String = "player" #last_quantity, last_face are declared in on
 var challenger : String
 
 var turn_pos : int = 0
-var turn_order = ["player", "npc2"]
+var turn_order = ["player", "npc1, npc2", "npc3"]
 var char_name = ["Major","Slade","Boone","Vickie"]
 var removed_players : Array = []
 var remaining_players : int = 4
