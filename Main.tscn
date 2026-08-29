@@ -289,13 +289,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3656882, 0)
 unique_name_in_owner = true
 transform = Transform3D(0.7353007, 0, 1.3074145, 0, 1.5, 0, -1.3074145, 0, 0.7353007, -3.2208972, -1.028612, 4.2401414)
 
+[node name="talklabel" type="Label3D" parent="NPCs/Slade" unique_id=523230291]
+transform = Transform3D(0.9710299, 0, -0.23895606, 0, 1, 0, 0.23895606, 0, 0.9710299, -0.061270237, 2.0367172, 0.034458637)
+render_priority = 12
+outline_render_priority = 11
+modulate = Color(0.32941177, 0.57254905, 0.68235296, 1)
+text = "It's been awhile since I've been in port."
+font_size = 16
+
 [node name="Boone" parent="NPCs" unique_id=67537433 instance=ExtResource("15_sc1dx")]
 unique_name_in_owner = true
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -1.1311125, -0.8753438, 3.1974564)
 
+[node name="talklabel" type="Label3D" parent="NPCs/Boone" unique_id=971792871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.160432, 0)
+render_priority = 12
+outline_render_priority = 11
+modulate = Color(0.4392157, 0.35686275, 0.5058824, 1)
+text = "I'm a Jeff classic, a lovable facist."
+font_size = 24
+
 [node name="Vickie" parent="NPCs" unique_id=1544051158 instance=ExtResource("16_kjvhd")]
 unique_name_in_owner = true
 transform = Transform3D(0.89790165, 0, -1.2015709, 0, 1.5, 0, 1.2015709, 0, 0.89790165, 0.76740026, -1.0428612, 4.103572)
+
+[node name="talklabel" type="Label3D" parent="NPCs/Vickie" unique_id=627378029]
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0.09691048, 1.9946114, 0.18530047)
+render_priority = 12
+outline_render_priority = 11
+modulate = Color(0.5529412, 0.7647059, 0.30980393, 1)
+text = "I'm postive but in sort of a Gen Z way."
+font_size = 16
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
 unique_name_in_owner = true
