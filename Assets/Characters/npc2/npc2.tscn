@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://yv7j63utodp" path="res://Assets/Characters/npc2/raw/BaraWalrus_Jiggle_Final.glb" id="1_7rqmk"]
 [ext_resource type="AnimationLibrary" uid="uid://cgmpfe5415e0c" path="res://Assets/Characters/anims/Humanoid.res" id="2_2ouyl"]
+[ext_resource type="Script" uid="uid://c2yuwg1flhie8" path="res://Scripts/npc_2.gd" id="2_8kl11"]
 
 [node name="Boone" unique_id=341843254 instance=ExtResource("1_7rqmk")]
+script = ExtResource("2_8kl11")
 
 [node name="GeneralSkeleton" parent="BaraWalrus" parent_id_path=PackedInt32Array(1865015996) index="0" unique_id=172665513]
 bones/1/rotation = Quaternion(-4.9074e-10, 0.70766795, 9.476865e-09, 0.7065452)
@@ -30,6 +32,10 @@ bones/41/rotation = Quaternion(-0.08832651, 0.8834208, -0.4597584, -0.019704094)
 bones/42/rotation = Quaternion(0.06617259, 0.7179563, -0.0830138, 0.68794525)
 bones/43/rotation = Quaternion(0.08365279, -0.54907984, 0.0011324735, 0.8315722)
 
+[node name="Head_004" parent="BaraWalrus/GeneralSkeleton" index="3" unique_id=464782347]
+unique_name_in_owner = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BaraWalrus/GeneralSkeleton" index="5" unique_id=224365763]
+unique_name_in_owner = true
 libraries/Humanoid = ExtResource("2_2ouyl")
 autoplay = &"Humanoid/VickiIdle"

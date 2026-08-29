@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cep0mxrenihxm" path="res://Assets/Characters/npc1/raw/VampireDude_Jiggle_final.glb" id="1_ib8fc"]
 [ext_resource type="AnimationLibrary" uid="uid://cgmpfe5415e0c" path="res://Assets/Characters/anims/Humanoid.res" id="2_ga6ij"]
+[ext_resource type="Script" uid="uid://8o6h1gwy2npd" path="res://Scripts/npc_1.gd" id="2_rvyv4"]
 
 [node name="Slade" unique_id=2085745744 instance=ExtResource("1_ib8fc")]
+script = ExtResource("2_rvyv4")
 
 [node name="GeneralSkeleton" parent="BlueGuy" parent_id_path=PackedInt32Array(791869522) index="0" unique_id=326675514]
 bones/1/rotation = Quaternion(-4.9072746e-10, 0.70766795, 9.476868e-09, 0.7065452)
@@ -19,17 +21,21 @@ bones/20/rotation = Quaternion(-0.06531408, 0.7498725, -0.652831, -0.08507038)
 bones/21/rotation = Quaternion(-0.00023035357, 0.99986887, 0.016185401, 0.00047868275)
 bones/28/rotation = Quaternion(0.011978965, -0.0016915201, 0.02198131, 0.9996852)
 bones/29/rotation = Quaternion(0.0051360526, 0.0056149582, 0.0046076206, 0.9999605)
-bones/30/rotation = Quaternion(0.4428801, 0.535785, 0.5816123, -0.42251498)
+bones/30/rotation = Quaternion(0.4428801, 0.53578496, 0.58161235, -0.42251495)
 bones/31/rotation = Quaternion(0.014198899, 0.87849677, -0.47430763, 0.05544509)
-bones/32/rotation = Quaternion(0.07692716, -0.72029376, 0.09635345, 0.68262374)
-bones/33/rotation = Quaternion(0.0114920065, 0.5145042, -0.08228861, 0.85345304)
+bones/32/rotation = Quaternion(0.077172615, -0.71894807, 0.096813515, 0.68394834)
+bones/33/rotation = Quaternion(0.011491954, 0.51450425, -0.08228853, 0.853453)
 bones/34/rotation = Quaternion(0.006598952, -0.0056120795, -0.01930607, 0.9997762)
-bones/35/rotation = Quaternion(0.006352708, -0.0066460115, -0.01913406, 0.99977475)
+bones/35/rotation = Quaternion(0.006352708, -0.006646012, -0.019134056, 0.99977475)
 bones/40/rotation = Quaternion(0.48094618, -0.4682098, -0.5539211, -0.4925869)
 bones/41/rotation = Quaternion(-0.08832651, 0.8834208, -0.4597584, -0.019704094)
 bones/42/rotation = Quaternion(0.06617259, 0.7179563, -0.0830138, 0.68794525)
 bones/43/rotation = Quaternion(0.08365279, -0.54907984, 0.0011324735, 0.8315722)
 
+[node name="Hair" parent="BlueGuy/GeneralSkeleton" index="4" unique_id=1139947274]
+unique_name_in_owner = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlueGuy/GeneralSkeleton" index="7" unique_id=1974438366]
+unique_name_in_owner = true
 libraries/Humanoid = ExtResource("2_ga6ij")
 autoplay = &"Humanoid/VickiIdle"

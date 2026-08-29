@@ -26,6 +26,10 @@ Trans="*uid://bfqh5h6innog7"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/jigglebones/plugin.cfg")
+
 [global_group]
 
 visible=""
