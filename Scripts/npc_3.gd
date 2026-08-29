@@ -25,14 +25,17 @@ func expression_test() -> void:
 func animation_test() -> void:
 	while true:
 		for anim in player.get_animation_list():
-			player.play(anim)
-			await player.animation_finished
+			await play_animation(anim)
 
 func change_expression(expression: String = "Neutral") ->void:
 	head_material.emission_texture = expressions[expression]
 
-func play_animation(anim: String = "Idle") -> void:
+func play_animation(anim: String = "Idle") -> bool:
+	print(anim)
 	if player.has_animation(anim):
 		player.play(anim)
+		await player.animation_finished
 	else:
 		push_error("Invalid animation set to ", name, ": ", anim)
+	
+	return true
