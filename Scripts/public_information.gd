@@ -62,7 +62,7 @@ var last_bidder : String = "player" #last_quantity, last_face are declared in on
 var challenger : String
 
 var turn_pos : int = 0
-var turn_order = ["player", "npc1", "npc2", "npc3"]
+var turn_order = ["player", "npc2"]
 var char_name = ["Major","Slade","Boone","Vickie"]
 var removed_players : Array = []
 var remaining_players : int = 4
@@ -99,18 +99,16 @@ func bid_phase(npc) -> bool:
 	call_phase(npc)
 	return true
 
-func call_phase(npc : String) -> bool:
-	var decision = await decision_process(npc) #true is bid, false is call
+func call_phase(curr_character : String) -> bool:
+	var decision = await decision_process(curr_character) #true is bid, false is call
 	if decision == false:
 		if call_pressed == true:
 			challenger = 'player'
 		
 		gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] called.[shake]"
 		
-		if str(name_conversion[challenger]) != 'You':
-			await Dialogue.set_dialogue(npc+"_call")
-		
-		await get_tree().create_timer(3.0).timeout #TODO: remove this timer
+		if challenger != 'player':
+			await Dialogue.set_dialogue(challenger +"_call")
 		await resolve_challenge(challenger)
 		
 	if decision == true:
@@ -120,27 +118,25 @@ func call_phase(npc : String) -> bool:
 		next_turn()
 	return true
 
-func decision_process( npc ) -> bool:
+func decision_process( curr_character ) -> bool:
 	var determined_decision = true
 	for deciding_char in turn_order:
-		if deciding_char == npc:
+		if deciding_char == curr_character:
 			continue
-		determined_decision = await determine_bet_or_pass(deciding_char, name_conversion[deciding_char]) #true for bet, false for pass
+		determined_decision = await determine_call_or_pass(deciding_char, name_conversion[deciding_char]) #true for bet, false for pass
 		playmat.set_buttons("BOTH",false)
 		if determined_decision == false:
 			challenger = deciding_char
 			return false
 		gameactions_label.text = name_conversion[deciding_char] +" will [color=green]pass.[color=green]"
 		await Dialogue.set_dialogue(deciding_char+"_pass")
-		await get_tree().create_timer(0.5).timeout
 	return true
 
 func next_turn():
 	if turn_pos == 0:
 		call_phase(turn_order[turn_pos])
 		return
-	if turn_pos == 4:
-		
+	if turn_pos == turn_order.size():
 		start_player_turn()
 		return
 	bid_phase( turn_order[turn_pos] )
@@ -194,7 +190,6 @@ func get_npc_bid(npc) -> Array[int]:
 	var face : int = last_face
 	
 	if npc == "npc1" or npc == "npc3":
-		print("npc is : "+npc)
 		push_error("SLADE & VICKIE ALWAYS BID 20 REMOVE THIS")
 		return [20,face]
 	
@@ -277,9 +272,8 @@ func declare_game_state():
 		game_state_string = game_state_string + "\n" + curr_prop
 	return game_state_string
 
-func determine_bet_or_pass(npc,char_string) -> bool: #true means bid, false means call
-	if npc == 'player':
-		#await timer_start.emit()
+func determine_call_or_pass(deciding_char,char_string) -> bool: #true means bid, false means call
+	if deciding_char == 'player':
 		gameactions_label.text = "Your decision. [shake][color=red]Call?[color=red][shake]"
 		playmat.set_buttons("CALL",true)
 		await get_tree().create_timer(3.0).timeout
@@ -289,9 +283,9 @@ func determine_bet_or_pass(npc,char_string) -> bool: #true means bid, false mean
 		return true
 	
 	gameactions_label.text =  str(char_string)+"'s decision..."
-	await get_tree().create_timer(1.0).timeout
+	await Dialogue.set_dialogue(deciding_char + "_think")
 	
-	var hand = results_dict[npc]
+	var hand = results_dict[deciding_char]
 	if last_quantity >= 20:
 		return false
 		#will call you if you max bet or higher
