@@ -10,12 +10,10 @@ var expressions : Dictionary = {
 @onready var player : AnimationPlayer = %AnimationPlayer
 @onready var head_material : Material = %Head_004.get_active_material(0)
 
+
 func _ready() -> void:
 	expression_test()
-
-func change_expression(expression: String = "Neutral") ->void:
-	print(head_material.emission_texture, " ", expressions[expression])
-	head_material.emission_texture = expressions[expression]
+	animation_test()
 
 func expression_test() -> void:
 	while true:
@@ -23,6 +21,16 @@ func expression_test() -> void:
 			print(face)
 			change_expression(face)
 			await get_tree().create_timer(2.0).timeout
+
+func animation_test() -> void:
+	while true:
+		for anim in player.get_animation_list():
+			player.play(anim)
+			await player.animation_finished
+
+func change_expression(expression: String = "Neutral") ->void:
+	print(head_material.emission_texture, " ", expressions[expression])
+	head_material.emission_texture = expressions[expression]
 
 func play_animation(anim: String = "Idle") -> void:
 	if player.has_animation(anim):

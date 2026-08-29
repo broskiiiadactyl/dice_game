@@ -20,19 +20,19 @@ bones/18/rotation = Quaternion(-0.009720174, 0.5063706, 0.86149895, 0.03624793)
 bones/19/rotation = Quaternion(0.034508236, 0.8826316, -0.4618147, -0.08060968)
 bones/20/rotation = Quaternion(-0.06531408, 0.7498725, -0.652831, -0.08507038)
 bones/21/rotation = Quaternion(-0.00023035357, 0.99986887, 0.016185401, 0.00047868275)
-bones/28/rotation = Quaternion(0.011978971, -0.0016915201, 0.02198131, 0.9996852)
-bones/29/rotation = Quaternion(0.0051360526, 0.0056149582, 0.0046076206, 0.9999605)
-bones/30/rotation = Quaternion(0.4428801, 0.535785, 0.5816123, -0.42251498)
-bones/31/rotation = Quaternion(0.014198899, 0.87849677, -0.47430763, 0.05544509)
-bones/32/rotation = Quaternion(0.07692716, -0.72029376, 0.09635345, 0.68262374)
-bones/33/rotation = Quaternion(0.0114920065, 0.5145042, -0.08228861, 0.85345304)
-bones/34/rotation = Quaternion(0.006598952, -0.0056120795, -0.01930607, 0.9997762)
-bones/35/rotation = Quaternion(0.006352708, -0.006646012, -0.019134056, 0.99977475)
+bones/28/rotation = Quaternion(-0.02816186, -0.00073004625, -0.032684676, 0.9990686)
+bones/29/rotation = Quaternion(-0.05638984, -0.0014320423, -0.06411706, 0.99634695)
+bones/30/rotation = Quaternion(0.52161735, 0.46639752, 0.5621996, -0.44081783)
+bones/31/rotation = Quaternion(-0.12183683, 0.8827811, -0.44359228, -0.09528546)
+bones/32/rotation = Quaternion(0.2737663, -0.7077635, 0.28578332, 0.5851929)
+bones/33/rotation = Quaternion(0.0665019, 0.7709746, 0.047125734, 0.6316288)
+bones/34/rotation = Quaternion(0.06523397, -0.009208058, 0.03313846, 0.99727714)
+bones/35/rotation = Quaternion(0.052553292, -0.007019141, 0.029899055, 0.99814576)
 bones/44/rotation = Quaternion(-0.5183823, 0.13784337, 0.22021475, 0.81472975)
-bones/46/rotation = Quaternion(0.48094618, -0.4682098, -0.5539211, -0.4925869)
-bones/47/rotation = Quaternion(-0.08832651, 0.8834208, -0.4597584, -0.019704094)
-bones/48/rotation = Quaternion(0.06617259, 0.7179563, -0.0830138, 0.68794525)
-bones/49/rotation = Quaternion(0.08365277, -0.5490799, 0.0011324732, 0.8315721)
+bones/46/rotation = Quaternion(0.52867806, -0.46692824, -0.53934395, -0.45998442)
+bones/47/rotation = Quaternion(0.089911714, 0.86192936, -0.49628416, 0.051920086)
+bones/48/rotation = Quaternion(0.2324552, 0.7255923, -0.23646909, 0.6029616)
+bones/49/rotation = Quaternion(-0.004791057, -0.7875689, -0.014389616, 0.61604005)
 
 [node name="Head_003" parent="AlienLady/GeneralSkeleton" index="3" unique_id=580430188]
 unique_name_in_owner = true
@@ -43,7 +43,7 @@ root_node = NodePath("../../..")
 libraries/Humanoid = ExtResource("2_lq873")
 autoplay = &"Humanoid/VickiIdle"
 
-[node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="AlienLady/GeneralSkeleton" index="5" unique_id=341630102]
+[node name="L Ponytail" type="SpringBoneSimulator3D" parent="AlienLady/GeneralSkeleton" index="5" unique_id=341630102]
 setting_count = 1
 settings/0/root_bone_name = "L.PonyTailBase"
 settings/0/root_bone = 39
@@ -69,7 +69,7 @@ settings/0/joints/1/bone = 40
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="SpringBoneSimulator3D2" type="SpringBoneSimulator3D" parent="AlienLady/GeneralSkeleton" index="6" unique_id=1913224261]
+[node name="R Ponytail" type="SpringBoneSimulator3D" parent="AlienLady/GeneralSkeleton" index="6" unique_id=1913224261]
 setting_count = 1
 settings/0/root_bone_name = "R.PonyTailBase"
 settings/0/root_bone = 44
@@ -92,5 +92,63 @@ settings/0/joints/0/bone_name = "R.PonyTailBase"
 settings/0/joints/0/bone = 44
 settings/0/joints/1/bone_name = "R.PonyTailTail"
 settings/0/joints/1/bone = 45
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
+
+[node name="R Antenna" type="SpringBoneSimulator3D" parent="AlienLady/GeneralSkeleton" index="7" unique_id=1806437165]
+influence = 0.5
+setting_count = 1
+settings/0/root_bone_name = "L.AttennaBase"
+settings/0/root_bone = 36
+settings/0/end_bone_name = "L.AttennaEnd"
+settings/0/end_bone = 38
+settings/0/extend_end_bone = false
+settings/0/center_from = 0
+settings/0/individual_config = false
+settings/0/rotation_axis = 0
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 1.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.4
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.1
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "L.AttennaBase"
+settings/0/joints/0/bone = 36
+settings/0/joints/1/bone_name = "L.AnntenaMid"
+settings/0/joints/1/bone = 37
+settings/0/joints/2/bone_name = "L.AttennaEnd"
+settings/0/joints/2/bone = 38
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
+
+[node name="L Antenna" type="SpringBoneSimulator3D" parent="AlienLady/GeneralSkeleton" index="8" unique_id=1456955204]
+influence = 0.5
+setting_count = 1
+settings/0/root_bone_name = "R.AttennaBase"
+settings/0/root_bone = 41
+settings/0/end_bone_name = "R.AttennaEnd"
+settings/0/end_bone = 43
+settings/0/extend_end_bone = false
+settings/0/center_from = 0
+settings/0/individual_config = false
+settings/0/rotation_axis = 0
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 1.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.4
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.1
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "R.AttennaBase"
+settings/0/joints/0/bone = 41
+settings/0/joints/1/bone_name = "R.AnntenaMid"
+settings/0/joints/1/bone = 42
+settings/0/joints/2/bone_name = "R.AttennaEnd"
+settings/0/joints/2/bone = 43
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0

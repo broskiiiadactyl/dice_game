@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bw6n3uhb52tb4"]
+
+[ext_resource type="PackedScene" uid="uid://b4slcda3ik5hf" path="res://Assets/Environment/Raw/decorations/TheCount.glb" id="1_3jiyc"]
+[ext_resource type="Texture2D" uid="uid://b3xbfcfqv4yyw" path="res://Assets/Environment/Raw/decorations/TheCount_countface.png" id="2_kf53y"]
+[ext_resource type="Texture2D" uid="uid://bx7lyik6vdonm" path="res://Assets/Environment/Raw/decorations/TheCount_gradientorg.jpg" id="3_vcjjp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmxao"]
+resource_name = "CountFace"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(0.5729883, 0.5729883, 0.57298815, 1)
+emission_operator = 1
+emission_texture = ExtResource("2_kf53y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xl8td"]
+resource_name = "GradientMap"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(0.48178947, 0.48178947, 0.48178947, 1)
+emission_operator = 1
+emission_texture = ExtResource("3_vcjjp")
+
+[node name="TheCount" unique_id=1019167484 instance=ExtResource("1_3jiyc")]
+
+[node name="GeneralSkeleton" parent="DukeSkel" parent_id_path=PackedInt32Array(1897885951) index="0" unique_id=1594734070]
+bones/1/rotation = Quaternion(4.7380407e-08, 0.707668, -1.7297758e-08, 0.70654523)
+bones/2/position = Vector3(0.0014313526, 0.56780964, -0.6763358)
+bones/3/rotation = Quaternion(0.048326258, 0.5894966, 0.8055481, -0.035364907)
+bones/4/rotation = Quaternion(6.367619e-08, 0.79708064, -0.60387284, -1.9307468e-07)
+bones/7/rotation = Quaternion(-0.0413935, 0.58977926, 0.805934, 0.03029154)
+bones/8/rotation = Quaternion(3.5281545e-08, 0.7970807, -0.60387284, -4.1528633e-08)
+bones/11/rotation = Quaternion(0.30443597, -3.4195942e-08, -1.3034076e-08, 0.9525328)
+bones/12/rotation = Quaternion(0.34004155, -3.783378e-08, -1.3979584e-08, 0.94041044)
+bones/13/rotation = Quaternion(0.37450218, 0.6072045, 0.42311555, -0.5585912)
+bones/14/rotation = Quaternion(0.008097784, 0.99949694, 0.030664522, 2.9802326e-08)
+bones/15/rotation = Quaternion(-0.33405083, -0.5287609, 0.57378924, 0.5287608)
+bones/16/rotation = Quaternion(-0.11724353, 0.2983132, -0.21822347, 0.9217602)
+bones/18/rotation = Quaternion(7.959365e-08, 0.5568822, 0.14705907, 0.8174693)
+bones/19/rotation = Quaternion(0.096205294, -0.7491325, -0.232607, -0.61273086)
+bones/21/rotation = Quaternion(-0.28792706, 0.57987285, -0.49456364, 0.5798727)
+bones/22/rotation = Quaternion(-0.13534443, -0.21427417, 0.2519146, 0.93397415)
+
+[node name="Facetexbod" parent="DukeSkel/GeneralSkeleton" index="0" unique_id=1750831064]
+surface_material_override/0 = SubResource("StandardMaterial3D_tmxao")
+
+[node name="GradientBod" parent="DukeSkel/GeneralSkeleton" index="1" unique_id=1405305406]
+surface_material_override/0 = SubResource("StandardMaterial3D_xl8td")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=620287345]
+autoplay = &"CountDead"
