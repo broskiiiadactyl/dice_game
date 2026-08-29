@@ -16,7 +16,10 @@ var animations : Array = [
 	"SmallTalk",
 	"TPose",
 	"Thinky",
-	"DiceShake"
+	"Thinky2",
+	"DiceShake",
+	"Win",
+	"Lose"
 ]
 
 @onready var player : AnimationPlayer = %AnimationPlayer

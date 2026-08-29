@@ -302,7 +302,7 @@ transform = Transform3D(0.7353007, 0, 1.3074145, 0, 1.5, 0, -1.3074145, 0, 0.735
 
 [node name="Boone" parent="NPCs" unique_id=67537433 instance=ExtResource("15_sc1dx")]
 unique_name_in_owner = true
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -1.1311125, -0.8753438, 3.1974564)
+transform = Transform3D(1.599605, 0, 0.035554584, 0, 1.6, 0, -0.035554584, 0, 1.599605, -1.1824312, -0.8753438, 3.1974564)
 
 [node name="Vickie" parent="NPCs" unique_id=1544051158 instance=ExtResource("16_kjvhd")]
 unique_name_in_owner = true

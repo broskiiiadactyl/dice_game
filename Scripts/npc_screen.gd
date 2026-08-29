@@ -6,12 +6,6 @@ extends Node3D
 @onready var bet_display : Control = %Bet
 @onready var out_display : Control = %Out
 
-@onready var d1 : Control = %Dice
-@onready var d2 : Control = %Dice2
-@onready var d3 : Control = %Dice3
-@onready var d4 : Control = %Dice4
-@onready var d5 : Control = %Dice5
-
 var num_of_dice : int
 var is_calling : bool = false
 var is_passing : bool = false
