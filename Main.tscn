@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dm1ctmy8nhm35" path="res://Assets/Characters/npc3/npc3.tscn" id="16_kjvhd"]
 [ext_resource type="Script" uid="uid://sqmn7skwulc2" path="res://Scripts/DialogueText.gd" id="18_2gh4u"]
 [ext_resource type="PackedScene" uid="uid://bw6n3uhb52tb4" path="res://Assets/Environment/Scenes/the_count.tscn" id="18_kjvhd"]
+[ext_resource type="PackedScene" uid="uid://d1ktcn5b63rbp" path="res://Assets/Tables/Scenes/npc_screen.tscn" id="19_devvj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -386,6 +387,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("18_2gh4u")
 target_3d = NodePath("../../../Player/Player Camera/PlayerSpeech")
+
+[node name="NPC Screens" type="Node3D" parent="." unique_id=1196819540]
+unique_name_in_owner = true
+
+[node name="Boone Screen" parent="NPC Screens" unique_id=770958233 instance=ExtResource("19_devvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2016499, 0.884726, 4.0876393)
+
+[node name="Slade Screen" parent="NPC Screens" unique_id=1399675262 instance=ExtResource("19_devvj")]
+transform = Transform3D(0.54003537, 0, 0.84164226, 0, 1, 0, -0.84164226, 0, 0.54003537, -2.5135834, 0.884726, 4.753206)
+
+[node name="Vickie Screen" parent="NPC Screens" unique_id=1808290631 instance=ExtResource("19_devvj")]
+transform = Transform3D(0.5910525, 0, -0.8066332, 0, 1, 0, 0.8066332, 0, 0.5910525, 0.10759422, 0.8847259, 4.640665)
 
 [node name="DebugControl" type="Control" parent="." unique_id=1723807975]
 unique_name_in_owner = true
