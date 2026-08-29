@@ -17,9 +17,9 @@ var results_dict = {
 
 var handsize_dict = {
 	"player" : 5,
-	"npc1" : 5,
+	"npc1" : 1,
 	"npc2" : 5,
-	"npc3" : 5
+	"npc3" : 1
 }
 
 var bets_dict = {
@@ -61,9 +61,10 @@ const start_of_turn_phrases = [
 var last_bidder : String = "player" #last_quantity, last_face are declared in on ready and are linked to the global property
 var challenger : String
 
-const turn_order = ["player", "npc1", "npc2", "npc3"]
-const char_name = ["Major","Slade","Boone","Vickie"]
 var turn_pos : int = 0
+var turn_order = ["player", "npc1", "npc2", "npc3"]
+var char_name = ["Major","Slade","Boone","Vickie"]
+var removed_players : Array = []
 var remaining_players : int = 4
 
 var final_pool : Array = []
@@ -71,6 +72,7 @@ var filtered_final_pool : Array = []
 var call_pressed :bool = false
 
 signal timer_start
+signal player_removed
 
 func _ready() -> void:
 	bettingbot.lock_bet.connect(_set_bid)
@@ -81,6 +83,8 @@ func start_round() -> void:
 	if results_dict["player" ] == []:
 		get_player_value()
 	for x in results_dict.keys(): #roll the dice for npcs
+		if x == "player":
+			continue
 		set_npc_dice(x)
 	next_turn()
 
@@ -88,7 +92,7 @@ func bid_phase(npc) -> bool:
 	var char_string = name_conversion[npc]
 	gameactions_label.text = str(char_string)+"'s turn. [shake]Thinking...[shake]"
 	await get_tree().create_timer( randf_range(1.0,3.0)).timeout
-	var curr_bid : Array = get_npc_bid()
+	var curr_bid : Array = get_npc_bid(npc)
 	gameactions_label.text = str(char_string)+" bids." # allbets label is set in the set_bid function
 	_set_bid(curr_bid[0],curr_bid[1],npc)
 	await get_tree().create_timer(3.0).timeout
@@ -131,9 +135,10 @@ func next_turn():
 		call_phase(turn_order[turn_pos])
 		return
 	if turn_pos == 4:
+		
 		start_player_turn()
 		return
-	bid_phase(turn_order[turn_pos])
+	bid_phase( turn_order[turn_pos] )
 
 func start_player_turn():
 	if turn_pos == 4:
@@ -145,6 +150,7 @@ func start_player_turn():
 	update_global_minimum()
 
 func end_round() -> bool:
+	await remove_player()
 	turn_pos = 0
 	for x in results_dict.keys():
 		results_dict[x].clear()
@@ -178,19 +184,24 @@ func set_last_quantity(current) -> void: #note: potentially shift bids to a dict
 func set_last_face(current) -> void:
 	last_face = current
 
-func get_npc_bid() -> Array[int]:
-	#TODO: insert literally any npc betting logic here
-	#TODO: if they amount they should never call
+func get_npc_bid(npc) -> Array[int]:
 	var quantity : int = last_quantity
 	var face : int = last_face
 	
+	if npc == "npc1" or npc == "npc3":
+		print("npc is : "+npc)
+		push_error("SLADE & VICKIE ALWAYS BID 20 REMOVE THIS")
+		return [20,face]
+	
+	var hand = results_dict[npc]
+	#check if you have the current number of the current quantity is in your hand
+	# if yes, increment to that number
+	if hand.filter( func(number): return number == last_face).size() > last_quantity:
+		print('same quantity function')
+		return [hand.filter( func(number): return number == last_face) , face]
 	if face >= 6 : # if it's already 6, incremener quantity a random amount. [note from z: always use greater than to clamp an amount, otherwise overshoots can cause errors]
 		quantity = quantity+randi_range(1,3)
 		return [quantity,face]
-	
-	#TODO: note from z - recommendation for AI to check their own dice and match a number to that
-	#ex1: the current bet is 2x5s, slade has 4x5s, slade increases the bet amount to at least 4x5s
-	#ex2: the current bet is 4x3s, slade increases dice face to 4, slade has 2x4s, slade increases the bet amount to at least 2x4s 
 	if randi_range(1, 10) <= 5: # flip a coin and increment either quantity or face
 		quantity = last_quantity+randi_range(1,3)
 		return [quantity,face]
@@ -203,10 +214,12 @@ func get_npc_bid() -> Array[int]:
 #determining dice values --------
 func set_dice_value( dice_value_array : Array, target: = "player") -> void:
 	var target_dict = results_dict[target]
+	if handsize_dict[target] == 0: #target has no dice left
+		return
 	if !dice_value_array:
 		push_error("Error: set_dice was called in player_die but no value was passed through.")
 	if target_dict.size() >= handsize_dict[target]:
-		push_error("Error: Attempting to add values to a hand when the hand is full.")
+		push_error("Error: Attempting to add values to "+str(target)+" hand when the hand is full.")
 		return
 	results_dict[target] = dice_value_array
 
@@ -240,6 +253,16 @@ func get_player_value() -> void:
 
 
 #game functions ------------------
+
+func remove_player() -> bool:
+	for curr_player in turn_order:
+		if handsize_dict[curr_player] == 0:
+			turn_order.erase(curr_player)
+			gameactions_label.text = name_conversion[curr_player]+" has been removed from the game."
+			await get_tree().create_timer(3.0).timeout
+			player_removed.emit(char)
+	return true
+
 func declare_game_state():
 	var game_state_string = ""
 	for property_info in self.get_script().get_script_property_list():
@@ -295,7 +318,7 @@ func resolve_challenge(chal :="player") -> bool:
 		for val in results_dict[keys]:
 			final_pool.append(val)
 	filtered_final_pool = final_pool.filter( func(number): return number == last_face)
-	print(last_quantity, " ", filtered_final_pool.size())
+	
 	if last_quantity <= filtered_final_pool.size(): #if the last bid was equal to or less than the final pool
 		loser = chal
 		winner = last_bidder
@@ -304,15 +327,15 @@ func resolve_challenge(chal :="player") -> bool:
 		winner = chal
 	
 	var a = str(name_conversion[chal]) + " made the challenge.\n"
-	var b = str(name_conversion[last_bidder]) + " made the bid.\n"
-	var c = "Current bid: " +str(last_quantity)+" "+num_conversion[last_face]+"(s)\n"
-	var d = "Pool has: "+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)\n \n"
+	var b = str(name_conversion[last_bidder]) + " made the bid.\n \n"
+	var c = "Current bid: [color=green]" +str(last_quantity)+" "+num_conversion[last_face]+"(s)[/color]\n"
+	var d = "Pool has: [color=green]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n"
+	if winner == chal:
+		d = "Pool has: [color=red]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n"
 	var e = str(name_conversion[winner])+" wins the challenge.\n"
 	if str(name_conversion[winner]) ==  "You":
 		e = str(name_conversion[winner])+" won the challenge.\n"
 	var f : String
-	
-	f =  "[color=crimson]"+str(name_conversion[loser])+" will lose a dice.\nWe keep it moving. [color=crimson]"
 	
 	var conclusion = [a,b,c,d,f]
 	gameactions_label.text = e
@@ -320,8 +343,9 @@ func resolve_challenge(chal :="player") -> bool:
 	
 	await get_tree().create_timer(6.0).timeout #display all the information
 	
-	print(loser, " ", chal)
 	handsize_dict[loser] -= 1 #reduces the losing player's handsize by one hand sizes
+	gameactions_label.text = str(name_conversion[loser])+" loses a dice.\nThey have "+str(handsize_dict[loser])+" left."
+	await get_tree().create_timer(2.0).timeout #display all the information
 	
 	end_round()
 	return true
