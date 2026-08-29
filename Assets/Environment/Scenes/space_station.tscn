@@ -124,3 +124,7 @@ skeleton = NodePath("..")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_0mfle")
 speed_scale = 0.025
+
+[node name="Label3D" type="Label3D" parent="." index="20" unique_id=1696710362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2708281, 2.0960646, -0.115327835)
+text = "fdsakjgsdhjgbfjhvb"
