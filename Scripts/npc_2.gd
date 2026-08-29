@@ -44,6 +44,9 @@ func change_expression(expression: String = "Neutral") ->void:
 		head_material.emission_texture = expressions[expression]
 
 func play_animation(anim: String = "Idle") -> bool:
+	if anim == player.current_animation:
+		await player.animation_finished
+		return true
 	if player.has_animation(anim):
 		player.play(anim)
 		await player.animation_finished

@@ -141,6 +141,7 @@ func play_anim(dir: bool) -> bool:
 		while anim_player.is_playing():
 			await get_tree().create_timer(0.2).timeout
 		Globals.bot_left.emit()
+		print("emit")
 		return true
 	else:
 		anim_player.play("Move In")
