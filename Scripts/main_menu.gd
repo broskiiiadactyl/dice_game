@@ -51,3 +51,4 @@ func move_camera(out: bool) -> bool:
 
 func _on_start_pressed() -> void:
 	Trans.start_scene()
+	

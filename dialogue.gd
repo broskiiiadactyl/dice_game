@@ -18,15 +18,16 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 }
 
 func set_dialogue(event : String ):
+	var dialogue
 	
 	if dialogue_dict.has(event):
-		var dialogue = dialogue_dict[event]
+		dialogue = dialogue_dict[event]
 	else:
-		var dialogue = get_generic_dialogue(event)
+		dialogue = get_generic_dialogue(event)
 	
-	push_error('Globals is commented out.')
-	#Globals.speak(dialogue)
-	#await Globals.speak_finished
+	#push_error('Globals is commented out.')
+	Globals.speak.emit(dialogue)
+	await Globals.speak_finished
 	
 	return true
 

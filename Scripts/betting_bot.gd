@@ -138,7 +138,9 @@ func play_anim(dir: bool) -> bool:
 		anim_player.play("Move Out")
 		await play_sound(whir_sfx)
 		play_sound(whir_sfx)
-		
+		while anim_player.is_playing():
+			await get_tree().create_timer(0.2).timeout
+		Globals.bot_left.emit()
 		return true
 	else:
 		anim_player.play("Move In")

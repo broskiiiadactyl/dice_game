@@ -10,29 +10,26 @@ script = ExtResource("2_q4nmk")
 [node name="GeneralSkeleton" parent="AlienLady" parent_id_path=PackedInt32Array(1474039077) index="0" unique_id=1654824282]
 bones/0/position = Vector3(0, 0, 0.80552864)
 bones/1/rotation = Quaternion(-4.9073595e-10, 0.70766795, 9.476859e-09, 0.7065452)
-bones/2/rotation = Quaternion(-0.0033226134, 0.70765984, -0.003327922, 0.70653766)
-bones/7/position = Vector3(2.941466e-06, 0.72406685, -0.8055287)
-bones/8/rotation = Quaternion(0.026890585, 0.50676304, 0.8603039, -0.04842903)
-bones/9/rotation = Quaternion(-0.054068178, 0.8811999, -0.46905285, 0.023511712)
-bones/10/rotation = Quaternion(-0.037319712, 0.7518809, -0.65719295, 0.037147038)
-bones/11/rotation = Quaternion(2.1642405e-05, 0.99999905, -0.0014118849, -4.6740846e-05)
-bones/18/rotation = Quaternion(-0.009720174, 0.5063706, 0.86149895, 0.03624793)
-bones/19/rotation = Quaternion(0.034508236, 0.8826316, -0.4618147, -0.08060968)
-bones/20/rotation = Quaternion(-0.06531408, 0.7498725, -0.652831, -0.08507038)
-bones/21/rotation = Quaternion(-0.00023035357, 0.99986887, 0.016185401, 0.00047868275)
-bones/28/rotation = Quaternion(0.011978965, -0.0016915201, 0.02198131, 0.9996852)
-bones/29/rotation = Quaternion(0.0051360526, 0.0056149582, 0.0046076206, 0.9999605)
-bones/30/rotation = Quaternion(0.4428801, 0.535785, 0.5816123, -0.42251498)
-bones/31/rotation = Quaternion(0.014198899, 0.87849677, -0.47430763, 0.05544509)
-bones/32/rotation = Quaternion(0.07692716, -0.72029376, 0.09635345, 0.68262374)
-bones/33/rotation = Quaternion(0.0114920065, 0.5145042, -0.08228861, 0.85345304)
-bones/34/rotation = Quaternion(0.006598952, -0.0056120795, -0.01930607, 0.9997762)
-bones/35/rotation = Quaternion(0.006352708, -0.0066460115, -0.01913406, 0.99977475)
+bones/2/rotation = Quaternion(-0.003322677, 0.7076599, -0.0033279855, 0.7065376)
+bones/7/position = Vector3(3.1629825e-06, 0.97964585, -0.8055287)
+bones/8/rotation = Quaternion(-6.661337e-16, -9.313225e-09, 1, 5.773159e-15)
+bones/9/rotation = Quaternion(-1.0748996e-08, 1, -4.6564072e-10, 1.0839956e-07)
+bones/10/rotation = Quaternion(-6.585445e-09, 0.7071068, -0.7071067, 6.585445e-09)
+bones/11/rotation = Quaternion(-5.7951908e-08, 1, -1.19209275e-07, 3.6878486e-08)
+bones/18/rotation = Quaternion(-2.9309884e-14, -9.313225e-09, 1, -4.4408916e-16)
+bones/19/rotation = Quaternion(3.822462e-09, 1, -4.6566423e-10, 4.263428e-08)
+bones/20/rotation = Quaternion(2.6341784e-08, 0.70710677, -0.70710677, -2.6341784e-08)
+bones/21/rotation = Quaternion(-5.268356e-09, 1, 0, 2.6341784e-08)
+bones/28/rotation = Quaternion(1.8626451e-09, -2.88658e-14, 1.37667655e-14, 1)
+bones/29/rotation = Quaternion(-7.4505797e-09, 3.0198063e-14, 7.1054265e-15, 1)
+bones/30/rotation = Quaternion(0.49999994, 0.50000006, 0.49999994, -0.50000006)
+bones/31/rotation = Quaternion(2.9802319e-08, 1, 2.9802319e-08, 2.9802319e-08)
+bones/32/rotation = Quaternion(2.1073424e-08, -0.7071068, -2.1073424e-08, 0.7071067)
+bones/33/rotation = Quaternion(1.7813795e-08, 0.70710677, -2.4333055e-08, 0.70710677)
+bones/34/rotation = Quaternion(-7.4505815e-09, 5.7731604e-14, 0, 1)
 bones/44/rotation = Quaternion(-0.5183823, 0.13784337, 0.22021475, 0.81472975)
-bones/46/rotation = Quaternion(0.48094618, -0.4682098, -0.5539211, -0.4925869)
-bones/47/rotation = Quaternion(-0.08832651, 0.8834208, -0.4597584, -0.019704094)
-bones/48/rotation = Quaternion(0.06617259, 0.7179563, -0.0830138, 0.68794525)
-bones/49/rotation = Quaternion(0.08365279, -0.54907984, 0.0011324735, 0.8315722)
+bones/48/rotation = Quaternion(-4.2146844e-08, 0.7071068, -4.2146844e-08, 0.7071067)
+bones/49/rotation = Quaternion(-2.6661361e-08, -0.70710677, -1.5485488e-08, 0.70710677)
 
 [node name="Head_003" parent="AlienLady/GeneralSkeleton" index="3" unique_id=580430188]
 unique_name_in_owner = true
@@ -152,3 +149,12 @@ settings/0/joints/2/bone_name = "R.AttennaEnd"
 settings/0/joints/2/bone = 43
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="AlienLady/GeneralSkeleton" index="9" unique_id=1181476915]
+transform = Transform3D(1, -4.1744386e-14, 1.1812773e-13, 4.1744382e-14, 1, 2.6077032e-08, -1.1812773e-13, -2.6077032e-08, 1, 3.2799203e-06, 1.6982752, -0.031630054)
+bone_name = "Head"
+bone_idx = 35
+
+[node name="Speech" type="Marker3D" parent="AlienLady/GeneralSkeleton/BoneAttachment3D" index="0" unique_id=2137282340]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.8044375e-09, 3.7252903e-09, -5.2386895e-09, 1.0000001, 3.7252903e-09, 4.656613e-09, 0, 1.0000001, 0, 0.44457662, 1.1175871e-08)

@@ -37,10 +37,10 @@ func animation_test() -> void:
 			await play_animation(anim)
 
 func change_expression(expression: String = "Neutral") ->void:
-	head_material.emission_texture = expressions[expression]
+	if expressions.keys().has(expression):
+		head_material.emission_texture = expressions[expression]
 
 func play_animation(anim: String = "Idle") -> bool:
-	print(anim)
 	if player.has_animation(anim):
 		player.play(anim)
 		await player.animation_finished

@@ -50,7 +50,6 @@ func _ready() -> void:
 		Globals.main_loaded.emit()
 		get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
 
-
 func _process(delta: float) -> void:
 	if not can_hold:
 		is_holding = false

@@ -12,7 +12,7 @@ metallic_specular = 1.0
 [node name="Slade" unique_id=120622370 instance=ExtResource("1_ga6ij")]
 script = ExtResource("2_am3ba")
 
-[node name="GeneralSkeleton" parent="BlueGuy" parent_id_path=PackedInt32Array(1921091000) index="0" unique_id=1511177123]
+[node name="GeneralSkeleton" parent="BlueGuy" parent_id_path=PackedInt32Array(14877311) index="0" unique_id=793071140]
 bones/0/position = Vector3(0, 0, 0.806776)
 bones/1/rotation = Quaternion(-4.9072746e-10, 0.70766795, 9.476868e-09, 0.7065452)
 bones/2/position = Vector3(2.9460061e-06, 0.7251881, -0.80677605)
@@ -32,21 +32,24 @@ bones/15/rotation = Quaternion(0.077172615, -0.71894807, 0.096813515, 0.68394834
 bones/16/rotation = Quaternion(0.011491954, 0.51450425, -0.08228853, 0.853453)
 bones/17/rotation = Quaternion(0.006598952, -0.0056120795, -0.01930607, 0.9997762)
 bones/18/rotation = Quaternion(0.006352708, -0.006646012, -0.019134056, 0.99977475)
+bones/19/rotation = Quaternion(0.9847594, -0.13057102, -0.07436455, -0.087579735)
+bones/20/rotation = Quaternion(-0.31919566, 0.0034376923, 0.08437994, 0.94391865)
+bones/21/rotation = Quaternion(-0.03165351, -0.00051710557, -0.032616846, 0.9989665)
 bones/23/rotation = Quaternion(0.48094618, -0.4682098, -0.5539211, -0.4925869)
 bones/24/rotation = Quaternion(-0.08832651, 0.8834208, -0.4597584, -0.019704094)
 bones/25/rotation = Quaternion(0.06617259, 0.7179563, -0.0830138, 0.68794525)
 bones/26/rotation = Quaternion(0.08365279, -0.54907984, 0.0011324735, 0.8315722)
 
-[node name="CyberWear" parent="BlueGuy/GeneralSkeleton" index="1" unique_id=1863372030]
+[node name="CyberWear" parent="BlueGuy/GeneralSkeleton" index="1" unique_id=2139615483]
 surface_material_override/1 = SubResource("StandardMaterial3D_p1f1a")
 
-[node name="Hair" parent="BlueGuy/GeneralSkeleton" index="4" unique_id=855927063]
+[node name="Hair" parent="BlueGuy/GeneralSkeleton" index="4" unique_id=1310357411]
 unique_name_in_owner = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlueGuy/GeneralSkeleton" index="8" unique_id=1526063569]
 unique_name_in_owner = true
 libraries/ = ExtResource("2_o24wk")
-autoplay = &"Attention"
+autoplay = &"Idle"
 
 [node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="BlueGuy/GeneralSkeleton" index="9" unique_id=89588157]
 setting_count = 1
@@ -60,7 +63,7 @@ settings/0/end_bone/length = 0.0
 settings/0/center_from = 0
 settings/0/individual_config = false
 settings/0/rotation_axis = 3
-settings/0/radius/value = 0.085
+settings/0/radius/value = 0.065
 settings/0/radius/damping_curve = null
 settings/0/stiffness/value = 1.0
 settings/0/stiffness/damping_curve = null
@@ -86,3 +89,12 @@ bone_name = "Neck"
 bone = 17
 position_offset = Vector3(0, 0.055, -0.065)
 rotation_offset = Quaternion(-0.8, 0, 0, 1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="BlueGuy/GeneralSkeleton" index="10" unique_id=2112429421]
+transform = Transform3D(0.9996043, 0.02363163, -0.015260273, -0.024506057, 0.99790263, -0.059914578, 0.013812389, 0.060264833, 0.9980869, -0.027698245, 1.5279182, -0.011894653)
+bone_name = "Head"
+bone_idx = 18
+
+[node name="Speech" type="Marker3D" parent="BlueGuy/GeneralSkeleton/BoneAttachment3D" index="0" unique_id=1537238800]
+unique_name_in_owner = true
+transform = Transform3D(1, -2.0372681e-09, -9.313226e-10, 1.1641532e-10, 0.99999994, 3.7252903e-09, 9.313226e-10, 0, 0.99999994, -0.010503702, 0.4277172, -0.025680348)

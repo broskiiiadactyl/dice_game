@@ -15,6 +15,9 @@ var cup_dict : Dictionary = {
 
 signal playmat_button_pressed(type: String)
 signal main_loaded
+signal speak(args: Array[Array])
+signal speak_finished
+signal bot_left
 
 #public information variables that need to be declared
 var last_quantity : int = 0
