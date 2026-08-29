@@ -18,22 +18,23 @@ func _ready() -> void:
 func expression_test() -> void:
 	while true:
 		for face in expressions:
-			print(face)
 			change_expression(face)
 			await get_tree().create_timer(2.0).timeout
 
 func animation_test() -> void:
 	while true:
 		for anim in player.get_animation_list():
-			player.play(anim)
-			await player.animation_finished
+			await play_animation(anim)
 
 func change_expression(expression: String = "Neutral") ->void:
-	print(head_material.emission_texture, " ", expressions[expression])
 	head_material.emission_texture = expressions[expression]
 
-func play_animation(anim: String = "Idle") -> void:
+func play_animation(anim: String = "Idle") -> bool:
+	print(anim)
 	if player.has_animation(anim):
 		player.play(anim)
+		await player.animation_finished
 	else:
 		push_error("Invalid animation set to ", name, ": ", anim)
+	
+	return true

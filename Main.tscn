@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://c8cdqad2nskt7" path="res://Scripts/environment_flavor.gd" id="12_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://cb2ampu8408f4" path="res://Assets/Characters/npc1/npc1.tscn" id="13_sc1dx"]
 [ext_resource type="PackedScene" uid="uid://dg2veqx3k7fke" path="res://Assets/Environment/Scenes/hormse.tscn" id="14_sc1dx"]
-[ext_resource type="PackedScene" uid="uid://8f4jluqgb05v" path="res://Assets/Characters/npc2/npc2.tscn" id="15_sc1dx"]
+[ext_resource type="PackedScene" uid="uid://bl2k7hiultdme" path="res://Assets/Characters/npc2/npc2.tscn" id="15_sc1dx"]
 [ext_resource type="PackedScene" uid="uid://dm1ctmy8nhm35" path="res://Assets/Characters/npc3/npc3.tscn" id="16_kjvhd"]
 [ext_resource type="PackedScene" uid="uid://bw6n3uhb52tb4" path="res://Assets/Environment/Scenes/the_count.tscn" id="18_kjvhd"]
 
@@ -289,9 +289,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3656882, 0)
 unique_name_in_owner = true
 transform = Transform3D(0.7353007, 0, 1.3074145, 0, 1.5, 0, -1.3074145, 0, 0.7353007, -3.2208972, -1.028612, 4.2401414)
 
-[node name="Boone" parent="NPCs" unique_id=341843254 instance=ExtResource("15_sc1dx")]
+[node name="Boone" parent="NPCs" unique_id=67537433 instance=ExtResource("15_sc1dx")]
 unique_name_in_owner = true
-transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -1.1680741, -1.0595719, 2.9147313)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -1.1311125, -0.8753438, 3.1974564)
 
 [node name="Vickie" parent="NPCs" unique_id=1544051158 instance=ExtResource("16_kjvhd")]
 unique_name_in_owner = true
