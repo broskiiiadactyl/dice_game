@@ -1,0 +1,68 @@
+extends Node3D
+
+@onready var dice_display : Control = %"Dice Display"
+@onready var call_display : Control = %Call
+@onready var think_display : Control = %Think
+@onready var bet_display : Control = %Bet
+@onready var out_display : Control = %Out
+
+@onready var d1 : Control = %Dice
+@onready var d2 : Control = %Dice2
+@onready var d3 : Control = %Dice3
+@onready var d4 : Control = %Dice4
+@onready var d5 : Control = %Dice5
+
+var num_of_dice : int
+var is_calling : bool = false
+var is_passing : bool = false
+var is_out : bool = false
+
+@onready var faces : Array[CompressedTexture2D] = [
+	load("res://Assets/theme styling/die1.png"),
+	load("res://Assets/theme styling/die2.png"),
+	load("res://Assets/theme styling/die3.png"),
+	load("res://Assets/theme styling/die4.png"),
+	load("res://Assets/theme styling/die5.png"),
+	load("res://Assets/theme styling/die6.png")
+]
+
+#Call this function to update the scree
+#To simply update # of dice, pass any garbage string and the number of dice
+#To signal a bet, call AFTER setting Globals.last_quantity and Globals.last_face
+func update_screen(status : String, active: int = num_of_dice) -> bool:
+	match status:
+		"call":
+			await play_text(call_display)
+		"bet":
+			%"Bet Num".text = str(Globals.last_quantity)
+			%"Bet Face".texture = faces[Globals.last_face - 1]
+			await play_text(bet_display)
+		"think":
+			await play_text(think_display)
+		"out":
+			dice_display.visible = false
+			dice_display.visible = false
+			call_display.visible = false
+			think_display.visible = false
+			bet_display.visible = false
+			out_display.visible = true
+		_:
+			num_of_dice = active
+			for die in dice_display.get_children():
+				if int(die.name) > active:
+					die.modulate = Color(1.0, 1.0, 1.0, 0.255) 
+			dice_display.visible = true
+	
+	return true
+
+func play_text(display) -> bool:
+	dice_display.visible = false
+	
+	for i in range(3):
+		display.visible = true
+		await get_tree().create_timer(0.5).timeout
+		display.visible = false
+		await get_tree().create_timer(0.5).timeout
+	
+	dice_display.visible = true
+	return true

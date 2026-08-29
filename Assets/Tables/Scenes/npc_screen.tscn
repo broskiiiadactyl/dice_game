@@ -1,0 +1,318 @@
+[gd_scene format=3 uid="uid://d1ktcn5b63rbp"]
+
+[ext_resource type="Shader" uid="uid://dkl7lxissbswo" path="res://shaders/screen.gdshader" id="1_altt4"]
+[ext_resource type="Script" uid="uid://b25elttfn1rkx" path="res://Scripts/npc_screen.gd" id="1_skfwx"]
+[ext_resource type="Shader" uid="uid://bvs5cglo3p686" path="res://shaders/betting_bot.gdshader" id="2_skfwx"]
+[ext_resource type="Texture2D" uid="uid://bmiaf7uiydxe5" path="res://Assets/theme styling/arrow.png" id="3_n5a4o"]
+[ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="4_j8tl2"]
+[ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="5_epysf"]
+[ext_resource type="Texture2D" uid="uid://c1rearixmn8db" path="res://Assets/theme styling/check.png" id="6_0ne70"]
+[ext_resource type="Texture2D" uid="uid://c2i2vequt6gnj" path="res://Assets/theme styling/blank die.png" id="6_n5a4o"]
+[ext_resource type="Script" uid="uid://c7itxkrw5imwb" path="res://Scripts/check.gd" id="7_dlf51"]
+
+[sub_resource type="Gradient" id="Gradient_l4y4c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d2h50"]
+noise_type = 5
+frequency = 0.005
+offset = Vector3(209.9, -567.16, 0)
+fractal_type = 0
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_61cmi"]
+noise = SubResource("FastNoiseLite_d2h50")
+color_ramp = SubResource("Gradient_l4y4c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vafuu"]
+render_priority = 0
+shader = ExtResource("1_altt4")
+shader_parameter/albedo_texture = SubResource("NoiseTexture2D_61cmi")
+shader_parameter/albedo_alpha = 0.118000005605
+shader_parameter/tint_color = Color(1, 1, 1, 0)
+shader_parameter/edge_color = Color(0, 0.5294118, 0.99215686, 0)
+shader_parameter/edge_power = 0.0
+shader_parameter/edge_size = 0.10000000149012
+shader_parameter/edge_intensity = 0.0
+shader_parameter/scanline_tint = Color(0, 0.6509804, 0.6509804, 0.28235295)
+shader_parameter/scanline_intensity = 1.10800005263
+shader_parameter/scanline_density = 10.0
+shader_parameter/scanline_thickness = 1.93600008870012
+shader_parameter/scanline_spacing = 3.0110001192725
+shader_parameter/scanline_angle = 1.55600007391
+shader_parameter/scanline_speed = 4.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_skfwx"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvd3j"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vafuu")
+shader = ExtResource("2_skfwx")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_skfwx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_n5a4o"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_wvd3j")
+size = Vector2(0.75, 0.2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d2h50"]
+texture = ExtResource("3_n5a4o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4y4c"]
+texture = ExtResource("3_n5a4o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w65ms"]
+texture = ExtResource("3_n5a4o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7bltv"]
+texture = ExtResource("3_n5a4o")
+modulate_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+
+[sub_resource type="Theme" id="Theme_tcb4e"]
+default_font = ExtResource("4_j8tl2")
+Button/styles/disabled = SubResource("StyleBoxTexture_d2h50")
+Button/styles/focus = SubResource("StyleBoxTexture_l4y4c")
+Button/styles/hover = SubResource("StyleBoxTexture_w65ms")
+Button/styles/normal = SubResource("StyleBoxTexture_w65ms")
+Button/styles/pressed = SubResource("StyleBoxTexture_7bltv")
+RichTextLabel/font_sizes/normal_font_size = 24
+
+[sub_resource type="QuadMesh" id="QuadMesh_ksusg"]
+size = Vector2(50, -50)
+
+[node name="NPC Screen" type="Node3D" unique_id=770958233]
+script = ExtResource("1_skfwx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=157698978]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033675283, -1.7773331e-08)
+mesh = SubResource("QuadMesh_n5a4o")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1656461346]
+unique_name_in_owner = true
+size = Vector2i(300, 100)
+
+[node name="Bet UI" type="Control" parent="SubViewport" unique_id=1406229296]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_tcb4e")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Bet UI" unique_id=154168966]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.42107603, 0.6908165, 0.71385, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=1687691947]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -25.0
+offset_right = 81.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dice Display" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer" unique_id=753593329]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="1" type="TextureRect" parent="SubViewport/Bet UI/CenterContainer/Dice Display" unique_id=1597460784]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_n5a4o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="2" type="TextureRect" parent="SubViewport/Bet UI/CenterContainer/Dice Display" unique_id=421075987]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_n5a4o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="3" type="TextureRect" parent="SubViewport/Bet UI/CenterContainer/Dice Display" unique_id=730942124]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_n5a4o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="4" type="TextureRect" parent="SubViewport/Bet UI/CenterContainer/Dice Display" unique_id=821235803]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_n5a4o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="5" type="TextureRect" parent="SubViewport/Bet UI/CenterContainer/Dice Display" unique_id=148575557]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_n5a4o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dice Label" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/Dice Display" unique_id=898890002]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 34
+text = "x"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dice Label2" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/Dice Display" unique_id=2104600359]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 55
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Call" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer" unique_id=1043609367]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.77040774, 0.026358468, 9.62615e-08, 1)
+theme_override_font_sizes/normal_font_size = 55
+text = "CALL"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Think" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer" unique_id=176449392]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 55
+text = "THINKING"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Out" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer" unique_id=1974927653]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.21796364, 0.49957365, 0.49112064, 1)
+theme_override_font_sizes/normal_font_size = 55
+text = "OUT"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bet" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer" unique_id=558643689]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Bet label" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/Bet" unique_id=1033564778]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 55
+text = "Bet"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bet Num" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/Bet" unique_id=198207826]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 55
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bet Face" type="TextureRect" parent="SubViewport/Bet UI/CenterContainer/Bet" unique_id=1278366924]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_epysf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dice Label" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/Bet" unique_id=1003709369]
+visible = false
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 34
+text = "x"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=363311064]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Check" type="MeshInstance2D" parent="SubViewport/Bet UI/CenterContainer2" unique_id=2123502548]
+unique_name_in_owner = true
+position = Vector2(125, 125)
+scale = Vector2(2.4799995, 2.4799995)
+mesh = SubResource("QuadMesh_ksusg")
+texture = ExtResource("6_0ne70")
+script = ExtResource("7_dlf51")
