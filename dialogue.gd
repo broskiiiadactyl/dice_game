@@ -1,13 +1,46 @@
 extends Node
 
-var dialogue_dict = { #character, dialogue, time, expression, aniome
-	"key0" : [
-		["vickie" , "text" , 0.5, "sad", "idle"],
-		["boone" , "text" , 0.5, "sad", "idle"],
-		["slade" , "text" , 0.5, "sad", "idle"],
-	]
+var name_conversion_dict = {
+	"player" :"Major",
+	"npc1" : "Slade",
+	"npc2" : "Boone",
+	"npc3" : "Vickie"
+}
+var dialogue_dict = { #character, dialogue, time, expression, anim
+	#charactercall
+	"npc1_call" : [
+		["npc1" , "Alright. Call." , 0.5, "Nuetral", "idle"],
+	],
+	"npc2_calls" : [
+		["npc2" , "Why not? I'll call." , 0.5, "sad", "idle"],
+	],
+	"npc3_calls" : get_vickie_call()
 }
 
-func figure_out_the_dialogue():
-	pass #logic here
-	return dialogue_dict
+func set_dialogue(event : String ):
+	
+	if dialogue_dict.has(event):
+		var dialogue = dialogue_dict[event]
+	else:
+		var dialogue = get_generic_dialogue(event)
+	
+	push_error('Globals is commented out.')
+	#Globals.speak(dialogue)
+	#await Globals.speak_finished
+	
+	return true
+
+func get_generic_dialogue(event : String) -> Array:
+	
+	if event.contains('pass'): #handles passes
+		return [ [event.split("_")[0] , "Pass" , 0.5, "Nuetral", "idle"] ]
+	
+	return []
+
+func get_vickie_call(): #TODO: Randomize the Vickie Calls
+	var words : String = "Call"
+	var time : float = 0.0
+	var exp : String = "Nuetral"
+	var anim : String = "Idle"
+	
+	return ["npc3", words, time, exp, anim ]

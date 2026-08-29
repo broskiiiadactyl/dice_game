@@ -104,11 +104,15 @@ func call_phase(npc : String) -> bool:
 	if decision == false:
 		if call_pressed == true:
 			challenger = 'player'
-		gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] calls.[shake]"
-		if str(name_conversion[challenger]) == 'You':
-			gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] called.[shake]"
-		await get_tree().create_timer(3.0).timeout
+		
+		gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] called.[shake]"
+		
+		if str(name_conversion[challenger]) != 'You':
+			await Dialogue.set_dialogue(npc+"_call")
+		
+		await get_tree().create_timer(3.0).timeout #TODO: remove this timer
 		await resolve_challenge(challenger)
+		
 	if decision == true:
 		gameactions_label.text = "No one calls.\n"+sinister_phrases[randi_range(0,sinister_phrases.size()-1)]
 		await get_tree().create_timer(2.0).timeout
@@ -127,6 +131,7 @@ func decision_process( npc ) -> bool:
 			challenger = deciding_char
 			return false
 		gameactions_label.text = name_conversion[deciding_char] +" will [color=green]pass.[color=green]"
+		await Dialogue.set_dialogue(deciding_char+"_pass")
 		await get_tree().create_timer(0.5).timeout
 	return true
 
