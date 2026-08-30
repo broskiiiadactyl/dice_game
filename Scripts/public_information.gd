@@ -18,9 +18,9 @@ var results_dict = {
 
 var handsize_dict = {
 	"player" : 5,
-	"npc1" : 1,
+	"npc1" : 5,
 	"npc2" : 5,
-	"npc3" : 1
+	"npc3" : 5
 }
 
 var bets_dict = {
@@ -199,10 +199,6 @@ func set_last_face(current) -> void:
 func get_npc_bid(npc) -> Array[int]:
 	var quantity : int = last_quantity
 	var face : int = last_face
-	
-	if npc == "npc1" or npc == "npc3":
-		push_error("SLADE & VICKIE ALWAYS BID 20 REMOVE THIS")
-		return [20,face]
 	
 	var hand = results_dict[npc]
 	#check if you have the current number of the current quantity is in your hand
