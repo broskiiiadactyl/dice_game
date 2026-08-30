@@ -6,11 +6,13 @@
 [ext_resource type="Shader" uid="uid://dkl7lxissbswo" path="res://shaders/screen.gdshader" id="3_vafuu"]
 [ext_resource type="Texture2D" uid="uid://bmiaf7uiydxe5" path="res://Assets/theme styling/arrow.png" id="5_cxaav"]
 [ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="5_vafuu"]
+[ext_resource type="Texture2D" uid="uid://ekaddwua1rag" path="res://Assets/theme styling/cross.png" id="7_3yte4"]
 [ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="7_61cmi"]
 [ext_resource type="AudioStream" uid="uid://cb3rs0sgvw0lc" path="res://Assets/Sounds/button_press.mp3" id="8_d2h50"]
 [ext_resource type="Texture2D" uid="uid://c1rearixmn8db" path="res://Assets/theme styling/check.png" id="8_w65ms"]
 [ext_resource type="Script" uid="uid://c7itxkrw5imwb" path="res://Scripts/check.gd" id="9_7bltv"]
 [ext_resource type="AudioStream" uid="uid://b3d2ev8ye5836" path="res://Assets/Sounds/chrisiex1-correct-156911.mp3" id="9_l4y4c"]
+[ext_resource type="AudioStream" uid="uid://bqm3p3td6mgu5" path="res://Assets/Sounds/wrong.wav" id="13_onv1a"]
 
 [sub_resource type="Gradient" id="Gradient_l4y4c"]
 
@@ -420,6 +422,25 @@ mesh = SubResource("QuadMesh_lqb7u")
 texture = ExtResource("8_w65ms")
 script = ExtResource("9_7bltv")
 
+[node name="CenterContainer3" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=2080096618]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Cross" type="MeshInstance2D" parent="SubViewport/Bet UI/CenterContainer3" unique_id=1189353045]
+unique_name_in_owner = true
+modulate = Color(0.6838794, 0.21794674, 0.2392107, 1)
+position = Vector2(125, 125)
+scale = Vector2(2, 2)
+mesh = SubResource("QuadMesh_lqb7u")
+texture = ExtResource("7_3yte4")
+
 [node name="Area3D" type="Area3D" parent="." unique_id=790211032]
 process_mode = 4
 
@@ -451,6 +472,12 @@ max_polyphony = 2
 unique_name_in_owner = true
 stream = ExtResource("9_l4y4c")
 volume_db = -25.0
+max_db = 0.0
+max_polyphony = 2
+
+[node name="WRONG" type="AudioStreamPlayer3D" parent="." unique_id=1101093632]
+unique_name_in_owner = true
+stream = ExtResource("13_onv1a")
 max_db = 0.0
 max_polyphony = 2
 
