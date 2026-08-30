@@ -93,8 +93,8 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc3" , "I think you're being honest!" , 3.0 , "Nuetral", "Idle"],
 	],
 	"0" : [
-		["npc2", "Major! You made it!", 2.0, "Nuetral", "Idle"],
-		["npc3", "Not major for long...", 0.5, "Nuetral", "Idle"],
+		["npc2", "Commander! You made it!", 2.0, "Nuetral", "Idle"],
+		["npc3", "Not Commander for long...", 0.5, "Nuetral", "Idle"],
 		["npc2", "I'm so glad you could join us here for a round of Liar's Dice!", 3.0, "Nuetral", "Idle"],
 		["npc1", "Well... Imperial Dice.", 1.0, "Nuetral", "Idle"],
 		["npc1", "The rules are wrong.", 2.0, "Nuetral", "Idle"],
@@ -106,6 +106,22 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc2", "Yes, well. Let's get to it shall we?", 3.0, "Nuetral", "Idle"],
 		["npc3", "Liar's dice, woohoo!", 1.0, "Nuetral", "Idle"]
 	],
+	"win" : [
+		["npc1", "Damn.", 1.0, "Neutral", "Idle"],
+		["npc3", "Beginner's luck", 0.5, "Angry", "Idle"],
+		["npc2", "Never comes down to luck with the commander.", 3.0, "Neutral", "Idle"],
+		["npc1", "Classic.", 1.0, "Neutral", "Idle"],
+		["npc2", "It makes what comes next...", 3.0, "Neutral", "Idle"],
+		["npc2", "All the harder.", 3.0, "Neutral", "Idle"],
+		["npc3", "", 0.5, "Sad", "Idle"],
+		["npc1", "I tried to fight this.", 3.0, "Neutral", "Idle"],
+		["npc1", "But it's the right call", 3.0, "Neutral", "Idle"],
+		["npc2", "The Empite thanks you for your past service.", 3.0, "Neutral", "Idle"],
+		["npc2", "Goodbye, Commander.", 3.0, "Neutral", "Idle"]
+	],
+	"lose" : [
+		["npc1", "You lose.", 1.0, "Neutral", "Idle"],
+	]
 }
 
 var round_key = 0
