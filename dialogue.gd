@@ -64,7 +64,7 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 	],
 	"npc1_out" : [
 		["npc1" , "I'm out?" , 2.0 , "Nuetral", "Idle"],
-		["npc1" , "I'm out? genuinely can't believe it." , 2.0 , "Nuetral", "Idle"],
+		["npc1" , "I'm out. Genuinely can't believe it." , 2.0 , "Nuetral", "Idle"],
 	],
 	"npc2_out" : [
 		["npc2" , "Ah, well. It was a wonderful time regardless." , 3.0 , "Nuetral", "Idle"],

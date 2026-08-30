@@ -165,10 +165,6 @@ func end_round() -> bool:
 	
 	gameactions_label.text = start_of_turn_phrases[randi_range(0, start_of_turn_phrases.size()-1)]
 	
-	var round_key = Dialogue.increment_round_key()
-	if Dialogue.check_for_cutscene(round_key):
-		Dialogue.set_dialogue(round_key)
-	
 	if turn_order.size() == 1:
 		end_game()
 		return true
@@ -267,11 +263,13 @@ func get_player_value() -> void:
 #game functions ------------------
 
 func remove_player() -> bool:
+	print('Got here')
 	for curr_character in turn_order:
+		print("Curr_character @ remove_player is: ",curr_character)
 		if handsize_dict[curr_character] == 0:
 			if curr_character == 'player':
 				end_game()
-			return true
+				return true
 			turn_order.erase(curr_character)
 			gameactions_label.text = name_conversion[curr_character]+" has been removed from the game."
 			await Dialogue.set_dialogue(curr_character+"_out")
