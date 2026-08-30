@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cvbyyxdcsjr6a" path="res://Assets/Characters/npc1/raw/VampireDude_Final_8-28_2.0.glb" id="1_ga6ij"]
 [ext_resource type="Script" uid="uid://8o6h1gwy2npd" path="res://Scripts/npc_1.gd" id="2_am3ba"]
 [ext_resource type="AnimationLibrary" uid="uid://b3mx8lhgvi4fy" path="res://Assets/Characters/anims/Slade/Slade.res" id="2_o24wk"]
+[ext_resource type="PackedScene" uid="uid://csg58rci4kusb" path="res://Assets/Cups/Scenes/slade_cup.tscn" id="4_bx1vw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1f1a"]
 transparency = 1
@@ -16,29 +17,29 @@ script = ExtResource("2_am3ba")
 bones/0/position = Vector3(0, 0, 0.806776)
 bones/1/rotation = Quaternion(1.915133e-09, 0.7076679, -5.624456e-08, 0.70654523)
 bones/2/position = Vector3(2.9460061e-06, 0.7251881, -0.80677605)
-bones/3/rotation = Quaternion(5.717648e-14, -4.2351643e-21, 1, 8.881783e-15)
-bones/4/rotation = Quaternion(-3.7269245e-09, 1, 7.450587e-09, 1.2646777e-07)
-bones/5/rotation = Quaternion(-3.9512673e-09, 0.7071068, -0.7071068, 3.9512673e-09)
-bones/6/rotation = Quaternion(-3.6878497e-08, 1, -5.960465e-08, 1.580507e-08)
-bones/7/rotation = Quaternion(7.77156e-16, -4.2351643e-21, 1, 2.4868992e-14)
-bones/8/rotation = Quaternion(2.9962057e-09, 1, 1.8626392e-09, -2.4138615e-08)
-bones/9/rotation = Quaternion(-1.18538015e-08, 0.7071068, -0.7071068, 1.18538015e-08)
-bones/10/rotation = Quaternion(-4.2146848e-08, 1, 1.1920929e-07, 4.2146848e-08)
-bones/11/rotation = Quaternion(0.011978948, -0.0016915144, 0.021981316, 0.99968517)
-bones/12/rotation = Quaternion(0.005136066, 0.0055200867, 0.0047208746, 0.9999605)
-bones/13/rotation = Quaternion(0.44094884, 0.53333336, 0.5835437, -0.42496634)
-bones/14/rotation = Quaternion(0.011408299, 0.87849677, -0.47430757, 0.056085788)
-bones/15/rotation = Quaternion(0.07561309, -0.72772706, 0.0938824, 0.67519045)
-bones/16/rotation = Quaternion(0.009073332, 0.51465136, -0.08319137, 0.8533059)
-bones/17/rotation = Quaternion(0.048358288, -0.0034699694, 0.008608186, 0.998787)
-bones/18/rotation = Quaternion(0.04827548, -0.0036385031, 0.008929939, 0.9987875)
-bones/19/rotation = Quaternion(0.90612036, 0.057502564, 0.03274957, -0.41781196)
-bones/20/rotation = Quaternion(-0.041617475, 0.0023191075, 0.056922715, 0.9975081)
-bones/21/rotation = Quaternion(-0.012995083, 0.0005436046, 0.034289278, 0.9993273)
-bones/23/rotation = Quaternion(0.48139307, -0.46694574, -0.55347425, -0.4938509)
+bones/3/rotation = Quaternion(0.025556266, 0.5067631, 0.8603039, -0.049146134)
+bones/4/rotation = Quaternion(-0.05444219, 0.88119996, -0.46905303, 0.022630675)
+bones/5/rotation = Quaternion(-0.041148316, 0.75211656, -0.65695727, 0.032167245)
+bones/6/rotation = Quaternion(3.4223245e-05, 0.99999905, -0.0014081899, -0.00011093053)
+bones/7/rotation = Quaternion(-0.008725417, 0.50637066, 0.86149895, 0.03650025)
+bones/8/rotation = Quaternion(0.0358123, 0.8826316, -0.4618148, -0.0800387)
+bones/9/rotation = Quaternion(-0.054476425, 0.74937826, -0.65332526, -0.092901215)
+bones/10/rotation = Quaternion(-0.0001172947, 0.999869, 0.016191455, -0.00027363843)
+bones/11/rotation = Quaternion(0.011978948, -0.0016915145, 0.021981314, 0.99968517)
+bones/12/rotation = Quaternion(0.005136051, 0.0055200877, 0.0047208737, 0.9999605)
+bones/13/rotation = Quaternion(0.44094884, 0.53333336, 0.5835437, -0.42496637)
+bones/14/rotation = Quaternion(0.011408359, 0.8784967, -0.4743076, 0.056085803)
+bones/15/rotation = Quaternion(0.07561304, -0.72772706, 0.09388238, 0.67519045)
+bones/16/rotation = Quaternion(0.009073315, 0.5146514, -0.08319138, 0.8533059)
+bones/17/rotation = Quaternion(0.0065989434, -0.005612075, -0.01930607, 0.9997761)
+bones/18/rotation = Quaternion(0.006352721, -0.0066460157, -0.019134058, 0.99977475)
+bones/19/rotation = Quaternion(0.96237844, -0.19396056, -0.11046712, 0.15493262)
+bones/20/rotation = Quaternion(-0.15024881, 0.00067621766, 0.016597968, 0.9885087)
+bones/21/rotation = Quaternion(0.12162853, -0.0015417744, -0.09724898, 0.987799)
+bones/23/rotation = Quaternion(0.48139304, -0.46694583, -0.55347425, -0.49385095)
 bones/24/rotation = Quaternion(-0.087230384, 0.8834209, -0.45975855, -0.024096318)
-bones/25/rotation = Quaternion(0.065158755, 0.72436017, -0.080981776, 0.6815414)
-bones/26/rotation = Quaternion(0.08185247, -0.5485592, 0.0021283557, 0.8320928)
+bones/25/rotation = Quaternion(0.06515876, 0.7243603, -0.080981694, 0.6815414)
+bones/26/rotation = Quaternion(0.08185244, -0.5485592, 0.0021283668, 0.8320928)
 
 [node name="CyberWear" parent="BlueGuy/GeneralSkeleton" index="1" unique_id=2139615483]
 surface_material_override/1 = SubResource("StandardMaterial3D_p1f1a")
@@ -84,17 +85,29 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionSphere3D" type="SpringBoneCollisionPlane3D" parent="BlueGuy/GeneralSkeleton/SpringBoneSimulator3D" index="0" unique_id=12225929]
-transform = Transform3D(0.9975313, -0.022836067, -0.066407576, 0.07020863, 0.3442875, 0.9362354, 0.001483364, -0.9385865, 0.34504086, -0.030699868, 1.4959768, -0.08627145)
+transform = Transform3D(0.999889, -0.0011942699, -0.014856479, 0.014640658, 0.26539388, 0.9640289, 0.0027915044, -0.9641393, 0.26538187, -0.027035562, 1.4911162, -0.09133817)
 bone_name = "Neck"
 bone = 17
 position_offset = Vector3(0, 0.055, -0.065)
 rotation_offset = Quaternion(-0.8, 0, 0, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="BlueGuy/GeneralSkeleton" index="10" unique_id=2112429421]
-transform = Transform3D(0.99618787, -0.0868666, 0.008011224, 0.08642972, 0.9703672, -0.22564882, 0.011827515, 0.225481, 0.97417575, -0.03293032, 1.5259299, -0.0040290095)
+transform = Transform3D(0.999607, 0.023399368, -0.015442632, -0.024285378, 0.9979073, -0.05992782, 0.014008037, 0.060279287, 0.99808323, -0.027796146, 1.5279137, -0.011894248)
 bone_name = "Head"
 bone_idx = 18
 
 [node name="Speech" type="Marker3D" parent="BlueGuy/GeneralSkeleton/BoneAttachment3D" index="0" unique_id=1537238800]
 unique_name_in_owner = true
 transform = Transform3D(1, -2.0372681e-09, -9.313226e-10, 1.1641532e-10, 0.99999994, 3.7252903e-09, 9.313226e-10, 0, 0.99999994, -0.010503702, 0.4277172, -0.025680348)
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="BlueGuy/GeneralSkeleton" index="11" unique_id=1404800819]
+transform = Transform3D(-0.21674743, 0.35920033, -0.9077421, -0.38160592, -0.88703716, -0.25988853, -0.89855295, 0.29006958, 0.32933602, 0.2640036, 0.8470185, 0.104926564)
+bone_name = "LeftHand"
+bone_idx = 16
+
+[node name="Marker3D" type="Marker3D" parent="BlueGuy/GeneralSkeleton/BoneAttachment3D2" index="0" unique_id=337761019]
+transform = Transform3D(0.9999998, 1.0658141e-14, 5.684342e-14, 0, 1, -1.8849075e-14, -5.684342e-14, 3.799435e-14, 0.9999998, -0.015139531, 0.10782999, 0.04743898)
+
+[node name="Slade Cup" parent="BlueGuy/GeneralSkeleton/BoneAttachment3D2/Marker3D" index="0" unique_id=1758052782 instance=ExtResource("4_bx1vw")]
+transform = Transform3D(0.4451132, -0.16311626, -0.15895703, -0.21311009, -0.17514865, -0.41702175, 0.08036372, 0.43899438, -0.2254453, 0.014072359, 0.004678488, 0.04027766)
+visible = false
