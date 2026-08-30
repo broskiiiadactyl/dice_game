@@ -394,6 +394,7 @@ func end_game():
 	gameactions_container.visible = false
 	Trans.bg_play = false
 	Trans.audio.stop()
+	Trans.end_screen()
 	if turn_order == ['player']:
 		await Dialogue.set_dialogue('win')
 	if turn_order != ['player']:
