@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bw6n3uhb52tb4" path="res://Assets/Environment/Scenes/the_count.tscn" id="18_kjvhd"]
 [ext_resource type="Script" uid="uid://ciqjo80752klo" path="res://Scripts/screens_controller.gd" id="19_3b0ty"]
 [ext_resource type="PackedScene" uid="uid://d1ktcn5b63rbp" path="res://Assets/Tables/Scenes/npc_screen.tscn" id="19_devvj"]
+[ext_resource type="FontFile" uid="uid://dtaktm2asx3jw" path="res://Assets/theme styling/Not Jam UI 15.ttf" id="19_hhcpw"]
 [ext_resource type="PackedScene" uid="uid://bu8ep8jmdui8c" path="res://Assets/Tables/Scenes/player_screen.tscn" id="21_bg4s2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
@@ -52,6 +53,7 @@ size = Vector2(1.505, 0.835)
 [sub_resource type="Theme" id="Theme_5tuhn"]
 RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/outline_size = 10
+RichTextLabel/fonts/normal_font = ExtResource("19_hhcpw")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jtt76"]
 content_margin_left = 10.0
@@ -327,6 +329,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 theme = SubResource("Theme_5tuhn")
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -346,6 +349,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme = SubResource("Theme_5tuhn")
 theme_override_colors/default_color = Color(0.7294118, 0.6, 0.8352941, 1)
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -365,6 +369,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme = SubResource("Theme_5tuhn")
 theme_override_colors/default_color = Color(0.5529412, 0.7647059, 0.30980393, 1)
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

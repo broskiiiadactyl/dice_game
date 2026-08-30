@@ -1,7 +1,7 @@
 extends Node
 
 @onready var bettingbot : Node = %"Betting Bot"
-@onready var gameactions_container : Node = %"actions_contianer"
+@onready var gameactions_container : Node = %"actions_container"
 @onready var gameactions_label : Node = %"gameactions"
 @onready var allbets_container : Node = %"allbets_container"
 @onready var allbets_label : Node = %"allbets"
@@ -10,6 +10,7 @@ extends Node
 @onready var last_quantity = Globals.last_quantity
 @onready var last_face = Globals.last_face
 @onready var npcscreens = %'NPC Screens'
+@onready var playerscreen = %'Player Screen'
 
 var results_dict = {
 	"player" : [],
@@ -141,12 +142,12 @@ func next_turn():
 
 func start_player_turn():
 	await Dialogue.set_dialogue('reset')
-	if turn_pos == 4:
+	if turn_pos <= turn_order.size():
+		playerscreen.waiting_for_bet()
 		playmat.set_buttons("BET",true)
 	else:
 		playmat.set_buttons("BET",false)
 	turn_pos = 0
-
 	update_global_minimum()
 
 func end_round() -> bool:
@@ -205,7 +206,7 @@ func get_npc_bid(npc) -> Array[int]:
 	if hand.filter( func(number): return number == last_face).size() > last_quantity:
 		#check if you have the current number of the current quantity is in your hand
 		# if yes, increment to that number
-		return [max(hand.filter( func(number): return number == last_face),1) , max(face,1)]
+		return [max(hand.filter( func(number): return number == last_face).size(),1) , max(face,1)]
 	if randi_range(1, 2) == 2: # flip a coin and increment either quantity or face
 		quantity = last_quantity+randi_range(1,3)
 		return [max(quantity,1),max(face,1)]
@@ -280,9 +281,11 @@ func declare_game_state():
 func determine_call_or_pass(deciding_char,char_string) -> bool: #true means bid, false means call
 	if deciding_char == 'player':
 		gameactions_label.text = "Your decision. [shake][color=red]Call?[color=red][shake]"
+		playerscreen.waiting_for_call()
 		playmat.set_buttons("CALL",true)
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		playmat.set_buttons("CALL", false)
+		playerscreen.normal()
 		if call_pressed == true:
 			return false
 		return true
@@ -336,18 +339,21 @@ func resolve_challenge(chal :="player") -> bool:
 	var c = "Current bid: [color=green]" +str(last_quantity)+" "+num_conversion[last_face]+"(s)[/color]\n"
 	var d = "Pool has: [color=green]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n"
 	if winner == chal:
-		d = "Pool has: [color=red]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n \n"
+		d = "Pool has: [color=red]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n"
 	var e = str(name_conversion[winner])+" wins the challenge.\n"
 	if str(name_conversion[winner]) ==  "You":
 		e = str(name_conversion[winner])+" won the challenge.\n"
 	var f : String
 	
-	var conclusion = [a,b,c,d,f,e]
-	gameactions_label.text = e
+	var conclusion = [e,c,d]
+	
+	gameactions_label.text = "".join(conclusion)
 	allbets_label.text = "".join(conclusion)
-	allbets_container.visible = true
+	
 	if winner != 'player':
 		await Dialogue.set_dialogue(winner+"_win")
+	else:
+		await get_tree().create_timer(3.0).timeout
 	
 	handsize_dict[loser] = handsize_dict[loser] - 1 #reduces the losing player's handsize by one hand sizes
 	npcscreens.sort_npc_screen_update(loser, "dice_update", handsize_dict[loser])
@@ -357,7 +363,6 @@ func resolve_challenge(chal :="player") -> bool:
 	
 	if loser != 'player':
 		await Dialogue.set_dialogue(loser+"_lose")
-	
 	
 	end_round()
 	return true

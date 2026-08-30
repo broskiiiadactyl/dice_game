@@ -76,8 +76,6 @@ func update_screen() -> void:
 			await get_tree().create_timer(1.0).timeout
 			cd.text = str(1)
 			await get_tree().create_timer(1.0).timeout
-			cd.text = str(0)
-			await get_tree().create_timer(1.0).timeout
 			cd.visible = false
 		else:
 			bet_num.text = str(Globals.last_quantity)
