@@ -20,7 +20,10 @@ var is_out : bool = false
 	load("res://Assets/theme styling/die6.png")
 ]
 
-#Call this function to update the scree
+#NOTE from J: I put a script on the layer above this that sorts out which npc it's sending to
+#NOTE from J: it's sort_npc_screen_update(), and I call to it
+
+#Call this function to update the screen
 #To simply update # of dice, pass any garbage string and the number of dice
 #To signal a bet, call AFTER setting Globals.last_quantity and Globals.last_face
 func update_screen(status : String, active: int = num_of_dice) -> bool:

@@ -7,6 +7,7 @@ extends Node
 @onready var main : Node = get_parent()
 @onready var last_quantity = Globals.last_quantity
 @onready var last_face = Globals.last_face
+@onready var npcscreens = %'NPC Screens'
 
 var results_dict = {
 	"player" : [],
@@ -62,7 +63,7 @@ var last_bidder : String = "player" #last_quantity, last_face are declared in on
 var challenger : String
 
 var turn_pos : int = 0
-var turn_order = ["player", "npc1, npc2", "npc3"]
+var turn_order = ["player", "npc1", "npc2", "npc3"]
 var char_name = ["Major","Slade","Boone","Vickie"]
 var removed_players : Array = []
 var remaining_players : int = 4
@@ -88,15 +89,18 @@ func start_round() -> void:
 		set_npc_dice(x)
 	next_turn()
 
-func bid_phase(npc) -> bool:
-	var char_string = name_conversion[npc]
+func bid_phase(curr_character) -> bool:
+	var char_string = name_conversion[curr_character]
+	
+	await Dialogue.set_dialogue(curr_character+"_bidthink")
 	gameactions_label.text = str(char_string)+"'s turn. [shake]Thinking...[shake]"
-	await get_tree().create_timer( randf_range(1.0,3.0)).timeout
-	var curr_bid : Array = get_npc_bid(npc)
+	
+	var curr_bid : Array = get_npc_bid(curr_character)
 	gameactions_label.text = str(char_string)+" bids." # allbets label is set in the set_bid function
-	_set_bid(curr_bid[0],curr_bid[1],npc)
+	_set_bid(curr_bid[0],curr_bid[1],curr_character)
+	
 	await get_tree().create_timer(3.0).timeout
-	call_phase(npc)
+	call_phase(curr_character)
 	return true
 
 func call_phase(curr_character : String) -> bool:
@@ -106,6 +110,7 @@ func call_phase(curr_character : String) -> bool:
 			challenger = 'player'
 		
 		gameactions_label.text = "[shake][color=crimson]"+str(name_conversion[challenger])+"[color=crimson] called.[shake]"
+		npcscreens.sort_npc_screen_update(challenger, 'call')
 		
 		if challenger != 'player':
 			await Dialogue.set_dialogue(challenger +"_call")
@@ -113,7 +118,6 @@ func call_phase(curr_character : String) -> bool:
 		
 	if decision == true:
 		gameactions_label.text = "No one calls.\n"+sinister_phrases[randi_range(0,sinister_phrases.size()-1)]
-		await get_tree().create_timer(2.0).timeout
 		turn_pos = turn_pos+1
 		next_turn()
 	return true
@@ -165,6 +169,7 @@ func end_round() -> bool:
 	gameactions_label.text = start_of_turn_phrases[randi_range(0, start_of_turn_phrases.size()-1)]
 	allbets_label.text = ""
 	
+	Dialogue.set_dialogue('reset')
 	get_parent().reset()
 	
 	return true
@@ -175,6 +180,12 @@ func _set_bid(amount: int, face: int, bidder := "player") -> bool:
 	last_face = face
 	last_bidder = bidder
 	allbets_label.text = str(name_conversion[bidder])+" bid "+str(last_quantity)+" "+str(num_conversion[last_face])+"(s) \n" + allbets_label.text
+	update_global_minimum()
+	
+	if bidder != 'player':
+		npcscreens.sort_npc_screen_update(bidder,'bet')
+		await Dialogue.set_dialogue(bidder+'_bid')
+	
 	if turn_pos == 0:
 		start_round()
 	return true
@@ -255,11 +266,12 @@ func get_player_value() -> void:
 #game functions ------------------
 
 func remove_player() -> bool:
-	for curr_player in turn_order:
-		if handsize_dict[curr_player] == 0:
-			turn_order.erase(curr_player)
-			gameactions_label.text = name_conversion[curr_player]+" has been removed from the game."
-			await get_tree().create_timer(3.0).timeout
+	for curr_character in turn_order:
+		if handsize_dict[curr_character] == 0:
+			turn_order.erase(curr_character)
+			gameactions_label.text = name_conversion[curr_character]+" has been removed from the game."
+			await Dialogue.set_dialogue(curr_character+"_out")
+			npcscreens.sort_npc_screen_update(curr_character, "out")
 			player_removed.emit(char)
 	return true
 
@@ -283,6 +295,7 @@ func determine_call_or_pass(deciding_char,char_string) -> bool: #true means bid,
 		return true
 	
 	gameactions_label.text =  str(char_string)+"'s decision..."
+	npcscreens.sort_npc_screen_update(deciding_char,'think')
 	await Dialogue.set_dialogue(deciding_char + "_think")
 	
 	var hand = results_dict[deciding_char]
@@ -330,21 +343,29 @@ func resolve_challenge(chal :="player") -> bool:
 	var c = "Current bid: [color=green]" +str(last_quantity)+" "+num_conversion[last_face]+"(s)[/color]\n"
 	var d = "Pool has: [color=green]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n"
 	if winner == chal:
-		d = "Pool has: [color=red]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n"
+		d = "Pool has: [color=red]"+ str(filtered_final_pool.size())+" "+num_conversion[last_face]+"(s)[/color]\n \n"
 	var e = str(name_conversion[winner])+" wins the challenge.\n"
 	if str(name_conversion[winner]) ==  "You":
 		e = str(name_conversion[winner])+" won the challenge.\n"
 	var f : String
 	
-	var conclusion = [a,b,c,d,f]
+	var conclusion = [a,b,c,d,f,e]
 	gameactions_label.text = e
 	allbets_label.text = "".join(conclusion)
 	
+	if winner != 'player':
+		Dialogue.set_dialogue(winner+"_win")
+	
+	handsize_dict[loser] = handsize_dict[loser] - 1 #reduces the losing player's handsize by one hand sizes
+	npcscreens.sort_npc_screen_update(loser, "dice_update", handsize_dict[loser])
+	
 	await get_tree().create_timer(6.0).timeout #display all the information
 	
-	handsize_dict[loser] -= 1 #reduces the losing player's handsize by one hand sizes
 	gameactions_label.text = str(name_conversion[loser])+" loses a dice.\nThey have "+str(handsize_dict[loser])+" left."
-	await get_tree().create_timer(2.0).timeout #display all the information
+	
+	if loser != 'loser':
+		Dialogue.set_dialogue(loser+"_lose")
+	
 	
 	end_round()
 	return true
