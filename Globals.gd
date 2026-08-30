@@ -6,7 +6,8 @@ var ran_test : bool = false
 
 var dice_dict : Dictionary = {
 	"normal": "res://Assets/Dice/Scenes/models/normal_die.tscn",
-	"inset": "res://Assets/Dice/Scenes/models/inset_die.tscn"
+	"inset": "res://Assets/Dice/Scenes/models/inset_die.tscn",
+	"red": "res://Assets/Dice/Scenes/models/red_die.tscn"
 }
 
 var cup_dict : Dictionary = {
