@@ -21,10 +21,10 @@ var results_dict = {
 }
 
 var handsize_dict = {
-	"player" : 1,
-	"npc1" : 1,
-	"npc2" : 0,
-	"npc3" : 0
+	"player" : 5,
+	"npc1" : 5,
+	"npc2" : 5,
+	"npc3" : 5
 }
 
 var bets_dict = {
@@ -57,7 +57,7 @@ var last_bidder : String = "player" #last_quantity, last_face are declared in on
 var challenger : String
 
 var turn_pos : int = 0
-var turn_order = ["player", "npc1"]
+var turn_order = ["player","npc1", "npc2","npc3"]
 var char_name = ["Major","Slade","Boone","Vickie"]
 var removed_players : Array = []
 var remaining_players : int = 4
@@ -394,9 +394,8 @@ func end_game():
 	gameactions_container.visible = false
 	Trans.bg_play = false
 	Trans.audio.stop()
-	Trans.end_screen()
 	if turn_order == ['player']:
 		await Dialogue.set_dialogue('win')
 	if turn_order != ['player']:
 		await Dialogue.set_dialogue('win')
-	endscreen.visible = true
+	Trans.end_screen()
