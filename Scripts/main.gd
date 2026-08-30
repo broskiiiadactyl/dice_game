@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 #TODO redo input for rolling
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB") and can_hold and cup.mouse_over:
+		npc_fukcing_LETS_GO_HELL_YEAH()
 		is_holding = true
 		is_shaking = true
 		%"Player Screen".waiting_for_bet()
@@ -116,6 +117,7 @@ func return_cup() -> void:
 func fukcing_roll_hellllll_yeah(instant: bool = false) -> bool:	
 	can_hold = false
 	cup.can_play_sound = false
+	
 	var tween := get_tree().create_tween()
 	if not instant:
 		await tween.tween_property(cup, "global_position", Vector3(cup.global_position.x, cup.global_position.y + 5.0, cup.global_position.z), 0.25).finished
@@ -190,6 +192,11 @@ func playmat_button_pressed(type: String) -> void:
 			%"Player Screen".normal()
 	playmat.set_buttons("BOTH", false)
 
+func npc_fukcing_LETS_GO_HELL_YEAH():
+	for curr_character in %PublicInformation.turn_order:
+		if curr_character == 'player':
+			continue
+		Dialogue.set_dialogue(curr_character+"_shake")
 
 func set_cup_bounds():
 	var w = cup_bounds_qm.size.x / 2.0

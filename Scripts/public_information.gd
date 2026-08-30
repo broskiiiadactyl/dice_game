@@ -1,7 +1,9 @@
 extends Node
 
 @onready var bettingbot : Node = %"Betting Bot"
+@onready var gameactions_container : Node = %"actions_contianer"
 @onready var gameactions_label : Node = %"gameactions"
+@onready var allbets_container : Node = %"allbets_container"
 @onready var allbets_label : Node = %"allbets"
 @onready var playmat : Node = %"Playmat"
 @onready var main : Node = get_parent()
@@ -42,21 +44,11 @@ const num_conversion = {
 	6 : 'Six',
 }
 
-const sinister_phrases = [
-	"Lucky you.",
-	"Trusting bunch.",
-	"But [shake]why?[shake]",
-	"Have they forgiven?",
-	"Could life be so sweet?",
-	"They might remember the good times."
-]
-
 const start_of_turn_phrases = [
 	"You're up, playboy.",
 	"Let's try hard this time.",
-	"Tricked them then, too.",
-	"Do you think they trust you?",
-	"Back up to bat."
+	"Back up to bat.",
+	"Shake it up."
 ]
 
 var last_bidder : String = "player" #last_quantity, last_face are declared in on ready and are linked to the global property
@@ -117,7 +109,7 @@ func call_phase(curr_character : String) -> bool:
 		await resolve_challenge(challenger)
 		
 	if decision == true:
-		gameactions_label.text = "No one calls.\n"+sinister_phrases[randi_range(0,sinister_phrases.size()-1)]
+		gameactions_label.text = "No one calls.\nOn to the next one..."
 		turn_pos = turn_pos+1
 		next_turn()
 	return true
@@ -133,7 +125,9 @@ func decision_process( curr_character ) -> bool:
 			challenger = deciding_char
 			return false
 		gameactions_label.text = name_conversion[deciding_char] +" will [color=green]pass.[color=green]"
-		await Dialogue.set_dialogue(deciding_char+"_pass")
+		if deciding_char != 'player':
+			print('Deciding char is: ',deciding_char)
+			await Dialogue.set_dialogue(deciding_char+"_pass")
 	return true
 
 func next_turn():
@@ -146,7 +140,7 @@ func next_turn():
 	bid_phase( turn_order[turn_pos] )
 
 func start_player_turn():
-	Dialogue.set_dialogue('reset')
+	await Dialogue.set_dialogue('reset')
 	if turn_pos == 4:
 		playmat.set_buttons("BET",true)
 	else:
@@ -168,9 +162,11 @@ func end_round() -> bool:
 	update_global_minimum()
 	
 	gameactions_label.text = start_of_turn_phrases[randi_range(0, start_of_turn_phrases.size()-1)]
+	
+	allbets_container.visible = false
 	allbets_label.text = ""
 	
-	Dialogue.set_dialogue('reset')
+	await Dialogue.set_dialogue('reset')
 	get_parent().reset()
 	
 	return true
@@ -180,6 +176,7 @@ func _set_bid(amount: int, face: int, bidder := "player") -> bool:
 	last_quantity = amount
 	last_face = face
 	last_bidder = bidder
+	
 	allbets_label.text = str(name_conversion[bidder])+" bid "+str(last_quantity)+" "+str(num_conversion[last_face])+"(s) \n" + allbets_label.text
 	update_global_minimum()
 	
@@ -202,22 +199,21 @@ func get_npc_bid(npc) -> Array[int]:
 	var face : int = last_face
 	
 	var hand = results_dict[npc]
-	#check if you have the current number of the current quantity is in your hand
-	# if yes, increment to that number
-	if hand.filter( func(number): return number == last_face).size() > last_quantity:
-		print('same quantity function')
-		return [hand.filter( func(number): return number == last_face) , face]
-	if face >= 6 : # if it's already 6, incremener quantity a random amount. [note from z: always use greater than to clamp an amount, otherwise overshoots can cause errors]
+	if face >= 6 : # if it's already 6, increment quantity a random amount. [note from z: always use greater than to clamp an amount, otherwise overshoots can cause errors]
 		quantity = quantity+randi_range(1,3)
-		return [quantity,face]
-	if randi_range(1, 10) <= 5: # flip a coin and increment either quantity or face
+		return [max(quantity,1),max(face,1)]
+	if hand.filter( func(number): return number == last_face).size() > last_quantity:
+		#check if you have the current number of the current quantity is in your hand
+		# if yes, increment to that number
+		return [max(hand.filter( func(number): return number == last_face),1) , max(face,1)]
+	if randi_range(1, 2) == 2: # flip a coin and increment either quantity or face
 		quantity = last_quantity+randi_range(1,3)
-		return [quantity,face]
+		return [max(quantity,1),max(face,1)]
 	else:
 		face = last_face+randi_range(1,3)
 		if face > 6:		#note from z: this needed to be clamped. It was possible for this to return face values over 6
 			face = 6
-	return [quantity,face]
+	return [max(quantity,1),max(face,1)]
 
 #determining dice values --------
 func set_dice_value( dice_value_array : Array, target: = "player") -> void:
@@ -349,19 +345,18 @@ func resolve_challenge(chal :="player") -> bool:
 	var conclusion = [a,b,c,d,f,e]
 	gameactions_label.text = e
 	allbets_label.text = "".join(conclusion)
-	
+	allbets_container.visible = true
 	if winner != 'player':
-		Dialogue.set_dialogue(winner+"_win")
+		await Dialogue.set_dialogue(winner+"_win")
 	
 	handsize_dict[loser] = handsize_dict[loser] - 1 #reduces the losing player's handsize by one hand sizes
 	npcscreens.sort_npc_screen_update(loser, "dice_update", handsize_dict[loser])
 	
-	await get_tree().create_timer(6.0).timeout #display all the information
 	
 	gameactions_label.text = str(name_conversion[loser])+" loses a dice.\nThey have "+str(handsize_dict[loser])+" left."
 	
 	if loser != 'player':
-		Dialogue.set_dialogue(loser+"_lose")
+		await Dialogue.set_dialogue(loser+"_lose")
 	
 	
 	end_round()

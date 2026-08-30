@@ -71,7 +71,26 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc3" , "Catch me in my ship next time." , 3.0 , "Neutral", "Idle"],
 		["npc3" , "We'll see how it goes then." , 3.0 , "Neutral", "Idle"]
 	],
-	
+	"npc1_shake" : [
+		["npc1" , "" , 3.0 , "DiceShake", "DiceShake"],
+	],
+	"npc2_shake" : [
+		["npc2" , "" , 3.0 , "DiceShake", "DiceShake"],
+	],
+	"npc3_shake" : [
+		["npc3" , "" , 3.0 , "DiceShake", "DiceShake"],
+	],
+	"npc1_pass" : [
+		["npc1" , "Well..." , 1.5 , "Angry", "Idle"],
+		["npc1" , "Seems right." , 1.5 , "Nuetral", "Idle"],
+	],
+	"npc2_pass" : [
+		["npc2" , "No challenge from me!" , 3.0 , "Nuetral", "Idle"],
+	],
+	"npc3_pass" : [
+		["npc3" , "I think you're being honest!" , 3.0 , "Nuetral", "Idle"],
+	],
+
 }
 
 func set_dialogue(event : String ):
@@ -103,12 +122,6 @@ func get_generic_dialogue(event : String) -> Array:
 	var anim
 	
 	
-	if event.contains('pass'): #handles passes
-		speaker = event.split("_")[0]
-		dialogue = "I will pass"
-		time = 3.0
-		expression = "Nuetral"
-		anim = "SmallTalk"
 	if event.contains('_bid'):
 		speaker = event.split("_")[0]
 		dialogue = "I bid "+str(Globals.last_quantity)+" "+Globals.num_conversion[Globals.last_face]+"(s)"
