@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c0iy6hr24qyle"]
+
+[ext_resource type="PackedScene" uid="uid://ycpiahxn7s2v" path="res://Assets/Cups/Raw/actually player cup.glb" id="1_jl4wb"]
+
+[node name="Player Cup" unique_id=2102415268 instance=ExtResource("1_jl4wb")]
+
+[node name="Cylinder" parent="." index="0" unique_id=420503152]
+transform = Transform3D(0.15, 0, 0, 0, 0.125, 0, 0, 0, 0.15, 0, 0.12893271, 0)

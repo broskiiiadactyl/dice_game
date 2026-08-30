@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://csg58rci4kusb"]
+
+[ext_resource type="PackedScene" uid="uid://b8jbvaqftvso5" path="res://Assets/Cups/Raw/SladeJadeCup.glb" id="1_ec2fo"]
+
+[node name="Slade Cup" unique_id=1758052782 instance=ExtResource("1_ec2fo")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1679979700]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.15666872, 0)

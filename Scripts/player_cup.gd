@@ -40,7 +40,7 @@ func _ready() -> void:
 		model_container.add_child(model_instance)
 		model_instance.visible = false
 	
-	set_cup("can")
+	set_cup("wood")
 
 func _physics_process(_delta: float) -> void:
 	#if last_pos == null:

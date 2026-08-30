@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://6xlsb1p2psho"]
+
+[ext_resource type="PackedScene" uid="uid://dkchd0hihng1h" path="res://Assets/Cups/Raw/VickiStanley.glb" id="1_q3r8t"]
+
+[node name="Vickie Cup" unique_id=210857274 instance=ExtResource("1_q3r8t")]
+
+[node name="Cylinder" parent="." index="0" unique_id=2027588748]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.10143447, 0)
