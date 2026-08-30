@@ -65,6 +65,13 @@ func _on_dice_down_pressed() -> void:
 
 #SENDS SIGNAL "lock_bet" with the currently entered bets
 func _on_submit_pressed() -> void:
+	if num_bet <= 0:
+		num_bet = 1
+	if dice_bet <= 0:
+		dice_bet = 1
+	if num_bet == min_num_bet and dice_bet == min_face_bet:
+		wrong()
+		return
 	$Area3D.process_mode = Node.PROCESS_MODE_DISABLED
 	submit_button.play()
 	can_take_input = false
@@ -172,3 +179,17 @@ func play_sound(sound : AudioStream) -> bool:
 
 func enter_anim() -> bool:
 	return true
+
+func wrong() -> void:
+	%WRONG.play()
+	can_take_input = false
+	%CenterContainer.visible = false
+	%CenterContainer3.visible = true
+	for i in range(3):
+		%Cross.visible = true
+		await get_tree().create_timer(0.2).timeout
+		%Cross.visible = false
+		await get_tree().create_timer(0.2).timeout
+	can_take_input = true
+	%CenterContainer.visible = true
+	%CenterContainer3.visible = false
