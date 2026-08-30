@@ -31,6 +31,7 @@ var time_passed : float = 0.0
 
 func _ready() -> void:
 	%"Pause Menu".visible = false
+	Globals.unpause.connect(unpause)
 	
 	set_cup_bounds()
 	cup_start_pos = cup.global_position
@@ -210,4 +211,9 @@ func set_cup_bounds():
 	boundB = cup_bounds.global_position.y - h
 
 func pause() -> void:
-	pass
+	%Pausable.process_mode = Node.PROCESS_MODE_DISABLED
+	%"Pause Menu".visible = true
+
+func unpause() -> void:
+	%Pausable.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
