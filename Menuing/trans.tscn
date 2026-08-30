@@ -161,7 +161,7 @@ volume_db = -15.0
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=350941780]
 unique_name_in_owner = true
 stream = ExtResource("10_vof4c")
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true
 
 [node name="Progress Check" type="Timer" parent="." unique_id=41497495]

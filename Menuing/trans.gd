@@ -45,8 +45,6 @@ func start_scene() -> void:
 	load2.visible = true
 	%AnimatedSprite2D.play("default")
 	bg_play = true
-	await get_tree().create_timer(10.0).timeout
-	end_screen()
 	
 func turn_off() -> void:
 	%Loading.visible = false
