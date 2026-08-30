@@ -6,7 +6,8 @@ var expressions : Dictionary = {
 	"Talk" : load("res://Assets/Characters/npc3/faces/Vicki_Talk_Expr.png"),
 	"Surprise" : load("res://Assets/Characters/npc3/faces/Vicki_Surprise_Expr.png"),
 	"Evil" : load("res://Assets/Characters/npc3/faces/Vicki_Nyeheh_Expr.png"),
-	"Neutral" : load("res://Assets/Characters/npc3/faces/Vicki_Neutral_Expr.png")
+	"Neutral" : load("res://Assets/Characters/npc3/faces/Vicki_Neutral_Expr.png"),
+	"Sad" : load("res://Assets/Characters/npc3/faces/FaceTex.png")
 }
 
 var animations : Array = [

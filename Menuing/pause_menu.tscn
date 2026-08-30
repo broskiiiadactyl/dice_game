@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b20lxn8jirsva" path="res://Scripts/main_menu.gd" id="2_lpy18"]
 [ext_resource type="Shader" uid="uid://bfu25qvucy7vb" path="res://shaders/sky.gdshader" id="3_77vkt"]
 [ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="4_fk1xo"]
+[ext_resource type="Texture2D" uid="uid://df7ystf03hor8" path="res://Assets/theme styling/RulesRightAlign.png" id="5_lpy18"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lqb7u"]
 viewport_path = NodePath("SubViewport")
@@ -125,16 +126,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI" unique_id=647844035]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.7304812, 0.58912814, 0.5495717, 1)
-
 [node name="Main" type="CenterContainer" parent="UI" unique_id=1465721750]
 unique_name_in_owner = true
 layout_mode = 1
@@ -213,7 +204,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("4_fk1xo")
 
-[node name="Tutorial" type="CenterContainer" parent="UI" unique_id=188038399]
+[node name="Tutorial" type="CenterContainer" parent="UI" unique_id=2120031538]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -223,20 +214,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="UI/Tutorial" unique_id=143487916]
+[node name="CenterContainer" type="CenterContainer" parent="UI/Tutorial" unique_id=871127978]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Tutorial/CenterContainer" unique_id=638398803]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_lpy18")
+
+[node name="Control" type="Control" parent="UI/Tutorial" unique_id=944957436]
 custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Tutorial/Control" unique_id=1306239815]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tutorial/Control" unique_id=1976828989]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -455.0
-offset_bottom = 100.0
+offset_top = -68.0
+offset_bottom = 32.0
 grow_horizontal = 0
 
-[node name="Title" type="RichTextLabel" parent="UI/Tutorial/Control/MarginContainer" unique_id=44067520]
+[node name="Title" type="RichTextLabel" parent="UI/Tutorial/Control/MarginContainer" unique_id=209165709]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -246,28 +249,19 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorial/Control" unique_id=1085855497]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorial/Control" unique_id=296032754]
 custom_minimum_size = Vector2(1000, 500)
 layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 500.0
 alignment = 2
 
-[node name="Back" type="Button" parent="UI/Tutorial/Control/VBoxContainer" unique_id=238483896]
+[node name="Back" type="Button" parent="UI/Tutorial/Control/VBoxContainer" unique_id=1231538383]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
 alignment = 0
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/Tutorial" unique_id=1605332346]
-visible = false
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/Tutorial/CenterContainer" unique_id=438462600]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("4_fk1xo")
 
 [node name="Options" type="CenterContainer" parent="UI" unique_id=1809407177]
 unique_name_in_owner = true
