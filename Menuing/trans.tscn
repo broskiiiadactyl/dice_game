@@ -104,7 +104,7 @@ sprite_frames = SubResource("SpriteFrames_lqb7u")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=160597921]
 unique_name_in_owner = true
 stream = ExtResource("9_rl4xa")
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true
 
 [node name="Progress Check" type="Timer" parent="." unique_id=41497495]

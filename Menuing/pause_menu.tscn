@@ -105,13 +105,13 @@ size = Vector2i(1152, 648)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=185489769]
 unique_name_in_owner = true
-transform = Transform3D(0.9465448, 0, -0.3225723, 0, 1, 0, 0.3225723, 0, 0.9465448, 17.93771, 4.7620077, -38.3601)
+transform = Transform3D(0.9465448, 0, -0.3225723, 0, 1, 0, 0.3225723, 0, 0.9465448, 17.93771, -461.13065, -38.3601)
 projection = 1
 size = 13.981
 
 [node name="SkyBox" type="MeshInstance3D" parent="SubViewport" unique_id=941509691 groups=["visible"]]
 unique_name_in_owner = true
-transform = Transform3D(-0.7779826, 0, -0.62828577, 0, 1, 0, 0.62828577, 0, -0.7779826, 37.923054, 4.606166, -27.968363)
+transform = Transform3D(-0.7779826, 0, -0.62828577, 0, 1, 0, 0.62828577, 0, -0.7779826, 37.923054, -461.28647, -27.968363)
 mesh = SubResource("CylinderMesh_0rmew")
 skin = SubResource("Skin_fk1xo")
 skeleton = NodePath("../Camera3D")

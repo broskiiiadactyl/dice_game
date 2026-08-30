@@ -65,11 +65,11 @@ func _on_dice_down_pressed() -> void:
 
 #SENDS SIGNAL "lock_bet" with the currently entered bets
 func _on_submit_pressed() -> void:
-	if num_bet <= 0:
+	if num_bet <= 1:
 		num_bet = 1
-	if dice_bet <= 0:
+	if dice_bet <= 1:
 		dice_bet = 1
-	if num_bet == min_num_bet and dice_bet == min_face_bet:
+	if num_bet == min_num_bet and dice_bet == min_face_bet and num_bet != 1:
 		wrong()
 		return
 	$Area3D.process_mode = Node.PROCESS_MODE_DISABLED
@@ -109,8 +109,8 @@ func set_dice_bet(dir: int) ->void:
 	face_label.texture = face_images[dice_bet - 1]
 
 func enter() -> void:
-	num_bet = 1
-	dice_bet = 1
+	num_bet = 0
+	dice_bet = 0
 	if Globals.last_quantity:
 		min_num_bet = Globals.last_quantity
 	else:

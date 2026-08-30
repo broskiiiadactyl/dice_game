@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://dloscwg2nhn6u"]
 
-[ext_resource type="PackedScene" uid="uid://bfdmp61p0uib" path="res://Assets/Tables/Raw/tableRound.glb" id="1_nve57"]
-
-[node name="tableRound" unique_id=1604525236 instance=ExtResource("1_nve57")]
+[node name="tableRound" unique_id=1604525236]
 
 [node name="tableRound(Clone)" parent="." index="0" unique_id=288841846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.346, 0.26961422, 0.4)
