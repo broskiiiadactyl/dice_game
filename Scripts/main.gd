@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 #TODO redo input for rolling
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB") and can_hold and cup.mouse_over:
+		npc_fukcing_LETS_GO_HELL_YEAH()
 		is_holding = true
 		is_shaking = true
 	elif event.is_action_released("LMB") and can_hold:
@@ -98,8 +99,6 @@ func follow_mouse() -> void:
 	
 	var plane := Plane(Vector3.BACK, cup.global_position.z)
 	var intersection : Vector3 = plane.intersects_ray(ray_start, ray_direction)
-	
-	npc_fukcing_LETS_GO_HELL_YEAH()
 	
 	if intersection:
 		cup.global_position = Vector3(clamp(intersection.x, boundL, boundR), clamp(intersection.y, boundB, boundT), intersection.z)

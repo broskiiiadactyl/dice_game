@@ -50,8 +50,11 @@ func play_animation(anim: String = "Idle") -> bool:
 		await player.animation_finished
 		return true
 	if player.has_animation(anim):
+		if anim == "DiceShake":
+			player.speed_scale *= 2
 		player.play(anim)
 		await player.animation_finished
+		player.speed_scale = 1
 	else:
 		push_error("Invalid animation set to ", name, ": ", anim)
 	

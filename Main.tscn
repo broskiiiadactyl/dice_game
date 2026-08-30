@@ -416,7 +416,33 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("8_trn2v")
 
-[node name="gameactions" type="RichTextLabel" parent="DebugControl" unique_id=1147502476]
+[node name="actions_container" type="MarginContainer" parent="DebugControl" unique_id=1654309031]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 839.0
+offset_top = 25.0
+offset_right = -49.0
+offset_bottom = -580.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect3" type="ColorRect" parent="DebugControl/actions_container" unique_id=104957313]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="gameactions" type="RichTextLabel" parent="DebugControl/actions_container" unique_id=1147502476]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jtt76")
+bbcode_enabled = true
+text = "Time to get rolling."
+fit_content = true
+
+[node name="allbets_container" type="MarginContainer" parent="DebugControl" unique_id=1435584773]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -424,53 +450,27 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 839.0
-offset_top = 28.5
+offset_top = 408.0
 offset_right = -49.0
-offset_bottom = -571.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jtt76")
-bbcode_enabled = true
-text = "Time to get rolling."
-fit_content = true
 
-[node name="ColorRect3" type="ColorRect" parent="DebugControl/gameactions" unique_id=104957313]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -47.0
-offset_bottom = 216.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ColorRect2" type="ColorRect" parent="DebugControl/allbets_container" unique_id=1144116893]
+layout_mode = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.21568628)
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.39215687)
 
-[node name="allbets" type="RichTextLabel" parent="DebugControl" unique_id=1193070678]
+[node name="allbets" type="RichTextLabel" parent="DebugControl/allbets_container/ColorRect2" unique_id=1193070678]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 839.0
-offset_top = 409.0
-offset_right = -49.0
-offset_bottom = -58.0
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjvhd")
 bbcode_enabled = true
-
-[node name="ColorRect2" type="ColorRect" parent="DebugControl/allbets" unique_id=1144116893]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 34.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.21568628)
 
 [node name="debugfunctions" type="Control" parent="DebugControl" unique_id=38260393]
 visible = false
