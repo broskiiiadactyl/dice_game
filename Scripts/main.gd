@@ -63,13 +63,14 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB") and can_hold and cup.mouse_over:
 		is_holding = true
+		is_shaking = true
 	elif event.is_action_released("LMB") and can_hold:
 		is_holding = false
 		cup.global_position = cup_pos
 	
-	if is_holding and event.is_action_pressed("RMB"):
-		is_shaking = true
-	elif (not is_holding and is_shaking) or event.is_action_released("RMB") and can_hold:
+	#if is_holding and event.is_action_pressed("RMB"):
+		#is_shaking = true
+	if (not is_holding and is_shaking):
 		is_shaking = false
 		fukcing_roll_hellllll_yeah()
 	
@@ -109,7 +110,7 @@ func return_cup() -> void:
 	cup.global_position = cup_start_pos
 	cup.global_rotation = cup_start_rot
 
-func fukcing_roll_hellllll_yeah(instant: bool = false) -> bool:
+func fukcing_roll_hellllll_yeah(instant: bool = false) -> bool:	
 	can_hold = false
 	cup.can_play_sound = false
 	var tween := get_tree().create_tween()

@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bw6n3uhb52tb4" path="res://Assets/Environment/Scenes/the_count.tscn" id="18_kjvhd"]
 [ext_resource type="Script" uid="uid://ciqjo80752klo" path="res://Scripts/screens_controller.gd" id="19_3b0ty"]
 [ext_resource type="PackedScene" uid="uid://d1ktcn5b63rbp" path="res://Assets/Tables/Scenes/npc_screen.tscn" id="19_devvj"]
+[ext_resource type="PackedScene" uid="uid://bu8ep8jmdui8c" path="res://Assets/Tables/Scenes/player_screen.tscn" id="21_bg4s2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -139,6 +140,10 @@ unique_name_in_owner = true
 [node name="Betting Bot" parent="Player" unique_id=1001129361 instance=ExtResource("11_20pc6")]
 unique_name_in_owner = true
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -1.9165963, 1.3978807, 7.318541)
+
+[node name="Player Screen" parent="Player" unique_id=1334302122 instance=ExtResource("21_bg4s2")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4226285, 0.9504364, 6.5192747)
 
 [node name="Bar1_2_Finalbase" parent="." unique_id=739803072 instance=ExtResource("10_5vvyt")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
