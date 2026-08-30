@@ -84,6 +84,7 @@ func set_dialogue(event : String ):
 		dialogue = dialogue_dict[event]
 	else:
 		#NOTE from J: otherwise, it's a generic and can be handled by the generic handled
+		#NOTE from J: anytime i have to handle the dialogue inclduing randomness it ends u phere
 		dialogue = get_generic_dialogue(event)
 	
 	#print("Dialogue after block is: ",dialogue)
@@ -94,7 +95,7 @@ func set_dialogue(event : String ):
 	return true
 
 func get_generic_dialogue(event : String) -> Array:
-	#NOTE from J: parameters for readability
+	#NOTE from J: parameters for readabilityw
 	var speaker
 	var dialogue
 	var time
