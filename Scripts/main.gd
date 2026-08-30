@@ -9,6 +9,8 @@ extends Node3D
 @onready var spawner : Node3D = %"Dice Spawner"
 @onready var player_dice : Node3D = %"Player Dice"
 @onready var pub_info : Node = %PublicInformation
+@onready var action_container : Node = %DebugControl/actions_container
+
 var boundL : float
 var boundR : float
 var boundT : float
@@ -55,6 +57,7 @@ func _ready() -> void:
 		can_hold = false
 		await Dialogue.set_dialogue("start")
 		can_hold = true
+		action_container.visible = true
 		get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
 		%"Player Screen".waiting_for_roll()
 
