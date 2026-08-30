@@ -170,6 +170,10 @@ func end_round() -> bool:
 	await Dialogue.set_dialogue('reset')
 	get_parent().reset()
 	
+	var round_key = Dialogue.increment_round_key()
+	if Dialogue.check_for_cutscene(round_key):
+		Dialogue.set_dialogue(round_key)
+	
 	return true
 
 #bid information & management-----------------
@@ -295,12 +299,12 @@ func determine_call_or_pass(deciding_char,char_string) -> bool: #true means bid,
 	await Dialogue.set_dialogue(deciding_char + "_think")
 	
 	var hand = results_dict[deciding_char]
-	if last_quantity >= 20:
+	if last_quantity >= 10:
 		return false
 		#will call you if you max bet or higher
-	if last_quantity >= 10 and randi_range(1,10) >= 2:
+	if last_quantity >= 6 and randi_range(1,10) >= 2:
 		return false
-		#if over 10, very likely to call you
+		#if over 6, very likely to call you
 	if hand.filter( func(number): return number == last_face).size() >= last_quantity:
 		return true
 		# if you bid more of a face than they have in hand, they bid as you will always win challenge

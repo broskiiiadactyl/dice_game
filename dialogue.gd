@@ -6,6 +6,7 @@ var name_conversion_dict = {
 	"npc2" : "Boone",
 	"npc3" : "Vickie"
 }
+
 var dialogue_dict = { #character, dialogue, time, expression, anim
 	#charactercall
 	"npc1_call" : [
@@ -47,7 +48,8 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc3" , "Oh! I won! I won!" , 6.0 , "Neutral", "Win"],
 	],
 	"npc1_lose" : [
-		["npc1" , "Losing? That's... fine..." , 3.0 , "Nuetral", "Lose"],
+		["npc1" , "Wh-" , 0.5, "Surprised", "Idle"],
+		["npc1" , "Here's what I think of that." , 3.0, "Nuetral", "Lose"]
 	],
 	"npc2_lose" : [
 		["npc2" , "Oh I lost? That's how it goes." , 3.0 , "Nuetral", "Lose"],
@@ -90,8 +92,30 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 	"npc3_pass" : [
 		["npc3" , "I think you're being honest!" , 3.0 , "Nuetral", "Idle"],
 	],
-
+	"0" : [
+		["npc2", "Major! You made it!"],
+		["npc3", "Not major for long..."],
+		["npc2", "I'm so glad you could join us here for a round of Liar's Dice!"],
+		["npc1", "Well... Imperial Dice."],
+		["npc1", "The rules are wrong."],
+		["npc2", "Yes. No wilds and..."],
+		["npc3", "Everyone gets a chance to call!"],
+		["npc2", "Precisely. Keeps the game more fun. This way you..."],
+		["npc1", "Can't trust anyone."],
+		["player", "...",],
+		["npc2", "Yes, well. Let's get to it shall we?"],
+		["npc3", "Liar's dice, woohoo!"]
+	],
 }
+
+var round_key = 0
+
+func increment_round_key():
+	round_key += 1
+	return round_key
+
+func check_for_cutscene(chk_value):
+	return dialogue_dict.has(chk_value)
 
 func set_dialogue(event : String ):
 	#print("Event is: ",event)
@@ -117,9 +141,9 @@ func get_generic_dialogue(event : String) -> Array:
 	#NOTE from J: parameters for readabilityw
 	var speaker
 	var dialogue
-	var time
-	var expression
-	var anim
+	var time = 3.0
+	var expression = "Nuetral"
+	var anim = "Idle"
 	
 	
 	if event.contains('_bid'):
