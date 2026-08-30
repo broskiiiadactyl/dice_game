@@ -146,6 +146,7 @@ func next_turn():
 	bid_phase( turn_order[turn_pos] )
 
 func start_player_turn():
+	Dialogue.set_dialogue('reset')
 	if turn_pos == 4:
 		playmat.set_buttons("BET",true)
 	else:
@@ -359,7 +360,7 @@ func resolve_challenge(chal :="player") -> bool:
 	
 	gameactions_label.text = str(name_conversion[loser])+" loses a dice.\nThey have "+str(handsize_dict[loser])+" left."
 	
-	if loser != 'loser':
+	if loser != 'player':
 		Dialogue.set_dialogue(loser+"_lose")
 	
 	
