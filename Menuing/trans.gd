@@ -25,7 +25,6 @@ func _process(_delta: float) -> void:
 	if not amb.is_playing():
 		amb.play()
 
-
 func load_scene(target : String = "res://Main.tscn") -> void:
 	#self.visible = true
 	await get_tree().process_frame
@@ -38,7 +37,7 @@ func load_scene(target : String = "res://Main.tscn") -> void:
 	timer.start()
 
 func start_scene() -> void:
-	self.visible = true
+	%Loading.visible = true
 	await get_tree().create_timer(1.0).timeout
 	while not loaded_resource:
 		await get_tree().create_timer(1.0).timeout
@@ -46,9 +45,25 @@ func start_scene() -> void:
 	load2.visible = true
 	%AnimatedSprite2D.play("default")
 	bg_play = true
+	await get_tree().create_timer(10.0).timeout
+	end_screen()
 	
 func turn_off() -> void:
-	self.visible = false
+	%Loading.visible = false
+
+func end_screen() -> void: 
+	%Loading2.visible = true
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(%end_cover, "color", Color(0.0, 0.0, 0.0, 1.0), 5.0)
+	await tween.finished
+	tween.kill()
+	
+	tween = get_tree().create_tween()
+	tween.tween_property(%TextureRect, "modulate", Color(1.0, 1.0, 1.0, 1.0), .5)
+	await tween.finished
+	tween.kill()
+
 
 func _on_progress_check_timeout() -> void:
 	if loading:
