@@ -10,7 +10,8 @@ var dice_dict : Dictionary = {
 }
 
 var cup_dict : Dictionary = {
-	"can": "res://Assets/Cups/Scenes/can_open_2.tscn"
+	"can": "res://Assets/Cups/Scenes/can_open_2.tscn",
+	"wood": "res://Assets/Cups/Scenes/player_cup_model.tscn"
 }
 
 signal playmat_button_pressed(type: String)

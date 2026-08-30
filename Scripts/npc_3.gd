@@ -28,6 +28,10 @@ var animations : Array = [
 func _ready() -> void:
 	play_animation("Idle")
 
+func _process(_delta: float) -> void:
+	if not player.is_playing():
+		play_animation("Idle")
+
 func expression_test() -> void:
 	while true:
 		for face in expressions:

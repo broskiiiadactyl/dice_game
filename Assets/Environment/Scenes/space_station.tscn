@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvgt6ku6hmtlm" path="res://Assets/Environment/Raw/bar/bar ver2/Bar1.2_Finalbase.glb" id="1_eq28t"]
 [ext_resource type="Shader" uid="uid://bfu25qvucy7vb" path="res://shaders/sky.gdshader" id="2_eq28t"]
+[ext_resource type="PackedScene" uid="uid://dgkbttn82kteu" path="res://Assets/Environment/Scenes/bar_clutter.tscn" id="3_vgq7j"]
 
 [sub_resource type="Animation" id="Animation_1qkd3"]
 length = 0.001
@@ -124,3 +125,5 @@ skeleton = NodePath("..")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_0mfle")
 speed_scale = 0.025
+
+[node name="Bar_Clutter" parent="." index="20" unique_id=510875627 instance=ExtResource("3_vgq7j")]

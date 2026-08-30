@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dt5ueltsfwo3f"]
 
 [ext_resource type="Script" uid="uid://cchqamqsv4b0q" path="res://Scripts/player_cup.gd" id="1_u0t1n"]
+[ext_resource type="PackedScene" uid="uid://c0iy6hr24qyle" path="res://Assets/Cups/Scenes/player_cup_model.tscn" id="2_0mrrs"]
 [ext_resource type="PackedScene" uid="uid://dqxv28yrbu0fo" path="res://Assets/Cups/Scenes/can_open_2.tscn" id="2_7hcfj"]
 [ext_resource type="PackedScene" uid="uid://bdrlaltpy1pgw" path="res://Assets/Dice/Scenes/models/normal_die.tscn" id="3_1p8gh"]
 [ext_resource type="AudioStream" uid="uid://domw1gritad7t" path="res://Assets/Sounds/Dice/dice_shake_1.wav" id="4_8fivo"]
@@ -47,6 +48,8 @@ monitorable = false
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1612854, 0)
 shape = SubResource("BoxShape3D_lqb7u")
+
+[node name="Player Cup" parent="." unique_id=2102415268 instance=ExtResource("2_0mrrs")]
 
 [connection signal="mouse_entered" from="Cup Collision" to="." method="_on_cup_collision_mouse_entered"]
 [connection signal="mouse_exited" from="Cup Collision" to="." method="_on_cup_collision_mouse_exited"]
