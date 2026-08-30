@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dukpkl35ig4q" path="res://Assets/Characters/npc2/raw/BaraWalrus_Final_8-28_20.glb" id="1_7rqmk"]
 [ext_resource type="Script" uid="uid://c2yuwg1flhie8" path="res://Scripts/npc_2.gd" id="2_8kl11"]
-[ext_resource type="AnimationLibrary" uid="uid://clvn4f11bcjmx" path="res://Assets/Characters/anims/Boone/.res" id="4_5vh8a"]
+[ext_resource type="AnimationLibrary" uid="uid://yf6q7nhsvvxo" path="res://Assets/Characters/anims/Boone/Boone.res" id="4_5vh8a"]
 [ext_resource type="PackedScene" uid="uid://e6fu81sgp7ro" path="res://Assets/Cups/Scenes/boone_cup.tscn" id="4_fcebj"]
 
 [node name="Boone" unique_id=67537433 instance=ExtResource("1_7rqmk")]
@@ -10,7 +10,7 @@ script = ExtResource("2_8kl11")
 
 [node name="GeneralSkeleton" parent="BaraWalrus" parent_id_path=PackedInt32Array(673898799) index="0" unique_id=89997080]
 bones/1/rotation = Quaternion(5.4827638e-08, 0.7076679, -2.491487e-08, 0.70654523)
-bones/2/position = Vector3(0.0019030864, 0.6669053, -0.8992413)
+bones/2/position = Vector3(2.8159702e-06, 0.69317955, -0.77116644)
 bones/3/rotation = Quaternion(9.905405e-08, 0.5549042, 0.8319143, -5.641775e-08)
 bones/4/rotation = Quaternion(2.9114183e-08, 0.8346818, -0.5507325, 1.790837e-08)
 bones/5/rotation = Quaternion(-9.219624e-09, 0.7071068, -0.7071068, 9.219624e-09)
@@ -19,27 +19,26 @@ bones/7/rotation = Quaternion(9.9054105e-08, 0.5549042, 0.8319143, -5.641785e-08
 bones/8/rotation = Quaternion(7.374461e-08, 0.8346818, -0.5507325, 2.156931e-08)
 bones/9/rotation = Quaternion(9.219624e-09, 0.70710677, -0.70710677, -9.219624e-09)
 bones/10/rotation = Quaternion(-3.1610135e-08, 1, 0, -9.4830405e-08)
-bones/11/rotation = Quaternion(0.08043554, -0.0031437264, 0.021120066, 0.9965311)
-bones/12/rotation = Quaternion(-0.0008831662, -0.025076214, -0.015412932, 0.9995663)
-bones/13/rotation = Quaternion(0.5047904, 0.41574404, 0.5574733, -0.5114362)
-bones/14/rotation = Quaternion(0.20428021, 0.9085485, -0.35115728, -0.0974562)
-bones/15/rotation = Quaternion(0.061600886, -0.70398474, 0.076310135, 0.70341146)
-bones/16/rotation = Quaternion(0.09207596, 0.68504316, -0.032088857, 0.7219475)
-bones/17/rotation = Quaternion(-0.054036584, -0.013181106, 0.017694397, 0.9982952)
-bones/18/rotation = Quaternion(0.069832824, -0.014211239, 0.005603066, 0.99744177)
-bones/19/rotation = Quaternion(-0.05144569, 0.3435987, -0.6751913, 0.65069973)
-bones/19/scale = Vector3(1.0000001, 0.99999964, 0.99999994)
-bones/21/rotation = Quaternion(-0.059398945, -0.349697, 0.6602775, 0.6619801)
-bones/23/rotation = Quaternion(0.50084275, -0.43933114, -0.55412024, -0.49909475)
-bones/24/rotation = Quaternion(-0.15263723, 0.91069674, -0.37831408, 0.06489827)
-bones/25/rotation = Quaternion(0.043837454, 0.7051789, -0.054305293, 0.70558625)
-bones/26/rotation = Quaternion(0.11982021, -0.7303773, -0.06043551, 0.669731)
+bones/11/rotation = Quaternion(0.07140357, -0.01922404, 0.025596125, 0.9969337)
+bones/12/rotation = Quaternion(-0.019413475, -0.05564465, -0.004603233, 0.9982513)
+bones/13/rotation = Quaternion(0.4316321, 0.5496325, 0.58183354, -0.41601405)
+bones/14/rotation = Quaternion(0.32412824, 0.9249287, -0.05762409, -0.19007176)
+bones/15/rotation = Quaternion(0.3656772, -0.8232726, 0.116611384, 0.41821563)
+bones/16/rotation = Quaternion(-0.30967137, 0.8130565, 0.2814273, 0.40477332)
+bones/17/rotation = Quaternion(0.20158489, -0.037477378, 0.06546752, 0.97656184)
+bones/18/rotation = Quaternion(0.12623408, -0.03376968, 0.040433414, 0.99060076)
+bones/19/rotation = Quaternion(0.15898947, 0.1840737, -0.72856903, 0.64033294)
+bones/21/rotation = Quaternion(-0.043541614, -0.32613507, 0.34264386, 0.8799633)
+bones/23/rotation = Quaternion(0.5327055, -0.45904714, -0.54695684, -0.4542455)
+bones/24/rotation = Quaternion(-0.43413624, 0.863938, -0.18221799, 0.17869999)
+bones/25/rotation = Quaternion(-0.059189014, 0.9257237, -0.2243878, 0.29863456)
+bones/26/rotation = Quaternion(0.023538519, -0.9121623, -0.23409575, 0.33556676)
 
 [node name="Head_004" parent="BaraWalrus/GeneralSkeleton" index="5" unique_id=966694917]
 unique_name_in_owner = true
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="BaraWalrus/GeneralSkeleton" index="7" unique_id=1572021251]
-transform = Transform3D(0.99260193, -0.063927576, -0.10322182, 0.043119196, 0.9803475, -0.19250828, 0.11349985, 0.18663324, 0.9758513, -0.014564628, 1.5909821, 0.047104504)
+transform = Transform3D(0.9227976, -0.35327685, -0.15375324, 0.14843461, 0.69424033, -0.7042709, 0.35554427, 0.6270772, 0.69308186, -0.039100442, 1.6099434, 0.17816398)
 bone_name = "Head"
 bone_idx = 18
 
@@ -48,7 +47,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 1.8044375e-09, 3.7252903e-09, -5.2386895e-09, 1.0000001, 3.7252903e-09, 4.656613e-09, 0, 1.0000001, 0, 0.5, 0)
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="BaraWalrus/GeneralSkeleton" index="8" unique_id=1215951142]
-transform = Transform3D(0.5583829, 0.3199534, -0.76540107, -0.0062679574, -0.92097956, -0.38956133, -0.82956004, 0.22232187, -0.51225364, 0.38852805, 0.74140537, 0.011796225)
+transform = Transform3D(0.99791443, -0.029692963, 0.057311833, 0.061774492, 0.18190667, -0.9813734, 0.018714324, 0.9828674, 0.18336177, 0.23399806, 0.9684051, 0.57997227)
 bone_name = "LeftHand"
 bone_idx = 16
 
@@ -62,3 +61,7 @@ visible = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1531990812]
 unique_name_in_owner = true
 libraries/ = ExtResource("4_5vh8a")
+autoplay = &"Idle"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2" unique_id=1821263308]
+volume_db = -10.0

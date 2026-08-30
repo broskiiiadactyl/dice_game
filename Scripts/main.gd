@@ -45,7 +45,7 @@ func _ready() -> void:
 	if not Globals.ran_test:
 		is_holding = true
 		await fukcing_roll_hellllll_yeah(true)
-		#await %"Environment Flavor".play_all_events()
+		await %"Environment Flavor".play_all_events()
 		Globals.ran_test = true
 		get_tree().reload_current_scene()
 	else:
@@ -128,6 +128,7 @@ func fukcing_roll_hellllll_yeah(instant: bool = false) -> bool:
 	tween.kill()
 	tween = get_tree().create_tween()
 	
+	cup.play_thud()
 	cup.global_position = playmat.cup_placer.global_position + Vector3(0,5,0)
 	cup.global_rotation.z += deg_to_rad(180)
 	

@@ -18,6 +18,8 @@ var last_pos : Vector3
 var is_shaking : bool = false
 var can_play_sound : bool = true
 
+@onready var thud : AudioStreamPlayer3D = %Thud
+
 var mouse_over : bool = false
 
 func _ready() -> void:
@@ -70,6 +72,8 @@ func play_shaker_sound() -> void:
 		shaker_sound.play()
 		shaker_timer.start()
 
+func play_thud() -> void:
+	thud.play()
 
 func _on_cup_collision_mouse_entered() -> void:
 	mouse_over = true

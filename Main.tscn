@@ -304,6 +304,7 @@ script = ExtResource("12_c6i3y")
 unique_name_in_owner = true
 wait_time = 10.0
 one_shot = true
+autostart = true
 
 [node name="Gibzo" parent="Pausable/Environment Flavor" unique_id=1692303026 instance=ExtResource("12_5vvyt")]
 unique_name_in_owner = true

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdrlaltpy1pgw" path="res://Assets/Dice/Scenes/models/normal_die.tscn" id="3_1p8gh"]
 [ext_resource type="AudioStream" uid="uid://domw1gritad7t" path="res://Assets/Sounds/Dice/dice_shake_1.wav" id="4_8fivo"]
 [ext_resource type="AudioStream" uid="uid://b6o0mqrtgh7jb" path="res://Assets/Sounds/Dice/dice_shake_2.wav" id="5_0mrrs"]
+[ext_resource type="AudioStream" uid="uid://coqy4ju6wbb4" path="res://Assets/Sounds/Cup/495645__robbeman__mug_wood1 (best one imo).wav" id="6_48ptk"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p1f1a"]
 playback_mode = 1
@@ -33,6 +34,11 @@ visible = false
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_p1f1a")
 volume_db = 80.0
+max_polyphony = 3
+
+[node name="Thud" type="AudioStreamPlayer3D" parent="." unique_id=1232483991]
+unique_name_in_owner = true
+stream = ExtResource("6_48ptk")
 max_polyphony = 3
 
 [node name="Shake Sound Timer" type="Timer" parent="." unique_id=569446113]
