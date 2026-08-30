@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var cover : ColorRect = %Cover
 
 @onready var audio : AudioStreamPlayer = %AudioStreamPlayer
+@onready var amb : AudioStreamPlayer = %Ambience
 
 var target_scene_path
 var loaded_resource
@@ -13,13 +14,17 @@ var loaded_resource
 var progress : Array
 var loading : bool = false
 
+var bg_play : bool = false
+
 func _ready() -> void:
 	Globals.main_loaded.connect(turn_off)
-	audio.play()
 
 func _process(_delta: float) -> void:
-	if not audio.is_playing():
+	if not audio.is_playing() and bg_play:
 		audio.play()
+	if not amb.is_playing():
+		amb.play()
+
 
 func load_scene(target : String = "res://Main.tscn") -> void:
 	#self.visible = true
@@ -40,6 +45,7 @@ func start_scene() -> void:
 	get_tree().change_scene_to_packed(loaded_resource)
 	load2.visible = true
 	%AnimatedSprite2D.play("default")
+	bg_play = true
 	
 func turn_off() -> void:
 	self.visible = false
