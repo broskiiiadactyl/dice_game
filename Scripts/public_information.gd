@@ -6,7 +6,7 @@ extends Node
 @onready var allbets_container : Node = %"allbets_container"
 @onready var allbets_label : Node = %"allbets"
 @onready var playmat : Node = %"Playmat"
-@onready var main : Node = get_parent()
+@onready var main : Node = get_node("/root/Main")
 @onready var last_quantity = Globals.last_quantity
 @onready var last_face = Globals.last_face
 @onready var npcscreens = %'NPC Screens'
@@ -168,7 +168,7 @@ func end_round() -> bool:
 	allbets_label.text = ""
 	
 	await Dialogue.set_dialogue('reset')
-	get_parent().reset()
+	main.reset()
 	
 	var round_key = Dialogue.increment_round_key()
 	if Dialogue.check_for_cutscene(round_key):
