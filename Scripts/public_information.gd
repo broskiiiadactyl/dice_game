@@ -133,7 +133,10 @@ func decision_process( curr_character ) -> bool:
 			challenger = deciding_char
 			return false
 		gameactions_label.text = name_conversion[deciding_char] +" will [color=green]pass.[color=green]"
-		await Dialogue.set_dialogue(deciding_char+"_pass")
+		if deciding_char != 'player':
+			print('Deciding char is: ',deciding_char)
+			await Dialogue.set_dialogue(deciding_char+"_pass")
+			await get_tree().create_timer(3.0).timeout
 	return true
 
 func next_turn():
@@ -146,7 +149,7 @@ func next_turn():
 	bid_phase( turn_order[turn_pos] )
 
 func start_player_turn():
-	Dialogue.set_dialogue('reset')
+	await Dialogue.set_dialogue('reset')
 	if turn_pos == 4:
 		playmat.set_buttons("BET",true)
 	else:
@@ -170,7 +173,7 @@ func end_round() -> bool:
 	gameactions_label.text = start_of_turn_phrases[randi_range(0, start_of_turn_phrases.size()-1)]
 	allbets_label.text = ""
 	
-	Dialogue.set_dialogue('reset')
+	await Dialogue.set_dialogue('reset')
 	get_parent().reset()
 	
 	return true
@@ -351,7 +354,7 @@ func resolve_challenge(chal :="player") -> bool:
 	allbets_label.text = "".join(conclusion)
 	
 	if winner != 'player':
-		Dialogue.set_dialogue(winner+"_win")
+		await Dialogue.set_dialogue(winner+"_win")
 	
 	handsize_dict[loser] = handsize_dict[loser] - 1 #reduces the losing player's handsize by one hand sizes
 	npcscreens.sort_npc_screen_update(loser, "dice_update", handsize_dict[loser])
@@ -361,7 +364,7 @@ func resolve_challenge(chal :="player") -> bool:
 	gameactions_label.text = str(name_conversion[loser])+" loses a dice.\nThey have "+str(handsize_dict[loser])+" left."
 	
 	if loser != 'player':
-		Dialogue.set_dialogue(loser+"_lose")
+		await Dialogue.set_dialogue(loser+"_lose")
 	
 	
 	end_round()
