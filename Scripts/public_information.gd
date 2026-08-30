@@ -11,6 +11,7 @@ extends Node
 @onready var last_face = Globals.last_face
 @onready var npcscreens = %'NPC Screens'
 @onready var playerscreen = %'Player Screen'
+@onready var endscreen = %'End Screen'
 
 var results_dict = {
 	"player" : [],
@@ -20,10 +21,10 @@ var results_dict = {
 }
 
 var handsize_dict = {
-	"player" : 1,
-	"npc1" : 1,
-	"npc2" : 0,
-	"npc3" : 0
+	"player" : 5,
+	"npc1" : 5,
+	"npc2" : 5,
+	"npc3" : 5
 }
 
 var bets_dict = {
@@ -56,7 +57,7 @@ var last_bidder : String = "player" #last_quantity, last_face are declared in on
 var challenger : String
 
 var turn_pos : int = 0
-var turn_order = ["player", "npc1"]
+var turn_order = ["player", "npc1", "npc2", "npc3"]
 var char_name = ["Major","Slade","Boone","Vickie"]
 var removed_players : Array = []
 var remaining_players : int = 4
@@ -268,6 +269,9 @@ func get_player_value() -> void:
 func remove_player() -> bool:
 	for curr_character in turn_order:
 		if handsize_dict[curr_character] == 0:
+			if curr_character == 'player':
+				end_game()
+			return true
 			turn_order.erase(curr_character)
 			gameactions_label.text = name_conversion[curr_character]+" has been removed from the game."
 			await Dialogue.set_dialogue(curr_character+"_out")
@@ -300,7 +304,12 @@ func determine_call_or_pass(deciding_char,char_string) -> bool: #true means bid,
 	npcscreens.sort_npc_screen_update(deciding_char,'think')
 	await Dialogue.set_dialogue(deciding_char + "_think")
 	
+	var pool_size = get_pool_size()
 	var hand = results_dict[deciding_char]
+	
+	if last_quantity >= pool_size:
+		return false
+		#if last bet is bigger then pool size, call that shit
 	if last_quantity >= 10:
 		return false
 		#will call you if you max bet or higher
@@ -373,11 +382,20 @@ func resolve_challenge(chal :="player") -> bool:
 	end_round()
 	return true
 
+func get_pool_size() -> int:
+	var pool_size = 0
+	for x in turn_order:
+		pool_size += handsize_dict[x]
+	return pool_size
+
 func end_game():
+	playmat.set_buttons("BOTH",false)
+	main.can_hold =false
 	gameactions_container.visible = false
-	AudioServer.set_bus_volume_db(0,0.0)
+	Trans.bg_play = false
+	Trans.audio.stop()
 	if turn_order == ['player']:
 		await Dialogue.set_dialogue('win')
 	if turn_order != ['player']:
 		await Dialogue.set_dialogue('win')
-	%EndScreen.visible = true
+	endscreen.visible = true

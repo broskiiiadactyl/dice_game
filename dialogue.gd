@@ -107,18 +107,18 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc3", "Liar's dice, woohoo!", 1.0, "Nuetral", "Idle"]
 	],
 	"win" : [
-		["npc1", "Damn.", 1.0, "Neutral", "Idle"],
+		["npc1", "Damn.", 1.0, "Talk", "Idle"],
 		["npc3", "Beginner's luck", 0.5, "Angry", "Idle"],
-		["npc2", "Never comes down to luck with the commander.", 3.0, "Neutral", "Idle"],
-		["npc1", "Classic.", 1.0, "Neutral", "Idle"],
-		["npc2", "It makes what comes next...", 3.0, "Neutral", "Idle"],
-		["npc2", "All the harder.", 3.0, "Neutral", "Idle"],
-		["npc3", "", 0.5, "Sad", "Idle"],
-		["npc1", "I tried to fight this.", 3.0, "Neutral", "Idle"],
-		["npc1", "But it's the right call", 3.0, "Neutral", "Idle"],
-		["npc2", "The Empite thanks you for your past service.", 3.0, "Neutral", "Idle"],
-		["npc2", "Goodbye, Commander.", 3.0, "Neutral", "Idle"]
-	],
+		["npc2", "Never comes down to luck with the commander.", 3.0, "Angry", "SmallTalk"],
+		["npc1", "Classic.", 1.0, "Angry Talk", "OneHandTalk"],
+		["npc2", "It makes what comes next...", 3.0, "Sad", "Idle"],
+		["npc2", "All the harder.", 3.0, "Angry", "Thinky"],
+		["npc3", "", 0.5, "Surprise", "Idle"],
+		["npc1", "I tried to fight this.", 3.0, "Angry Talk", "Thinky"],
+		["npc1", "But it's the right call", 3.0, "Talk2", "OneHandTalk"],
+		["npc2", "The Empire thanks you for your past service.", 3.0, "Angry", "Lose"],
+		["npc2", "But you won't be leaving this station.", 3.0, "Angry", "Idle"]
+		],
 	"lose" : [
 		["npc1", "You lose.", 1.0, "Neutral", "Idle"],
 	]

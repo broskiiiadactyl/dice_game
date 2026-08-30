@@ -72,7 +72,7 @@ content_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ql5rc"]
 
-[sub_resource type="Theme" id="Theme_xrxkg"]
+[sub_resource type="Theme" id="Theme_sqvbp"]
 resource_local_to_scene = true
 default_font = ExtResource("25_xrxkg")
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
@@ -645,7 +645,7 @@ script = ExtResource("10_wkp8b")
 
 [node name="Pause Menu" parent="." unique_id=240410558 instance=ExtResource("24_mxvw5")]
 unique_name_in_owner = true
-theme = SubResource("Theme_xrxkg")
+theme = SubResource("Theme_sqvbp")
 
 [node name="End Screen" type="Control" parent="." unique_id=718762391]
 unique_name_in_owner = true
