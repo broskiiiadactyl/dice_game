@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cg8byawh8fmns"]
-
-[ext_resource type="PackedScene" uid="uid://c58o7nxvvtp7x" path="res://Assets/Dice/Raw/red_dice_wow.glb" id="1_alyl6"]
-
-[node name="Red Die" unique_id=765696963 instance=ExtResource("1_alyl6")]
-
-[node name="Dice" parent="." index="0" unique_id=2081531866]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)

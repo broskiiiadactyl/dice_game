@@ -45,7 +45,7 @@ func _ready() -> void:
 	if not Globals.ran_test:
 		is_holding = true
 		await fukcing_roll_hellllll_yeah(true)
-		await %"Environment Flavor".play_all_events()
+		#await %"Environment Flavor".play_all_events()
 		Globals.ran_test = true
 		get_tree().reload_current_scene()
 	else:
