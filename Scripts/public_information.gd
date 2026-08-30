@@ -164,15 +164,17 @@ func end_round() -> bool:
 	
 	gameactions_label.text = start_of_turn_phrases[randi_range(0, start_of_turn_phrases.size()-1)]
 	
-	allbets_container.visible = false
-	allbets_label.text = ""
-	
-	await Dialogue.set_dialogue('reset')
-	main.reset()
-	
 	var round_key = Dialogue.increment_round_key()
 	if Dialogue.check_for_cutscene(round_key):
 		Dialogue.set_dialogue(round_key)
+	
+	if turn_order.size() == 1:
+		end_game()
+		return true
+	
+	#NOTE from J: reset happening after checking for end game
+	main.reset()
+	await Dialogue.set_dialogue('reset')
 	
 	return true
 
@@ -370,3 +372,9 @@ func resolve_challenge(chal :="player") -> bool:
 	
 	end_round()
 	return true
+
+func end_game():
+	if turn_order == 'player':
+		pass #win
+	if turn_order != 'player':
+		pass #win

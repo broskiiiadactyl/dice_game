@@ -93,18 +93,18 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc3" , "I think you're being honest!" , 3.0 , "Nuetral", "Idle"],
 	],
 	"0" : [
-		["npc2", "Major! You made it!"],
-		["npc3", "Not major for long..."],
-		["npc2", "I'm so glad you could join us here for a round of Liar's Dice!"],
-		["npc1", "Well... Imperial Dice."],
-		["npc1", "The rules are wrong."],
-		["npc2", "Yes. No wilds and..."],
-		["npc3", "Everyone gets a chance to call!"],
-		["npc2", "Precisely. Keeps the game more fun. This way you..."],
-		["npc1", "Can't trust anyone."],
-		["player", "...",],
-		["npc2", "Yes, well. Let's get to it shall we?"],
-		["npc3", "Liar's dice, woohoo!"]
+		["npc2", "Major! You made it!", 2.0, "Nuetral", "Idle"],
+		["npc3", "Not major for long...", 0.5, "Nuetral", "Idle"],
+		["npc2", "I'm so glad you could join us here for a round of Liar's Dice!", 3.0, "Nuetral", "Idle"],
+		["npc1", "Well... Imperial Dice.", 1.0, "Nuetral", "Idle"],
+		["npc1", "The rules are wrong.", 2.0, "Nuetral", "Idle"],
+		["npc2", "Yes. No wilds and...", 2.0, "Nuetral", "Idle"],
+		["npc3", "Everyone gets a chance to call!", 3.0, "Nuetral", "Idle"],
+		["npc2", "Precisely. Keeps the game more fun. This way you...", 2.0, "Nuetral", "Idle"],
+		["npc1", "Can't trust anyone.", 3.0, "Nuetral", "Idle"],
+		["player", "...", 3.0, "Nuetral", "Idle"],
+		["npc2", "Yes, well. Let's get to it shall we?", 3.0, "Nuetral", "Idle"],
+		["npc3", "Liar's dice, woohoo!", 1.0, "Nuetral", "Idle"]
 	],
 }
 
