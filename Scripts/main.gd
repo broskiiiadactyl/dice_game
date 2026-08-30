@@ -55,10 +55,10 @@ func _ready() -> void:
 		await get_tree().create_timer(1.0).timeout
 		Globals.main_loaded.emit()
 		can_hold = false
+		get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
 		await Dialogue.set_dialogue("start")
 		can_hold = true
 		action_container.visible = true
-		get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
 		%"Player Screen".waiting_for_roll()
 
 func _process(delta: float) -> void:

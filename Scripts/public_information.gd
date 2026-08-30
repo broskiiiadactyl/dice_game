@@ -291,7 +291,7 @@ func declare_game_state():
 func determine_call_or_pass(deciding_char,char_string) -> bool: #true means bid, false means call
 	if deciding_char == 'player':
 		gameactions_label.text = "Your decision. [shake][color=red]Call?[color=red][shake]"
-		playerscreen.waiting_for_call()
+		#playerscreen.waiting_for_call()
 		playmat.set_buttons("CALL",true)
 		await get_tree().create_timer(4.0).timeout
 		playmat.set_buttons("CALL", false)
