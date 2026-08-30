@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://brbwf2f6x6n44"]
+
+[ext_resource type="AudioStream" uid="uid://clo7txa3h4juv" path="res://Assets/Sounds/Shane Ivers - Dark 'n' Stormy (bg music).mp3" id="1_3j8lq"]
+
+[node name="Sound" type="Node3D" unique_id=702672382]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1724112582]
+unique_name_in_owner = true
+stream = ExtResource("1_3j8lq")
+volume_db = -10.0

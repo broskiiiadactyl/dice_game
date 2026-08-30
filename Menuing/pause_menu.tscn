@@ -1,23 +1,52 @@
-[gd_scene format=3 uid="uid://c1i6r8xa4owfa"]
+[gd_scene format=3 uid="uid://k1lq3wty6wha"]
 
-[ext_resource type="Script" uid="uid://b20lxn8jirsva" path="res://Scripts/main_menu.gd" id="1_6tqqd"]
-[ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="3_lgi1p"]
-[ext_resource type="Theme" uid="uid://cccbqrcecp5le" path="res://Assets/theme styling/THE THEME.tres" id="3_pp1rk"]
-[ext_resource type="PackedScene" uid="uid://cdrilefe4owip" path="res://Assets/Environment/Scenes/space_station.tscn" id="4_pp1rk"]
+[ext_resource type="Theme" uid="uid://cccbqrcecp5le" path="res://Assets/theme styling/THE THEME.tres" id="1_77vkt"]
+[ext_resource type="Script" uid="uid://b20lxn8jirsva" path="res://Scripts/main_menu.gd" id="2_lpy18"]
+[ext_resource type="Shader" uid="uid://bfu25qvucy7vb" path="res://shaders/sky.gdshader" id="3_77vkt"]
+[ext_resource type="Texture2D" uid="uid://cr83s0jkbeci" path="res://Assets/theme styling/die1.png" id="4_fk1xo"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lqb7u"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pp1rk"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="Gradient" id="Gradient_eq28t"]
+offsets = PackedFloat32Array(0.21091811, 0.25558314)
+colors = PackedColorArray(0, 0, 0.20392157, 1, 0.2507324, 0.00076248735, 0.46463138, 1)
 
-[sub_resource type="Sky" id="Sky_cmde0"]
-sky_material = SubResource("ProceduralSkyMaterial_pp1rk")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lpy18"]
+gradient = SubResource("Gradient_eq28t")
 
-[sub_resource type="Environment" id="Environment_ql5rc"]
-background_energy_multiplier = 2.0
-sky = SubResource("Sky_cmde0")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dxm6"]
+render_priority = 10
+shader = ExtResource("3_77vkt")
+shader_parameter/background_color = Color(0.02, 0.04, 0.12, 1)
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_lpy18")
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/density = 0.949999975965
+shader_parameter/layer_parascale = 4
+shader_parameter/star_speed = Vector2(0.01, 0.01)
+shader_parameter/star_wave = Vector2(0, 0)
+shader_parameter/star_size = 2.49999994412
+shader_parameter/star_rotate_speed = 1.424999998000942e-07
+shader_parameter/twinkle_effect = 0.0999999977648
+shader_parameter/twinkle_speed = 0.3
+shader_parameter/pixelate_enabled = false
+shader_parameter/pixelate_count = 1000.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0rmew"]
+material = SubResource("ShaderMaterial_3dxm6")
+flip_faces = true
+top_radius = 50.0
+bottom_radius = 50.0
+height = 100.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Skin" id="Skin_fk1xo"]
+resource_name = "Skin"
+bind_count = 1
+bind/0/name = &"SkyBox_2"
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.58858, 0)
 
 [sub_resource type="DPITexture" id="DPITexture_pp1rk"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
@@ -52,15 +81,15 @@ corner_radius_bottom_left = 4
 corner_detail = 6
 shadow_size = 20
 
-[node name="Main Menu" type="Control" unique_id=240410558]
+[node name="Pause Menu" type="Control" unique_id=240410558]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_pp1rk")
-script = ExtResource("1_6tqqd")
+theme = ExtResource("1_77vkt")
+script = ExtResource("2_lpy18")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=731086654]
 layout_mode = 1
@@ -74,18 +103,18 @@ texture = SubResource("ViewportTexture_lqb7u")
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1570294353]
 size = Vector2i(1152, 648)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport" unique_id=1910103390]
-environment = SubResource("Environment_ql5rc")
-
-[node name="Bar1_2_Finalbase" parent="SubViewport" unique_id=739803072 instance=ExtResource("4_pp1rk")]
-unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=185489769]
 unique_name_in_owner = true
 transform = Transform3D(0.9465448, 0, -0.3225723, 0, 1, 0, 0.3225723, 0, 0.9465448, 17.93771, 4.7620077, -38.3601)
 projection = 1
 size = 13.981
+
+[node name="SkyBox" type="MeshInstance3D" parent="SubViewport" unique_id=941509691 groups=["visible"]]
+unique_name_in_owner = true
+transform = Transform3D(-0.7779826, 0, -0.62828577, 0, 1, 0, 0.62828577, 0, -0.7779826, 37.923054, 4.606166, -27.968363)
+mesh = SubResource("CylinderMesh_0rmew")
+skin = SubResource("Skin_fk1xo")
+skeleton = NodePath("../Camera3D")
 
 [node name="UI" type="Control" parent="." unique_id=1984121070]
 unique_name_in_owner = true
@@ -129,6 +158,7 @@ offset_bottom = 100.0
 grow_horizontal = 0
 
 [node name="Title" type="RichTextLabel" parent="UI/Main/Control/MarginContainer" unique_id=643301878]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -150,9 +180,16 @@ alignment = 2
 
 [node name="Start" type="Button" parent="UI/Main/Control/VBoxContainer" unique_id=327169567]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Start"
+alignment = 0
+
+[node name="Resume" type="Button" parent="UI/Main/Control/VBoxContainer" unique_id=793326957]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Resume"
 alignment = 0
 
 [node name="Options" type="Button" parent="UI/Main/Control/VBoxContainer" unique_id=1766004700]
@@ -174,7 +211,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="UI/Main/CenterContainer" unique_id=1916037991]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("3_lgi1p")
+texture = ExtResource("4_fk1xo")
 
 [node name="Tutorial" type="CenterContainer" parent="UI" unique_id=188038399]
 unique_name_in_owner = true
@@ -230,7 +267,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="UI/Tutorial/CenterContainer" unique_id=438462600]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("3_lgi1p")
+texture = ExtResource("4_fk1xo")
 
 [node name="Options" type="CenterContainer" parent="UI" unique_id=1809407177]
 unique_name_in_owner = true
@@ -308,6 +345,7 @@ max_value = 1.0
 step = 0.01
 
 [connection signal="pressed" from="UI/Main/Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UI/Main/Control/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="UI/Main/Control/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="UI/Main/Control/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="UI/Tutorial/Control/VBoxContainer/Back" to="." method="_on_back_pressed"]

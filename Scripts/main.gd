@@ -30,6 +30,8 @@ var time_passed : float = 0.0
 @onready var playmat : Node3D = %Playmat
 
 func _ready() -> void:
+	%"Pause Menu".visible = false
+	
 	set_cup_bounds()
 	cup_start_pos = cup.global_position
 	cup_start_rot = cup.global_rotation
@@ -77,11 +79,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_shaking = false
 		fukcing_roll_hellllll_yeah()
 	
-	if event.is_action_pressed("reset"):
-		get_tree().reload_current_scene()
+	#if event.is_action_pressed("reset"):
+		#get_tree().reload_current_scene()
 	
 	if event.is_action_pressed("ui_cancel"):
-		reset()
+		pause()
 
 func reset() -> void:
 	for die in player_dice.get_children():
@@ -206,3 +208,6 @@ func set_cup_bounds():
 	boundR = cup_bounds.global_position.x + w
 	boundT = cup_bounds.global_position.y + h
 	boundB = cup_bounds.global_position.y - h
+
+func pause() -> void:
+	pass

@@ -18,6 +18,7 @@ run/max_fps=60
 
 [autoload]
 
+Sound="*uid://brbwf2f6x6n44"
 Globals="*uid://c0ete5yps11qb"
 Trans="*uid://bfqh5h6innog7"
 Dialogue="*uid://crvceiwjo361"
@@ -30,6 +31,7 @@ window/stretch/aspect="expand"
 [global_group]
 
 visible=""
+bgm=""
 
 [input]
 

@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var cover : ColorRect = %Cover
 
-@onready var audio : AudioStreamPlayer3D = %AudioStreamPlayer3D
+@onready var audio : AudioStreamPlayer = %AudioStreamPlayer
 
 var target_scene_path
 var loaded_resource
@@ -15,9 +15,11 @@ var loading : bool = false
 
 func _ready() -> void:
 	Globals.main_loaded.connect(turn_off)
+	audio.play()
 
 func _process(_delta: float) -> void:
-	pass
+	if not audio.is_playing():
+		audio.play()
 
 func load_scene(target : String = "res://Main.tscn") -> void:
 	#self.visible = true

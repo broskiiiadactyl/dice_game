@@ -29,6 +29,7 @@ signal main_loaded
 signal speak(args: Array[Array])
 signal speak_finished
 signal bot_left
+signal unpause
 
 #public information variables that need to be declared
 var last_quantity : int = 0

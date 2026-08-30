@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b7iknbnu6bcon" path="res://Assets/theme styling/die4.png" id="6_xb71s"]
 [ext_resource type="Texture2D" uid="uid://4h0mqv0twqjm" path="res://Assets/theme styling/die5.png" id="7_88lbb"]
 [ext_resource type="Texture2D" uid="uid://dbtpmx7pxw50p" path="res://Assets/theme styling/die6.png" id="8_6i0ed"]
+[ext_resource type="AudioStream" uid="uid://clo7txa3h4juv" path="res://Assets/Sounds/Shane Ivers - Dark 'n' Stormy (bg music).mp3" id="9_rl4xa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqb7u"]
 animations = [{
@@ -100,8 +101,11 @@ rotation = 0.7853982
 scale = Vector2(0.615, 0.615)
 sprite_frames = SubResource("SpriteFrames_lqb7u")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=280462617]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=160597921]
 unique_name_in_owner = true
+stream = ExtResource("9_rl4xa")
+volume_db = -10.0
+autoplay = true
 
 [node name="Progress Check" type="Timer" parent="." unique_id=41497495]
 unique_name_in_owner = true
