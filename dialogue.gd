@@ -55,7 +55,7 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc2" , "Oh I lost? That's how it goes." , 3.0 , "Nuetral", "Lose"],
 	],
 	"npc3_lose" : [
-		["npc3" , "Losing is way less fun." , 3.0 , "Neutral", "Lose"],
+		["npc3" , "Losing is way less fun." , 3.0 , "Angry", "Lose"],
 	],
 	"reset" : [
 		["npc1" , "" , 0.5 , "Nuetral", "Idle"],
@@ -119,7 +119,7 @@ var dialogue_dict = { #character, dialogue, time, expression, anim
 		["npc1", "Classic.", 1.0, "Angry Talk", "OneHandTalk"],
 		["npc2", "It makes what comes next...", 3.0, "Sad", "Idle"],
 		["npc2", "All the harder.", 3.0, "Angry", "Thinky"],
-		["npc3", "", 0.5, "Surprise", "Idle"],
+		["npc3", "", 0.5, "Sad", "Idle"],
 		["npc1", "I tried to fight this.", 3.0, "Angry Talk", "Thinky"],
 		["npc1", "But it's the right call", 3.0, "Talk2", "OneHandTalk"],
 		["npc2", "The Empire thanks you for your past service.", 3.0, "Angry", "Lose"],
