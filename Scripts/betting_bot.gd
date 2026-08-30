@@ -85,7 +85,7 @@ func set_num_bet(dir: int) -> void:
 		if new_bet < min_num_bet:
 			num_bet = min_num_bet
 			return
-	elif new_bet > max_bet:
+	elif new_bet > max_bet or new_bet < 1:
 			return
 	num_bet = new_bet
 	bet_label.text = str(num_bet) 
@@ -95,6 +95,9 @@ func set_dice_bet(dir: int) ->void:
 	var new_bet : int = dice_bet + dir
 	if new_bet < min_face_bet or new_bet > dice_max:
 		return
+	if new_bet >= min_face_bet and num_bet < min_num_bet:
+		num_bet = min_num_bet
+		bet_label.text = str(num_bet)
 	dice_bet = new_bet
 	face_label.texture = face_images[dice_bet - 1]
 

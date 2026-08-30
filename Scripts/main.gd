@@ -49,6 +49,7 @@ func _ready() -> void:
 		await get_tree().create_timer(1.0).timeout
 		Globals.main_loaded.emit()
 		get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
+		%"Player Screen".waiting_for_roll()
 
 func _process(delta: float) -> void:
 	if not can_hold:
@@ -64,6 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB") and can_hold and cup.mouse_over:
 		is_holding = true
 		is_shaking = true
+		%"Player Screen".waiting_for_bet()
 	elif event.is_action_released("LMB") and can_hold:
 		is_holding = false
 		cup.global_position = cup_pos
@@ -86,6 +88,7 @@ func reset() -> void:
 		die.display_value(false)
 	return_cup()
 	can_hold = true
+	%"Player Screen".waiting_for_roll()
 
 
 #draws a ray from the camera to the mouse position
@@ -181,8 +184,10 @@ func playmat_button_pressed(type: String) -> void:
 	match type:
 		"CALL":
 			pub_info.set_call_pressed(true)
+			%"Player Screen".normal()
 		"BET":
 			bot.enter()
+			%"Player Screen".normal()
 	playmat.set_buttons("BOTH", false)
 
 

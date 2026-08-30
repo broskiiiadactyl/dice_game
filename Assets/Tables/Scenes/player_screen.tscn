@@ -181,12 +181,13 @@ texture = ExtResource("7_ivaf8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="wait" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer" unique_id=1897877523]
+[node name="wait roll" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer" unique_id=1897877523]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="waiting" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait" unique_id=1062980339]
+[node name="waiting" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait roll" unique_id=1062980339]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
@@ -199,7 +200,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="1" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait" unique_id=1097298475]
+[node name="1" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait roll" unique_id=1097298475]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -211,7 +212,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="2" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait" unique_id=12463337]
+[node name="2" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait roll" unique_id=12463337]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -223,7 +224,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="3" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait" unique_id=1150460259]
+[node name="3" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait roll" unique_id=1150460259]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -235,11 +236,78 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Bet UI/CenterContainer/wait" unique_id=1593446788]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Bet UI/CenterContainer/wait roll" unique_id=1593446788]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer/wait/VBoxContainer" unique_id=987915622]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer/wait roll/VBoxContainer" unique_id=987915622]
 layout_mode = 2
+
+[node name="wait bet" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer" unique_id=670081654]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="down1" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait bet" unique_id=321855878]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "V "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="waiting" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait bet" unique_id=850027350]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "Bet"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="down2" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait bet" unique_id=1555490665]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = " V"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="wait call" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer" unique_id=520006633]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="waiting" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait call" unique_id=1972457575]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "Call?"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Countdown" type="RichTextLabel" parent="SubViewport/Bet UI/CenterContainer/wait call" unique_id=186705112]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "3"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer2" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=363311064]
 unique_name_in_owner = true
