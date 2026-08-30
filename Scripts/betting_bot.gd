@@ -81,8 +81,12 @@ func _on_submit_pressed() -> void:
 func set_num_bet(dir: int) -> void:
 	button.play()
 	var new_bet : int = num_bet + dir
-	if new_bet < min_num_bet or new_bet > max_bet:
-		return
+	if not dice_bet > min_face_bet:
+		if new_bet < min_num_bet:
+			num_bet = min_num_bet
+			return
+	elif new_bet > max_bet:
+			return
 	num_bet = new_bet
 	bet_label.text = str(num_bet) 
 
@@ -95,10 +99,16 @@ func set_dice_bet(dir: int) ->void:
 	face_label.texture = face_images[dice_bet - 1]
 
 func enter() -> void:
+	num_bet = 1
+	dice_bet = 1
 	if Globals.last_quantity:
 		min_num_bet = Globals.last_quantity
+	else:
+		min_num_bet = 1
 	if Globals.last_face:
 		min_face_bet = Globals.last_face
+	else:
+		min_face_bet = 1
 	
 	set_num_bet(min_num_bet - 1)
 	set_dice_bet(min_face_bet - 1)

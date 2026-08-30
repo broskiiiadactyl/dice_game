@@ -23,7 +23,6 @@ var is_out : bool = false
 ]
 
 func _ready() -> void:
-	await get_tree().create_timer(2.0).timeout
 	update_screen()
 
 func update_screen() -> void:

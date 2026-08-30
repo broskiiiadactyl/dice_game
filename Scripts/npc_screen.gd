@@ -10,6 +10,7 @@ var num_of_dice : int
 var is_calling : bool = false
 var is_passing : bool = false
 var is_out : bool = false
+var playing_text : bool = false
 
 @onready var faces : Array[CompressedTexture2D] = [
 	load("res://Assets/theme styling/die1.png"),
@@ -53,6 +54,9 @@ func update_screen(status : String, active: int = num_of_dice) -> bool:
 	return true
 
 func play_text(display) -> bool:
+	while not playing_text:
+		await get_tree().create_timer(0.5).timeout
+	playing_text = true
 	dice_display.visible = false
 	
 	for i in range(3):
@@ -62,4 +66,5 @@ func play_text(display) -> bool:
 		await get_tree().create_timer(0.5).timeout
 	
 	dice_display.visible = true
+	playing_text = false
 	return true

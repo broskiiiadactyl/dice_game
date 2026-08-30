@@ -183,7 +183,6 @@ stretch_mode = 5
 
 [node name="wait" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer" unique_id=1897877523]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 alignment = 1
 
@@ -191,8 +190,9 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-text = "waiting"
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "Roll"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -204,7 +204,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
-text = "."
+text = "-"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -216,7 +216,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
-text = "."
+text = "-"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -228,12 +228,18 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
-text = "."
+text = ">"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Bet UI/CenterContainer/wait" unique_id=1593446788]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Bet UI/CenterContainer/wait/VBoxContainer" unique_id=987915622]
+layout_mode = 2
 
 [node name="CenterContainer2" type="CenterContainer" parent="SubViewport/Bet UI" unique_id=363311064]
 unique_name_in_owner = true

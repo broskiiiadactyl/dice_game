@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7767129)
 
 [node name="Player Camera" type="Camera3D" parent="Player" unique_id=291328698]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.97573715, 0.21894518, 0, -0.21894518, 0.97573715, -1.2046471, 1.7696822, 8.442925)
+transform = Transform3D(1, 0, 0, 0, 0.99170727, 0.12851724, 0, -0.12851724, 0.99170727, -1.2046471, 1.7696822, 8.442925)
 fov = 50.0
 script = ExtResource("3_lgr22")
 max_yaw = 75.0
