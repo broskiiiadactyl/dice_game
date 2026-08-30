@@ -31,6 +31,7 @@ var time_passed : float = 0.0
 
 func _ready() -> void:
 	%"Pause Menu".visible = false
+	
 	Globals.unpause.connect(unpause)
 	
 	set_cup_bounds()
@@ -51,6 +52,9 @@ func _ready() -> void:
 	else:
 		await get_tree().create_timer(1.0).timeout
 		Globals.main_loaded.emit()
+		can_hold = false
+		await Dialogue.set_dialogue("start")
+		can_hold = true
 		get_viewport().warp_mouse(get_viewport().get_visible_rect().size/2)
 		%"Player Screen".waiting_for_roll()
 
