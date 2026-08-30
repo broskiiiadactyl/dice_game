@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://bu8ep8jmdui8c" path="res://Assets/Tables/Scenes/player_screen.tscn" id="21_bg4s2"]
 [ext_resource type="PackedScene" uid="uid://k1lq3wty6wha" path="res://Menuing/pause_menu.tscn" id="24_mxvw5"]
 [ext_resource type="FontFile" uid="uid://dtps663rafyqv" path="res://Assets/theme styling/Nulshock Bd.otf" id="25_xrxkg"]
-[ext_resource type="Texture2D" uid="uid://csjhc2pelfsnm" path="res://Assets/Images/wINsCREEN.png" id="27_sqvbp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgr22"]
 panorama = ExtResource("2_3dxm6")
@@ -646,38 +645,5 @@ script = ExtResource("10_wkp8b")
 [node name="Pause Menu" parent="." unique_id=240410558 instance=ExtResource("24_mxvw5")]
 unique_name_in_owner = true
 theme = SubResource("Theme_sqvbp")
-
-[node name="End Screen" type="Control" parent="." unique_id=718762391]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="End Screen" unique_id=733059431]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="End Screen/ColorRect" unique_id=1196503496]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="End Screen/ColorRect/MarginContainer" unique_id=1695705638]
-position = Vector2(580, 324)
-texture = ExtResource("27_sqvbp")
 
 [connection signal="timeout" from="Pausable/Environment Flavor/Random Event" to="Pausable/Environment Flavor" method="_on_random_event_timeout"]
