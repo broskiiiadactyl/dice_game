@@ -182,7 +182,6 @@ func place_dice() -> Array[int]:
 		die.display_value(true)
 		await get_tree().create_timer(0.1).timeout
 		dice_array.append(die.dice_value)
-		
 	return dice_array
 
 func playmat_button_pressed(type: String) -> void:
